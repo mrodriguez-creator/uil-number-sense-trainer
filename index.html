@@ -530,7 +530,24 @@ function buildBasicPool(count, topicKey) {
     pool = [...REAL_BASIC];
     while(pool.length < count*4) pool.push(GEN[pickGen()]());
   }
-  return shuffle(pool).slice(0,count);
+  
+  let problems = shuffle(pool).slice(0,count);
+  
+  // Insert starred problems at positions 10, 20, 30, etc. in drill mode (not topic drills)
+  if(!topicKey && count >= 10){
+    for(let pos=10; pos<=count; pos+=10){
+      if(pos===10){
+        problems[9] = {...APPROX.tier1(),num:10};
+      } else if(pos===20){
+        problems[19] = {...APPROX.tier1hard(),num:20};
+      } else {
+        // For positions 30+, use advanced starred problems
+        problems[pos-1] = {...APPROX.advanced(),num:pos};
+      }
+    }
+  }
+  
+  return problems;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1282,6 +1299,14 @@ function buildTimedRound(count){
   let usedReal={};
 
   return SEQ_1_20.slice(0,count).map((slot,i)=>{
+    // Insert starred problems at positions 10 and 20
+    if(i===9 && count>=10){
+      return {...APPROX.tier1(),num:10};
+    }
+    if(i===19 && count>=20){
+      return {...APPROX.tier1hard(),num:20};
+    }
+    
     let realP=null;
     for(let key of shuffle([...slot])){
       let pool=realByType[key]||[], idx=usedReal[key]||0;
