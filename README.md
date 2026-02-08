@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**[🚀 Try Live Demo](#)** | **[📖 Documentation](docs/)** | **[🐛 Report Bug](../../issues)** | **[💡 Request Feature](../../issues)**
+**[🚀 Try Live Demo](https://mrodriguez-creator.github.io/uil-number-sense-trainer/)** | **[📖 Documentation](docs/)** | **[🐛 Report Bug](../../issues)** | **[💡 Request Feature](../../issues)**
 
 ---
 
@@ -78,13 +78,13 @@ Powers & Exponents, Square/Cube Roots, Equations & Systems, Base Conversion, Abs
 ## 🚀 Installation
 
 ### Option 1: Use Online (Recommended)
-Just visit **[your-demo-url-here](#)** — no installation needed!
+Just visit **[mrodriguez-creator.github.io/uil-number-sense-trainer](https://mrodriguez-creator.github.io/uil-number-sense-trainer/)** — no installation needed!
 
 ### Option 2: Run Locally
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/uil-number-sense.git
-cd uil-number-sense
+git clone https://github.com/mrodriguez-creator/uil-number-sense-trainer.git
+cd uil-number-sense-trainer
 
 # Open in your browser
 open index.html
@@ -95,7 +95,7 @@ open index.html
 1. Fork this repository
 2. Go to **Settings → Pages**
 3. Set source to `main` branch
-4. Your app will be live at `https://yourusername.github.io/uil-number-sense/`
+4. Your app will be live at `https://mrodriguez-creator.github.io/uil-number-sense-trainer/`
 
 ---
 

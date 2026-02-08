@@ -1,5 +1,5 @@
 {
-  "name": "uil-number-sense-trainer",
+  "name": "uil-number-sense-trainer-trainer",
   "version": "1.0.0",
   "description": "Free, open-source training platform for UIL Number Sense competition - mental math practice for Texas high school students",
   "main": "index.html",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/uil-number-sense.git"
+    "url": "git+https://github.com/mrodriguez-creator/uil-number-sense-trainer.git"
   },
   "keywords": [
     "uil",
@@ -25,7 +25,7 @@
   "author": "UIL Number Sense Contributors",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourusername/uil-number-sense/issues"
+    "url": "https://github.com/mrodriguez-creator/uil-number-sense-trainer/issues"
   },
-  "homepage": "https://github.com/yourusername/uil-number-sense#readme"
+  "homepage": "https://github.com/mrodriguez-creator/uil-number-sense-trainer#readme"
 }

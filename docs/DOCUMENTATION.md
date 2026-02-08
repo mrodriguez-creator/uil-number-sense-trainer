@@ -96,7 +96,7 @@
 
 ### File Structure (Recommended)
 ```
-uil-number-sense/
+uil-number-sense-trainer/
 ├── index.html           # Main app (currently all-in-one)
 ├── css/
 │   └── styles.css       # Extract styles here
