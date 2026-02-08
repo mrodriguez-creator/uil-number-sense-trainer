@@ -148,11 +148,205 @@ input.ans-box:focus { border-color: #667eea; }
 .ref-card p { color:#a0aec0; font-size:0.85rem; line-height:1.6; }
 .ref-close { display:block; width:100%; background:#667eea; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:600; cursor:pointer; margin-top:20px; }
 .ref-close:hover { filter:brightness(1.1); }
+
+/* PROGRESS TRACKING STATS SCREEN */
+.stats-preview { display:flex; gap:15px; margin:15px 0; flex-wrap:wrap; justify-content:center; }
+.sp-item { background:#2d3748; padding:8px 16px; border-radius:8px; font-size:0.85rem; color:#a0aec0; }
+.stats-btn { background:#667eea; color:#fff; border:none; padding:12px 24px; border-radius:10px; font-weight:600; font-size:0.95rem; cursor:pointer; margin-top:10px; transition:all 0.2s; }
+.stats-btn:hover { background:#5568d3; transform:translateY(-2px); }
+.stats-screen { min-height:100vh; background:#0f1419; padding:0; }
+.stats-screen .header { background:#1a1f2e; padding:20px; border-bottom:2px solid #667eea; position:relative; }
+.stats-screen .header h1 { color:#e2e8f0; margin:0; }
+.back-btn { position:absolute; top:20px; right:20px; background:#2d3748; color:#a0aec0; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:0.9rem; }
+.back-btn:hover { background:#4a5568; color:#e2e8f0; }
+.stats-body { padding:20px; max-width:1200px; margin:0 auto; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-bottom:20px; }
+.stat-card.big { padding:20px; background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; text-align:center; position:relative; }
+.stat-val { color:#667eea; font-size:2.5rem; font-weight:700; margin-bottom:5px; }
+.stat-label { color:#a0aec0; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.stat-sub { color:#718096; font-size:0.75rem; margin-top:5px; }
+.stat-badge { position:absolute; top:10px; right:10px; padding:4px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; }
+.stat-badge.positive { background:#48bb78; color:#fff; }
+.stat-badge.negative { background:#f56565; color:#fff; }
+.empty-stats { text-align:center; padding:80px 20px; }
+.es-icon { font-size:5rem; margin-bottom:20px; }
+.empty-stats h2 { color:#e2e8f0; margin-bottom:10px; }
+.empty-stats p { color:#a0aec0; margin-bottom:30px; }
+
+/* Performance Graph */
+.graph-container { background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; padding:20px; display:flex; align-items:flex-end; justify-content:space-around; height:200px; gap:10px; }
+.graph-bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; }
+.gb-bar-container { width:100%; height:140px; background:#2d3748; border-radius:8px 8px 0 0; position:relative; display:flex; align-items:flex-end; }
+.gb-bar { width:100%; background:linear-gradient(to top,#667eea,#48bb78); border-radius:8px 8px 0 0; transition:height 0.3s; min-height:5px; }
+.gb-label { color:#a0aec0; font-size:0.7rem; }
+.gb-mode { color:#718096; font-size:0.65rem; }
+
+/* Topic Stats */
+.topic-stats { background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; padding:20px; }
+.topic-stat { display:grid; grid-template-columns:120px 1fr 100px; gap:15px; align-items:center; padding:12px 0; border-bottom:1px solid #2d3748; }
+.topic-stat:last-child { border-bottom:none; }
+.ts-name { color:#e2e8f0; font-weight:600; font-size:0.9rem; }
+.ts-bar-container { background:#2d3748; height:20px; border-radius:10px; overflow:hidden; }
+.ts-bar { height:100%; border-radius:10px; transition:width 0.3s; }
+.ts-score { color:#a0aec0; font-size:0.85rem; text-align:right; }
+
+/* History Table */
+.history-table { background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; padding:20px; overflow-x:auto; }
+.history-table table { width:100%; border-collapse:collapse; }
+.history-table th { color:#667eea; text-align:left; padding:10px; border-bottom:2px solid #2d3748; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.history-table td { color:#a0aec0; padding:10px; border-bottom:1px solid #2d3748; font-size:0.9rem; }
+.history-table tr:last-child td { border-bottom:none; }
+.history-table tr:hover { background:#2d3748; }
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
+// ═══════════════════════════════════════════════════════════════════════════
+// PROGRESS TRACKING SYSTEM (LocalStorage)
+// ═══════════════════════════════════════════════════════════════════════════
+
+function loadStats(){
+  try{
+    let raw = localStorage.getItem('uilNsStats');
+    return raw ? JSON.parse(raw) : {sessions:[], topicStats:{}, firstUse:new Date().toISOString()};
+  }catch(e){
+    console.error('Failed to load stats:', e);
+    return {sessions:[], topicStats:{}, firstUse:new Date().toISOString()};
+  }
+}
+
+function saveStats(stats){
+  try{
+    localStorage.setItem('uilNsStats', JSON.stringify(stats));
+    return true;
+  }catch(e){
+    console.error('Failed to save stats:', e);
+    return false;
+  }
+}
+
+function recordSession(sessionData){
+  let stats = loadStats();
+  
+  // Add new session
+  let session = {
+    date: new Date().toISOString(),
+    mode: sessionData.mode,
+    score: sessionData.score,
+    total: sessionData.total,
+    timeUsed: sessionData.timeUsed || 0,
+    secondsPerProblem: sessionData.timeUsed && sessionData.total > 0 ? Math.round(sessionData.timeUsed / sessionData.total * 10) / 10 : null,
+    topics: sessionData.topicBreakdown || {}
+  };
+  
+  stats.sessions.push(session);
+  
+  // Keep last 200 sessions only
+  if(stats.sessions.length > 200){
+    stats.sessions = stats.sessions.slice(-200);
+  }
+  
+  // Update per-topic cumulative stats
+  Object.entries(session.topics).forEach(([topic, data]) => {
+    if(!stats.topicStats[topic]){
+      stats.topicStats[topic] = {correct:0, total:0, lastPracticed:session.date};
+    }
+    stats.topicStats[topic].correct += data.correct || 0;
+    stats.topicStats[topic].total += data.total || 0;
+    stats.topicStats[topic].lastPracticed = session.date;
+  });
+  
+  saveStats(stats);
+  return stats;
+}
+
+function getTopicBreakdown(answered){
+  let breakdown = {};
+  answered.forEach(item => {
+    let topic = item.t || 'unknown';
+    if(!breakdown[topic]) breakdown[topic] = {correct:0, total:0};
+    breakdown[topic].total++;
+    if(item.correct) breakdown[topic].correct++;
+  });
+  return breakdown;
+}
+
+function getStats(){
+  let stats = loadStats();
+  
+  // Calculate derived stats
+  let totalSessions = stats.sessions.length;
+  let totalProblems = stats.sessions.reduce((sum, s) => sum + s.total, 0);
+  let totalCorrect = stats.sessions.reduce((sum, s) => sum + s.score, 0);
+  let overallAccuracy = totalProblems > 0 ? Math.round(totalCorrect / totalProblems * 100) : 0;
+  
+  // Recent performance (last 10 sessions)
+  let recent = stats.sessions.slice(-10);
+  let recentAccuracy = recent.length > 0 ? 
+    Math.round(recent.reduce((sum, s) => sum + s.score, 0) / recent.reduce((sum, s) => sum + s.total, 0) * 100) : 0;
+  
+  // Personal bests
+  let bestScore = stats.sessions.reduce((best, s) => {
+    if(s.mode === 'timed20' && s.total === 20){
+      return s.score > best.score ? s : best;
+    }
+    return best;
+  }, {score:0, date:null});
+  
+  let bestFullTest = stats.sessions.reduce((best, s) => {
+    if(s.mode === 'full' && s.total === 80){
+      return s.score > best.score ? s : best;
+    }
+    return best;
+  }, {score:0, date:null});
+  
+  // Streak calculation (days with at least 1 session)
+  let streak = 0;
+  if(stats.sessions.length > 0){
+    let today = new Date();
+    today.setHours(0,0,0,0);
+    let sessionDates = [...new Set(stats.sessions.map(s => {
+      let d = new Date(s.date);
+      d.setHours(0,0,0,0);
+      return d.getTime();
+    }))].sort((a,b) => b-a);
+    
+    for(let i=0; i<sessionDates.length; i++){
+      let expectedDate = new Date(today.getTime() - i * 86400000);
+      if(sessionDates[i] === expectedDate.getTime()){
+        streak++;
+      } else {
+        break;
+      }
+    }
+  }
+  
+  // Speed improvement (compare first 10 sessions to last 10)
+  let timedSessions = stats.sessions.filter(s => s.secondsPerProblem !== null);
+  let speedImprovement = null;
+  if(timedSessions.length >= 20){
+    let firstAvg = timedSessions.slice(0,10).reduce((sum,s) => sum + s.secondsPerProblem, 0) / 10;
+    let lastAvg = timedSessions.slice(-10).reduce((sum,s) => sum + s.secondsPerProblem, 0) / 10;
+    speedImprovement = Math.round((firstAvg - lastAvg) * 10) / 10;
+  }
+  
+  return {
+    totalSessions,
+    totalProblems,
+    totalCorrect,
+    overallAccuracy,
+    recentAccuracy,
+    bestScore,
+    bestFullTest,
+    streak,
+    speedImprovement,
+    topicStats: stats.topicStats,
+    recentSessions: stats.sessions.slice(-20).reverse(),
+    firstUse: stats.firstUse
+  };
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // REAL PROBLEMS FROM UIL TESTS 2020-2022 (Problems 1-20 range)
 // Each has a .t (type) tag for topic filtering
@@ -530,8 +724,197 @@ function buildBasicPool(count, topicKey) {
     pool = [...REAL_BASIC];
     while(pool.length < count*4) pool.push(GEN[pickGen()]());
   }
-  return shuffle(pool).slice(0,count);
+  
+  let problems = shuffle(pool).slice(0,count);
+  
+  // Insert starred problems at positions 10, 20, 30, etc. in drill mode (not topic drills)
+  if(!topicKey && count >= 10){
+    for(let pos=10; pos<=count; pos+=10){
+      if(pos===10){
+        problems[9] = {...APPROX.tier1(),num:10};
+      } else if(pos===20){
+        problems[19] = {...APPROX.tier1hard(),num:20};
+      } else {
+        // For positions 30+, use advanced starred problems
+        problems[pos-1] = {...APPROX.advanced(),num:pos};
+      }
+    }
+  }
+  
+  return problems;
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// APPROXIMATION (*) GENERATORS — For problems #10, 20, 30, 40, 50, 60, 70, 80
+// These are starred (*) problems but have EXACT answers - just large/tricky numbers
+// The ±5% tolerance is a safety net, not an invitation to estimate
+// ═══════════════════════════════════════════════════════════════════════════
+const APPROX = {
+  // Problem 10: Four-term arithmetic chain (AUTHENTIC UIL PATTERN)
+  // Real UIL examples:
+  //   520 − 2011 + 1302 − 25 =
+  //   425 − 2025 + 5202 − 624 =
+  //   1967 + 7196 − 6719 − 9671 =
+  //   5220 − 522 − 2052 − 2205 =
+  tier1: ()=>{
+    let pattern=ri(0,4);
+    
+    // Pattern 1: small − large + large − medium
+    if(pattern===0){
+      let a=ri(300,900);
+      let b=ri(1500,2500);
+      let c=ri(3000,6000);
+      let d=ri(100,800);
+      let ans=a-b+c-d;
+      return {q:`${a} − ${b} + ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Work left to right: "+a+"−"+b+" = "+(a-b)+", +"+c+" = "+(a-b+c)+", −"+d+" = "+ans};
+    }
+    
+    // Pattern 2: large + large − large − large
+    if(pattern===1){
+      let a=ri(1000,3000);
+      let b=ri(5000,8000);
+      let c=ri(4000,7000);
+      let d=ri(3000,10000);
+      let ans=a+b-c-d;
+      return {q:`${a} + ${b} − ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Add: "+a+"+"+b+" = "+(a+b)+", subtract: −"+c+"−"+d};
+    }
+    
+    // Pattern 3: large − small − large − large
+    if(pattern===2){
+      let a=ri(4000,7000);
+      let b=ri(400,900);
+      let c=ri(1500,2500);
+      let d=ri(1500,3000);
+      let ans=a-b-c-d;
+      return {q:`${a} − ${b} − ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Subtract sequentially: "+a+"−"+b+" = "+(a-b)+", −"+c+" = "+(a-b-c)+", −"+d};
+    }
+    
+    // Pattern 4: small + large − large + medium
+    if(pattern===3){
+      let a=ri(200,600);
+      let b=ri(2000,4000);
+      let c=ri(1500,3000);
+      let d=ri(500,1500);
+      let ans=a+b-c+d;
+      return {q:`${a} + ${b} − ${c} + ${d} =`,a:ans,t:"ops",starred:true,hint:"Group: ("+a+"+"+b+"+"+d+") − "+c};
+    }
+    
+    // Pattern 5: small − large + large − small (balanced)
+    let a=ri(400,800);
+    let b=ri(1800,2500);
+    let c=ri(3000,4500);
+    let d=ri(300,700);
+    let ans=a-b+c-d;
+    return {q:`${a} − ${b} + ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Left to right: "+a+"−"+b+" = "+(a-b)+", then +"+c+"−"+d};
+  },
+  
+  // Problem 20: Division by 25 OR large operations (AUTHENTIC UIL PATTERN)
+  // Real UIL examples:
+  //   1103 ÷ 25 =
+  //   √518 × √7491 = (which is √(518×7491))
+  //   172023 ÷ 218 =
+  //   396 × 501 − 2020 =
+  tier1hard: ()=>{
+    let type=ri(0,5);
+    
+    // Type 1: Division by 25 (MOST COMMON)
+    if(type===0){
+      let quotient=ri(40,150);
+      let dividend=quotient*25;
+      return {q:`${dividend} ÷ 25 =`,a:quotient,t:"div",starred:true,hint:"÷25 trick: "+dividend+" × 4 = "+(dividend*4)+", ÷100 = "+quotient};
+    }
+    
+    // Type 2: Large 3-digit × 3-digit multiplication
+    if(type===1){
+      let a=ri(250,500);
+      let b=ri(250,600);
+      let ans=a*b;
+      return {q:`${a} × ${b} =`,a:ans,t:"mul",starred:true,hint:"Distributive: "+a+"×"+b+" = "+a+"×"+Math.floor(b/100)*100+" + "+a+"×"+(b%100)};
+    }
+    
+    // Type 3: √a + √b where a, b are perfect squares
+    if(type===2){
+      let a=ri(18,26);
+      let b=ri(18,28);
+      let ans=a+b;
+      return {q:`√${a*a} + √${b*b} =`,a:ans,t:"sq",starred:true,hint:"√"+(a*a)+" = "+a+", √"+(b*b)+" = "+b+", sum = "+ans};
+    }
+    
+    // Type 4: Large product minus constant
+    if(type===3){
+      let a=ri(300,500);
+      let b=ri(400,600);
+      let c=ri(1500,3000);
+      let ans=a*b-c;
+      return {q:`${a} × ${b} − ${c} =`,a:ans,t:"ops",starred:true,hint:"Multiply first: "+a+"×"+b+" = "+(a*b)+", −"+c+" = "+ans};
+    }
+    
+    // Type 5: Large division with clean answer
+    if(type===4){
+      let divisor=ri(150,400);
+      let quotient=ri(200,900);
+      let dividend=divisor*quotient;
+      return {q:`${dividend} ÷ ${divisor} =`,a:quotient,t:"div",starred:true,hint:"Factor: "+dividend+" = "+divisor+" × "+quotient};
+    }
+    
+    // Type 6: Product of large-ish numbers (near 100)
+    let a=ri(90,150);
+    let b=ri(90,150);
+    return {q:`${a} × ${b} =`,a:a*b,t:"mul",starred:true,hint:"Use (100±a)(100±b) pattern or distributive"};
+  },
+  
+  // Problem 30: Tier 2 starred
+  tier2: ()=>{
+    let type=ri(0,2);
+    if(type===0){
+      // Product of square roots
+      let a=ri(10,20),b=ri(10,20);
+      return {q:`√${a*a} × √${b*b} =`,a:a*b,t:"sq",starred:true,hint:"√"+(a*a)+"="+a+", √"+(b*b)+"="+b+", product = "+(a*b)};
+    }
+    if(type===1){
+      // Cube root of perfect cube
+      let n=ri(10,15);
+      return {q:`³√${n*n*n} =`,a:n,t:"cube",starred:true,hint:"Memorize cubes: 10³=1000, 11³=1331, 12³=1728, 13³=2197, 14³=2744, 15³=3375"};
+    }
+    // Large mixed operations
+    let a=ri(100,500),b=ri(100,500),c=ri(2,9);
+    let ans=(a+b)*c;
+    return {q:`(${a} + ${b}) × ${c} =`,a:ans,t:"ops",starred:true,hint:"Add first: "+a+"+"+b+"="+(a+b)+", then ×"+c};
+  },
+  
+  // Problem 40-80: Higher tier starred
+  advanced: ()=>{
+    let type=ri(0,4);
+    if(type===0){
+      // Fourth root of perfect fourth power
+      let n=ri(5,10);
+      return {q:`⁴√${Math.pow(n,4)} =`,a:n,t:"powers",starred:true,hint:"4th roots: 5⁴=625, 6⁴=1296, 7⁴=2401, 8⁴=4096, 9⁴=6561, 10⁴=10000"};
+    }
+    if(type===1){
+      // Product of three square roots
+      let a=ri(8,15),b=ri(8,15),c=ri(8,15);
+      return {q:`√${a*a} × √${b*b} × √${c*c} =`,a:a*b*c,t:"sq",starred:true,hint:"√"+(a*a)+"×√"+(b*b)+"×√"+(c*c)+" = "+a+"×"+b+"×"+c};
+    }
+    if(type===2){
+      // Complex arithmetic chain
+      let a=ri(50,100),b=ri(50,100),c=ri(30,70);
+      let ans=a*a-b*b+c;
+      return {q:`${a}² − ${b}² + ${c} =`,a:ans,t:"ops",starred:true,hint:"Use difference of squares: "+a+"²−"+b+"² = ("+a+"+"+b+")("+a+"−"+b+")"};
+    }
+    if(type===3){
+      // Large factorial divided by factorial
+      let n=ri(8,12),k=ri(5,n-2);
+      let ans=1; for(let i=k+1;i<=n;i++) ans*=i;
+      return {q:`${n}! ÷ ${k}! =`,a:ans,t:"factperm",starred:true,hint:n+"! ÷ "+k+"! = "+n+"×"+(n-1)+"×...×"+(k+1)};
+    }
+    // Sum/product of large square roots
+    let a=ri(12,20),b=ri(12,20);
+    if(ri(0,1)===0){
+      return {q:`√${a*a} + √${b*b} + √${(a+b)*(a+b)} =`,a:a+b+(a+b),t:"sq",starred:true,hint:"Simplify each root, then add"};
+    }
+    return {q:`(√${a*a} + √${b*b}) × ${ri(2,5)} =`,a:(a+b)*ri(2,5),t:"ops",starred:true,hint:"Roots first, then multiply"};
+  }
+};
 
 // ═══════════════════════════════════════════════════════════════════════════
 // TIER 2 GENERATORS — Problems 21-40
@@ -1043,6 +1426,16 @@ function buildSequencedTest(){
   let usedReal={};
 
   SEQ_1_20.forEach((slot,i)=>{
+    // Problem 10 and 20: use approximation generators
+    if(i===9){
+      probs.push({...APPROX.tier1(),num:10});
+      return;
+    }
+    if(i===19){
+      probs.push({...APPROX.tier1hard(),num:20});
+      return;
+    }
+    
     let realP=null;
     for(let key of shuffle([...slot])){
       let pool=realByType[key]||[], idx=usedReal[key]||0;
@@ -1051,14 +1444,43 @@ function buildSequencedTest(){
     probs.push(realP ? {...realP,num:i+1} : {...GEN[pick(slot)](),num:i+1});
   });
 
-  // 21-40: tier 2
-  SEQ_21_40.forEach((slot,i)=>{ probs.push({...GEN2[pick(slot)](),num:i+21}); });
-  // 41-60: tier 3
-  SEQ_41_60.forEach((slot,i)=>{ probs.push({...GEN3[pick(slot)](),num:i+41}); });
-  // 61-70: tier 4
-  SEQ_61_70.forEach((slot,i)=>{ probs.push({...GEN4[pick(slot)](),num:i+61}); });
-  // 71-80: tier 5
-  SEQ_71_80.forEach((slot,i)=>{ probs.push({...GEN5[pick(slot)](),num:i+71}); });
+  // 21-40: tier 2 — problem 30 and 40 are approximations
+  SEQ_21_40.forEach((slot,i)=>{ 
+    if(i===9){
+      probs.push({...APPROX.tier2(),num:30});
+    } else if(i===19){
+      probs.push({...APPROX.advanced(),num:40});
+    } else {
+      probs.push({...GEN2[pick(slot)](),num:i+21}); 
+    }
+  });
+  
+  // 41-60: tier 3 — problem 50 and 60 are approximations
+  SEQ_41_60.forEach((slot,i)=>{ 
+    if(i===9 || i===19){
+      probs.push({...APPROX.advanced(),num:i+41});
+    } else {
+      probs.push({...GEN3[pick(slot)](),num:i+41}); 
+    }
+  });
+  
+  // 61-70: tier 4 — problem 70 is approximation
+  SEQ_61_70.forEach((slot,i)=>{ 
+    if(i===9){
+      probs.push({...APPROX.advanced(),num:70});
+    } else {
+      probs.push({...GEN4[pick(slot)](),num:i+61}); 
+    }
+  });
+  
+  // 71-80: tier 5 — problem 80 is approximation
+  SEQ_71_80.forEach((slot,i)=>{ 
+    if(i===9){
+      probs.push({...APPROX.advanced(),num:80});
+    } else {
+      probs.push({...GEN5[pick(slot)](),num:i+71}); 
+    }
+  });
 
   return probs;
 }
@@ -1071,6 +1493,14 @@ function buildTimedRound(count){
   let usedReal={};
 
   return SEQ_1_20.slice(0,count).map((slot,i)=>{
+    // Insert starred problems at positions 10 and 20
+    if(i===9 && count>=10){
+      return {...APPROX.tier1(),num:10};
+    }
+    if(i===19 && count>=20){
+      return {...APPROX.tier1hard(),num:20};
+    }
+    
     let realP=null;
     for(let key of shuffle([...slot])){
       let pool=realByType[key]||[], idx=usedReal[key]||0;
@@ -1084,7 +1514,7 @@ function buildTimedRound(count){
 // APP STATE
 // ═══════════════════════════════════════════════════════════════════════════
 let state = {
-  screen:'menu',        // menu | test | results
+  screen:'menu',        // menu | test | results | stats
   problems:[],
   idx:0,
   answer:'',
@@ -1097,8 +1527,10 @@ let state = {
   timer:null,
   feedback:'',          // '' | 'correct' | 'wrong'
   feedbackText:'',
+  startTime:0,          // Track when test started for speed stats
   streak:0,
-  drillCount:0
+  drillCount:0,
+  importedProblems:[]   // Real UIL problems imported from JSON
 };
 function setState(p){Object.assign(state,p);render();}
 
@@ -1126,25 +1558,25 @@ function fmtT(s){return Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0');}
 function startTimed(secs){
   stopTimer();
   let probs=buildTimedRound(20);
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:secs,timed:true,answered:[],mode:'timed20',timedSecs:secs,feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:secs,timed:true,answered:[],mode:'timed20',timedSecs:secs,feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(()=>{startTimer();focusInput();},50);
 }
 function startDrill(){
   stopTimer();
   let probs=buildBasicPool(40,null).map((p,i)=>({...p,num:i+1}));
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'drill',feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'drill',feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(focusInput,50);
 }
 function startTopicDrill(key){
   stopTimer();
   let probs=buildBasicPool(40,key).map((p,i)=>({...p,num:i+1}));
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'topic',topicKey:key,feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'topic',topicKey:key,feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(focusInput,50);
 }
 function startFullTest(){
   stopTimer();
   let probs=buildSequencedTest();
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:600,timed:true,answered:[],mode:'full',feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:600,timed:true,answered:[],mode:'full',feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(()=>{startTimer();focusInput();},50);
 }
 function focusInput(){let e=document.getElementById('ans-input');if(e)e.focus();}
@@ -1261,7 +1693,23 @@ function skipProblem(){
   }
 }
 
-function endTest(){stopTimer();setState({screen:'results'});}
+function endTest(){
+  stopTimer();
+  
+  // Record session stats
+  let timeUsed = state.startTime ? Math.round((Date.now() - state.startTime) / 1000) : 0;
+  let topicBreakdown = getTopicBreakdown(state.answered);
+  
+  recordSession({
+    mode: state.mode,
+    score: state.score,
+    total: state.answered.length,
+    timeUsed: timeUsed,
+    topicBreakdown: topicBreakdown
+  });
+  
+  setState({screen:'results'});
+}
 function goMenu(){stopTimer();setState({screen:'menu',problems:[],idx:0,answer:'',score:0,timeLeft:0,answered:[],feedback:'',feedbackText:'',streak:0,drillCount:0});}
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1271,13 +1719,37 @@ function getSolutionHint(q,ans,topic){
   // Provide step-by-step explanation based on problem type and question
   if(!topic) return "Review the problem and try breaking it into smaller steps.";
   
+  // ENHANCED ARITHMETIC STRATEGIES - parse the actual numbers from the question
+  if(topic==='add' || topic==='sub' || topic==='mul' || topic==='div' || topic==='ops'){
+    return getArithmeticStrategy(q, ans, topic);
+  }
+  
   // Multiplication tricks
   if(topic==='mul11') return "To multiply by 11: add the digits and insert between them. If sum ≥10, carry the 1.";
   if(topic==='mul25') return "To multiply by 25: divide by 4, then multiply by 100. (Since 25 = 100/4)";
   if(topic==='near100') return "Use (100-a)(100-b) = 10000 - 100a - 100b + ab. Example: 97×98 = 10000-300-200+6 = 9506.";
   
   // Squaring tricks
-  if(topic==='sq5' || topic==='sq') return "For numbers ending in 5: multiply the tens digit by (tens+1), then append 25.";
+  if(topic==='sq5' || topic==='sq'){
+    return getSquaringStrategy(q, ans);
+  }
+  
+  // Cubing tricks
+  if(topic==='cube'){
+    let nums = q.match(/\d+/g);
+    if(nums && nums.length > 0){
+      let n = parseInt(nums[0]);
+      if(n <= 10){
+        return `<strong>Memorize small cubes:</strong> 1³=1, 2³=8, 3³=27, 4³=64, 5³=125, 6³=216, 7³=343, 8³=512, 9³=729, 10³=1000.`;
+      }
+      if(n >= 10 && n <= 20){
+        let tens = Math.floor(n/10) * 10;
+        let ones = n % 10;
+        return `<strong>Expand (a+b)³:</strong> ${n}³ = (${tens}+${ones})³ = ${tens}³ + 3(${tens}²×${ones}) + 3(${tens}×${ones}²) + ${ones}³. Calculate each term and add.`;
+      }
+    }
+    return "Memorize cubes 1³ through 10³. For larger numbers, use (a+b)³ = a³ + 3a²b + 3ab² + b³.";
+  }
   
   // Series and sequences
   if(topic==='series'){
@@ -1336,6 +1808,137 @@ function getSolutionHint(q,ans,topic){
   return "Break the problem into steps. Check your arithmetic carefully.";
 }
 
+// New helper function for detailed arithmetic strategies
+function getArithmeticStrategy(q, ans, topic){
+  // Extract numbers from the question
+  let nums = q.match(/-?\d+/g);
+  if(!nums || nums.length < 2) return "Work through the calculation step by step.";
+  
+  let a = parseInt(nums[0]);
+  let b = parseInt(nums[1]);
+  
+  // ADDITION strategies
+  if(topic === 'add'){
+    if(b >= 90 && b <= 99){
+      return `Add to nearest 100, then adjust: ${a} + ${b} = ${a} + 100 − ${100-b} = ${a+100} − ${100-b} = ${ans}.`;
+    }
+    if(a % 10 + b % 10 === 10){
+      return `Friendly numbers (add to 10): ${a} + ${b} = ${Math.floor(a/10)*10} + ${Math.floor(b/10)*10} + 10 = ${ans}.`;
+    }
+    if(b <= 10){
+      return `Count up: ${a} + ${b} = ${a} → ${a+1} → ... → ${ans}.`;
+    }
+    return `Break into parts: ${a} + ${b} = ${a} + ${Math.floor(b/10)*10} + ${b%10} = ${a+Math.floor(b/10)*10} + ${b%10} = ${ans}.`;
+  }
+  
+  // SUBTRACTION strategies
+  if(topic === 'sub'){
+    if(b >= 90 && b <= 99){
+      return `Subtract 100, then add back: ${a} − ${b} = ${a} − 100 + ${100-b} = ${a-100} + ${100-b} = ${ans}.`;
+    }
+    if(a % 10 < b % 10){
+      return `Borrow from tens: ${a} = ${Math.floor(a/10)*10} + ${a%10} → ${Math.floor(a/10)*10-10} + ${10+a%10}. Now ${10+a%10} − ${b%10} = ${10+a%10-b%10}, plus ${Math.floor(a/10)*10-10-Math.floor(b/10)*10} = ${ans}.`;
+    }
+    return `Count down or use place value: ${a} − ${b} = ${a} − ${Math.floor(b/10)*10} − ${b%10} = ${a-Math.floor(b/10)*10} − ${b%10} = ${ans}.`;
+  }
+  
+  // MULTIPLICATION strategies
+  if(topic === 'mul'){
+    // Check for special patterns
+    if(b === 11){
+      return `×11 trick: ${a} × 11 → add digits ${Math.floor(a/10)} + ${a%10} = ${Math.floor(a/10)+a%10}, insert between → ${ans}. (If sum ≥10, carry the 1)`;
+    }
+    if(b === 25){
+      return `×25 shortcut: ${a} × 25 = ${a} ÷ 4 × 100 = ${a/4} × 100 = ${ans}.`;
+    }
+    if(a >= 90 || b >= 90){
+      let nearA = a >= 90 ? 100 - a : 0;
+      let nearB = b >= 90 ? 100 - b : 0;
+      if(nearA && nearB){
+        return `Near 100: (100−${nearA})(100−${nearB}) = 10000 − ${nearA}00 − ${nearB}00 + ${nearA*nearB} = ${ans}.`;
+      }
+    }
+    if(b <= 12){
+      return `Break into parts: ${a} × ${b} = ${a} × ${Math.floor(b/2)*2} + ${a} × ${b%2} = ${a*Math.floor(b/2)*2} + ${a*(b%2)} = ${ans}.`;
+    }
+    // Distributive property
+    let tens = Math.floor(b/10) * 10;
+    let ones = b % 10;
+    return `Use distributive: ${a} × ${b} = ${a} × (${tens} + ${ones}) = ${a*tens} + ${a*ones} = ${ans}.`;
+  }
+  
+  // DIVISION strategies
+  if(topic === 'div'){
+    if(a % b === 0){
+      // Check for patterns
+      if(b <= 12){
+        return `Know your division facts: ${a} ÷ ${b} = ${ans}. Practice multiples of ${b}: ${b}, ${b*2}, ${b*3}...`;
+      }
+      return `Factor and simplify: ${a} ÷ ${b} = ${ans}. Check: ${ans} × ${b} = ${a}.`;
+    }
+    return `Long division or factor: Work step-by-step to get ${ans}. Verify: ${ans} × ${b} ≈ ${a}.`;
+  }
+  
+  // ORDER OF OPERATIONS (mixed)
+  if(topic === 'ops'){
+    return `Follow PEMDAS: <strong>1)</strong> Parentheses, <strong>2)</strong> Exponents, <strong>3)</strong> Multiply/Divide (left→right), <strong>4)</strong> Add/Subtract (left→right). Work through each step carefully.`;
+  }
+  
+  return "Work through the problem step-by-step using mental math strategies.";
+}
+
+// Helper function for squaring strategies
+function getSquaringStrategy(q, ans){
+  let nums = q.match(/\d+/g);
+  if(!nums || nums.length < 1) return "Memorize perfect squares or use (a+b)(a-b) patterns.";
+  
+  let n = parseInt(nums[0]);
+  
+  // Numbers ending in 5 - special trick
+  if(n % 10 === 5){
+    let tens = Math.floor(n/10);
+    return `<strong>×5 ending trick:</strong> ${n}² → ${tens} × ${tens+1} = ${tens*(tens+1)}, then append 25 → <strong>${tens*(tens+1)}25</strong> = ${ans}.`;
+  }
+  
+  // Numbers near a multiple of 10
+  if(n % 10 === 1 || n % 10 === 9){
+    let base = Math.round(n/10) * 10;
+    let diff = n - base;
+    if(diff > 0){
+      return `<strong>Near ${base}:</strong> ${n}² = (${base}+${diff})² = ${base}² + 2(${base}×${diff}) + ${diff}² = ${base*base} + ${2*base*diff} + ${diff*diff} = ${ans}.`;
+    } else {
+      let posDiff = Math.abs(diff);
+      return `<strong>Near ${base}:</strong> ${n}² = (${base}−${posDiff})² = ${base}² − 2(${base}×${posDiff}) + ${posDiff}² = ${base*base} − ${2*base*posDiff} + ${posDiff*posDiff} = ${ans}.`;
+    }
+  }
+  
+  // Numbers near 50
+  if(n >= 45 && n <= 55 && n % 10 !== 5){
+    let diff = n - 50;
+    if(diff > 0){
+      return `<strong>Near 50:</strong> ${n}² = (50+${diff})² = 2500 + 2(50×${diff}) + ${diff}² = 2500 + ${100*diff} + ${diff*diff} = ${ans}.`;
+    } else {
+      let posDiff = Math.abs(diff);
+      return `<strong>Near 50:</strong> ${n}² = (50−${posDiff})² = 2500 − ${100*posDiff} + ${posDiff*posDiff} = ${ans}.`;
+    }
+  }
+  
+  // Difference of squares pattern for numbers near each other
+  // Example: 63² = (60+3)(60+3) or use 63² = 60² + 2(60×3) + 3²
+  if(n >= 20 && n <= 99){
+    let tens = Math.floor(n/10) * 10;
+    let ones = n % 10;
+    return `<strong>Expand (a+b)²:</strong> ${n}² = (${tens}+${ones})² = ${tens}² + 2(${tens}×${ones}) + ${ones}² = ${tens*tens} + ${2*tens*ones} + ${ones*ones} = ${ans}.<br>Or memorize: common squares like 60²=3600, then adjust.`;
+  }
+  
+  // Small numbers - just memorize
+  if(n <= 20){
+    return `<strong>Memorize small squares:</strong> 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36, 7²=49, 8²=64, 9²=81, 10²=100, 11²=121, 12²=144, 15²=225, 20²=400. Know them cold!`;
+  }
+  
+  return `Use (a+b)² = a² + 2ab + b² pattern, or break into ${Math.floor(n/10)*10} + ${n%10}.`;
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1343,13 +1946,23 @@ function render(){
   document.getElementById('app').innerHTML =
     state.screen==='menu'  ? renderMenu() :
     state.screen==='test'  ? renderTest() :
+    state.screen==='stats' ? renderStats() :
     renderResults();
   attachListeners();
 }
-
 function renderMenu(){
   const CORE_KEYS=['add','sub','mul','div','sq','cube','rem','lcm','pct','conv','roman','mean'];
   const TRICK_KEYS=['mul11','mul25','near100','sq5','special','series','fracdec','powers','fib','polygon'];
+  
+  // Get quick stats preview
+  let stats = getStats();
+  let statsPreview = stats.totalSessions > 0 ? 
+    `<div class="stats-preview">
+      <div class="sp-item">📊 ${stats.totalSessions} session${stats.totalSessions>1?'s':''}</div>
+      <div class="sp-item">🎯 ${stats.overallAccuracy}% accuracy</div>
+      ${stats.streak > 0 ? `<div class="sp-item">🔥 ${stats.streak} day streak!</div>` : ''}
+      ${stats.bestScore.score > 0 ? `<div class="sp-item">🏆 Best: ${stats.bestScore.score}/20</div>` : ''}
+    </div>` : '';
 
   function topicBtns(keys){
     return keys.map(k=>{
@@ -1367,6 +1980,8 @@ function renderMenu(){
   <div class="header">
     <h1>UIL Number Sense Trainer</h1>
     <p>Master mental math for UIL competition</p>
+    ${statsPreview}
+    <button class="stats-btn" id="btn-stats">📈 View Progress & Stats</button>
   </div>
   <div class="menu-body">
 
@@ -1403,6 +2018,20 @@ function renderMenu(){
         <div class="sb-title">🏆 Full 80-Problem Simulation</div>
         <div class="sb-desc">All difficulty levels, 10 minutes — complete UIL format</div>
       </button>
+    </div>
+
+    <div class="section-tag">📥 Import Real UIL Problems</div>
+    <div class="sec-row">
+      <button class="sec-btn" id="btn-import-json">
+        <div class="sb-title">📂 Load Cleaned Problems</div>
+        <div class="sb-desc">Import JSON from cleanup tool — add real UIL problems you've cleaned</div>
+      </button>
+      ${state.importedProblems.length > 0 ? `
+      <button class="sec-btn" id="btn-view-imported">
+        <div class="sb-title">📋 View Imported (${state.importedProblems.length})</div>
+        <div class="sb-desc">Browse and practice your imported real problems</div>
+      </button>
+      ` : ''}
     </div>
   </div>
 
@@ -1506,13 +2135,14 @@ function renderMenu(){
 
 function renderTest(){
   let cur=state.problems[state.idx];
-  let isDrill=(state.mode==='drill'||state.mode==='topic');
+  let isDrill=(state.mode==='drill'||state.mode==='topic'||state.mode==='imported');
   let total=state.mode==='full'?80:state.mode==='timed20'?20:'∞';
 
   // Mode label
   let label=
     state.mode==='timed20' ? '⏱ Timed Round' :
     state.mode==='drill'   ? '🔥 Drill Mode' :
+    state.mode==='imported' ? '📥 Imported Problems' :
     state.mode==='topic'   ? `📊 ${TOPICS[state.topicKey].name}` :
     '🏆 Full Test';
 
@@ -1543,6 +2173,12 @@ function renderTest(){
 
   // Skip button (timed & full only)
   let skipHTML=!isDrill ? `<button class="btn btn-orange" id="btn-skip">Skip</button>` : '';
+  
+  // Show source info for imported problems
+  let sourceTag = '';
+  if(state.mode === 'imported' && cur.year && cur.test){
+    sourceTag = `<div class="problem-tag" style="color:#667eea;">📋 ${cur.year} Test ${cur.test} · Problem #${cur.num}</div>`;
+  }
 
   return `
   <div class="test-header">
@@ -1555,8 +2191,10 @@ function renderTest(){
   </div>
   <div class="test-body">
     ${fbHTML}
+    <div class="problem-box">
       <div class="problem-text">${cur.q}</div>
     ${cur.starred?'<div class="problem-tag" style="color:#f6ad55;">★ Approximation (±5% accepted)</div>':''}
+    ${sourceTag}
     ${typeof cur.a==='string'&&cur.a.includes('/')?'<div class="problem-tag" style="color:#667eea;">Type as a fraction, e.g. 3/4</div>':''}</div>
     <input type="text" class="ans-box" id="ans-input" inputmode="${typeof cur.a==='string'&&cur.a.includes('/')?'text':'decimal'}" value="${state.answer}" placeholder="${typeof cur.a==='string'&&cur.a.includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
     ${typeof cur.a==='string'&&cur.a.includes('/')?`<div class="frac-helper"><button class="frac-btn" id="btn-slash">⁄ slash</button></div>`:''}
@@ -1652,6 +2290,186 @@ function renderResults(){
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// STATS SCREEN
+// ═══════════════════════════════════════════════════════════════════════════
+function renderStats(){
+  let stats = getStats();
+  
+  if(stats.totalSessions === 0){
+    return `
+    <div class="stats-screen">
+      <div class="header">
+        <h1>📈 Your Progress</h1>
+        <button class="back-btn" id="btn-menu">← Back</button>
+      </div>
+      <div class="empty-stats">
+        <div class="es-icon">📊</div>
+        <h2>No Stats Yet!</h2>
+        <p>Complete a practice session to start tracking your progress.</p>
+        <button class="btn btn-primary" id="btn-menu">Start Practicing</button>
+      </div>
+    </div>`;
+  }
+  
+  // Overview cards
+  let daysSince = Math.floor((Date.now() - new Date(stats.firstUse).getTime()) / 86400000);
+  let improvement = stats.recentAccuracy - (stats.overallAccuracy);
+  let improvementHTML = improvement > 0 ? 
+    `<div class="stat-badge positive">+${improvement}% recent</div>` :
+    improvement < -5 ? `<div class="stat-badge negative">${improvement}% recent</div>` : '';
+  
+  // Topic breakdown - find strongest and weakest
+  let topicList = Object.entries(stats.topicStats)
+    .map(([topic, data]) => ({
+      topic,
+      name: TOPICS[topic]?.name || topic,
+      accuracy: data.total > 0 ? Math.round(data.correct / data.total * 100) : 0,
+      correct: data.correct,
+      total: data.total
+    }))
+    .filter(t => t.total >= 3) // Only show topics with at least 3 attempts
+    .sort((a,b) => b.accuracy - a.accuracy);
+  
+  let topicHTML = topicList.length > 0 ? topicList.map(t => {
+    let barWidth = t.accuracy;
+    let barColor = t.accuracy >= 80 ? '#48bb78' : t.accuracy >= 60 ? '#ed8936' : '#f56565';
+    return `
+    <div class="topic-stat">
+      <div class="ts-name">${t.name}</div>
+      <div class="ts-bar-container">
+        <div class="ts-bar" style="width:${barWidth}%;background:${barColor};"></div>
+      </div>
+      <div class="ts-score">${t.correct}/${t.total} (${t.accuracy}%)</div>
+    </div>`;
+  }).join('') : '<p style="color:#718096;">Complete topic drills to see breakdown.</p>';
+  
+  // Recent sessions graph (last 10)
+  let graphData = stats.recentSessions.slice(0,10).reverse();
+  let maxScore = Math.max(...graphData.map(s => s.total));
+  let graphHTML = graphData.map((s,i) => {
+    let height = (s.score / s.total * 100);
+    let date = new Date(s.date);
+    let label = date.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    let modeLabel = s.mode==='timed20' ? 'T20' : s.mode==='full' ? 'F80' : 'Drill';
+    return `
+    <div class="graph-bar">
+      <div class="gb-bar-container">
+        <div class="gb-bar" style="height:${height}%;" title="${s.score}/${s.total}"></div>
+      </div>
+      <div class="gb-label">${label}</div>
+      <div class="gb-mode">${modeLabel}</div>
+    </div>`;
+  }).join('');
+  
+  // Session history table
+  let historyHTML = stats.recentSessions.slice(0,15).map(s => {
+    let date = new Date(s.date);
+    let timeStr = date.toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
+    let modeStr = s.mode==='timed20' ? 'Timed 20' : s.mode==='full' ? 'Full Test' : s.mode==='drill' ? 'Drill' : 'Topic';
+    let pct = Math.round(s.score/s.total*100);
+    let pctColor = pct >= 80 ? '#48bb78' : pct >= 60 ? '#ed8936' : '#f56565';
+    let speedStr = s.secondsPerProblem ? `${s.secondsPerProblem}s/prob` : '—';
+    return `
+    <tr>
+      <td>${timeStr}</td>
+      <td>${modeStr}</td>
+      <td>${s.score}/${s.total}</td>
+      <td style="color:${pctColor};font-weight:600;">${pct}%</td>
+      <td>${speedStr}</td>
+    </tr>`;
+  }).join('');
+  
+  return `
+  <div class="stats-screen">
+    <div class="header">
+      <h1>📈 Your Progress</h1>
+      <button class="back-btn" id="btn-menu">← Back</button>
+    </div>
+    
+    <div class="stats-body">
+      <!-- Overview Cards -->
+      <div class="stats-grid">
+        <div class="stat-card big">
+          <div class="stat-val">${stats.totalSessions}</div>
+          <div class="stat-label">Practice Sessions</div>
+          <div class="stat-sub">${daysSince} days active</div>
+        </div>
+        <div class="stat-card big">
+          <div class="stat-val">${stats.overallAccuracy}%</div>
+          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-sub">${stats.totalCorrect}/${stats.totalProblems} correct</div>
+          ${improvementHTML}
+        </div>
+        ${stats.streak > 0 ? `
+        <div class="stat-card big" style="border-color:#ed8936;">
+          <div class="stat-val" style="color:#ed8936;">🔥 ${stats.streak}</div>
+          <div class="stat-label">Day Streak</div>
+          <div class="stat-sub">Keep it going!</div>
+        </div>` : ''}
+        ${stats.speedImprovement && stats.speedImprovement > 0 ? `
+        <div class="stat-card big" style="border-color:#48bb78;">
+          <div class="stat-val" style="color:#48bb78;">-${stats.speedImprovement}s</div>
+          <div class="stat-label">Speed Improvement</div>
+          <div class="stat-sub">Per problem (first 10 vs last 10)</div>
+        </div>` : ''}
+      </div>
+      
+      <!-- Personal Bests -->
+      <h2 style="margin:2rem 0 1rem;">🏆 Personal Bests</h2>
+      <div class="stats-grid">
+        ${stats.bestScore.score > 0 ? `
+        <div class="stat-card">
+          <div class="stat-val">${stats.bestScore.score}/20</div>
+          <div class="stat-label">Best Timed Round</div>
+          <div class="stat-sub">${new Date(stats.bestScore.date).toLocaleDateString()}</div>
+        </div>` : ''}
+        ${stats.bestFullTest.score > 0 ? `
+        <div class="stat-card">
+          <div class="stat-val">${stats.bestFullTest.score}/80</div>
+          <div class="stat-label">Best Full Test</div>
+          <div class="stat-sub">${new Date(stats.bestFullTest.date).toLocaleDateString()}</div>
+        </div>` : ''}
+      </div>
+      
+      <!-- Performance Graph -->
+      <h2 style="margin:2rem 0 1rem;">📊 Recent Performance</h2>
+      <div class="graph-container">
+        ${graphHTML}
+      </div>
+      
+      <!-- Topic Breakdown -->
+      <h2 style="margin:2rem 0 1rem;">📚 Topic Breakdown</h2>
+      <div class="topic-stats">
+        ${topicHTML}
+      </div>
+      
+      <!-- Session History -->
+      <h2 style="margin:2rem 0 1rem;">📝 Session History</h2>
+      <div class="history-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Mode</th>
+              <th>Score</th>
+              <th>Accuracy</th>
+              <th>Speed</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${historyHTML}
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="margin-top:2rem;text-align:center;">
+        <button class="btn btn-dark" id="btn-clear-stats">🗑️ Clear All Stats</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // LISTENERS
 // ═══════════════════════════════════════════════════════════════════════════
 function attachListeners(){
@@ -1702,8 +2520,23 @@ function attachListeners(){
     if(state.mode==='timed20') startTimed(state.timedSecs||150);
     else if(state.mode==='drill') startDrill();
     else if(state.mode==='topic') startTopicDrill(state.topicKey);
+    else if(state.mode==='imported') practiceImported('all'); // Restart with all imported
     else startFullTest();
   };
+  
+  // Stats screen
+  if(el=document.getElementById('btn-stats')) el.onclick=()=>{ setState({screen:'stats'}); };
+  if(el=document.getElementById('btn-clear-stats')) el.onclick=()=>{
+    if(confirm('Are you sure you want to delete all your progress data? This cannot be undone!')){
+      localStorage.removeItem('uilNsStats');
+      setState({screen:'menu'});
+      alert('All stats cleared!');
+    }
+  };
+  
+  // Import buttons
+  if(el=document.getElementById('btn-import-json')) el.onclick=showImportModal;
+  if(el=document.getElementById('btn-view-imported')) el.onclick=showImportedProblemsViewer;
   
   // Solution toggles in results
   document.querySelectorAll('.sol-toggle').forEach(btn=>{
@@ -1717,6 +2550,287 @@ function attachListeners(){
     };
   });
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// IMPORT REAL UIL PROBLEMS
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Load imported problems from localStorage on startup
+function loadImportedProblems(){
+  try {
+    const saved = localStorage.getItem('uilImportedProblems');
+    if(saved){
+      const imported = JSON.parse(saved);
+      state.importedProblems = imported;
+      console.log(`✓ Loaded ${imported.length} imported problems from localStorage`);
+    }
+  } catch(e){
+    console.error('Error loading imported problems:', e);
+  }
+}
+
+// Save imported problems to localStorage
+function saveImportedProblems(){
+  try {
+    localStorage.setItem('uilImportedProblems', JSON.stringify(state.importedProblems));
+    console.log(`✓ Saved ${state.importedProblems.length} imported problems to localStorage`);
+  } catch(e){
+    console.error('Error saving imported problems:', e);
+  }
+}
+
+// Handle JSON file import
+function handleImportJSON(file){
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      const problems = data.problems || data;
+      
+      if(!Array.isArray(problems) || problems.length === 0){
+        alert('⚠️ Invalid JSON format. Expected an array of problems.');
+        return;
+      }
+      
+      // Convert to internal format
+      const converted = problems.map(p => ({
+        q: p.q || p.cleanedQuestion || '',
+        a: p.a || p.answer || '',
+        t: p.t || 'advanced',
+        num: p.num || p.n || 0,
+        year: p.year || p.yr || '',
+        test: p.test || '',
+        starred: p.starred || p.star || false,
+        source: p.source || 'imported'
+      })).filter(p => p.q && p.a); // Only keep problems with both question and answer
+      
+      if(converted.length === 0){
+        alert('⚠️ No valid problems found. Make sure problems have both question (q) and answer (a) fields.');
+        return;
+      }
+      
+      // Merge with existing (avoid duplicates based on question text)
+      const existing = new Set(state.importedProblems.map(p => p.q));
+      const newProblems = converted.filter(p => !existing.has(p.q));
+      
+      state.importedProblems.push(...newProblems);
+      saveImportedProblems();
+      
+      alert(`✅ Successfully imported ${newProblems.length} new problems!\n\nTotal imported: ${state.importedProblems.length}\nDuplicates skipped: ${converted.length - newProblems.length}`);
+      
+      render(); // Refresh menu to show new button
+      
+    } catch(err){
+      alert('⚠️ Error reading JSON file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Create import modal
+function showImportModal(){
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.style.cssText = 'display:flex; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center;';
+  
+  modal.innerHTML = `
+    <div class="modal-box" style="max-width:500px; background:#1a1f2e; border:2px solid #667eea; border-radius:16px; padding:30px; position:relative;">
+      <h2 style="color:#667eea; margin-bottom:15px; font-size:1.5rem;">📂 Import Real UIL Problems</h2>
+      <p style="color:#a0aec0; margin-bottom:20px; line-height:1.6;">
+        Upload the JSON file you downloaded from the <strong>UIL Problem Cleanup Tool</strong>. 
+        This will add your cleaned real UIL problems to the trainer.
+      </p>
+      
+      <div style="background:#2d3748; border:2px dashed #4a5568; border-radius:12px; padding:40px 20px; text-align:center; margin-bottom:20px; cursor:pointer;" id="drop-zone">
+        <div style="font-size:3rem; margin-bottom:10px;">📥</div>
+        <div style="color:#667eea; font-weight:600; margin-bottom:5px;">Click to select JSON file</div>
+        <div style="color:#718096; font-size:0.85rem;">or drag and drop here</div>
+      </div>
+      
+      <input type="file" id="json-file-input" accept=".json" style="display:none;">
+      
+      <div style="background:#2d3748; border-left:4px solid #667eea; padding:12px; border-radius:6px; margin-bottom:20px;">
+        <div style="font-size:0.85rem; color:#a0aec0; line-height:1.5;">
+          <strong style="color:#667eea;">💡 Tip:</strong> Export your cleaned problems from the cleanup tool, 
+          then import them here. Problems are saved to your browser and persist across sessions.
+        </div>
+      </div>
+      
+      ${state.importedProblems.length > 0 ? `
+        <div style="background:#2d3748; padding:12px; border-radius:6px; margin-bottom:15px; text-align:center;">
+          <div style="color:#48bb78; font-weight:600; font-size:0.9rem;">
+            ✓ Currently loaded: ${state.importedProblems.length} imported problems
+          </div>
+        </div>
+        <button class="btn btn-subtle" style="margin-bottom:10px;" id="btn-clear-imported">🗑️ Clear All Imported Problems</button>
+      ` : ''}
+      
+      <button class="btn btn-subtle" id="btn-close-import">✕ Close</button>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  const dropZone = modal.querySelector('#drop-zone');
+  const fileInput = modal.querySelector('#json-file-input');
+  
+  // Click to select file
+  dropZone.onclick = () => fileInput.click();
+  
+  // File selected
+  fileInput.onchange = e => {
+    if(e.target.files[0]){
+      handleImportJSON(e.target.files[0]);
+      modal.remove();
+    }
+  };
+  
+  // Drag and drop
+  dropZone.ondragover = e => {
+    e.preventDefault();
+    dropZone.style.borderColor = '#667eea';
+    dropZone.style.background = '#363e52';
+  };
+  
+  dropZone.ondragleave = e => {
+    e.preventDefault();
+    dropZone.style.borderColor = '#4a5568';
+    dropZone.style.background = '#2d3748';
+  };
+  
+  dropZone.ondrop = e => {
+    e.preventDefault();
+    dropZone.style.borderColor = '#4a5568';
+    dropZone.style.background = '#2d3748';
+    
+    if(e.dataTransfer.files[0]){
+      handleImportJSON(e.dataTransfer.files[0]);
+      modal.remove();
+    }
+  };
+  
+  // Clear imported problems
+  const clearBtn = modal.querySelector('#btn-clear-imported');
+  if(clearBtn){
+    clearBtn.onclick = () => {
+      if(confirm(`⚠️ Are you sure you want to delete all ${state.importedProblems.length} imported problems? This cannot be undone.`)){
+        state.importedProblems = [];
+        saveImportedProblems();
+        alert('✓ All imported problems have been cleared.');
+        modal.remove();
+        render();
+      }
+    };
+  }
+  
+  // Close
+  modal.querySelector('#btn-close-import').onclick = () => modal.remove();
+  modal.onclick = e => { if(e.target === modal) modal.remove(); };
+}
+
+// View/browse imported problems
+function showImportedProblemsViewer(){
+  const problems = state.importedProblems;
+  
+  if(problems.length === 0){
+    alert('No imported problems yet. Import some first!');
+    return;
+  }
+  
+  // Group by year and test
+  const byYear = {};
+  problems.forEach(p => {
+    const key = `${p.year} Test ${p.test}`;
+    if(!byYear[key]) byYear[key] = [];
+    byYear[key].push(p);
+  });
+  
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.style.cssText = 'display:flex; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center; padding:20px;';
+  
+  const groupsHTML = Object.keys(byYear).sort().reverse().map(key => {
+    const probs = byYear[key];
+    const starred = probs.filter(p => p.starred).length;
+    return `
+      <div style="background:#2d3748; border-radius:8px; padding:15px; margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <div>
+            <strong style="color:#667eea; font-size:1.1rem;">${key}</strong>
+            <span style="color:#718096; font-size:0.85rem; margin-left:10px;">${probs.length} problems ${starred > 0 ? `(${starred} ⭐)` : ''}</span>
+          </div>
+          <button class="btn btn-primary" style="padding:8px 16px; font-size:0.85rem;" onclick="practiceImported('${key}')">Practice These</button>
+        </div>
+        <div style="color:#a0aec0; font-size:0.85rem;">
+          Problems: ${probs.map(p => `#${p.num}${p.starred?'⭐':''}`).slice(0, 15).join(', ')}${probs.length > 15 ? '...' : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  modal.innerHTML = `
+    <div class="modal-box" style="max-width:700px; max-height:80vh; overflow-y:auto; background:#1a1f2e; border:2px solid #667eea; border-radius:16px; padding:30px; position:relative;">
+      <h2 style="color:#667eea; margin-bottom:15px; font-size:1.5rem;">📋 Imported Real UIL Problems</h2>
+      <p style="color:#a0aec0; margin-bottom:20px;">
+        You have <strong>${problems.length} imported problems</strong> from ${Object.keys(byYear).length} test(s).
+      </p>
+      
+      <div style="margin-bottom:20px;">
+        <button class="btn btn-green" onclick="practiceImported('all')" style="margin-bottom:10px;">🎯 Practice All Imported Problems</button>
+        <button class="btn btn-orange" onclick="practiceImported('starred')" style="margin-bottom:10px;">⭐ Practice Starred Only (${problems.filter(p=>p.starred).length})</button>
+      </div>
+      
+      <h3 style="color:#667eea; margin:20px 0 15px; font-size:1.1rem;">By Test:</h3>
+      ${groupsHTML}
+      
+      <button class="btn btn-subtle" id="btn-close-viewer" style="margin-top:15px;">✕ Close</button>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  modal.querySelector('#btn-close-viewer').onclick = () => modal.remove();
+  modal.onclick = e => { if(e.target === modal) modal.remove(); };
+}
+
+// Start practice with imported problems
+window.practiceImported = function(filter){
+  let problems = state.importedProblems;
+  
+  if(filter === 'starred'){
+    problems = problems.filter(p => p.starred);
+  } else if(filter !== 'all'){
+    // Filter by year/test key
+    problems = problems.filter(p => `${p.year} Test ${p.test}` === filter);
+  }
+  
+  if(problems.length === 0){
+    alert('No problems match this filter.');
+    return;
+  }
+  
+  // Close any open modals
+  document.querySelectorAll('.modal-overlay').forEach(m => m.remove());
+  
+  // Start drill mode with these problems
+  setState({
+    screen: 'test',
+    mode: 'imported',
+    timed: false,
+    problems: shuffleArray([...problems]), // Shuffle for variety
+    idx: 0,
+    answer: '',
+    score: 0,
+    answered: [],
+    feedback: '',
+    feedbackText: '',
+    startTime: Date.now(),
+    drillCount: 0
+  });
+};
+
+// Load imported problems on startup
+loadImportedProblems();
 
 render();
 </script>

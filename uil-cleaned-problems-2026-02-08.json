@@ -1,0 +1,1677 @@
+{
+  "exported": "2026-02-08T16:47:27.157Z",
+  "total": 4209,
+  "cleaned": 167,
+  "problems": [
+    {
+      "num": 1,
+      "q": "20726- 10926 =",
+      "a": "9800",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 2,
+      "q": "192.6+ 27.26 = (decimal)",
+      "a": "219.86",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 3,
+      "q": "9× 321- 1 =",
+      "a": "2888",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 4,
+      "q": "1 2/7 × 14/27 =",
+      "a": "2/3",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 5,
+      "q": "26 ×27- 19× 26 =",
+      "a": "208",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 6,
+      "q": "3/5% = (decimal)",
+      "a": ".006",
+      "t": "pct",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 7,
+      "q": "Which is larger 7/9 or 0.7",
+      "a": "7/9",
+      "t": "fracdec",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 8,
+      "q": "The arithmetic mean of 1, 9, 2, 6, 2, 7, 2, and 6 is",
+      "a": "4.375; 35/8; 4 3/8",
+      "t": "mean",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 9,
+      "q": "11 × 11/14 =  (mixed number)",
+      "a": "8 9/14",
+      "t": "fracdec",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 10,
+      "q": "192 + 6272 + 6272 + 629 =",
+      "a": "13363",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 11,
+      "q": "111 × 11/37 =",
+      "a": "33",
+      "t": "ops",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 12,
+      "q": "2 +7+ 12+ 17+ 22+ ...+ 47+ 52 =",
+      "a": "297",
+      "t": "ops",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 13,
+      "q": "The GCD of 20 and 26 is",
+      "a": "2",
+      "t": "gcd",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 14,
+      "q": "223× 13 is",
+      "a": "2899",
+      "t": "ops",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 15,
+      "q": "1791× 9 +82 =",
+      "a": "16201",
+      "t": "ops",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 16,
+      "q": "(9 +7)² =",
+      "a": "256",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 17,
+      "q": "1 dekagram = .4 oz. and 2.6 oz. = __ grams",
+      "a": "65",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 18,
+      "q": "The sum of the positive divisors of 16 is",
+      "a": "31",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 19,
+      "q": "15²- 12² = 9 × __",
+      "a": "9",
+      "t": "add",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 20,
+      "q": "109× 207 -2626 =",
+      "a": "19937",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 21,
+      "q": "18% of 600 is __% of 300",
+      "a": "36",
+      "t": "pct",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 22,
+      "q": "If 2x +7 = -19, then x =",
+      "a": "-13",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 23,
+      "q": "4 1/8 × 16 1/2 = __ (mixed number)",
+      "a": "68 1/16",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 24,
+      "q": "The multiplicative inverse of 0.08333... is",
+      "a": "12",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 25,
+      "q": "40 is __% of 44.444...",
+      "a": "90",
+      "t": "pct",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 26,
+      "q": "0.9777... = __ (proper fraction)",
+      "a": "44/45",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 27,
+      "q": "0.25 - 0.125 - .0625 = __ (fraction)",
+      "a": "1/16",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 28,
+      "q": "48 ×48 =",
+      "a": "2304",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 29,
+      "q": "5/8 - 24/41 =",
+      "a": "13/328",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 30,
+      "q": "√109207 =",
+      "a": "330.5",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 31,
+      "q": "0.008 = __% (fraction)",
+      "a": "4/5",
+      "t": "pct",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 32,
+      "q": "√529 =",
+      "a": "23",
+      "t": "sq",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 33,
+      "q": "The area of a square is 256 sq. cm. The perimeter of the square is __ cm",
+      "a": "64",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 34,
+      "q": "If (3x-1)/(3x+1) + (3x+1)/(3x-1) = 2 + B/(9x²-1), then B =",
+      "a": "4",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 35,
+      "q": "3² ÷ 1.5² × 0.75² =",
+      "a": "2.25; 9/4; 2 1/4",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 36,
+      "q": "(5^7 + 4^7 + 14) ÷ 9 has a remainder of",
+      "a": "5",
+      "t": "rem",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 37,
+      "q": "How many 3-digit numbers can be made using these four digits 1, 9, 2, and 7?",
+      "a": "24",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 38,
+      "q": "The 10th term of the sequence 2, 3, 5, 7, ... is 29. The 8th term is",
+      "a": "19",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 39,
+      "q": "207 base 9 =",
+      "a": "169",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 40,
+      "q": "3 yards +2 feet+ 1 inch =    centimeters",
+      "a": "337.8",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 41,
+      "q": "0.58333... = __ (fraction)",
+      "a": "7/12",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 42,
+      "q": "Let (x + 9)(2x - 9) = ax²+ bx +c. Find a + b + c =",
+      "a": "-70",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 43,
+      "q": "33 × 73 =",
+      "a": "2409",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 44,
+      "q": "1/3 + 1/6 + 1/10 + ... + 1/78 =",
+      "a": "11/13",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 45,
+      "q": "4³ - 1 =",
+      "a": "333",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 46,
+      "q": "A 30°-60°-90° triangle has a base length of 3 √3\". The sum of the lengths of the other sides is ___ \"",
+      "a": "9",
+      "t": "base",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 47,
+      "q": "How many 3-digit numbers greater than 200 can be made using these four digits 1, 9, 2, and 7?",
+      "a": "18",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 48,
+      "q": "The sum of the roots plus the sum of the product of the roots taken two at a time of x³+4x²-12x-8=0 is",
+      "a": "-16",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 49,
+      "q": "2026 base 9 × 7 base 9 =",
+      "a": "15206 base 9",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 50,
+      "q": "(3208 x 0.875)² =",
+      "a": "7879249",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 51,
+      "q": "XCMXXVI = __ (Arabic Numeral)",
+      "a": "10926",
+      "t": "roman",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 52,
+      "q": "The point (9, 7) is reflected across the line y=x+1 to the point (h,k). Find h + k.",
+      "a": "16",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 53,
+      "q": "The sum of the digits of a 3-digit number is 9. How many such numbers exist?",
+      "a": "45",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 54,
+      "q": "Let (p, q) be the midpoint of the segment with endpoints (-1, 9) and (2, -7). Find p + q.",
+      "a": "1.5; 3/2; 1 1/2",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 56,
+      "q": "The point (-2, 2) lies on a circle with center at (1, -1). The area of the circle is kπ. Find k.",
+      "a": "18",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 57,
+      "q": "A carton contains 9 white and 7 brown eggs. If 2 eggs are randomly selected for breakfast, what are the odds that both are brown?",
+      "a": "7/33",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 58,
+      "q": "If 5P3 = k × (5C3), then k =",
+      "a": "6",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 59,
+      "q": "1234 base 5 ÷ 11 base 5 has a remainder of",
+      "a": "2 base 5",
+      "t": "rem",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 60,
+      "q": "∛10920726 =",
+      "a": "221.9",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 61,
+      "q": "The sum of the median, the mode, and the range of 6, 2, 7, 2, 6, 2, 9, and 1 is",
+      "a": "14",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 62,
+      "q": "987 × 9 + 5 =",
+      "a": "8888",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 63,
+      "q": "If 12/40 base 5 = 0.abbb... base 5, then a + b =",
+      "a": "4",
+      "t": "base",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 64,
+      "q": "If cos θ = − 0.5, θ ∈ QIII, then = __°",
+      "a": "240",
+      "t": "roman",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 65,
+      "q": "| 1 9 |\n|-2 7 | =",
+      "a": "25",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 66,
+      "q": "[√2 + √7] =",
+      "a": "4",
+      "t": "sq",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 67,
+      "q": "If xy = 3 and x - y = 7 then x³- y³ =",
+      "a": "406",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 68,
+      "q": "13^31 ÷ 14 has a remainder of",
+      "a": "13",
+      "t": "rem",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 69,
+      "q": "The roots of x³+ 4x²- 12x- 8 = 0 are d, e, and f. Find (d+e)(e+f)(f+d). 40",
+      "a": "",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 70,
+      "q": "The volume of a right rectangular pyramid with base length 19 dm, base width 27 dm, and height 26 dm is ___ cubic dm.",
+      "a": "4446",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 71,
+      "q": "109 × 207 =",
+      "a": "22563",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 72,
+      "q": "If 5C2 = k × ( 5P2 ), then k =",
+      "a": ".5; 1/2",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 73,
+      "q": "Change 0.31 base 4 to a base 4 fraction.",
+      "a": "31/100 base 4",
+      "t": "base",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 74,
+      "q": "h(x) = x³+ 9x²+ 2x+ 7 and h'' (-2) =",
+      "a": "6",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 75,
+      "q": "The slope of the line through points (7, 1) and (2, 9) is",
+      "a": "-1.6; -8/5; -1 3/5",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 76,
+      "q": "integral from 1 to 0, integral from 9 to 0 (x + y) dxdy =",
+      "a": "45",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 77,
+      "q": "Let f(x) = 2 - (x-9)/7. Find f^-1 (6).",
+      "a": "-19",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 78,
+      "q": "f(x) = (x+3)/(x²-9). The vertical asymptote is at x =",
+      "a": "3",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 79,
+      "q": "2899÷ 13 =",
+      "a": "223",
+      "t": "advanced",
+      "year": "2026",
+      "test": "A",
+      "starred": false,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 80,
+      "q": "(1092620726)^1/4 =",
+      "a": "181.8",
+      "t": "starred",
+      "year": "2026",
+      "test": "A",
+      "starred": true,
+      "source": "1NumberSense_Test_A_26.pdf"
+    },
+    {
+      "num": 10,
+      "q": "5220+ 522+ 2052- 2205 =",
+      "a": "5589",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 20,
+      "q": "518 ×7491 =",
+      "a": "3880338",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 30,
+      "q": "(48÷ 7 ×24÷ 3)² =",
+      "a": "3009.3",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 40,
+      "q": "20 2/5 × 50220 ÷17 =",
+      "a": "60264",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 50,
+      "q": "√50220× √626 =",
+      "a": "5606.9",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 60,
+      "q": "14 ×28× 42× 56 =",
+      "a": "921984",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 70,
+      "q": "2,640 feet at 6 in/sec takes ___ minutes",
+      "a": "88",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 80,
+      "q": "The length of the height of an equilateral triangle with perimeter of 423 cm is ___ cm",
+      "a": "122",
+      "t": "starred",
+      "year": "2021",
+      "test": "A",
+      "starred": true,
+      "source": "NS_A_21.pdf"
+    },
+    {
+      "num": 1,
+      "q": "11030+ 2025 =",
+      "a": "13055",
+      "t": "add",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 2,
+      "q": "1/10 ÷ 0.4 =",
+      "a": ".25; 1/4",
+      "t": "add",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 3,
+      "q": "2/5 × 130 =",
+      "a": "52",
+      "t": "add",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 4,
+      "q": "2025 -130 -110 =",
+      "a": "1785",
+      "t": "add",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 5,
+      "q": "10 1/4% = __ (decimal)",
+      "a": ".1025",
+      "t": "pct",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 6,
+      "q": "110÷ 25+ 130÷ 25 =",
+      "a": "9.6; 48/5; 9 3/5",
+      "t": "fracdec",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 7,
+      "q": "1030 × 15 =",
+      "a": "15450",
+      "t": "fracdec",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 8,
+      "q": "(2 ÷ 1+ 3 ×4 -7)× 11 =",
+      "a": "77",
+      "t": "fracdec",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 9,
+      "q": "26² =",
+      "a": "676",
+      "t": "fracdec",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 10,
+      "q": "520+ 20111+ 13020+ 25 =",
+      "a": "33676",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 11,
+      "q": "84 +72+ 60+ 48+ 36 =",
+      "a": "300",
+      "t": "ops",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 12,
+      "q": "4/7 of 6 feet 5 inches = __ inches",
+      "a": "44",
+      "t": "conv",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 13,
+      "q": "13025÷ 9 has a remainder of",
+      "a": "2",
+      "t": "rem",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 14,
+      "q": "93 ×98 =",
+      "a": "9114",
+      "t": "ops",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 15,
+      "q": "The number of positive integral divisors of 2×3×5×7 is",
+      "a": "16",
+      "t": "ops",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 16,
+      "q": "24% of 3/4 of 18 is",
+      "a": "3.25; 81/25; 3 6/25",
+      "t": "pct",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 17,
+      "q": "MXXX- DXX- CX = __ (Arabic Numeral)",
+      "a": "400",
+      "t": "roman",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 18,
+      "q": "The sum of the median and the mode of the set of numbers {1, 1, 0 ,2, 5, 1, 3, 0, 2, 5} is",
+      "a": "2.5; 5/2; 2 1/2",
+      "t": "add",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 19,
+      "q": "1211 × 11 - 121 =",
+      "a": "13200",
+      "t": "add",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 20,
+      "q": "11030 ÷25 =",
+      "a": "441",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 21,
+      "q": "If A^6 × A^-2 ÷ A³ = A^k and A > 1, then k =",
+      "a": "1",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 22,
+      "q": "∛2197 =",
+      "a": "13",
+      "t": "sq",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 23,
+      "q": "A trapezoid has bases of 5 dm and 8 dm. If the altitude is 16 dm, them the area is __ dm²",
+      "a": "104",
+      "t": "base",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 24,
+      "q": "(7^5 + 5^5 - 3)÷ 12 has a remainder of",
+      "a": "9",
+      "t": "rem",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 25,
+      "q": "6 5/7 × 6 2/7 = __ (mixed number)",
+      "a": "42 10/49",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 26,
+      "q": "[{p, o, l, i, t, e} {p, r, i, m, e}] ∪ {n, u, m, b, e, r} contains how many distinct elements?",
+      "a": "8",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 27,
+      "q": "6 gallons at $2.95 a gallon costs $",
+      "a": "17.70",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 28,
+      "q": "6 gallons at $2.89 a gallon costs $",
+      "a": "17.34",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 29,
+      "q": "6 gallons at $3.13 a gallon costs $",
+      "a": "18.78",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 30,
+      "q": "√1103025 =",
+      "a": "1050",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 31,
+      "q": "1030 base 4 is written as __ base 10",
+      "a": "76",
+      "t": "base",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 32,
+      "q": "5 3/7 × 7 3/5 =",
+      "a": "1444/35; 41 9/35",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 33,
+      "q": "Find k, so that the roots of 4x²- 5x+ k = 0 are equal.",
+      "a": "1.5625; 25/16; 1 9/16",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 34,
+      "q": "The 11th term of 2, 4, 7, 11, 16, 22, ... is 67. The 10th term is",
+      "a": "56",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 35,
+      "q": "0.2888... = (proper fraction)",
+      "a": "13/45",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 36,
+      "q": "(12)^0.5 = a√b in simplified form and b =",
+      "a": "3",
+      "t": "sq",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 37,
+      "q": "Let 2x +y = 5 and 3x+ y = 7. Find x.",
+      "a": "2",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 38,
+      "q": "18% of 144 4/9 =",
+      "a": "26",
+      "t": "pct",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 39,
+      "q": "If f(x) = x^4+ 4x³+ 6x²+ 4x+ 1, then f(3) is",
+      "a": "256",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 40,
+      "q": "34²+ 2(26)(34)+ 26² =",
+      "a": "3600",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 41,
+      "q": "29²+ 30² =",
+      "a": "1741",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 42,
+      "q": "A regular dodecahedron has how many congruent pentagonal regions?",
+      "a": "12",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 43,
+      "q": "3^B+ 3B = 93 and B³ =",
+      "a": "64",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 44,
+      "q": "12 × 11030 =",
+      "a": "132360",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 45,
+      "q": "Let 2^x × 7^x = 1/196. Find x.",
+      "a": "-2",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 46,
+      "q": "The point (5, -1) is reflected across the origin to point (h, k). Find h + k.",
+      "a": "-4",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 47,
+      "q": "77²+ 37² =",
+      "a": "7298",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 48,
+      "q": "5C3 ÷ 5P2  =",
+      "a": ".5; 1/2",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 49,
+      "q": "(8³- 2³)÷ (8 - 2)",
+      "a": "84",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 50,
+      "q": "∛520203011 =",
+      "a": "804",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 51,
+      "q": "2+7+ 9+ 16+ 25+ 41+ 66+ 107+173+280 =",
+      "a": "726",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 52,
+      "q": "If urn A holds 10% more than urn B and urn C holds 54% more than urn B, then urn C holds what percent more than urn A?",
+      "a": "40",
+      "t": "pct",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 53,
+      "q": "(7^7 + 3^7 + 4) ÷ 10 has a remainder of",
+      "a": "4",
+      "t": "rem",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 54,
+      "q": "The average of 22 base 8 , 31 base 8 , and 35 base 8 is",
+      "a": "30  base 8",
+      "t": "mean",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 55,
+      "q": "The average of 24 base 8 , 33 base 8 , and 37 base 8 is",
+      "a": "32  base 8",
+      "t": "mean",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 56,
+      "q": "The average of 32 base 8 , 41 base 8 , and 45 base 8 is",
+      "a": "40  base 8",
+      "t": "mean",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 57,
+      "q": "The sum of the digits of a 3-digit number is 5. How many such number exist?",
+      "a": "15",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 58,
+      "q": "The coefficient of the 3rd term of (2x+ 3y) is",
+      "a": "720",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 59,
+      "q": "24^10 ÷ 17 has a remainder of",
+      "a": "2",
+      "t": "rem",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 60,
+      "q": "[0.121212... × 3295]² =",
+      "a": "159515",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 61,
+      "q": "2cos²(π/4) - 1 =",
+      "a": "0",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 62,
+      "q": "Let i^(22) = a√b . Find a + b.",
+      "a": "0",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 63,
+      "q": "Change 0.1333... base 6 to a base 6 fraction.",
+      "a": "4/23",
+      "t": "base",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 64,
+      "q": "If 1³+ k³ = 28, then k =",
+      "a": "3",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 65,
+      "q": "f(x) = 2x²- 3x+ 5 and f(f(1)) =",
+      "a": "25",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 66,
+      "q": "75 miles per hour = __ feet per second",
+      "a": "110",
+      "t": "conv",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 67,
+      "q": "9+ 6.75+ 5.0625+ 3.796875+ ... =",
+      "a": "36",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 68,
+      "q": "0.45 base 6 = __ base 10 (fraction)",
+      "a": "29/36",
+      "t": "base",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 69,
+      "q": "Find k, if | 1 5k | = 22.\n           | 5 12 |",
+      "a": "-.4; -2/5",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 70,
+      "q": "A pipe with a diameter of 8 feet is 76 feet long. The volume of the pipe is __ cu. ft",
+      "a": "3820",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 71,
+      "q": "The horizontal asymptote for y = 2^x + 1 is y =",
+      "a": "1",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 72,
+      "q": "Find x, 0 ≤ x < 6, if 4x ≅ 22 (mod 5).",
+      "a": "3",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 73,
+      "q": "g(x) = x/10 + 1/30 and g^-1 (-1) =",
+      "a": "-31/3; -3 1/3",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 74,
+      "q": "The domain of f(q) =√((1-q)/(3q-2)) is p < q≤ r and q ∈ Reals. Find r.",
+      "a": "1",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 75,
+      "q": "The rectangular coordinates of the polar coordinates (2, 3π/2) are (x, y) and y =",
+      "a": "-2",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 76,
+      "q": "1030 base 5 ÷ 4 base 5 =",
+      "a": "120 base 5",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 77,
+      "q": "∫ from 1 to 0 (2x 3) dx + ∫ from 2 to 1 (2x 3) dx =",
+      "a": "-2",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 78,
+      "q": "453 × 457 =",
+      "a": "207021",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 79,
+      "q": "Given: {3, 4, 7, 10, m, 21, n, ...}. Find m + n.",
+      "a": "46",
+      "t": "advanced",
+      "year": "2025",
+      "test": "A",
+      "starred": false,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    },
+    {
+      "num": 80,
+      "q": "5000 varas in Texas = __ yards",
+      "a": "4630",
+      "t": "starred",
+      "year": "2025",
+      "test": "A",
+      "starred": true,
+      "source": "NumberSense_StudyPacket_A_25.pdf"
+    }
+  ]
+}
