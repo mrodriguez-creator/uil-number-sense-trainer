@@ -148,11 +148,205 @@ input.ans-box:focus { border-color: #667eea; }
 .ref-card p { color:#a0aec0; font-size:0.85rem; line-height:1.6; }
 .ref-close { display:block; width:100%; background:#667eea; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:600; cursor:pointer; margin-top:20px; }
 .ref-close:hover { filter:brightness(1.1); }
+
+/* PROGRESS TRACKING STATS SCREEN */
+.stats-preview { display:flex; gap:15px; margin:15px 0; flex-wrap:wrap; justify-content:center; }
+.sp-item { background:#2d3748; padding:8px 16px; border-radius:8px; font-size:0.85rem; color:#a0aec0; }
+.stats-btn { background:#667eea; color:#fff; border:none; padding:12px 24px; border-radius:10px; font-weight:600; font-size:0.95rem; cursor:pointer; margin-top:10px; transition:all 0.2s; }
+.stats-btn:hover { background:#5568d3; transform:translateY(-2px); }
+.stats-screen { min-height:100vh; background:#0f1419; padding:0; }
+.stats-screen .header { background:#1a1f2e; padding:20px; border-bottom:2px solid #667eea; position:relative; }
+.stats-screen .header h1 { color:#e2e8f0; margin:0; }
+.back-btn { position:absolute; top:20px; right:20px; background:#2d3748; color:#a0aec0; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:0.9rem; }
+.back-btn:hover { background:#4a5568; color:#e2e8f0; }
+.stats-body { padding:20px; max-width:1200px; margin:0 auto; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-bottom:20px; }
+.stat-card.big { padding:20px; background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; text-align:center; position:relative; }
+.stat-val { color:#667eea; font-size:2.5rem; font-weight:700; margin-bottom:5px; }
+.stat-label { color:#a0aec0; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.stat-sub { color:#718096; font-size:0.75rem; margin-top:5px; }
+.stat-badge { position:absolute; top:10px; right:10px; padding:4px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; }
+.stat-badge.positive { background:#48bb78; color:#fff; }
+.stat-badge.negative { background:#f56565; color:#fff; }
+.empty-stats { text-align:center; padding:80px 20px; }
+.es-icon { font-size:5rem; margin-bottom:20px; }
+.empty-stats h2 { color:#e2e8f0; margin-bottom:10px; }
+.empty-stats p { color:#a0aec0; margin-bottom:30px; }
+
+/* Performance Graph */
+.graph-container { background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; padding:20px; display:flex; align-items:flex-end; justify-content:space-around; height:200px; gap:10px; }
+.graph-bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; }
+.gb-bar-container { width:100%; height:140px; background:#2d3748; border-radius:8px 8px 0 0; position:relative; display:flex; align-items:flex-end; }
+.gb-bar { width:100%; background:linear-gradient(to top,#667eea,#48bb78); border-radius:8px 8px 0 0; transition:height 0.3s; min-height:5px; }
+.gb-label { color:#a0aec0; font-size:0.7rem; }
+.gb-mode { color:#718096; font-size:0.65rem; }
+
+/* Topic Stats */
+.topic-stats { background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; padding:20px; }
+.topic-stat { display:grid; grid-template-columns:120px 1fr 100px; gap:15px; align-items:center; padding:12px 0; border-bottom:1px solid #2d3748; }
+.topic-stat:last-child { border-bottom:none; }
+.ts-name { color:#e2e8f0; font-weight:600; font-size:0.9rem; }
+.ts-bar-container { background:#2d3748; height:20px; border-radius:10px; overflow:hidden; }
+.ts-bar { height:100%; border-radius:10px; transition:width 0.3s; }
+.ts-score { color:#a0aec0; font-size:0.85rem; text-align:right; }
+
+/* History Table */
+.history-table { background:#1a1f2e; border:2px solid #2d3748; border-radius:12px; padding:20px; overflow-x:auto; }
+.history-table table { width:100%; border-collapse:collapse; }
+.history-table th { color:#667eea; text-align:left; padding:10px; border-bottom:2px solid #2d3748; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.history-table td { color:#a0aec0; padding:10px; border-bottom:1px solid #2d3748; font-size:0.9rem; }
+.history-table tr:last-child td { border-bottom:none; }
+.history-table tr:hover { background:#2d3748; }
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
+// ═══════════════════════════════════════════════════════════════════════════
+// PROGRESS TRACKING SYSTEM (LocalStorage)
+// ═══════════════════════════════════════════════════════════════════════════
+
+function loadStats(){
+  try{
+    let raw = localStorage.getItem('uilNsStats');
+    return raw ? JSON.parse(raw) : {sessions:[], topicStats:{}, firstUse:new Date().toISOString()};
+  }catch(e){
+    console.error('Failed to load stats:', e);
+    return {sessions:[], topicStats:{}, firstUse:new Date().toISOString()};
+  }
+}
+
+function saveStats(stats){
+  try{
+    localStorage.setItem('uilNsStats', JSON.stringify(stats));
+    return true;
+  }catch(e){
+    console.error('Failed to save stats:', e);
+    return false;
+  }
+}
+
+function recordSession(sessionData){
+  let stats = loadStats();
+  
+  // Add new session
+  let session = {
+    date: new Date().toISOString(),
+    mode: sessionData.mode,
+    score: sessionData.score,
+    total: sessionData.total,
+    timeUsed: sessionData.timeUsed || 0,
+    secondsPerProblem: sessionData.timeUsed && sessionData.total > 0 ? Math.round(sessionData.timeUsed / sessionData.total * 10) / 10 : null,
+    topics: sessionData.topicBreakdown || {}
+  };
+  
+  stats.sessions.push(session);
+  
+  // Keep last 200 sessions only
+  if(stats.sessions.length > 200){
+    stats.sessions = stats.sessions.slice(-200);
+  }
+  
+  // Update per-topic cumulative stats
+  Object.entries(session.topics).forEach(([topic, data]) => {
+    if(!stats.topicStats[topic]){
+      stats.topicStats[topic] = {correct:0, total:0, lastPracticed:session.date};
+    }
+    stats.topicStats[topic].correct += data.correct || 0;
+    stats.topicStats[topic].total += data.total || 0;
+    stats.topicStats[topic].lastPracticed = session.date;
+  });
+  
+  saveStats(stats);
+  return stats;
+}
+
+function getTopicBreakdown(answered){
+  let breakdown = {};
+  answered.forEach(item => {
+    let topic = item.t || 'unknown';
+    if(!breakdown[topic]) breakdown[topic] = {correct:0, total:0};
+    breakdown[topic].total++;
+    if(item.correct) breakdown[topic].correct++;
+  });
+  return breakdown;
+}
+
+function getStats(){
+  let stats = loadStats();
+  
+  // Calculate derived stats
+  let totalSessions = stats.sessions.length;
+  let totalProblems = stats.sessions.reduce((sum, s) => sum + s.total, 0);
+  let totalCorrect = stats.sessions.reduce((sum, s) => sum + s.score, 0);
+  let overallAccuracy = totalProblems > 0 ? Math.round(totalCorrect / totalProblems * 100) : 0;
+  
+  // Recent performance (last 10 sessions)
+  let recent = stats.sessions.slice(-10);
+  let recentAccuracy = recent.length > 0 ? 
+    Math.round(recent.reduce((sum, s) => sum + s.score, 0) / recent.reduce((sum, s) => sum + s.total, 0) * 100) : 0;
+  
+  // Personal bests
+  let bestScore = stats.sessions.reduce((best, s) => {
+    if(s.mode === 'timed20' && s.total === 20){
+      return s.score > best.score ? s : best;
+    }
+    return best;
+  }, {score:0, date:null});
+  
+  let bestFullTest = stats.sessions.reduce((best, s) => {
+    if(s.mode === 'full' && s.total === 80){
+      return s.score > best.score ? s : best;
+    }
+    return best;
+  }, {score:0, date:null});
+  
+  // Streak calculation (days with at least 1 session)
+  let streak = 0;
+  if(stats.sessions.length > 0){
+    let today = new Date();
+    today.setHours(0,0,0,0);
+    let sessionDates = [...new Set(stats.sessions.map(s => {
+      let d = new Date(s.date);
+      d.setHours(0,0,0,0);
+      return d.getTime();
+    }))].sort((a,b) => b-a);
+    
+    for(let i=0; i<sessionDates.length; i++){
+      let expectedDate = new Date(today.getTime() - i * 86400000);
+      if(sessionDates[i] === expectedDate.getTime()){
+        streak++;
+      } else {
+        break;
+      }
+    }
+  }
+  
+  // Speed improvement (compare first 10 sessions to last 10)
+  let timedSessions = stats.sessions.filter(s => s.secondsPerProblem !== null);
+  let speedImprovement = null;
+  if(timedSessions.length >= 20){
+    let firstAvg = timedSessions.slice(0,10).reduce((sum,s) => sum + s.secondsPerProblem, 0) / 10;
+    let lastAvg = timedSessions.slice(-10).reduce((sum,s) => sum + s.secondsPerProblem, 0) / 10;
+    speedImprovement = Math.round((firstAvg - lastAvg) * 10) / 10;
+  }
+  
+  return {
+    totalSessions,
+    totalProblems,
+    totalCorrect,
+    overallAccuracy,
+    recentAccuracy,
+    bestScore,
+    bestFullTest,
+    streak,
+    speedImprovement,
+    topicStats: stats.topicStats,
+    recentSessions: stats.sessions.slice(-20).reverse(),
+    firstUse: stats.firstUse
+  };
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // REAL PROBLEMS FROM UIL TESTS 2020-2022 (Problems 1-20 range)
 // Each has a .t (type) tag for topic filtering
@@ -1320,19 +1514,19 @@ function buildTimedRound(count){
 // APP STATE
 // ═══════════════════════════════════════════════════════════════════════════
 let state = {
-  screen:'menu',        // menu | test | results
+  screen:'menu',        // menu | test | results | stats
   problems:[],
   idx:0,
   answer:'',
   score:0,
   timeLeft:0,
-  timed:true,           // false = drill (no timer)
-  answered:[],
+  timed:true,           // false = drill (no timer)\n  answered:[],
   mode:'',              // timed20 | drill | topic | full
   topicKey:null,
   timer:null,
   feedback:'',          // '' | 'correct' | 'wrong'
   feedbackText:'',
+  startTime:0,          // Track when test started for speed stats
   streak:0,
   drillCount:0
 };
@@ -1362,25 +1556,25 @@ function fmtT(s){return Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0');}
 function startTimed(secs){
   stopTimer();
   let probs=buildTimedRound(20);
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:secs,timed:true,answered:[],mode:'timed20',timedSecs:secs,feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:secs,timed:true,answered:[],mode:'timed20',timedSecs:secs,feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(()=>{startTimer();focusInput();},50);
 }
 function startDrill(){
   stopTimer();
   let probs=buildBasicPool(40,null).map((p,i)=>({...p,num:i+1}));
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'drill',feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'drill',feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(focusInput,50);
 }
 function startTopicDrill(key){
   stopTimer();
   let probs=buildBasicPool(40,key).map((p,i)=>({...p,num:i+1}));
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'topic',topicKey:key,feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:0,timed:false,answered:[],mode:'topic',topicKey:key,feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(focusInput,50);
 }
 function startFullTest(){
   stopTimer();
   let probs=buildSequencedTest();
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:600,timed:true,answered:[],mode:'full',feedback:'',feedbackText:'',streak:0,drillCount:0});
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:600,timed:true,answered:[],mode:'full',feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
   setTimeout(()=>{startTimer();focusInput();},50);
 }
 function focusInput(){let e=document.getElementById('ans-input');if(e)e.focus();}
@@ -1497,7 +1691,23 @@ function skipProblem(){
   }
 }
 
-function endTest(){stopTimer();setState({screen:'results'});}
+function endTest(){
+  stopTimer();
+  
+  // Record session stats
+  let timeUsed = state.startTime ? Math.round((Date.now() - state.startTime) / 1000) : 0;
+  let topicBreakdown = getTopicBreakdown(state.answered);
+  
+  recordSession({
+    mode: state.mode,
+    score: state.score,
+    total: state.answered.length,
+    timeUsed: timeUsed,
+    topicBreakdown: topicBreakdown
+  });
+  
+  setState({screen:'results'});
+}
 function goMenu(){stopTimer();setState({screen:'menu',problems:[],idx:0,answer:'',score:0,timeLeft:0,answered:[],feedback:'',feedbackText:'',streak:0,drillCount:0});}
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1734,13 +1944,23 @@ function render(){
   document.getElementById('app').innerHTML =
     state.screen==='menu'  ? renderMenu() :
     state.screen==='test'  ? renderTest() :
+    state.screen==='stats' ? renderStats() :
     renderResults();
   attachListeners();
 }
-
 function renderMenu(){
   const CORE_KEYS=['add','sub','mul','div','sq','cube','rem','lcm','pct','conv','roman','mean'];
   const TRICK_KEYS=['mul11','mul25','near100','sq5','special','series','fracdec','powers','fib','polygon'];
+  
+  // Get quick stats preview
+  let stats = getStats();
+  let statsPreview = stats.totalSessions > 0 ? 
+    `<div class="stats-preview">
+      <div class="sp-item">📊 ${stats.totalSessions} session${stats.totalSessions>1?'s':''}</div>
+      <div class="sp-item">🎯 ${stats.overallAccuracy}% accuracy</div>
+      ${stats.streak > 0 ? `<div class="sp-item">🔥 ${stats.streak} day streak!</div>` : ''}
+      ${stats.bestScore.score > 0 ? `<div class="sp-item">🏆 Best: ${stats.bestScore.score}/20</div>` : ''}
+    </div>` : '';
 
   function topicBtns(keys){
     return keys.map(k=>{
@@ -1758,6 +1978,8 @@ function renderMenu(){
   <div class="header">
     <h1>UIL Number Sense Trainer</h1>
     <p>Master mental math for UIL competition</p>
+    ${statsPreview}
+    <button class="stats-btn" id="btn-stats">📈 View Progress & Stats</button>
   </div>
   <div class="menu-body">
 
@@ -2043,6 +2265,186 @@ function renderResults(){
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// STATS SCREEN
+// ═══════════════════════════════════════════════════════════════════════════
+function renderStats(){
+  let stats = getStats();
+  
+  if(stats.totalSessions === 0){
+    return `
+    <div class="stats-screen">
+      <div class="header">
+        <h1>📈 Your Progress</h1>
+        <button class="back-btn" id="btn-menu">← Back</button>
+      </div>
+      <div class="empty-stats">
+        <div class="es-icon">📊</div>
+        <h2>No Stats Yet!</h2>
+        <p>Complete a practice session to start tracking your progress.</p>
+        <button class="btn btn-primary" id="btn-menu">Start Practicing</button>
+      </div>
+    </div>`;
+  }
+  
+  // Overview cards
+  let daysSince = Math.floor((Date.now() - new Date(stats.firstUse).getTime()) / 86400000);
+  let improvement = stats.recentAccuracy - (stats.overallAccuracy);
+  let improvementHTML = improvement > 0 ? 
+    `<div class="stat-badge positive">+${improvement}% recent</div>` :
+    improvement < -5 ? `<div class="stat-badge negative">${improvement}% recent</div>` : '';
+  
+  // Topic breakdown - find strongest and weakest
+  let topicList = Object.entries(stats.topicStats)
+    .map(([topic, data]) => ({
+      topic,
+      name: TOPICS[topic]?.name || topic,
+      accuracy: data.total > 0 ? Math.round(data.correct / data.total * 100) : 0,
+      correct: data.correct,
+      total: data.total
+    }))
+    .filter(t => t.total >= 3) // Only show topics with at least 3 attempts
+    .sort((a,b) => b.accuracy - a.accuracy);
+  
+  let topicHTML = topicList.length > 0 ? topicList.map(t => {
+    let barWidth = t.accuracy;
+    let barColor = t.accuracy >= 80 ? '#48bb78' : t.accuracy >= 60 ? '#ed8936' : '#f56565';
+    return `
+    <div class="topic-stat">
+      <div class="ts-name">${t.name}</div>
+      <div class="ts-bar-container">
+        <div class="ts-bar" style="width:${barWidth}%;background:${barColor};"></div>
+      </div>
+      <div class="ts-score">${t.correct}/${t.total} (${t.accuracy}%)</div>
+    </div>`;
+  }).join('') : '<p style="color:#718096;">Complete topic drills to see breakdown.</p>';
+  
+  // Recent sessions graph (last 10)
+  let graphData = stats.recentSessions.slice(0,10).reverse();
+  let maxScore = Math.max(...graphData.map(s => s.total));
+  let graphHTML = graphData.map((s,i) => {
+    let height = (s.score / s.total * 100);
+    let date = new Date(s.date);
+    let label = date.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    let modeLabel = s.mode==='timed20' ? 'T20' : s.mode==='full' ? 'F80' : 'Drill';
+    return `
+    <div class="graph-bar">
+      <div class="gb-bar-container">
+        <div class="gb-bar" style="height:${height}%;" title="${s.score}/${s.total}"></div>
+      </div>
+      <div class="gb-label">${label}</div>
+      <div class="gb-mode">${modeLabel}</div>
+    </div>`;
+  }).join('');
+  
+  // Session history table
+  let historyHTML = stats.recentSessions.slice(0,15).map(s => {
+    let date = new Date(s.date);
+    let timeStr = date.toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
+    let modeStr = s.mode==='timed20' ? 'Timed 20' : s.mode==='full' ? 'Full Test' : s.mode==='drill' ? 'Drill' : 'Topic';
+    let pct = Math.round(s.score/s.total*100);
+    let pctColor = pct >= 80 ? '#48bb78' : pct >= 60 ? '#ed8936' : '#f56565';
+    let speedStr = s.secondsPerProblem ? `${s.secondsPerProblem}s/prob` : '—';
+    return `
+    <tr>
+      <td>${timeStr}</td>
+      <td>${modeStr}</td>
+      <td>${s.score}/${s.total}</td>
+      <td style="color:${pctColor};font-weight:600;">${pct}%</td>
+      <td>${speedStr}</td>
+    </tr>`;
+  }).join('');
+  
+  return `
+  <div class="stats-screen">
+    <div class="header">
+      <h1>📈 Your Progress</h1>
+      <button class="back-btn" id="btn-menu">← Back</button>
+    </div>
+    
+    <div class="stats-body">
+      <!-- Overview Cards -->
+      <div class="stats-grid">
+        <div class="stat-card big">
+          <div class="stat-val">${stats.totalSessions}</div>
+          <div class="stat-label">Practice Sessions</div>
+          <div class="stat-sub">${daysSince} days active</div>
+        </div>
+        <div class="stat-card big">
+          <div class="stat-val">${stats.overallAccuracy}%</div>
+          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-sub">${stats.totalCorrect}/${stats.totalProblems} correct</div>
+          ${improvementHTML}
+        </div>
+        ${stats.streak > 0 ? `
+        <div class="stat-card big" style="border-color:#ed8936;">
+          <div class="stat-val" style="color:#ed8936;">🔥 ${stats.streak}</div>
+          <div class="stat-label">Day Streak</div>
+          <div class="stat-sub">Keep it going!</div>
+        </div>` : ''}
+        ${stats.speedImprovement && stats.speedImprovement > 0 ? `
+        <div class="stat-card big" style="border-color:#48bb78;">
+          <div class="stat-val" style="color:#48bb78;">-${stats.speedImprovement}s</div>
+          <div class="stat-label">Speed Improvement</div>
+          <div class="stat-sub">Per problem (first 10 vs last 10)</div>
+        </div>` : ''}
+      </div>
+      
+      <!-- Personal Bests -->
+      <h2 style="margin:2rem 0 1rem;">🏆 Personal Bests</h2>
+      <div class="stats-grid">
+        ${stats.bestScore.score > 0 ? `
+        <div class="stat-card">
+          <div class="stat-val">${stats.bestScore.score}/20</div>
+          <div class="stat-label">Best Timed Round</div>
+          <div class="stat-sub">${new Date(stats.bestScore.date).toLocaleDateString()}</div>
+        </div>` : ''}
+        ${stats.bestFullTest.score > 0 ? `
+        <div class="stat-card">
+          <div class="stat-val">${stats.bestFullTest.score}/80</div>
+          <div class="stat-label">Best Full Test</div>
+          <div class="stat-sub">${new Date(stats.bestFullTest.date).toLocaleDateString()}</div>
+        </div>` : ''}
+      </div>
+      
+      <!-- Performance Graph -->
+      <h2 style="margin:2rem 0 1rem;">📊 Recent Performance</h2>
+      <div class="graph-container">
+        ${graphHTML}
+      </div>
+      
+      <!-- Topic Breakdown -->
+      <h2 style="margin:2rem 0 1rem;">📚 Topic Breakdown</h2>
+      <div class="topic-stats">
+        ${topicHTML}
+      </div>
+      
+      <!-- Session History -->
+      <h2 style="margin:2rem 0 1rem;">📝 Session History</h2>
+      <div class="history-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Mode</th>
+              <th>Score</th>
+              <th>Accuracy</th>
+              <th>Speed</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${historyHTML}
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="margin-top:2rem;text-align:center;">
+        <button class="btn btn-dark" id="btn-clear-stats">🗑️ Clear All Stats</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // LISTENERS
 // ═══════════════════════════════════════════════════════════════════════════
 function attachListeners(){
@@ -2094,6 +2496,16 @@ function attachListeners(){
     else if(state.mode==='drill') startDrill();
     else if(state.mode==='topic') startTopicDrill(state.topicKey);
     else startFullTest();
+  };
+  
+  // Stats screen
+  if(el=document.getElementById('btn-stats')) el.onclick=()=>{ setState({screen:'stats'}); };
+  if(el=document.getElementById('btn-clear-stats')) el.onclick=()=>{
+    if(confirm('Are you sure you want to delete all your progress data? This cannot be undone!')){
+      localStorage.removeItem('uilNsStats');
+      setState({screen:'menu'});
+      alert('All stats cleared!');
+    }
   };
   
   // Solution toggles in results
