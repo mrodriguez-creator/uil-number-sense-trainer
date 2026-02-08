@@ -534,6 +534,178 @@ function buildBasicPool(count, topicKey) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// APPROXIMATION (*) GENERATORS — For problems #10, 20, 30, 40, 50, 60, 70, 80
+// These are starred (*) problems but have EXACT answers - just large/tricky numbers
+// The ±5% tolerance is a safety net, not an invitation to estimate
+// ═══════════════════════════════════════════════════════════════════════════
+const APPROX = {
+  // Problem 10: Four-term arithmetic chain (AUTHENTIC UIL PATTERN)
+  // Real UIL examples:
+  //   520 − 2011 + 1302 − 25 =
+  //   425 − 2025 + 5202 − 624 =
+  //   1967 + 7196 − 6719 − 9671 =
+  //   5220 − 522 − 2052 − 2205 =
+  tier1: ()=>{
+    let pattern=ri(0,4);
+    
+    // Pattern 1: small − large + large − medium
+    if(pattern===0){
+      let a=ri(300,900);
+      let b=ri(1500,2500);
+      let c=ri(3000,6000);
+      let d=ri(100,800);
+      let ans=a-b+c-d;
+      return {q:`${a} − ${b} + ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Work left to right: "+a+"−"+b+" = "+(a-b)+", +"+c+" = "+(a-b+c)+", −"+d+" = "+ans};
+    }
+    
+    // Pattern 2: large + large − large − large
+    if(pattern===1){
+      let a=ri(1000,3000);
+      let b=ri(5000,8000);
+      let c=ri(4000,7000);
+      let d=ri(3000,10000);
+      let ans=a+b-c-d;
+      return {q:`${a} + ${b} − ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Add: "+a+"+"+b+" = "+(a+b)+", subtract: −"+c+"−"+d};
+    }
+    
+    // Pattern 3: large − small − large − large
+    if(pattern===2){
+      let a=ri(4000,7000);
+      let b=ri(400,900);
+      let c=ri(1500,2500);
+      let d=ri(1500,3000);
+      let ans=a-b-c-d;
+      return {q:`${a} − ${b} − ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Subtract sequentially: "+a+"−"+b+" = "+(a-b)+", −"+c+" = "+(a-b-c)+", −"+d};
+    }
+    
+    // Pattern 4: small + large − large + medium
+    if(pattern===3){
+      let a=ri(200,600);
+      let b=ri(2000,4000);
+      let c=ri(1500,3000);
+      let d=ri(500,1500);
+      let ans=a+b-c+d;
+      return {q:`${a} + ${b} − ${c} + ${d} =`,a:ans,t:"ops",starred:true,hint:"Group: ("+a+"+"+b+"+"+d+") − "+c};
+    }
+    
+    // Pattern 5: small − large + large − small (balanced)
+    let a=ri(400,800);
+    let b=ri(1800,2500);
+    let c=ri(3000,4500);
+    let d=ri(300,700);
+    let ans=a-b+c-d;
+    return {q:`${a} − ${b} + ${c} − ${d} =`,a:ans,t:"ops",starred:true,hint:"Left to right: "+a+"−"+b+" = "+(a-b)+", then +"+c+"−"+d};
+  },
+  
+  // Problem 20: Division by 25 OR large operations (AUTHENTIC UIL PATTERN)
+  // Real UIL examples:
+  //   1103 ÷ 25 =
+  //   √518 × √7491 = (which is √(518×7491))
+  //   172023 ÷ 218 =
+  //   396 × 501 − 2020 =
+  tier1hard: ()=>{
+    let type=ri(0,5);
+    
+    // Type 1: Division by 25 (MOST COMMON)
+    if(type===0){
+      let quotient=ri(40,150);
+      let dividend=quotient*25;
+      return {q:`${dividend} ÷ 25 =`,a:quotient,t:"div",starred:true,hint:"÷25 trick: "+dividend+" × 4 = "+(dividend*4)+", ÷100 = "+quotient};
+    }
+    
+    // Type 2: Large 3-digit × 3-digit multiplication
+    if(type===1){
+      let a=ri(250,500);
+      let b=ri(250,600);
+      let ans=a*b;
+      return {q:`${a} × ${b} =`,a:ans,t:"mul",starred:true,hint:"Distributive: "+a+"×"+b+" = "+a+"×"+Math.floor(b/100)*100+" + "+a+"×"+(b%100)};
+    }
+    
+    // Type 3: √a + √b where a, b are perfect squares
+    if(type===2){
+      let a=ri(18,26);
+      let b=ri(18,28);
+      let ans=a+b;
+      return {q:`√${a*a} + √${b*b} =`,a:ans,t:"sq",starred:true,hint:"√"+(a*a)+" = "+a+", √"+(b*b)+" = "+b+", sum = "+ans};
+    }
+    
+    // Type 4: Large product minus constant
+    if(type===3){
+      let a=ri(300,500);
+      let b=ri(400,600);
+      let c=ri(1500,3000);
+      let ans=a*b-c;
+      return {q:`${a} × ${b} − ${c} =`,a:ans,t:"ops",starred:true,hint:"Multiply first: "+a+"×"+b+" = "+(a*b)+", −"+c+" = "+ans};
+    }
+    
+    // Type 5: Large division with clean answer
+    if(type===4){
+      let divisor=ri(150,400);
+      let quotient=ri(200,900);
+      let dividend=divisor*quotient;
+      return {q:`${dividend} ÷ ${divisor} =`,a:quotient,t:"div",starred:true,hint:"Factor: "+dividend+" = "+divisor+" × "+quotient};
+    }
+    
+    // Type 6: Product of large-ish numbers (near 100)
+    let a=ri(90,150);
+    let b=ri(90,150);
+    return {q:`${a} × ${b} =`,a:a*b,t:"mul",starred:true,hint:"Use (100±a)(100±b) pattern or distributive"};
+  },
+  
+  // Problem 30: Tier 2 starred
+  tier2: ()=>{
+    let type=ri(0,2);
+    if(type===0){
+      // Product of square roots
+      let a=ri(10,20),b=ri(10,20);
+      return {q:`√${a*a} × √${b*b} =`,a:a*b,t:"sq",starred:true,hint:"√"+(a*a)+"="+a+", √"+(b*b)+"="+b+", product = "+(a*b)};
+    }
+    if(type===1){
+      // Cube root of perfect cube
+      let n=ri(10,15);
+      return {q:`³√${n*n*n} =`,a:n,t:"cube",starred:true,hint:"Memorize cubes: 10³=1000, 11³=1331, 12³=1728, 13³=2197, 14³=2744, 15³=3375"};
+    }
+    // Large mixed operations
+    let a=ri(100,500),b=ri(100,500),c=ri(2,9);
+    let ans=(a+b)*c;
+    return {q:`(${a} + ${b}) × ${c} =`,a:ans,t:"ops",starred:true,hint:"Add first: "+a+"+"+b+"="+(a+b)+", then ×"+c};
+  },
+  
+  // Problem 40-80: Higher tier starred
+  advanced: ()=>{
+    let type=ri(0,4);
+    if(type===0){
+      // Fourth root of perfect fourth power
+      let n=ri(5,10);
+      return {q:`⁴√${Math.pow(n,4)} =`,a:n,t:"powers",starred:true,hint:"4th roots: 5⁴=625, 6⁴=1296, 7⁴=2401, 8⁴=4096, 9⁴=6561, 10⁴=10000"};
+    }
+    if(type===1){
+      // Product of three square roots
+      let a=ri(8,15),b=ri(8,15),c=ri(8,15);
+      return {q:`√${a*a} × √${b*b} × √${c*c} =`,a:a*b*c,t:"sq",starred:true,hint:"√"+(a*a)+"×√"+(b*b)+"×√"+(c*c)+" = "+a+"×"+b+"×"+c};
+    }
+    if(type===2){
+      // Complex arithmetic chain
+      let a=ri(50,100),b=ri(50,100),c=ri(30,70);
+      let ans=a*a-b*b+c;
+      return {q:`${a}² − ${b}² + ${c} =`,a:ans,t:"ops",starred:true,hint:"Use difference of squares: "+a+"²−"+b+"² = ("+a+"+"+b+")("+a+"−"+b+")"};
+    }
+    if(type===3){
+      // Large factorial divided by factorial
+      let n=ri(8,12),k=ri(5,n-2);
+      let ans=1; for(let i=k+1;i<=n;i++) ans*=i;
+      return {q:`${n}! ÷ ${k}! =`,a:ans,t:"factperm",starred:true,hint:n+"! ÷ "+k+"! = "+n+"×"+(n-1)+"×...×"+(k+1)};
+    }
+    // Sum/product of large square roots
+    let a=ri(12,20),b=ri(12,20);
+    if(ri(0,1)===0){
+      return {q:`√${a*a} + √${b*b} + √${(a+b)*(a+b)} =`,a:a+b+(a+b),t:"sq",starred:true,hint:"Simplify each root, then add"};
+    }
+    return {q:`(√${a*a} + √${b*b}) × ${ri(2,5)} =`,a:(a+b)*ri(2,5),t:"ops",starred:true,hint:"Roots first, then multiply"};
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
 // TIER 2 GENERATORS — Problems 21-40
 // Powers, Substitution, Abs Value, Ratio, Roots, Sets,
 // Base Conversion, Equations, Repeating Decimals, Area/Perimeter, Sequences
@@ -1043,6 +1215,16 @@ function buildSequencedTest(){
   let usedReal={};
 
   SEQ_1_20.forEach((slot,i)=>{
+    // Problem 10 and 20: use approximation generators
+    if(i===9){
+      probs.push({...APPROX.tier1(),num:10});
+      return;
+    }
+    if(i===19){
+      probs.push({...APPROX.tier1hard(),num:20});
+      return;
+    }
+    
     let realP=null;
     for(let key of shuffle([...slot])){
       let pool=realByType[key]||[], idx=usedReal[key]||0;
@@ -1051,14 +1233,43 @@ function buildSequencedTest(){
     probs.push(realP ? {...realP,num:i+1} : {...GEN[pick(slot)](),num:i+1});
   });
 
-  // 21-40: tier 2
-  SEQ_21_40.forEach((slot,i)=>{ probs.push({...GEN2[pick(slot)](),num:i+21}); });
-  // 41-60: tier 3
-  SEQ_41_60.forEach((slot,i)=>{ probs.push({...GEN3[pick(slot)](),num:i+41}); });
-  // 61-70: tier 4
-  SEQ_61_70.forEach((slot,i)=>{ probs.push({...GEN4[pick(slot)](),num:i+61}); });
-  // 71-80: tier 5
-  SEQ_71_80.forEach((slot,i)=>{ probs.push({...GEN5[pick(slot)](),num:i+71}); });
+  // 21-40: tier 2 — problem 30 and 40 are approximations
+  SEQ_21_40.forEach((slot,i)=>{ 
+    if(i===9){
+      probs.push({...APPROX.tier2(),num:30});
+    } else if(i===19){
+      probs.push({...APPROX.advanced(),num:40});
+    } else {
+      probs.push({...GEN2[pick(slot)](),num:i+21}); 
+    }
+  });
+  
+  // 41-60: tier 3 — problem 50 and 60 are approximations
+  SEQ_41_60.forEach((slot,i)=>{ 
+    if(i===9 || i===19){
+      probs.push({...APPROX.advanced(),num:i+41});
+    } else {
+      probs.push({...GEN3[pick(slot)](),num:i+41}); 
+    }
+  });
+  
+  // 61-70: tier 4 — problem 70 is approximation
+  SEQ_61_70.forEach((slot,i)=>{ 
+    if(i===9){
+      probs.push({...APPROX.advanced(),num:70});
+    } else {
+      probs.push({...GEN4[pick(slot)](),num:i+61}); 
+    }
+  });
+  
+  // 71-80: tier 5 — problem 80 is approximation
+  SEQ_71_80.forEach((slot,i)=>{ 
+    if(i===9){
+      probs.push({...APPROX.advanced(),num:80});
+    } else {
+      probs.push({...GEN5[pick(slot)](),num:i+71}); 
+    }
+  });
 
   return probs;
 }
