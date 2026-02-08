@@ -1271,6 +1271,11 @@ function getSolutionHint(q,ans,topic){
   // Provide step-by-step explanation based on problem type and question
   if(!topic) return "Review the problem and try breaking it into smaller steps.";
   
+  // ENHANCED ARITHMETIC STRATEGIES - parse the actual numbers from the question
+  if(topic==='add' || topic==='sub' || topic==='mul' || topic==='div' || topic==='ops'){
+    return getArithmeticStrategy(q, ans, topic);
+  }
+  
   // Multiplication tricks
   if(topic==='mul11') return "To multiply by 11: add the digits and insert between them. If sum ≥10, carry the 1.";
   if(topic==='mul25') return "To multiply by 25: divide by 4, then multiply by 100. (Since 25 = 100/4)";
@@ -1334,6 +1339,85 @@ function getSolutionHint(q,ans,topic){
   if(topic==='calculus') return "Derivative: power rule d/dx(xⁿ) = nxⁿ⁻¹. Limit: substitute x value if no division by zero.";
   
   return "Break the problem into steps. Check your arithmetic carefully.";
+}
+
+// New helper function for detailed arithmetic strategies
+function getArithmeticStrategy(q, ans, topic){
+  // Extract numbers from the question
+  let nums = q.match(/-?\d+/g);
+  if(!nums || nums.length < 2) return "Work through the calculation step by step.";
+  
+  let a = parseInt(nums[0]);
+  let b = parseInt(nums[1]);
+  
+  // ADDITION strategies
+  if(topic === 'add'){
+    if(b >= 90 && b <= 99){
+      return `Add to nearest 100, then adjust: ${a} + ${b} = ${a} + 100 − ${100-b} = ${a+100} − ${100-b} = ${ans}.`;
+    }
+    if(a % 10 + b % 10 === 10){
+      return `Friendly numbers (add to 10): ${a} + ${b} = ${Math.floor(a/10)*10} + ${Math.floor(b/10)*10} + 10 = ${ans}.`;
+    }
+    if(b <= 10){
+      return `Count up: ${a} + ${b} = ${a} → ${a+1} → ... → ${ans}.`;
+    }
+    return `Break into parts: ${a} + ${b} = ${a} + ${Math.floor(b/10)*10} + ${b%10} = ${a+Math.floor(b/10)*10} + ${b%10} = ${ans}.`;
+  }
+  
+  // SUBTRACTION strategies
+  if(topic === 'sub'){
+    if(b >= 90 && b <= 99){
+      return `Subtract 100, then add back: ${a} − ${b} = ${a} − 100 + ${100-b} = ${a-100} + ${100-b} = ${ans}.`;
+    }
+    if(a % 10 < b % 10){
+      return `Borrow from tens: ${a} = ${Math.floor(a/10)*10} + ${a%10} → ${Math.floor(a/10)*10-10} + ${10+a%10}. Now ${10+a%10} − ${b%10} = ${10+a%10-b%10}, plus ${Math.floor(a/10)*10-10-Math.floor(b/10)*10} = ${ans}.`;
+    }
+    return `Count down or use place value: ${a} − ${b} = ${a} − ${Math.floor(b/10)*10} − ${b%10} = ${a-Math.floor(b/10)*10} − ${b%10} = ${ans}.`;
+  }
+  
+  // MULTIPLICATION strategies
+  if(topic === 'mul'){
+    // Check for special patterns
+    if(b === 11){
+      return `×11 trick: ${a} × 11 → add digits ${Math.floor(a/10)} + ${a%10} = ${Math.floor(a/10)+a%10}, insert between → ${ans}. (If sum ≥10, carry the 1)`;
+    }
+    if(b === 25){
+      return `×25 shortcut: ${a} × 25 = ${a} ÷ 4 × 100 = ${a/4} × 100 = ${ans}.`;
+    }
+    if(a >= 90 || b >= 90){
+      let nearA = a >= 90 ? 100 - a : 0;
+      let nearB = b >= 90 ? 100 - b : 0;
+      if(nearA && nearB){
+        return `Near 100: (100−${nearA})(100−${nearB}) = 10000 − ${nearA}00 − ${nearB}00 + ${nearA*nearB} = ${ans}.`;
+      }
+    }
+    if(b <= 12){
+      return `Break into parts: ${a} × ${b} = ${a} × ${Math.floor(b/2)*2} + ${a} × ${b%2} = ${a*Math.floor(b/2)*2} + ${a*(b%2)} = ${ans}.`;
+    }
+    // Distributive property
+    let tens = Math.floor(b/10) * 10;
+    let ones = b % 10;
+    return `Use distributive: ${a} × ${b} = ${a} × (${tens} + ${ones}) = ${a*tens} + ${a*ones} = ${ans}.`;
+  }
+  
+  // DIVISION strategies
+  if(topic === 'div'){
+    if(a % b === 0){
+      // Check for patterns
+      if(b <= 12){
+        return `Know your division facts: ${a} ÷ ${b} = ${ans}. Practice multiples of ${b}: ${b}, ${b*2}, ${b*3}...`;
+      }
+      return `Factor and simplify: ${a} ÷ ${b} = ${ans}. Check: ${ans} × ${b} = ${a}.`;
+    }
+    return `Long division or factor: Work step-by-step to get ${ans}. Verify: ${ans} × ${b} ≈ ${a}.`;
+  }
+  
+  // ORDER OF OPERATIONS (mixed)
+  if(topic === 'ops'){
+    return `Follow PEMDAS: <strong>1)</strong> Parentheses, <strong>2)</strong> Exponents, <strong>3)</strong> Multiply/Divide (left→right), <strong>4)</strong> Add/Subtract (left→right). Work through each step carefully.`;
+  }
+  
+  return "Work through the problem step-by-step using mental math strategies.";
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
