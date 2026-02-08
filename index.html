@@ -1282,7 +1282,26 @@ function getSolutionHint(q,ans,topic){
   if(topic==='near100') return "Use (100-a)(100-b) = 10000 - 100a - 100b + ab. Example: 97×98 = 10000-300-200+6 = 9506.";
   
   // Squaring tricks
-  if(topic==='sq5' || topic==='sq') return "For numbers ending in 5: multiply the tens digit by (tens+1), then append 25.";
+  if(topic==='sq5' || topic==='sq'){
+    return getSquaringStrategy(q, ans);
+  }
+  
+  // Cubing tricks
+  if(topic==='cube'){
+    let nums = q.match(/\d+/g);
+    if(nums && nums.length > 0){
+      let n = parseInt(nums[0]);
+      if(n <= 10){
+        return `<strong>Memorize small cubes:</strong> 1³=1, 2³=8, 3³=27, 4³=64, 5³=125, 6³=216, 7³=343, 8³=512, 9³=729, 10³=1000.`;
+      }
+      if(n >= 10 && n <= 20){
+        let tens = Math.floor(n/10) * 10;
+        let ones = n % 10;
+        return `<strong>Expand (a+b)³:</strong> ${n}³ = (${tens}+${ones})³ = ${tens}³ + 3(${tens}²×${ones}) + 3(${tens}×${ones}²) + ${ones}³. Calculate each term and add.`;
+      }
+    }
+    return "Memorize cubes 1³ through 10³. For larger numbers, use (a+b)³ = a³ + 3a²b + 3ab² + b³.";
+  }
   
   // Series and sequences
   if(topic==='series'){
@@ -1418,6 +1437,58 @@ function getArithmeticStrategy(q, ans, topic){
   }
   
   return "Work through the problem step-by-step using mental math strategies.";
+}
+
+// Helper function for squaring strategies
+function getSquaringStrategy(q, ans){
+  let nums = q.match(/\d+/g);
+  if(!nums || nums.length < 1) return "Memorize perfect squares or use (a+b)(a-b) patterns.";
+  
+  let n = parseInt(nums[0]);
+  
+  // Numbers ending in 5 - special trick
+  if(n % 10 === 5){
+    let tens = Math.floor(n/10);
+    return `<strong>×5 ending trick:</strong> ${n}² → ${tens} × ${tens+1} = ${tens*(tens+1)}, then append 25 → <strong>${tens*(tens+1)}25</strong> = ${ans}.`;
+  }
+  
+  // Numbers near a multiple of 10
+  if(n % 10 === 1 || n % 10 === 9){
+    let base = Math.round(n/10) * 10;
+    let diff = n - base;
+    if(diff > 0){
+      return `<strong>Near ${base}:</strong> ${n}² = (${base}+${diff})² = ${base}² + 2(${base}×${diff}) + ${diff}² = ${base*base} + ${2*base*diff} + ${diff*diff} = ${ans}.`;
+    } else {
+      let posDiff = Math.abs(diff);
+      return `<strong>Near ${base}:</strong> ${n}² = (${base}−${posDiff})² = ${base}² − 2(${base}×${posDiff}) + ${posDiff}² = ${base*base} − ${2*base*posDiff} + ${posDiff*posDiff} = ${ans}.`;
+    }
+  }
+  
+  // Numbers near 50
+  if(n >= 45 && n <= 55 && n % 10 !== 5){
+    let diff = n - 50;
+    if(diff > 0){
+      return `<strong>Near 50:</strong> ${n}² = (50+${diff})² = 2500 + 2(50×${diff}) + ${diff}² = 2500 + ${100*diff} + ${diff*diff} = ${ans}.`;
+    } else {
+      let posDiff = Math.abs(diff);
+      return `<strong>Near 50:</strong> ${n}² = (50−${posDiff})² = 2500 − ${100*posDiff} + ${posDiff*posDiff} = ${ans}.`;
+    }
+  }
+  
+  // Difference of squares pattern for numbers near each other
+  // Example: 63² = (60+3)(60+3) or use 63² = 60² + 2(60×3) + 3²
+  if(n >= 20 && n <= 99){
+    let tens = Math.floor(n/10) * 10;
+    let ones = n % 10;
+    return `<strong>Expand (a+b)²:</strong> ${n}² = (${tens}+${ones})² = ${tens}² + 2(${tens}×${ones}) + ${ones}² = ${tens*tens} + ${2*tens*ones} + ${ones*ones} = ${ans}.<br>Or memorize: common squares like 60²=3600, then adjust.`;
+  }
+  
+  // Small numbers - just memorize
+  if(n <= 20){
+    return `<strong>Memorize small squares:</strong> 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36, 7²=49, 8²=64, 9²=81, 10²=100, 11²=121, 12²=144, 15²=225, 20²=400. Know them cold!`;
+  }
+  
+  return `Use (a+b)² = a² + 2ab + b² pattern, or break into ${Math.floor(n/10)*10} + ${n%10}.`;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
