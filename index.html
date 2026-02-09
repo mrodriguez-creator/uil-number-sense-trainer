@@ -3389,7 +3389,7 @@ window.practiceImported = function(filter){
     screen: 'test',
     mode: 'imported',
     timed: false,
-    problems: shuffle(problems), // Shuffle for variety
+    problems: (filter !== 'all' && filter !== 'starred') ? [...problems].sort((a,b) => a.num - b.num) : shuffle(problems),
     idx: 0,
     answer: '',
     score: 0,
