@@ -1,0 +1,2194 @@
+[
+  {
+    "num": 55,
+    "q": "k = #",
+    "a": "",
+    "t": "advanced",
+    "year": "2026",
+    "test": "A",
+    "starred": false,
+    "source": "1NumberSense_Test_A_26.pdf",
+    "_issues": [
+      "no_answer"
+    ],
+    "_rawQ": "k = #",
+    "_rawA": ""
+  },
+  {
+    "num": 8,
+    "q": "8 1 5 1 9 4 7 = , , , ,, , q qq - + -",
+    "a": "3",
+    "t": "fracdec",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "8 1 5 1 9 4 7 = ¸ ¸ ¸ ¸¸ ¸ q qq q  q",
+    "_rawA": "3 q"
+  },
+  {
+    "num": 28,
+    "q": "2 3 5 7 11 13 = ,, , , q - + - +",
+    "a": "5",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2 3 5 7 11 13 = ¸¸ ¸ ¸ q q q ",
+    "_rawA": "5"
+  },
+  {
+    "num": 38,
+    "q": "The largest root of (3x 2) = is q 2 1",
+    "a": "11",
+    "t": "roots",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The largest root of (3x 2) = is q 2 1",
+    "_rawA": "11"
+  },
+  {
+    "num": 71,
+    "q": "f (x) = 2, f(1) = 3, find f( 2). w q",
+    "a": "9",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "f (x) = 2, f(1) = 3, find f( 2). w q q",
+    "_rawA": "9"
+  },
+  {
+    "num": 79,
+    "q": "If 2 x 5, then x 1 ≥≥ q≥ 2",
+    "a": "24",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 2 x 5, then x 1  q 2",
+    "_rawA": "24"
+  },
+  {
+    "num": 23,
+    "q": "If 8 = 12.8, then 8 = () ( ) x x q 2",
+    "a": ".2, 1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 8 = 12.8, then 8 = () ( ) x x q 2",
+    "_rawA": ".2, 1"
+  },
+  {
+    "num": 33,
+    "q": "1 7 2 5 22 = , ,, , q- + -",
+    "a": "23",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1 7 2 5 22 = ¸ ¸¸ ¸ qqq",
+    "_rawA": "23 q"
+  },
+  {
+    "num": 34,
+    "q": "The product of the coefficients of (2x y) is q 2",
+    "a": "16",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The product of the coefficients of (2x y) is q 2",
+    "_rawA": "16 q"
+  },
+  {
+    "num": 53,
+    "q": "Let (1 2 )(3 4 ) = a b . Find a. q- + ii i",
+    "a": "5",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (1 2 )(3 4 ) = a b . Find a. qq  ii i",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 56,
+    "q": "The vertex of y = 3x 2x 1 is (h, k). h = 2 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 3x 2x 1 is (h, k). h = 2 q q",
+    "_rawA": "1"
+  },
+  {
+    "num": 71,
+    "q": "The domain of y = 9 x is m x n. n = 2 2 q ≤≤",
+    "a": "3",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The domain of y = 9 x is m x n. n = 2 2 q ŸŸ",
+    "_rawA": "3"
+  },
+  {
+    "num": 77,
+    "q": "The maximum value of f(x) = 4x 3x is q 2",
+    "a": ", 1 4 1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The maximum value of f(x) = 4x 3x is q 2",
+    "_rawA": ", 1 4 1"
+  },
+  {
+    "num": 47,
+    "q": "The product of the roots of (5x 2) = 0 is q 3",
+    "a": ".064, , 8",
+    "t": "roots",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The product of the roots of (5x 2) = 0 is q 3",
+    "_rawA": ".064, , 8"
+  },
+  {
+    "num": 73,
+    "q": "Let f (x) = 6x and f( 1) = 3. Find f( 3). w q",
+    "a": "27",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f (x) = 6x and f( 1) = 3. Find f( 3). w q q",
+    "_rawA": "27"
+  },
+  {
+    "num": 74,
+    "q": "If f(x) = 2x 3 then f [f(4)] = -q 1",
+    "a": "4",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If f(x) = 2x 3 then f [f(4)] = q q 1",
+    "_rawA": "4"
+  },
+  {
+    "num": 67,
+    "q": "Let f(x) = x 9 and g(x) = x 3. f(g(6)) = 2 q",
+    "a": "0",
+    "t": "advanced",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x 9 and g(x) = x 3. f(g(6)) = 2 q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 71,
+    "q": "The domain of y = 16 x is m x n. m = 2 2 q ≤≤",
+    "a": "4",
+    "t": "advanced",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The domain of y = 16 x is m x n. m = 2 2 q ŸŸ",
+    "_rawA": "4 q"
+  },
+  {
+    "num": 78,
+    "q": "(.375) = (improper fraction) q 2",
+    "a": "64",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(.375) = (improper fraction) q 2",
+    "_rawA": "64"
+  },
+  {
+    "num": 28,
+    "q": "3 2 6 6 20 22 = ,, , , q - + - +",
+    "a": "3",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "3 2 6 6 20 22 = ¸¸ ¸ ¸ q q q ",
+    "_rawA": "3"
+  },
+  {
+    "num": 37,
+    "q": "The linear term of (x 4) is q 3",
+    "a": "48",
+    "t": "sequence",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The linear term of (x 4) is q 3",
+    "_rawA": "48"
+  },
+  {
+    "num": 47,
+    "q": "The sum of the roots of (4x 7) = 0 is q 3",
+    "a": "5.25, , 5 21 1",
+    "t": "roots",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the roots of (4x 7) = 0 is q 3",
+    "_rawA": "5.25, , 5 21 1"
+  },
+  {
+    "num": 52,
+    "q": "The distance between ( 1, 5) and ( 3, 9) is d. q qq",
+    "a": "200",
+    "t": "trig",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The distance between ( 1, 5) and ( 3, 9) is d. q qq",
+    "_rawA": "200"
+  },
+  {
+    "num": 78,
+    "q": "(2x 1) = 'q 3",
+    "a": "6",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(2x 1) = 'q 3",
+    "_rawA": "6 q"
+  },
+  {
+    "num": 21,
+    "q": "If 5 2x = 7, then 5x 7 = -q",
+    "a": "12",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 5 2x = 7, then 5x 7 = q q",
+    "_rawA": "12 q"
+  },
+  {
+    "num": 25,
+    "q": "2 3 5 7 11 13 17 = ,, , , q - + -",
+    "a": "41",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2 3 5 7 11 13 17 = ¸¸ ¸ ¸ q q q",
+    "_rawA": "41"
+  },
+  {
+    "num": 34,
+    "q": "If 256 529 = k, then k = √ √q 2",
+    "a": "49",
+    "t": "roots",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 256 529 = k, then k = È Èq 2",
+    "_rawA": "49"
+  },
+  {
+    "num": 39,
+    "q": "The sum of the coefficients of (5x y) is q 3",
+    "a": "64",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the coefficients of (5x y) is q 3",
+    "_rawA": "64"
+  },
+  {
+    "num": 75,
+    "q": "(.444...) = (improper fraction) q 3",
+    "a": "729",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(.444...) = (improper fraction) q 3",
+    "_rawA": "729"
+  },
+  {
+    "num": 26,
+    "q": "The multiplicative inverse of 2 is q 5",
+    "a": "-6",
+    "t": "advanced",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The multiplicative inverse of 2 is q 5",
+    "_rawA": "q 6"
+  },
+  {
+    "num": 51,
+    "q": "A A A = A and A 1. Find k. q q k 2 34 ×÷ ≤",
+    "a": "-9",
+    "t": "mult",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "A A A = A and A 1. Find k. q q k 2 34 ‚ƒ ",
+    "_rawA": "q 9"
+  },
+  {
+    "num": 71,
+    "q": "f (x) = 2x 1, f(1) = 2, find f(2). w q",
+    "a": "0",
+    "t": "advanced",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "f (x) = 2x 1, f(1) = 2, find f(2). w q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 12,
+    "q": "Which is smaller or ? q q 3 4",
+    "a": "-4",
+    "t": "compare",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Which is smaller or ? q q 3 4",
+    "_rawA": "q 4"
+  },
+  {
+    "num": 44,
+    "q": "1,1}. ( ) ( ) ( ) a b , where a,b { i i i = 18 17 20 × ÷ -q √",
+    "a": "0",
+    "t": "roots",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1,1}. ( ) ( ) ( ) a b , where a,b { i i i = 18 17 20 ‚ ƒ −q È",
+    "_rawA": "0"
+  },
+  {
+    "num": 68,
+    "q": "If A A A = A and A 1, then k = 5k 1 2 ×÷ ≤ q",
+    "a": "0",
+    "t": "mult",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If A A A = A and A 1, then k = 5k 1 2 ‚ƒ  q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 26,
+    "q": "196 289 = d and d = √ √q 3",
+    "a": "27",
+    "t": "roots",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "196 289 = d and d = È Èq 3",
+    "_rawA": "27 q"
+  },
+  {
+    "num": 31,
+    "q": "The sum of the coefficients of (2x 3y) is q 5",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the coefficients of (2x 3y) is q 5",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 54,
+    "q": "The focus of (y 2) = 12(x 5) is at ( , 2). q q 2",
+    "a": "8",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The focus of (y 2) = 12(x 5) is at ( , 2). q q 2",
+    "_rawA": "8"
+  },
+  {
+    "num": 57,
+    "q": "The roots of 6x 5x = 4 are P and . P = 2 1 q q 2",
+    "a": ", 1 4 1",
+    "t": "roots",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The roots of 6x 5x = 4 are P and . P = 2 1 q q 2",
+    "_rawA": ", 1 4 1"
+  },
+  {
+    "num": 67,
+    "q": "(0.41666...) = (improper fraction) q 3",
+    "a": "1728",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(0.41666...) = (improper fraction) q 3",
+    "_rawA": "1728"
+  },
+  {
+    "num": 72,
+    "q": "Let f(x) = x x 5. Find f (3). 3 q q w",
+    "a": "26",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x x 5. Find f (3). 3 q q w",
+    "_rawA": "26"
+  },
+  {
+    "num": 23,
+    "q": "The product of the roots of 2x 3x 4 = 0 is 2 q",
+    "a": "2",
+    "t": "roots",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The product of the roots of 2x 3x 4 = 0 is 2 q q",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 31,
+    "q": "If (3x 5)(3x 5) = ax bx c then b q bb 2",
+    "a": "16",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If (3x 5)(3x 5) = ax bx c then b q bb 2",
+    "_rawA": "16 q"
+  },
+  {
+    "num": 35,
+    "q": "The discriminant of x 4x 2 is 2 q b",
+    "a": "8",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The discriminant of x 4x 2 is 2 q b",
+    "_rawA": "8"
+  },
+  {
+    "num": 46,
+    "q": "Find x, x 0, if 3x 5 = 7.  q , ,",
+    "a": "-2",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "unusual_chars: ",
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, x 0, if 3x 5 = 7.  q ¸ ¸",
+    "_rawA": "q 2"
+  },
+  {
+    "num": 52,
+    "q": "The roots of 2 10x x 9x 3 = 0 are d, e, 3 2 q q b",
+    "a": "21",
+    "t": "roots",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The roots of 2 10x x 9x 3 = 0 are d, e, 3 2 q q b",
+    "_rawA": "21"
+  },
+  {
+    "num": 71,
+    "q": "Find x, 0 x 4, if 2x 4 6(mod 8). ≤≤ q≡",
+    "a": "1",
+    "t": "mod",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, 0 x 4, if 2x 4 6(mod 8). ŸŸ q´",
+    "_rawA": "1"
+  },
+  {
+    "num": 74,
+    "q": "Let f(x) = x 2x 3x 4. Find f (5). 3 2 q qb ww",
+    "a": "26",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x 2x 3x 4. Find f (5). 3 2 q qb ww",
+    "_rawA": "26"
+  },
+  {
+    "num": 2,
+    "q": "2019 1516 3 = -q",
+    "a": "500",
+    "t": "basic",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2019 1516 3 = q q",
+    "_rawA": "500"
+  },
+  {
+    "num": 31,
+    "q": "Let (2x 3)(4x 1) = ax bx c. b q bb 2",
+    "a": "15",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (2x 3)(4x 1) = ax bx c. b q bb 2",
+    "_rawA": "15"
+  },
+  {
+    "num": 32,
+    "q": "4 4 = -q 2 3 b",
+    "a": ".078125, 5",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "4 4 = q q 2 3 b",
+    "_rawA": ".078125, 5"
+  },
+  {
+    "num": 35,
+    "q": "Find k, if kx x 12 = 0 and the product of the 2 q",
+    "a": "6",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find k, if kx x 12 = 0 and the product of the 2 q q",
+    "_rawA": "6"
+  },
+  {
+    "num": 54,
+    "q": "The vertex of the parabola 6x 12 is (h, k) x2 q",
+    "a": "21",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of the parabola 6x 12 is (h, k) x2 q q",
+    "_rawA": "21 q"
+  },
+  {
+    "num": 59,
+    "q": "Let (a 5 ) Find a. q qq i 2 = 9 40 .i",
+    "a": "4",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (a 5 ) Find a. q qq i 2 = 9 40 .i",
+    "_rawA": "4"
+  },
+  {
+    "num": 71,
+    "q": "Let g(x) = x 9. Find g(g( 3)). 2 q",
+    "a": "-9",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let g(x) = x 9. Find g(g( 3)). 2 q q",
+    "_rawA": "q 9"
+  },
+  {
+    "num": 25,
+    "q": "If f(x) = x 16x 64 then f(25) = 2 q b",
+    "a": "289",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If f(x) = x 16x 64 then f(25) = 2 q b",
+    "_rawA": "289"
+  },
+  {
+    "num": 39,
+    "q": "The smallest root of (3x 1) = is q 2 1",
+    "a": "2",
+    "t": "roots",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of (3x 1) = is q 2 1",
+    "_rawA": "2"
+  },
+  {
+    "num": 41,
+    "q": "If 2.5 = 360, then 2.5 = x x ( q 1)",
+    "a": "144",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 2.5 = 360, then 2.5 = x x ( q 1)",
+    "_rawA": "144"
+  },
+  {
+    "num": 52,
+    "q": "The roots of x x 6x 1 = 0 are d, e, 3 2 q qb",
+    "a": "5",
+    "t": "roots",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The roots of x x 6x 1 = 0 are d, e, 3 2 q qb",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 74,
+    "q": "Let f(x) = (5x 7) . Find f ( 3). q q 2 w",
+    "a": "220",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = (5x 7) . Find f ( 3). q q 2 w",
+    "_rawA": "220 q"
+  },
+  {
+    "num": 4,
+    "q": "2019 301 413 = -q",
+    "a": "1,305",
+    "t": "basic",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2019 301 413 = q q",
+    "_rawA": "1,305"
+  },
+  {
+    "num": 31,
+    "q": "Let (18x 13)(18x 13) = ax bx c. q q bb 2",
+    "a": "25",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (18x 13)(18x 13) = ax bx c. q q bb 2",
+    "_rawA": "25"
+  },
+  {
+    "num": 34,
+    "q": "If 4x 13 = 2x and 0 x 6, then x = , , q ",
+    "a": ", 2 13 1",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "unusual_chars: ",
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 4x 13 = 2x and 0 x 6, then x = ¸ ¸ q ",
+    "_rawA": ", 2 13 1"
+  },
+  {
+    "num": 42,
+    "q": "If 7 = 70, then 7 = (x 1) (x 1) q b",
+    "a": "3,430",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 7 = 70, then 7 = (x 1) (x 1) q b",
+    "_rawA": "3,430"
+  },
+  {
+    "num": 45,
+    "q": "41 24 13 = 555 5 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "41 24 13 = 555 5 q q",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 47,
+    "q": "1, 1}. ( ) a b , where a,b { a b = i 19 = √ -q",
+    "a": "0",
+    "t": "roots",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1, 1}. ( ) a b , where a,b { a b = i 19 = È −q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 59,
+    "q": "Let (a 7 ) 24 70 . Find a. q i i 2 = -q",
+    "a": "5",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (a 7 ) 24 70 . Find a. q i i 2 = q q",
+    "_rawA": "5"
+  },
+  {
+    "num": 66,
+    "q": "cos(112 ) = sin A, 180 A 270 . A = ° ° ° °  ",
+    "a": "202",
+    "t": "geometry",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "unusual_chars: "
+    ],
+    "_rawQ": "cos(112 ) = sin A, 180 A 270 . A = ° ° ° °  ",
+    "_rawA": "202"
+  },
+  {
+    "num": 74,
+    "q": "Let f(x) = 5x 4x 3x 2. Find f ( 1). 3 2 q qb qww",
+    "a": "38",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 5x 4x 3x 2. Find f ( 1). 3 2 q qb qww",
+    "_rawA": "38 q"
+  },
+  {
+    "num": 25,
+    "q": "If A = 4, B = 3, and C = 2, then AB = -q C",
+    "a": "36",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If A = 4, B = 3, and C = 2, then AB = q q C",
+    "_rawA": "36 q"
+  },
+  {
+    "num": 31,
+    "q": "Let (27x 23) = ax bx c. q bb 2 2",
+    "a": "16",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (27x 23) = ax bx c. q bb 2 2",
+    "_rawA": "16"
+  },
+  {
+    "num": 32,
+    "q": "Let (17x 15)(17x 15) = ax bx c. q b bb 2",
+    "a": "64",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (17x 15)(17x 15) = ax bx c. q b bb 2",
+    "_rawA": "64"
+  },
+  {
+    "num": 41,
+    "q": "If 7 = 50, then 7 = ( ( x x q 1) 1) b",
+    "a": "2,450",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 7 = 50, then 7 = ( ( x x q 1) 1) b",
+    "_rawA": "2,450"
+  },
+  {
+    "num": 47,
+    "q": "1,1}. ( ) a b , where a,b { Find b. i = 53 √ -q ba",
+    "a": "0",
+    "t": "roots",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1,1}. ( ) a b , where a,b { Find b. i = 53 È −q ba",
+    "_rawA": "0"
+  },
+  {
+    "num": 54,
+    "q": "The vertex of the parabola 8x 15 is (h, k) x2 q b",
+    "a": "3",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of the parabola 8x 15 is (h, k) x2 q b",
+    "_rawA": "3"
+  },
+  {
+    "num": 71,
+    "q": "Let f(x) = 3x 5x 2. Find f f( 1) . 2 qq q( )",
+    "a": "26",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 3x 5x 2. Find f f( 1) . 2 qq q( )",
+    "_rawA": "26"
+  },
+  {
+    "num": 74,
+    "q": "The remainder of (3x 5x 2) (x 4) is 2 q - ÷ -",
+    "a": "26",
+    "t": "mod",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The remainder of (3x 5x 2) (x 4) is 2 q qƒq",
+    "_rawA": "26"
+  },
+  {
+    "num": 34,
+    "q": "The sum of the coefficients of (4x 2y) is q 3",
+    "a": "8",
+    "t": "advanced",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the coefficients of (4x 2y) is q 3",
+    "_rawA": "8"
+  },
+  {
+    "num": 59,
+    "q": "The vertex of y = 3x 2x 1 is at x = 2 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 3x 2x 1 is at x = 2 q q",
+    "_rawA": "1"
+  },
+  {
+    "num": 75,
+    "q": "(0.1875) = (improper fraction) q 3",
+    "a": "4096",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(0.1875) = (improper fraction) q 3",
+    "_rawA": "4096"
+  },
+  {
+    "num": 56,
+    "q": "2024 106 203 = 888 8 q",
+    "a": "1513",
+    "t": "advanced",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2024 106 203 = 888 8 q q",
+    "_rawA": "1513"
+  },
+  {
+    "num": 32,
+    "q": "5B6 = 3 15 B) . Find B, B 0. ∪( ∪ q ≤",
+    "a": "7",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "5B6 = 3 15 B) . Find B, B 0. ˆ ‘ q ",
+    "_rawA": "7"
+  },
+  {
+    "num": 69,
+    "q": "Find g(f( )) when f(x) = 2x 3 and q q 1",
+    "a": "13",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find g(f( )) when f(x) = 2x 3 and q q 1",
+    "_rawA": "13 q"
+  },
+  {
+    "num": 72,
+    "q": "Let g(x) = 2x 2. Find g ( 2). 2 x qq q 2",
+    "a": "8.5, ,--17",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let g(x) = 2x 2. Find g ( 2). 2 x qq q 2",
+    "_rawA": "8.5, , q q 17"
+  },
+  {
+    "num": 74,
+    "q": "h(x) = x 3x 2 has a local minimum q- + 3 2",
+    "a": "4",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "h(x) = x 3x 2 has a local minimum qq  3 2",
+    "_rawA": "4 q"
+  },
+  {
+    "num": 75,
+    "q": "Let (x, y) be the focus of y 2 = 3(x 5) . y = -q 2",
+    "a": ", 2 25 1",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (x, y) be the focus of y 2 = 3(x 5) . y = q q 2",
+    "_rawA": ", 2 25 1"
+  },
+  {
+    "num": 21,
+    "q": "The additive inverse of (6) is q 1",
+    "a": "-1",
+    "t": "advanced",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The additive inverse of (6) is q 1",
+    "_rawA": "q 1"
+  },
+  {
+    "num": 61,
+    "q": "Arccos = k rads, 0 k 1, and k = ( ) q ≥≥ 1",
+    "a": "2",
+    "t": "trig",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Arccos = k rads, 0 k 1, and k = ˆ ‰ q  1",
+    "_rawA": "2"
+  },
+  {
+    "num": 26,
+    "q": "{t,r,i} {q,u,a,d} {b,i} {p,e,n,t} contains ∪ ∪∪ ∪ ∪ ∩∪",
+    "a": "2",
+    "t": "advanced",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "{t,r,i} {q,u,a,d} {b,i} {p,e,n,t} contains  ‘ ‘  ",
+    "_rawA": "2"
+  },
+  {
+    "num": 67,
+    "q": "If h(x) = x 3 and g(x) = x 1, 2 q",
+    "a": "2",
+    "t": "advanced",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If h(x) = x 3 and g(x) = x 1, 2 q q",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 56,
+    "q": "The point ( , ) is reflected across the line q q 2 9",
+    "a": "7",
+    "t": "advanced",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The point ( , ) is reflected across the line q q 2 9",
+    "_rawA": "7 q"
+  },
+  {
+    "num": 62,
+    "q": "Arccsc 2 = ( ) q k rads and k = 1",
+    "a": "-1",
+    "t": "trig",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Arccsc 2 = ˆ ‰ q k rads and k = 1",
+    "_rawA": "q 1"
+  },
+  {
+    "num": 68,
+    "q": "If 16 18 20 22x = 2, then x = √ q q ³√ √",
+    "a": "2",
+    "t": "roots",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 16 18 20 22x = 2, then x = Ê q q É È",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 38,
+    "q": "The smaller root of (4x 1) = 9 is q 2",
+    "a": ".5,--1",
+    "t": "roots",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smaller root of (4x 1) = 9 is q 2",
+    "_rawA": ".5, q q 1"
+  },
+  {
+    "num": 44,
+    "q": "Which is larger, or ? q q 11 10",
+    "a": "-10",
+    "t": "compare",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Which is larger, or ? q q 11 10",
+    "_rawA": "q 10"
+  },
+  {
+    "num": 45,
+    "q": "The point ( 6) is reflected across the line q q 2,",
+    "a": "12",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The point ( 6) is reflected across the line q q 2,",
+    "_rawA": "12 q"
+  },
+  {
+    "num": 46,
+    "q": "2 6 8 14 22 36 p q r +++ + + ++++ 246 =",
+    "a": "638",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2 6 8 14 22 36 p q r     246 =",
+    "_rawA": "638"
+  },
+  {
+    "num": 71,
+    "q": "(x 12x 42) (x 3) has remainder 3 2 q - ÷ -",
+    "a": "123",
+    "t": "mod",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(x 12x 42) (x 3) has remainder 3 2 q q ƒq",
+    "_rawA": "123 q"
+  },
+  {
+    "num": 6,
+    "q": "= 1",
+    "a": ", 708 2126 2",
+    "t": "fracdec",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 q",
+    "_rawA": ", 708 2126 2"
+  },
+  {
+    "num": 78,
+    "q": "Let 42B 2B6 = 13 . Find digit B. q 2",
+    "a": "5",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let 42B 2B6 = 13 . Find digit B. q 2",
+    "_rawA": "5"
+  },
+  {
+    "num": 33,
+    "q": "The reciprocal of 6 is (decimal) q 2",
+    "a": ".15",
+    "t": "fracdec",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The reciprocal of 6 is (decimal) q 2",
+    "_rawA": ".15 q"
+  },
+  {
+    "num": 77,
+    "q": "Given: 5, 1, 4, 3, 7, 10, 17, k, 44, ... . k = -q",
+    "a": "27",
+    "t": "advanced",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Given: 5, 1, 4, 3, 7, 10, 17, k, 44, ... . k = q q",
+    "_rawA": "27 q"
+  },
+  {
+    "num": 73,
+    "q": "The directrix of x 2x 4y = 7 is y = 2 q",
+    "a": "3",
+    "t": "advanced",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The directrix of x 2x 4y = 7 is y = 2 q q",
+    "_rawA": "3 q"
+  },
+  {
+    "num": 78,
+    "q": "Given: 1, 2, 3, 4, 6, 5, k, 2, 9... . Find k. q",
+    "a": "4",
+    "t": "advanced",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Given: 1, 2, 3, 4, 6, 5, k, 2, 9... . Find k. q q",
+    "_rawA": "4"
+  },
+  {
+    "num": 25,
+    "q": "The sum of the roots 2x 4x 3 is 2 q",
+    "a": "2",
+    "t": "roots",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the roots 2x 4x 3 is 2 q q",
+    "_rawA": "2"
+  },
+  {
+    "num": 29,
+    "q": "Given the set {1,3 p = ,6,10,15,p,28,36,q...}. q",
+    "a": "24",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Given the set {1,3 p = ,6,10,15,p,28,36,q...}. q q",
+    "_rawA": "24"
+  },
+  {
+    "num": 51,
+    "q": "The vertex of the parabola, y = 2x 4x 5 is at 2 q",
+    "a": "6",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of the parabola, y = 2x 4x 5 is at 2 q q",
+    "_rawA": "6 q"
+  },
+  {
+    "num": 69,
+    "q": "Let f(x) = 4x 1. Find f(f( 1)). 2 q",
+    "a": "35",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 4x 1. Find f(f( 1)). 2 q q",
+    "_rawA": "35"
+  },
+  {
+    "num": 1,
+    "q": "2018 201 20 = -q",
+    "a": "1,797",
+    "t": "basic",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2018 201 20 = q q",
+    "_rawA": "1,797"
+  },
+  {
+    "num": 35,
+    "q": "The smallest root of (x 1) = is q 2 1",
+    "a": ".5, 1",
+    "t": "roots",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of (x 1) = is q 2 1",
+    "_rawA": ".5, 1"
+  },
+  {
+    "num": 39,
+    "q": "( 256 484 ) = √ √q 3",
+    "a": "216",
+    "t": "roots",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "( 256 484 ) = È Èq 3",
+    "_rawA": "216 q"
+  },
+  {
+    "num": 71,
+    "q": "Find x, 4 x 8, if 3x 4 5(mod 9). x = ≤≤ q≡",
+    "a": "6",
+    "t": "mod",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, 4 x 8, if 3x 4 5(mod 9). x = ŸŸ q´",
+    "_rawA": "6"
+  },
+  {
+    "num": 25,
+    "q": "4 4 = -q 1 2",
+    "a": ".1875, 3",
+    "t": "advanced",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "4 4 = q q 1 2 q",
+    "_rawA": ".1875, 3"
+  },
+  {
+    "num": 34,
+    "q": "If x 3y = 5 and x 2y = 4 then y = -q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If x 3y = 5 and x 2y = 4 then y = q q",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 45,
+    "q": "Let (ab) (a b ) (a b ) = a b . mn = ÷ × - q 22 3 3 mn",
+    "a": "24",
+    "t": "mult",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (ab) (a b ) (a b ) = a b . mn = ƒ ‚ q q 22 3 3 mn",
+    "_rawA": "24 q"
+  },
+  {
+    "num": 49,
+    "q": "The largest root of (x 2) = is q 2 1",
+    "a": "2.25, 2 9 1",
+    "t": "roots",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The largest root of (x 2) = is q 2 1",
+    "_rawA": "2.25, 2 9 1"
+  },
+  {
+    "num": 44,
+    "q": "5 = (decimal) ( q 3)",
+    "a": ".008",
+    "t": "fracdec",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "5 = (decimal) ( q 3)",
+    "_rawA": ".008"
+  },
+  {
+    "num": 45,
+    "q": "The vertex of y = 4x 5x 3 is (h, k). h = 2 q",
+    "a": ".625, 5",
+    "t": "advanced",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 4x 5x 3 is (h, k). h = 2 q q",
+    "_rawA": ".625, 5"
+  },
+  {
+    "num": 73,
+    "q": "Let f(x) = x 3x 2x 1. Find f (1). 3 2 q - + w",
+    "a": "5",
+    "t": "advanced",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x 3x 2x 1. Find f (1). 3 2 q q w",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 47,
+    "q": "If x 0 and 2x 1 = 15, then x = ≥ q | |",
+    "a": "7",
+    "t": "advanced",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If x 0 and 2x 1 = 15, then x =  q ¹ ¹",
+    "_rawA": "7 q"
+  },
+  {
+    "num": 68,
+    "q": "The middle term in the expansion of (2x 1) is q 4",
+    "a": "28",
+    "t": "sequence",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The middle term in the expansion of (2x 1) is q 4",
+    "_rawA": "28"
+  },
+  {
+    "num": 77,
+    "q": "Let f(x) = 1 x . Find f[f( 2) f(2)]. q qq 2",
+    "a": "1",
+    "t": "advanced",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 1 x . Find f[f( 2) f(2)]. q qq 2",
+    "_rawA": "1"
+  },
+  {
+    "num": 12,
+    "q": "MCXI DL q V = (Arabic Numeral)",
+    "a": "556",
+    "t": "roman",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "MCXI DL q V = (Arabic Numeral)",
+    "_rawA": "556"
+  },
+  {
+    "num": 24,
+    "q": "The discriminant of x 4x 12 = 0 is 2 q",
+    "a": "64",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The discriminant of x 4x 12 = 0 is 2 q q",
+    "_rawA": "64"
+  },
+  {
+    "num": 26,
+    "q": "The smallest root of x 4x 12 = 0 is 2 q",
+    "a": "2",
+    "t": "roots",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of x 4x 12 = 0 is 2 q q",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 44,
+    "q": "Let y = 3 x and x = y 3. Find x. q",
+    "a": "0",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let y = 3 x and x = y 3. Find x. q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 65,
+    "q": "sec(cos ( )) = 1 q q 1",
+    "a": "2",
+    "t": "trig",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "sec(cos ( )) = 1 q q 1",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 68,
+    "q": "(6 b ) = 11 60 and b = -q i i 2",
+    "a": "5",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(6 b ) = 11 60 and b = q q i i 2",
+    "_rawA": "5"
+  },
+  {
+    "num": 73,
+    "q": "The smallest value in the domain of y = 4 x , √ q 2",
+    "a": "2",
+    "t": "roots",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest value in the domain of y = 4 x , È q 2",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 43,
+    "q": "T x 3x 3x 2 = 0 are R and he roots of 2 3 2 q - + 1",
+    "a": "2.5, , 2 5 1",
+    "t": "roots",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "T x 3x 3x 2 = 0 are R and he roots of 2 3 2 q q 1",
+    "_rawA": "2.5, , 2 5 1"
+  },
+  {
+    "num": 64,
+    "q": "If 3 p's = 4 q's and 2 q's = 5 r's, then 1 p = r's",
+    "a": ", 3 10 1",
+    "t": "advanced",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 3 p's = 4 q's and 2 q's = 5 r's, then 1 p = r's",
+    "_rawA": ", 3 10 1"
+  },
+  {
+    "num": 8,
+    "q": "Which is larger, or .59 = -q 3",
+    "a": ".59,--59",
+    "t": "compare",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Which is larger, or .59 = q q 3",
+    "_rawA": ".59, q q 59"
+  },
+  {
+    "num": 34,
+    "q": "The larger root of (x 1) = is q 2 4",
+    "a": ", 1 5 2",
+    "t": "roots",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The larger root of (x 1) = is q 2 4",
+    "_rawA": ", 1 5 2"
+  },
+  {
+    "num": 46,
+    "q": "5 = (decimal) ( q 2)",
+    "a": ".04",
+    "t": "fracdec",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "5 = (decimal) ( q 2)",
+    "_rawA": ".04"
+  },
+  {
+    "num": 51,
+    "q": "The vertex of y = 3x 2x 5 is (h, k). h = 2 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 3x 2x 5 is (h, k). h = 2 q q",
+    "_rawA": "1"
+  },
+  {
+    "num": 54,
+    "q": "Let 5x 7 12. The largest integer x is q ≥",
+    "a": "3",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let 5x 7 12. The largest integer x is q ",
+    "_rawA": "3"
+  },
+  {
+    "num": 64,
+    "q": "Let = a b a b 2 3 q i",
+    "a": "5",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let = a b a b 2 3 q i",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 77,
+    "q": "Find x, 1 x 6, if 2x 1 4(mod 7). ≤≤ q≡",
+    "a": "6",
+    "t": "mod",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, 1 x 6, if 2x 1 4(mod 7). ŸŸ q´",
+    "_rawA": "6"
+  },
+  {
+    "num": 37,
+    "q": "If a = 3, 9a 6ab b = 36, and b 6, then 2 2 + + ≤q",
+    "a": ", 118 1064 2",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If a = 3, 9a 6ab b = 36, and b 6, then 2 2   q",
+    "_rawA": ", 118 1064 2"
+  },
+  {
+    "num": 38,
+    "q": "The largest root of (x 2) = is q 2 4",
+    "a": ".375, 3",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The largest root of (x 2) = is q 2 4",
+    "_rawA": ".375, 3"
+  },
+  {
+    "num": 78,
+    "q": "If f(x) = 2x 3x 2x 3, then f ( 1) = 3 2 + -q qww",
+    "a": "145",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If f(x) = 2x 3x 2x 3, then f ( 1) = 3 2  qq qww",
+    "_rawA": "145"
+  },
+  {
+    "num": 38,
+    "q": "The smallest root of (2x 1) = is q 2 1",
+    "a": ".375, 3",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of (2x 1) = is q 2 1",
+    "_rawA": ".375, 3"
+  },
+  {
+    "num": 72,
+    "q": "f (x) = 4, f(1) = 5, find f( 3). w q",
+    "a": "21",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "f (x) = 4, f(1) = 5, find f( 3). w q q",
+    "_rawA": "21"
+  },
+  {
+    "num": 49,
+    "q": "1, 1}. ( ) a b , where a,b { Find . i = 17 √ - q a",
+    "a": "7,957",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1, 1}. ( ) a b , where a,b { Find . i = 17 È − q a",
+    "_rawA": "7,957 q"
+  },
+  {
+    "num": 65,
+    "q": "The shortest distance between ( 2, 2) and q",
+    "a": "2.5, , 2 5 1",
+    "t": "trig",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The shortest distance between ( 2, 2) and q q",
+    "_rawA": "2.5, , 2 5 1"
+  },
+  {
+    "num": 73,
+    "q": "Let f (x) = 14x 5 and f( 1) = 9. Find f(0). w q",
+    "a": "2,025",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f (x) = 14x 5 and f( 1) = 9. Find f(0). w q q",
+    "_rawA": "2,025"
+  }
+]
