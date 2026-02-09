@@ -197,6 +197,60 @@ input.ans-box:focus { border-color: #667eea; }
 .history-table td { color:#a0aec0; padding:10px; border-bottom:1px solid #2d3748; font-size:0.9rem; }
 .history-table tr:last-child td { border-bottom:none; }
 .history-table tr:hover { background:#2d3748; }
+
+/* ── PROGRESS INSIGHTS ── */
+.insight-section { margin-bottom: 20px; }
+.insight-card { background: linear-gradient(135deg, #1c2640 0%, #1a2332 100%); border: 2px solid #2d3748; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; transition: border-color .2s; }
+.insight-card .insight-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
+.insight-card .insight-body { flex: 1; }
+.insight-card .insight-msg { font-weight: 600; font-size: 0.92rem; color: #e2e8f0; line-height: 1.4; }
+.insight-card .insight-detail { font-size: 0.78rem; color: #a0aec0; margin-top: 3px; line-height: 1.4; }
+.insight-positive { border-color: #48bb78; }
+.insight-positive .insight-msg { color: #68d391; }
+.insight-milestone { border-color: #ecc94b; }
+.insight-milestone .insight-msg { color: #ecc94b; }
+.insight-tip { border-color: #667eea; }
+.insight-tip .insight-msg { color: #90cdf4; }
+
+/* Trend arrows */
+.trend-arrow { font-weight: 700; font-size: 0.85rem; margin-left: 6px; }
+.trend-arrow.up { color: #48bb78; }
+.trend-arrow.down { color: #f56565; }
+
+/* Weekly trend chart */
+.weekly-trend { background: #1a1f2e; border: 2px solid #2d3748; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.weekly-trend h3 { color: #e2e8f0; font-size: 1rem; margin-bottom: 12px; }
+.wt-bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+.wt-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.wt-fill { width: 100%; border-radius: 4px 4px 0 0; transition: height .3s; min-height: 3px; }
+.wt-pct { font-size: 0.65rem; color: #a0aec0; margin-bottom: 3px; font-weight: 600; }
+.wt-label { font-size: 0.6rem; color: #718096; margin-top: 4px; white-space: nowrap; }
+
+/* ── SOLUTION WALKTHROUGH ── */
+.solution-box-inline { background: #151b28; border: 2px solid #2d3748; border-left: 4px solid #667eea; border-radius: 10px; padding: 16px; margin-top: 10px; margin-bottom: 10px; }
+.solution-trick-name { color: #667eea; font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+.solution-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.84rem; line-height: 1.5; }
+.solution-step:last-child { margin-bottom: 0; }
+.solution-step .step-num { flex-shrink: 0; width: 24px; height: 24px; background: #667eea; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
+.solution-step .step-text { color: #a0aec0; flex: 1; }
+.solution-step .step-text strong { color: #e2e8f0; }
+.solution-highlight { color: #ecc94b; font-weight: 700; }
+.solution-answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid #2d3748; }
+.solution-answer .answer-label { color: #718096; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.solution-answer .answer-val { color: #48bb78; font-weight: 700; font-size: 1.3rem; }
+.show-solution-btn { display: inline-block; background: #2d3748; border: 1px solid #4a5568; border-radius: 6px; color: #667eea; cursor: pointer; font-size: 0.78rem; font-weight: 600; padding: 6px 14px; margin-top: 8px; transition: all .15s; }
+.show-solution-btn:hover { border-color: #667eea; background: #363e52; }
+.solution-collapsed { display: none; }
+.solution-expanded { display: block; }
+
+/* Feedback bar extensions for solution walkthrough */
+.feedback-area { margin-bottom: 10px; }
+.feedback-area .feedback-bar { margin-bottom: 0; border-radius: 6px 6px 0 0; }
+.feedback-area .feedback-bar.empty + .solution-box-inline { display: none; }
+.feedback-area.has-solution .feedback-bar { border-radius: 6px 6px 0 0; }
+.feedback-area.no-solution .feedback-bar { border-radius: 6px; }
+.next-delay-overlay { pointer-events: none; opacity: 0.5; }
+.next-delay-active { pointer-events: auto; opacity: 1; transition: opacity .3s; }
 </style>
 </head>
 <body>
@@ -287,8 +341,9 @@ function getStats(){
   
   // Recent performance (last 10 sessions)
   let recent = stats.sessions.slice(-10);
-  let recentAccuracy = recent.length > 0 ? 
-    Math.round(recent.reduce((sum, s) => sum + s.score, 0) / recent.reduce((sum, s) => sum + s.total, 0) * 100) : 0;
+  let recentTotal = recent.reduce((sum, s) => sum + s.total, 0);
+  let recentAccuracy = recent.length > 0 && recentTotal > 0 ? 
+    Math.round(recent.reduce((sum, s) => sum + s.score, 0) / recentTotal * 100) : 0;
   
   // Personal bests
   let bestScore = stats.sessions.reduce((best, s) => {
@@ -349,6 +404,114 @@ function getStats(){
     recentSessions: stats.sessions.slice(-20).reverse(),
     firstUse: stats.firstUse
   };
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// PROGRESS INSIGHTS – Motivational messages from session data
+// ═══════════════════════════════════════════════════════════════════════════
+function getProgressInsights(){
+  let stats = loadStats();
+  let insights = [];
+  let sessions = stats.sessions;
+  if(sessions.length === 0) return insights;
+
+  let now = Date.now();
+  let DAY = 86400000;
+  let WEEK = 7 * DAY;
+
+  // ── Milestone messages ──
+  let totalProblems = sessions.reduce((s,x) => s + x.total, 0);
+  let milestones = [50, 100, 250, 500, 1000, 2500, 5000];
+  for(let m of milestones){
+    if(totalProblems >= m && totalProblems < m * 1.15){
+      insights.push({type:'milestone', icon:'🏅', message:`You've solved ${m}+ problems!`, detail:'Keep pushing — every problem makes you faster.'});
+      break;
+    }
+  }
+
+  let sessionMilestones = [5, 10, 25, 50, 100];
+  for(let m of sessionMilestones){
+    if(sessions.length >= m && sessions.length < m + 3){
+      insights.push({type:'milestone', icon:'🎯', message:`${m} practice sessions completed!`, detail:'Consistency is the key to UIL success.'});
+      break;
+    }
+  }
+
+  // Sessions this week
+  let thisWeekSessions = sessions.filter(s => now - new Date(s.date).getTime() < WEEK);
+  if(thisWeekSessions.length >= 5){
+    insights.push({type:'milestone', icon:'🔥', message:`${thisWeekSessions.length} sessions this week!`, detail:'You\'re on fire — keep this momentum going.'});
+  }
+
+  // ── Week-over-week comparison (timed20) ──
+  let timed20 = sessions.filter(s => s.mode === 'timed20' && s.total === 20);
+  let thisWeekT20 = timed20.filter(s => now - new Date(s.date).getTime() < WEEK);
+  let lastWeekT20 = timed20.filter(s => {
+    let age = now - new Date(s.date).getTime();
+    return age >= WEEK && age < 2 * WEEK;
+  });
+  if(thisWeekT20.length >= 2 && lastWeekT20.length >= 2){
+    let thisAvg = Math.round(thisWeekT20.reduce((s,x) => s + x.score, 0) / thisWeekT20.length);
+    let lastAvg = Math.round(lastWeekT20.reduce((s,x) => s + x.score, 0) / lastWeekT20.length);
+    if(thisAvg > lastAvg){
+      insights.push({type:'improvement', icon:'📈', message:`Timed Round: ${lastAvg}/20 → ${thisAvg}/20 this week!`, detail:`+${thisAvg - lastAvg} improvement over last week.`});
+    } else if(thisAvg < lastAvg){
+      insights.push({type:'tip', icon:'💪', message:`Timed Round dipped from ${lastAvg}/20 to ${thisAvg}/20.`, detail:'That\'s normal — focus on accuracy over speed.'});
+    }
+  }
+
+  // ── First 5 vs last 5 sessions comparison ──
+  if(sessions.length >= 10){
+    let first5 = sessions.slice(0, 5);
+    let last5 = sessions.slice(-5);
+    let firstTotal = first5.reduce((s,x) => s + x.total, 0);
+    let lastTotal = last5.reduce((s,x) => s + x.total, 0);
+    if(firstTotal === 0 || lastTotal === 0) return insights;
+    let firstAcc = Math.round(first5.reduce((s,x) => s + x.score, 0) / firstTotal * 100);
+    let lastAcc = Math.round(last5.reduce((s,x) => s + x.score, 0) / lastTotal * 100);
+    if(lastAcc > firstAcc + 3){
+      insights.push({type:'improvement', icon:'🚀', message:`Overall accuracy: ${firstAcc}% → ${lastAcc}%!`, detail:'Your first sessions vs your recent ones — real growth!'});
+    }
+  }
+
+  // ── Topic improvement ──
+  let topicEntries = Object.entries(stats.topicStats).filter(([t,d]) => d.total >= 10);
+  // We need per-session topic data to compare first vs recent
+  // Use cumulative stats + recent sessions for a rough estimate
+  for(let [topic, data] of topicEntries){
+    let acc = data.total > 0 ? Math.round(data.correct / data.total * 100) : 0;
+    if(acc >= 90 && data.total >= 20){
+      let name = (typeof TOPICS !== 'undefined' && TOPICS[topic]) ? TOPICS[topic].name : topic;
+      insights.push({type:'improvement', icon:'⭐', message:`${name}: ${acc}% accuracy!`, detail:`Mastery level on ${data.total} problems.`});
+    }
+  }
+
+  // ── Personal best detection ──
+  if(timed20.length >= 2){
+    let latest = timed20[timed20.length - 1];
+    let prevBest = Math.max(...timed20.slice(0, -1).map(s => s.score));
+    if(latest.score > prevBest){
+      insights.push({type:'improvement', icon:'🏆', message:`New personal best: ${latest.score}/20!`, detail:`Previous best was ${prevBest}/20 — you crushed it!`});
+    }
+  }
+
+  // ── Speed improvement ──
+  let timedSessions = sessions.filter(s => s.secondsPerProblem !== null && s.secondsPerProblem > 0);
+  if(timedSessions.length >= 10){
+    let first5spd = timedSessions.slice(0, 5).reduce((s,x) => s + x.secondsPerProblem, 0) / 5;
+    let last5spd = timedSessions.slice(-5).reduce((s,x) => s + x.secondsPerProblem, 0) / 5;
+    if(first5spd - last5spd >= 1){
+      insights.push({type:'improvement', icon:'⚡', message:`Speed up: ${first5spd.toFixed(1)}s → ${last5spd.toFixed(1)}s per problem!`, detail:'Getting faster with practice.'});
+    }
+  }
+
+  // ── Encouraging tip if no major improvement ──
+  if(insights.length === 0 && sessions.length >= 3){
+    insights.push({type:'tip', icon:'💡', message:'Keep practicing — improvement comes with consistency!', detail:`You've done ${sessions.length} sessions. Stay at it!`});
+  }
+
+  // Limit to 5 most relevant
+  return insights.slice(0, 5);
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1534,7 +1697,10 @@ let state = {
   startTime:0,          // Track when test started for speed stats
   streak:0,
   drillCount:0,
-  importedProblems:[]   // Real UIL problems imported from JSON
+  importedProblems:[],  // Real UIL problems imported from JSON
+  solutionHTML:'',      // Current solution walkthrough HTML
+  solutionVisible:false,// Whether solution is auto-expanded
+  nextDelayed:false     // Delay before next problem (so student reads solution)
 };
 function setState(p){Object.assign(state,p);render();}
 
@@ -1648,13 +1814,25 @@ function submitAnswer(){
     }
     let fbText=correct?'✓ Correct!':'✗ Wrong — answer: '+cur.a;
     if(!correct && cur.hint) fbText+=' | 💡 '+cur.hint;
+    // Generate solution walkthrough
+    let solHTML = renderSolution(cur.q, cur.a, cur.t || null);
+    let showSol = !correct; // Auto-show on wrong, hidden on correct
     setState({
       problems:newProbs, idx:newIdx, answer:'', answered:newAnswered,
       score:newScore, streak:newStreak, drillCount:newDrill,
       feedback:correct?'correct':'wrong',
-      feedbackText:fbText
+      feedbackText:fbText,
+      solutionHTML:solHTML,
+      solutionVisible:showSol,
+      nextDelayed:!correct
     });
-    setTimeout(focusInput,60);
+    // If wrong, delay focus so student reads the solution
+    if(!correct){
+      setTimeout(function(){ state.nextDelayed=false; render(); },2000);
+      setTimeout(focusInput,2100);
+    } else {
+      setTimeout(focusInput,60);
+    }
     return;
   }
 
@@ -1680,12 +1858,17 @@ function skipProblem(){
       let key=state.mode==='topic'?state.topicKey:null;
       newProbs.push(...buildBasicPool(30,key).map((p,i)=>({...p,num:newProbs.length+i+1})));
     }
+    let skipSolHTML = renderSolution(cur.q, cur.a, cur.t || null);
     setState({
       problems:newProbs, idx:newIdx, answer:'', answered:newAnswered,
       streak:0, drillCount:newDrill,
-      feedback:'wrong', feedbackText:'⏭ Skipped — answer: '+cur.a
+      feedback:'wrong', feedbackText:'⏭ Skipped — answer: '+cur.a,
+      solutionHTML:skipSolHTML,
+      solutionVisible:true,
+      nextDelayed:true
     });
-    setTimeout(focusInput,60);
+    setTimeout(function(){ state.nextDelayed=false; render(); },2000);
+    setTimeout(focusInput,2100);
     return;
   }
 
@@ -1714,7 +1897,7 @@ function endTest(){
   
   setState({screen:'results'});
 }
-function goMenu(){stopTimer();setState({screen:'menu',problems:[],idx:0,answer:'',score:0,timeLeft:0,answered:[],feedback:'',feedbackText:'',streak:0,drillCount:0});}
+function goMenu(){stopTimer();setState({screen:'menu',problems:[],idx:0,answer:'',score:0,timeLeft:0,answered:[],feedback:'',feedbackText:'',streak:0,drillCount:0,solutionHTML:'',solutionVisible:false,nextDelayed:false});}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // SOLUTION HINTS (detailed walkthroughs for learning)
@@ -1944,6 +2127,278 @@ function getSquaringStrategy(q, ans){
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// STRUCTURED SOLUTION WALKTHROUGH
+// ═══════════════════════════════════════════════════════════════════════════
+function getStructuredSolution(q, ans, topic){
+  var steps = [];
+  var trickName = '';
+  var ansStr = String(ans);
+
+  if(!topic){
+    return {trickName:'General Approach', steps:[{label:'Solve', text:'Break the problem into smaller steps and work through carefully.'}], answer:ansStr};
+  }
+
+  // ARITHMETIC
+  if(topic==='add'||topic==='sub'||topic==='mul'||topic==='div'||topic==='ops'){
+    var nums = q.match(/-?[\d.]+/g);
+    var a = nums && nums.length >= 1 ? parseFloat(nums[0]) : 0;
+    var b = nums && nums.length >= 2 ? parseFloat(nums[1]) : 0;
+
+    if(topic==='add'){
+      trickName = 'Addition Strategy';
+      steps.push({label:'Identify', text:'Addition problem: <strong>'+a+'</strong> + <strong>'+b+'</strong>'});
+      if(b >= 90 && b <= 99){
+        steps.push({label:'Trick', text:'Add to nearest 100, then subtract: '+a+' + 100 = <span class="solution-highlight">'+(a+100)+'</span>, then subtract '+(100-b)});
+        steps.push({label:'Calculate', text:(a+100)+' \u2212 '+(100-b)+' = <span class="solution-highlight">'+ansStr+'</span>'});
+      } else {
+        var tens = Math.floor(b/10)*10;
+        var ones = b%10;
+        if(tens > 0 && ones > 0){
+          steps.push({label:'Break apart', text:'Split: '+a+' + '+tens+' + '+ones});
+          steps.push({label:'Calculate', text:a+' + '+tens+' = <span class="solution-highlight">'+(a+tens)+'</span>, then + '+ones+' = <span class="solution-highlight">'+ansStr+'</span>'});
+        } else {
+          steps.push({label:'Calculate', text:'Add directly: '+a+' + '+b+' = <span class="solution-highlight">'+ansStr+'</span>'});
+        }
+      }
+    } else if(topic==='sub'){
+      trickName = 'Subtraction Strategy';
+      steps.push({label:'Identify', text:'Subtraction: <strong>'+a+'</strong> \u2212 <strong>'+b+'</strong>'});
+      if(b >= 90 && b <= 99){
+        steps.push({label:'Trick', text:'Subtract 100, add back: '+a+' \u2212 100 + '+(100-b)});
+        steps.push({label:'Calculate', text:(a-100)+' + '+(100-b)+' = <span class="solution-highlight">'+ansStr+'</span>'});
+      } else {
+        steps.push({label:'Calculate', text:'Subtract step by step: '+a+' \u2212 '+b+' = <span class="solution-highlight">'+ansStr+'</span>'});
+      }
+    } else if(topic==='mul'){
+      trickName = 'Multiplication Strategy';
+      steps.push({label:'Identify', text:'Multiply: <strong>'+a+'</strong> \u00d7 <strong>'+b+'</strong>'});
+      if(b === 11 || a === 11){
+        var other = b === 11 ? a : b;
+        trickName = '\u00d711 Trick';
+        steps.push({label:'Trick', text:'For \u00d711: add the digits of '+other+' and insert between them'});
+        steps.push({label:'Calculate', text:'Result = <span class="solution-highlight">'+ansStr+'</span> (carry if digit sum \u2265 10)'});
+      } else if(b === 25 || a === 25){
+        var other2 = b === 25 ? a : b;
+        trickName = '\u00d725 Shortcut';
+        steps.push({label:'Trick', text:'\u00d725 = \u00f74 \u00d7 100. So '+other2+' \u00f7 4 = '+(other2/4)});
+        steps.push({label:'Calculate', text:(other2/4)+' \u00d7 100 = <span class="solution-highlight">'+ansStr+'</span>'});
+      } else if(a >= 90 && b >= 90 && a <= 110 && b <= 110){
+        trickName = 'Near 100 Method';
+        var da = 100 - a;
+        var db = 100 - b;
+        steps.push({label:'Trick', text:'Both near 100: deficits are '+ Math.abs(da) +' and '+ Math.abs(db)});
+        steps.push({label:'Calculate', text:'First digits: '+a+' \u2212 '+Math.abs(db)+' = '+(a - Math.abs(db))+', last two: '+Math.abs(da)+'\u00d7'+Math.abs(db)+'='+(Math.abs(da)*Math.abs(db))});
+        steps.push({label:'Result', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+      } else {
+        var tens2 = Math.floor(b/10)*10;
+        var ones2 = b%10;
+        if(tens2 > 0 && ones2 > 0){
+          trickName = 'Distributive Property';
+          steps.push({label:'Split', text:a+' \u00d7 ('+tens2+' + '+ones2+')'});
+          steps.push({label:'Calculate', text:a+'\u00d7'+tens2+' = '+(a*tens2)+', '+a+'\u00d7'+ones2+' = '+(a*ones2)});
+          steps.push({label:'Add', text:(a*tens2)+' + '+(a*ones2)+' = <span class="solution-highlight">'+ansStr+'</span>'});
+        } else {
+          steps.push({label:'Calculate', text:a+' \u00d7 '+b+' = <span class="solution-highlight">'+ansStr+'</span>'});
+        }
+      }
+    } else if(topic==='div'){
+      trickName = 'Division Strategy';
+      steps.push({label:'Identify', text:'Divide: <strong>'+a+'</strong> \u00f7 <strong>'+b+'</strong>'});
+      steps.push({label:'Calculate', text:a+' \u00f7 '+b+' = <span class="solution-highlight">'+ansStr+'</span>'});
+      steps.push({label:'Verify', text:'Check: '+ansStr+' \u00d7 '+b+' = '+a});
+    } else if(topic==='ops'){
+      trickName = 'Order of Operations (PEMDAS)';
+      steps.push({label:'Identify', text:'Multi-step: follow <strong>PEMDAS</strong>'});
+      steps.push({label:'Order', text:'1) Parentheses  2) Exponents  3) Multiply/Divide  4) Add/Subtract'});
+      steps.push({label:'Calculate', text:'Work left to right within each level \u2192 <span class="solution-highlight">'+ansStr+'</span>'});
+    }
+  }
+
+  // SQUARES
+  else if(topic==='sq'||topic==='sq5'||topic==='equidist'){
+    var sqNums = q.match(/\d+/g);
+    var n = sqNums ? parseInt(sqNums[0]) : 0;
+    if(n % 10 === 5){
+      trickName = 'Ending-in-5 Squaring Trick';
+      var t5 = Math.floor(n/10);
+      steps.push({label:'Identify', text:n+'\u00b2 \u2014 ends in 5!'});
+      steps.push({label:'Trick', text:'Tens digit ('+t5+') \u00d7 next integer ('+t5+' \u00d7 '+(t5+1)+' = <span class="solution-highlight">'+(t5*(t5+1))+'</span>)'});
+      steps.push({label:'Finish', text:'Append 25 \u2192 <span class="solution-highlight">'+ansStr+'</span>'});
+    } else if(n >= 45 && n <= 55){
+      trickName = 'Near-50 Method';
+      var d50 = n - 50;
+      steps.push({label:'Identify', text:n+'\u00b2 \u2014 close to 50'});
+      steps.push({label:'Formula', text:'(50 + d)\u00b2 = 2500 + 100d + d\u00b2, where d = '+ d50});
+      steps.push({label:'Calculate', text:'2500 + '+(100*d50)+' + '+(d50*d50)+' = <span class="solution-highlight">'+ansStr+'</span>'});
+    } else if(n >= 11 && n <= 99){
+      trickName = 'Expand (a+b)\u00b2 Method';
+      var tn = Math.floor(n/10)*10;
+      var on = n % 10;
+      steps.push({label:'Identify', text:n+'\u00b2 = ('+tn+'+'+on+')\u00b2'});
+      steps.push({label:'Expand', text:tn+'\u00b2 + 2('+tn+'\u00d7'+on+') + '+on+'\u00b2'});
+      steps.push({label:'Calculate', text:(tn*tn)+' + '+(2*tn*on)+' + '+(on*on)+' = <span class="solution-highlight">'+ansStr+'</span>'});
+    } else {
+      trickName = 'Perfect Squares';
+      steps.push({label:'Memorize', text:'Know your squares: '+n+'\u00b2 = <span class="solution-highlight">'+ansStr+'</span>'});
+    }
+  }
+
+  // CUBES
+  else if(topic==='cube'){
+    trickName = 'Cubing';
+    var cNums = q.match(/\d+/g);
+    var cn = cNums ? parseInt(cNums[0]) : 0;
+    steps.push({label:'Identify', text:cn+'\u00b3 (cube of '+cn+')'});
+    if(cn <= 10){
+      steps.push({label:'Memorize', text:'Small cubes: 1\u00b3=1, 2\u00b3=8, 3\u00b3=27, 4\u00b3=64, 5\u00b3=125, 6\u00b3=216, 7\u00b3=343, 8\u00b3=512, 9\u00b3=729, 10\u00b3=1000'});
+    } else {
+      var ct = Math.floor(cn/10)*10;
+      var co = cn%10;
+      steps.push({label:'Expand', text:'('+ct+'+'+co+')\u00b3 = '+ct+'\u00b3 + 3('+ct+'\u00b2)('+co+') + 3('+ct+')('+co+'\u00b2) + '+co+'\u00b3'});
+    }
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // PERCENTAGES
+  else if(topic==='pct'){
+    trickName = 'Percentage Method';
+    steps.push({label:'Identify', text:'Percentage problem'});
+    steps.push({label:'Formula', text:'Use <strong>is/of = %/100</strong> and cross-multiply'});
+    steps.push({label:'Calculate', text:'Solve for the unknown \u2192 <span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // FRACTIONS / DECIMALS
+  else if(topic==='fracdec'){
+    trickName = 'Fraction \u2194 Decimal Conversion';
+    steps.push({label:'Identify', text:'Convert between fraction and decimal'});
+    if(ansStr.includes('/')){
+      steps.push({label:'Method', text:'Simplify the fraction: find GCD and divide both numerator and denominator'});
+    } else {
+      steps.push({label:'Method', text:'Divide numerator by denominator to get decimal'});
+    }
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // REMAINDERS
+  else if(topic==='rem'){
+    trickName = 'Remainder Method';
+    var rNums = q.match(/\d+/g);
+    if(rNums && rNums.length >= 2){
+      steps.push({label:'Identify', text:'Find remainder of '+rNums[0]+' \u00f7 '+rNums[1]});
+      steps.push({label:'Divide', text:rNums[0]+' \u00f7 '+rNums[1]+' = quotient with remainder'});
+      steps.push({label:'Extract', text:'Subtract (quotient \u00d7 '+rNums[1]+') from '+rNums[0]+' \u2192 <span class="solution-highlight">'+ansStr+'</span>'});
+    } else {
+      steps.push({label:'Method', text:'Divide and find the remainder \u2192 <span class="solution-highlight">'+ansStr+'</span>'});
+    }
+  }
+
+  // LCM / GCD
+  else if(topic==='lcm'||topic==='gcd'){
+    trickName = topic==='lcm' ? 'Least Common Multiple' : 'Greatest Common Divisor';
+    steps.push({label:'Identify', text:trickName+' problem'});
+    if(topic==='lcm'){
+      steps.push({label:'Method', text:'LCM(a,b) = (a \u00d7 b) / GCD(a,b), or list multiples'});
+    } else {
+      steps.push({label:'Method', text:'Use Euclidean algorithm or factor both numbers'});
+    }
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // MULTIPLICATION TRICKS
+  else if(topic==='mul11'){
+    trickName = '\u00d711 Trick';
+    steps.push({label:'Identify', text:'Multiplying by 11'});
+    steps.push({label:'Trick', text:'Add adjacent digits, insert between them'});
+    steps.push({label:'Note', text:'If digit sum \u2265 10, carry the 1 to the left'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+  else if(topic==='mul25'){
+    trickName = '\u00d725 Shortcut';
+    steps.push({label:'Identify', text:'Multiplying by 25'});
+    steps.push({label:'Trick', text:'\u00f7 4, then \u00d7 100 (since 25 = 100/4)'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+  else if(topic==='near100'){
+    trickName = 'Near 100 Multiplication';
+    steps.push({label:'Identify', text:'Both numbers near 100'});
+    steps.push({label:'Trick', text:'(100\u2212a)(100\u2212b): first two digits = 100\u2212a\u2212b, last two = a\u00d7b'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // SERIES
+  else if(topic==='series'){
+    trickName = 'Series Sum';
+    steps.push({label:'Identify', text:'Sum of a sequence'});
+    if(q.includes('1 + 2') || q.toLowerCase().includes('consecutive')){
+      steps.push({label:'Formula', text:'Sum = n(n+1)/2 for 1+2+...+n, or (first+last)\u00d7count/2'});
+    } else {
+      steps.push({label:'Method', text:'Find the pattern and apply the appropriate formula'});
+    }
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // MEAN
+  else if(topic==='mean'){
+    trickName = 'Mean / Average';
+    steps.push({label:'Identify', text:'Find the average (mean)'});
+    steps.push({label:'Formula', text:'Mean = sum of all values \u00f7 count of values'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // POWERS
+  else if(topic==='powers'){
+    trickName = 'Powers & Exponents';
+    steps.push({label:'Method', text:'Use exponent rules: a\u1d50\u00d7a\u207f = a\u1d50\u207a\u207f'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // ROMAN NUMERALS
+  else if(topic==='roman'){
+    trickName = 'Roman Numerals';
+    steps.push({label:'Convert', text:'I=1, V=5, X=10, L=50, C=100, D=500, M=1000'});
+    steps.push({label:'Rule', text:'Subtract when smaller precedes larger (IV=4, IX=9)'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // CONVERSIONS
+  else if(topic==='conv'){
+    trickName = 'Unit Conversion';
+    steps.push({label:'Identify', text:'Convert between units'});
+    steps.push({label:'Method', text:'Multiply or divide by the conversion factor'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // GEOMETRY
+  else if(topic==='areaperi'||topic==='coordgeo'||topic==='triangle'||topic==='volume'){
+    trickName = 'Geometry';
+    steps.push({label:'Identify', text:'Geometry problem'});
+    steps.push({label:'Formula', text:'Apply the relevant formula for the shape'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  // CATCHALL
+  else {
+    trickName = 'Solution';
+    steps.push({label:'Approach', text:'Break the problem into manageable steps'});
+    steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
+  }
+
+  return {trickName: trickName, steps: steps, answer: ansStr};
+}
+
+function renderSolution(q, ans, topic){
+  var sol = getStructuredSolution(q, ans, topic);
+  var stepsHTML = sol.steps.map(function(step, i){
+    return '<div class="solution-step"><div class="step-num">'+(i+1)+'</div><div class="step-text"><strong>'+step.label+':</strong> '+step.text+'</div></div>';
+  }).join('');
+  return '<div class="solution-box-inline">' +
+    '<div class="solution-trick-name">'+sol.trickName+'</div>' +
+    stepsHTML +
+    '<div class="solution-answer"><div class="answer-label">Answer</div><div class="answer-val">'+sol.answer+'</div></div>' +
+    '</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════════════════════════════════════════
 function render(){
@@ -1958,8 +2413,9 @@ function renderMenu(){
   const CORE_KEYS=['add','sub','mul','div','sq','cube','rem','lcm','pct','conv','roman','mean'];
   const TRICK_KEYS=['mul11','mul25','near100','sq5','special','series','fracdec','powers','fib','polygon'];
   
-  // Get quick stats preview
+  // Get quick stats preview + progress insights
   let stats = getStats();
+  let insights = getProgressInsights();
   let statsPreview = stats.totalSessions > 0 ? 
     `<div class="stats-preview">
       <div class="sp-item">📊 ${stats.totalSessions} session${stats.totalSessions>1?'s':''}</div>
@@ -1967,6 +2423,32 @@ function renderMenu(){
       ${stats.streak > 0 ? `<div class="sp-item">🔥 ${stats.streak} day streak!</div>` : ''}
       ${stats.bestScore.score > 0 ? `<div class="sp-item">🏆 Best: ${stats.bestScore.score}/20</div>` : ''}
     </div>` : '';
+  
+  // Build insight banner (top 2)
+  let insightBanner = '';
+  if(insights.length > 0){
+    let cards = insights.slice(0, 2).map(ins => {
+      let cls = ins.type === 'improvement' ? 'insight-positive' : ins.type === 'milestone' ? 'insight-milestone' : 'insight-tip';
+      return `<div class="insight-card ${cls}">
+        <div class="insight-icon">${ins.icon}</div>
+        <div class="insight-body">
+          <div class="insight-msg">${ins.message}</div>
+          <div class="insight-detail">${ins.detail}</div>
+        </div>
+      </div>`;
+    }).join('');
+    insightBanner = `<div class="insight-section" style="max-width:920px;margin:16px auto 0;padding:0 20px;">${cards}</div>`;
+  } else if(stats.totalSessions === 0){
+    insightBanner = `<div class="insight-section" style="max-width:920px;margin:16px auto 0;padding:0 20px;">
+      <div class="insight-card insight-tip">
+        <div class="insight-icon">🚀</div>
+        <div class="insight-body">
+          <div class="insight-msg">Start your first session!</div>
+          <div class="insight-detail">Pick a mode below to begin building your UIL skills.</div>
+        </div>
+      </div>
+    </div>`;
+  }
 
   function topicBtns(keys){
     return keys.map(k=>{
@@ -1987,6 +2469,7 @@ function renderMenu(){
     ${statsPreview}
     <button class="stats-btn" id="btn-stats">📈 View Progress & Stats</button>
   </div>
+  ${insightBanner}
   <div class="menu-body">
 
     <div class="section-tag">⭐ Problems 1–20 Focus</div>
@@ -2163,16 +2646,25 @@ function renderTest(){
   // Progress bar
   let prog=isDrill ? 50 : (state.idx/state.problems.length*100);
 
-  // Feedback (drill only)
+  // Feedback (drill only) with solution walkthrough
   let fbHTML='';
   if(isDrill){
     let fbTxt=state.feedbackText||'&nbsp;';
-    // Wrap the hint portion (after "| 💡") in a styled span
+    // Wrap the hint portion
     if(fbTxt.includes('| 💡')){
       let parts=fbTxt.split('| 💡');
       fbTxt=parts[0]+'<span class="hint-tag">💡 '+parts[1]+'</span>';
     }
-    fbHTML=`<div class="feedback-bar ${state.feedback||'empty'}">${fbTxt}</div>`;
+    let solSection = '';
+    if(state.solutionHTML){
+      if(state.solutionVisible){
+        solSection = state.solutionHTML;
+      } else if(state.feedback === 'correct'){
+        solSection = '<button class="show-solution-btn" id="btn-show-sol">Show trick \u2192</button><div id="sol-content" class="solution-collapsed">'+state.solutionHTML+'</div>';
+      }
+    }
+    let hasSol = solSection ? 'has-solution' : 'no-solution';
+    fbHTML=`<div class="feedback-area ${hasSol}"><div class="feedback-bar ${state.feedback||'empty'}">${fbTxt}</div>${solSection}</div>`;
   }
 
   // Skip button (timed & full only)
@@ -2202,7 +2694,7 @@ function renderTest(){
     ${typeof cur.a==='string'&&cur.a.includes('/')?'<div class="problem-tag" style="color:#667eea;">Type as a fraction, e.g. 3/4</div>':''}</div>
     <input type="text" class="ans-box" id="ans-input" inputmode="${typeof cur.a==='string'&&cur.a.includes('/')?'text':'decimal'}" value="${state.answer}" placeholder="${typeof cur.a==='string'&&cur.a.includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
     ${typeof cur.a==='string'&&cur.a.includes('/')?`<div class="frac-helper"><button class="frac-btn" id="btn-slash">⁄ slash</button></div>`:''}
-    <div class="btn-row">
+    <div class="btn-row${state.nextDelayed?' next-delay-overlay':''}">
       <button class="btn btn-green" id="btn-submit">Submit</button>
       ${skipHTML}
     </div>
@@ -2224,14 +2716,13 @@ function renderResults(){
     let extra=!item.correct?` (Ans: ${item.a})`:'';
     let hintHTML=(!item.correct && item.hint)?`<div style="font-size:0.72rem;color:#f6ad55;margin-top:2px;width:100%;">💡 ${item.hint}</div>`:'';
     
-    // Add "Show Solution" button for wrong answers
+    // Add "Show Solution" button for wrong answers using structured walkthrough
     let solBtn='';
     if(!item.correct){
-      let solId=`sol-${i}`;
-      solBtn=`<button class="sol-toggle" data-target="${solId}" style="font-size:0.7rem;padding:4px 8px;background:#2d3748;border:1px solid #4a5568;border-radius:6px;color:#667eea;cursor:pointer;margin-top:4px;">How?</button>
-      <div id="${solId}" class="solution-box" style="display:none;background:#2d3748;padding:10px;border-radius:6px;margin-top:6px;font-size:0.75rem;line-height:1.6;color:#a0aec0;border-left:3px solid #667eea;">
-        <strong style="color:#667eea;">Solution:</strong> ${getSolutionHint(item.q,item.a,item.t)}
-      </div>`;
+      let solId='sol-'+i;
+      let solContent = renderSolution(item.q, item.a, item.t);
+      solBtn='<button class="sol-toggle" data-target="'+solId+'" style="font-size:0.7rem;padding:4px 8px;background:#2d3748;border:1px solid #4a5568;border-radius:6px;color:#667eea;cursor:pointer;margin-top:4px;">How?</button>' +
+        '<div id="'+solId+'" style="display:none;margin-top:6px;">'+solContent+'</div>';
     }
     
     return `<div class="rev-item ${cls}">
@@ -2296,8 +2787,45 @@ function renderResults(){
 // ═══════════════════════════════════════════════════════════════════════════
 // STATS SCREEN
 // ═══════════════════════════════════════════════════════════════════════════
+function renderInsightsHTML(insights){
+  if(insights.length === 0) return '';
+  let cards = insights.map(function(ins){
+    let cls = ins.type === 'improvement' ? 'insight-positive' : ins.type === 'milestone' ? 'insight-milestone' : 'insight-tip';
+    return '<div class="insight-card '+cls+'"><div class="insight-icon">'+ins.icon+'</div><div class="insight-body"><div class="insight-msg">'+ins.message+'</div><div class="insight-detail">'+ins.detail+'</div></div></div>';
+  }).join('');
+  return '<div class="insight-section"><h2 style="margin:0 0 1rem;">✨ Progress Insights</h2>'+cards+'</div>';
+}
+
+function renderWeeklyTrend(){
+  var allSess = loadStats().sessions;
+  if(allSess.length < 3) return '';
+  var now = Date.now();
+  var WEEK = 7 * 86400000;
+  var weeks = [];
+  for(var w = 0; w < 8; w++){
+    var start = now - (w+1) * WEEK;
+    var end = now - w * WEEK;
+    var wSess = allSess.filter(function(s){ var t = new Date(s.date).getTime(); return t >= start && t < end; });
+    if(wSess.length > 0){
+      var totalInWeek = wSess.reduce(function(s,x){return s+x.total;},0);
+      if(totalInWeek === 0) continue;
+      var acc = Math.round(wSess.reduce(function(s,x){return s+x.score;},0) / totalInWeek * 100);
+      var label = w === 0 ? 'This wk' : w === 1 ? 'Last wk' : w + 'wk ago';
+      weeks.push({acc:acc, label:label, count:wSess.length});
+    }
+  }
+  weeks.reverse();
+  if(weeks.length < 2) return '';
+  var bars = weeks.map(function(w){
+    var color = w.acc >= 80 ? '#48bb78' : w.acc >= 60 ? '#ed8936' : '#f56565';
+    return '<div class="wt-bar"><div class="wt-pct">'+w.acc+'%</div><div class="wt-fill" style="height:'+w.acc+'%;background:'+color+';"></div><div class="wt-label">'+w.label+'</div></div>';
+  }).join('');
+  return '<div class="weekly-trend"><h3>📅 Weekly Accuracy Trend</h3><div class="wt-bars">'+bars+'</div></div>';
+}
+
 function renderStats(){
   let stats = getStats();
+  let insights = getProgressInsights();
   
   if(stats.totalSessions === 0){
     return `
@@ -2334,12 +2862,33 @@ function renderStats(){
     .filter(t => t.total >= 3) // Only show topics with at least 3 attempts
     .sort((a,b) => b.accuracy - a.accuracy);
   
+  // Compute topic trend from recent sessions
+  let topicTrends = {};
+  let recentSess = stats.recentSessions.slice(0, 10);
+  recentSess.forEach(s => {
+    if(s.topics){
+      Object.entries(s.topics).forEach(([t, d]) => {
+        if(!topicTrends[t]) topicTrends[t] = {recentCorrect:0, recentTotal:0};
+        topicTrends[t].recentCorrect += d.correct || 0;
+        topicTrends[t].recentTotal += d.total || 0;
+      });
+    }
+  });
+
   let topicHTML = topicList.length > 0 ? topicList.map(t => {
     let barWidth = t.accuracy;
     let barColor = t.accuracy >= 80 ? '#48bb78' : t.accuracy >= 60 ? '#ed8936' : '#f56565';
+    let trendHTML = '';
+    let tr = topicTrends[t.topic];
+    if(tr && tr.recentTotal >= 5){
+      let recentAcc = Math.round(tr.recentCorrect / tr.recentTotal * 100);
+      let diff = recentAcc - t.accuracy;
+      if(diff > 5) trendHTML = '<span class="trend-arrow up">↑</span>';
+      else if(diff < -5) trendHTML = '<span class="trend-arrow down">↓</span>';
+    }
     return `
     <div class="topic-stat">
-      <div class="ts-name">${t.name}</div>
+      <div class="ts-name">${t.name}${trendHTML}</div>
       <div class="ts-bar-container">
         <div class="ts-bar" style="width:${barWidth}%;background:${barColor};"></div>
       </div>
@@ -2349,7 +2898,6 @@ function renderStats(){
   
   // Recent sessions graph (last 10)
   let graphData = stats.recentSessions.slice(0,10).reverse();
-  let maxScore = Math.max(...graphData.map(s => s.total));
   let graphHTML = graphData.map((s,i) => {
     let height = (s.score / s.total * 100);
     let date = new Date(s.date);
@@ -2391,6 +2939,9 @@ function renderStats(){
     </div>
     
     <div class="stats-body">
+      ${renderInsightsHTML(insights)}
+      ${renderWeeklyTrend()}
+      
       <!-- Overview Cards -->
       <div class="stats-grid">
         <div class="stat-card big">
@@ -2542,6 +3093,16 @@ function attachListeners(){
   if(el=document.getElementById('btn-import-json')) el.onclick=showImportModal;
   if(el=document.getElementById('btn-view-imported')) el.onclick=showImportedProblemsViewer;
   
+  // Show solution toggle in drill mode
+  if(el=document.getElementById('btn-show-sol')) el.onclick=function(){
+    var solDiv = document.getElementById('sol-content');
+    if(solDiv){
+      var isHidden = solDiv.classList.contains('solution-collapsed');
+      solDiv.className = isHidden ? 'solution-expanded' : 'solution-collapsed';
+      el.textContent = isHidden ? 'Hide trick' : 'Show trick \u2192';
+    }
+  };
+
   // Solution toggles in results
   document.querySelectorAll('.sol-toggle').forEach(btn=>{
     btn.onclick=()=>{

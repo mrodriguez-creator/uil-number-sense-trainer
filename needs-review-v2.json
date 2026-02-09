@@ -1,0 +1,6020 @@
+[
+  {
+    "num": 55,
+    "q": "k = #",
+    "a": "",
+    "t": "advanced",
+    "year": "2026",
+    "test": "A",
+    "starred": false,
+    "source": "1NumberSense_Test_A_26.pdf",
+    "_issues": [
+      "no_answer",
+      "too_short"
+    ],
+    "_rawQ": "k = #",
+    "_rawA": ""
+  },
+  {
+    "num": 3,
+    "q": "= 7 10",
+    "a": "2",
+    "t": "basic",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 7 10",
+    "_rawA": "2"
+  },
+  {
+    "num": 8,
+    "q": "8 1 5 1 9 4 7 = , , , ,, , q qq - + -",
+    "a": "3",
+    "t": "fracdec",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "8 1 5 1 9 4 7 = ¸ ¸ ¸ ¸¸ ¸ q qq q  q",
+    "_rawA": "3 q"
+  },
+  {
+    "num": 16,
+    "q": "58² =",
+    "a": "3,364",
+    "t": "powers",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "58 = 2",
+    "_rawA": "3,364"
+  },
+  {
+    "num": 18,
+    "q": "42² =",
+    "a": "1,764",
+    "t": "powers",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "42 = 2",
+    "_rawA": "1,764"
+  },
+  {
+    "num": 21,
+    "q": "³√2744 =",
+    "a": "14",
+    "t": "roots",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2744 = È3",
+    "_rawA": "14"
+  },
+  {
+    "num": 28,
+    "q": "2 3 5 7 11 13 = ,, , , q - + - =",
+    "a": "5",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2 3 5 7 11 13 = ¸¸ ¸ ¸ q q q ",
+    "_rawA": "5"
+  },
+  {
+    "num": 38,
+    "q": "The largest root of (3x 2) = is q 2 1",
+    "a": "11",
+    "t": "roots",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The largest root of (3x 2) = is q 2 1",
+    "_rawA": "11"
+  },
+  {
+    "num": 43,
+    "q": "201³ =",
+    "a": "8,120,601",
+    "t": "powers",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(201) = 3",
+    "_rawA": "8,120,601"
+  },
+  {
+    "num": 59,
+    "q": "666 × 3",
+    "a": "54",
+    "t": "mult",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "666 ‚ 3",
+    "_rawA": "54"
+  },
+  {
+    "num": 68,
+    "q": "(245) = 2",
+    "a": "60,025",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(245) = 2",
+    "_rawA": "60,025"
+  },
+  {
+    "num": 71,
+    "q": "f (x) = 2, f(1) = 3, find f( 2). w q",
+    "a": "9",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "f (x) = 2, f(1) = 3, find f( 2). w q q",
+    "_rawA": "9"
+  },
+  {
+    "num": 79,
+    "q": "If 2 x 5, then x 1 ≥≥ q≥ 2",
+    "a": "24",
+    "t": "advanced",
+    "year": "2021",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 2 x 5, then x 1  q 2",
+    "_rawA": "24"
+  },
+  {
+    "num": 1,
+    "q": "122 × 5 =",
+    "a": "610",
+    "t": "mult",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "122 5 = ‚",
+    "_rawA": "610"
+  },
+  {
+    "num": 4,
+    "q": "= 2 4",
+    "a": "-6",
+    "t": "basic",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 2 4",
+    "_rawA": "q 6"
+  },
+  {
+    "num": 5,
+    "q": "12³ =",
+    "a": "1,728",
+    "t": "powers",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "12 = 3",
+    "_rawA": "1,728"
+  },
+  {
+    "num": 13,
+    "q": "14 × 31 =",
+    "a": "434",
+    "t": "mult",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "14 31 = ‚",
+    "_rawA": "434"
+  },
+  {
+    "num": 18,
+    "q": "33 × 27 =",
+    "a": "891",
+    "t": "mult",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "33 27 = ‚",
+    "_rawA": "891"
+  },
+  {
+    "num": 23,
+    "q": "If 8 = 12.8, then 8 = () ( ) x x q 2",
+    "a": ".2, 1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 8 = 12.8, then 8 = () ( ) x x q 2",
+    "_rawA": ".2, 1"
+  },
+  {
+    "num": 33,
+    "q": "1 7 2 5 22 = , ,, , q- + -",
+    "a": "23",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1 7 2 5 22 = ¸ ¸¸ ¸ qqq",
+    "_rawA": "23 q"
+  },
+  {
+    "num": 34,
+    "q": "The product of the coefficients of (2x y) is q 2",
+    "a": "16",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The product of the coefficients of (2x y) is q 2",
+    "_rawA": "16 q"
+  },
+  {
+    "num": 37,
+    "q": "22 × 28 =",
+    "a": "616",
+    "t": "mult",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "22 28 = ‚",
+    "_rawA": "616"
+  },
+  {
+    "num": 40,
+    "q": "√225271 =",
+    "a": "451 498",
+    "t": "starred",
+    "year": "2022",
+    "test": "A",
+    "starred": true,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "225271 = È",
+    "_rawA": "451 498 q"
+  },
+  {
+    "num": 53,
+    "q": "Let (1 2 )(3 4 ) = a b . Find a. q- + ii i",
+    "a": "5",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (1 2 )(3 4 ) = a b . Find a. qq  ii i",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 56,
+    "q": "The vertex of y = 3x 2x 1 is (h, k). h = 2 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 3x 2x 1 is (h, k). h = 2 q q",
+    "_rawA": "1"
+  },
+  {
+    "num": 71,
+    "q": "The domain of y = 9 x is m x n. n = 2 2 q ≤≤",
+    "a": "3",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The domain of y = 9 x is m x n. n = 2 2 q ŸŸ",
+    "_rawA": "3"
+  },
+  {
+    "num": 72,
+    "q": "= lim",
+    "a": "2",
+    "t": "calculus",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": "2"
+  },
+  {
+    "num": 77,
+    "q": "The maximum value of f(x) = 4x 3x is q 2",
+    "a": ", 1 4 1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "A",
+    "starred": false,
+    "source": "NS_A_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The maximum value of f(x) = 4x 3x is q 2",
+    "_rawA": ", 1 4 1"
+  },
+  {
+    "num": 11,
+    "q": "17 × 71 =",
+    "a": "1,207",
+    "t": "mult",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "17 71 = ‚",
+    "_rawA": "1,207"
+  },
+  {
+    "num": 13,
+    "q": "23² =",
+    "a": "529",
+    "t": "powers",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "23 = 2",
+    "_rawA": "529"
+  },
+  {
+    "num": 23,
+    "q": "74 = 8",
+    "a": "60",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "74 = 8",
+    "_rawA": "60"
+  },
+  {
+    "num": 25,
+    "q": "555 × 3 =",
+    "a": "45",
+    "t": "mult",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "555 = ‚ 3",
+    "_rawA": "45"
+  },
+  {
+    "num": 47,
+    "q": "The product of the roots of (5x 2) = 0 is q 3",
+    "a": ".064, , 8",
+    "t": "roots",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The product of the roots of (5x 2) = 0 is q 3",
+    "_rawA": ".064, , 8"
+  },
+  {
+    "num": 48,
+    "q": "105³ =",
+    "a": "1,157,625",
+    "t": "powers",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(105) = 3",
+    "_rawA": "1,157,625"
+  },
+  {
+    "num": 62,
+    "q": "(185) = 2",
+    "a": "34,225",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(185) = 2",
+    "_rawA": "34,225"
+  },
+  {
+    "num": 73,
+    "q": "Let f (x) = 6x and f( 1) = 3. Find f( 3). w q",
+    "a": "27",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f (x) = 6x and f( 1) = 3. Find f( 3). w q q",
+    "_rawA": "27"
+  },
+  {
+    "num": 74,
+    "q": "If f(x) = 2x 3 then f [f(4)] = -q 1",
+    "a": "4",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If f(x) = 2x 3 then f [f(4)] = q q 1",
+    "_rawA": "4"
+  },
+  {
+    "num": 78,
+    "q": "x = ' 1",
+    "a": ", 8 26 2",
+    "t": "advanced",
+    "year": "2021",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "x = ' 1",
+    "_rawA": ", 8 26 2"
+  },
+  {
+    "num": 6,
+    "q": "13 × 24 =",
+    "a": "312",
+    "t": "mult",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "13 24 = ‚",
+    "_rawA": "312"
+  },
+  {
+    "num": 11,
+    "q": "46 × 34 =",
+    "a": "1,564",
+    "t": "mult",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "46 34 = ‚",
+    "_rawA": "1,564"
+  },
+  {
+    "num": 32,
+    "q": "33 × 37 =",
+    "a": "1,221",
+    "t": "mult",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "33 37 = ‚",
+    "_rawA": "1,221"
+  },
+  {
+    "num": 40,
+    "q": "√10631 =",
+    "a": "98 108",
+    "t": "starred",
+    "year": "2022",
+    "test": "B",
+    "starred": true,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "10631 = È",
+    "_rawA": "98 108 q"
+  },
+  {
+    "num": 67,
+    "q": "Let f(x) = x 9 and g(x) = x 3. f(g(6)) = 2 q",
+    "a": "0",
+    "t": "advanced",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x 9 and g(x) = x 3. f(g(6)) = 2 q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 71,
+    "q": "The domain of y = 16 x is m x n. m = 2 2 q ≤≤",
+    "a": "4",
+    "t": "advanced",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The domain of y = 16 x is m x n. m = 2 2 q ŸŸ",
+    "_rawA": "4 q"
+  },
+  {
+    "num": 78,
+    "q": "(.375) = (improper fraction) q 2",
+    "a": "64",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "B",
+    "starred": false,
+    "source": "NS_B_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(.375) = (improper fraction) q 2",
+    "_rawA": "64"
+  },
+  {
+    "num": 4,
+    "q": "= 4 9",
+    "a": "8",
+    "t": "basic",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 4 9",
+    "_rawA": "8"
+  },
+  {
+    "num": 7,
+    "q": "23² =",
+    "a": "529",
+    "t": "powers",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "23 = 2",
+    "_rawA": "529"
+  },
+  {
+    "num": 11,
+    "q": "43² =",
+    "a": "1,849",
+    "t": "powers",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "43 = 2",
+    "_rawA": "1,849"
+  },
+  {
+    "num": 16,
+    "q": "54² =",
+    "a": "2,916",
+    "t": "powers",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "54 = 2",
+    "_rawA": "2,916"
+  },
+  {
+    "num": 22,
+    "q": "555 × 5 =",
+    "a": "75",
+    "t": "mult",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "555 = ‚ 5",
+    "_rawA": "75"
+  },
+  {
+    "num": 28,
+    "q": "3 2 6 6 20 22 = ,, , , q - + - =",
+    "a": "3",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "3 2 6 6 20 22 = ¸¸ ¸ ¸ q q q ",
+    "_rawA": "3"
+  },
+  {
+    "num": 37,
+    "q": "The linear term of (x 4) is q 3",
+    "a": "48",
+    "t": "sequence",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The linear term of (x 4) is q 3",
+    "_rawA": "48"
+  },
+  {
+    "num": 43,
+    "q": "204³ =",
+    "a": "8,489,664",
+    "t": "powers",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(204) = 3",
+    "_rawA": "8,489,664"
+  },
+  {
+    "num": 47,
+    "q": "The sum of the roots of (4x 7) = 0 is q 3",
+    "a": "5.25, , 5 21 1",
+    "t": "roots",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the roots of (4x 7) = 0 is q 3",
+    "_rawA": "5.25, , 5 21 1"
+  },
+  {
+    "num": 52,
+    "q": "The distance between ( 1, 5) and ( 3, 9) is d. q qq",
+    "a": "200",
+    "t": "trig",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The distance between ( 1, 5) and ( 3, 9) is d. q qq",
+    "_rawA": "200"
+  },
+  {
+    "num": 66,
+    "q": "= 3 14",
+    "a": "11",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 3 14",
+    "_rawA": "11"
+  },
+  {
+    "num": 77,
+    "q": "132 = 8 4",
+    "a": "1122",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "132 = 8 4",
+    "_rawA": "1122"
+  },
+  {
+    "num": 78,
+    "q": "(2x 1) = 'q 3",
+    "a": "6",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(2x 1) = 'q 3",
+    "_rawA": "6 q"
+  },
+  {
+    "num": 79,
+    "q": "11 11 11",
+    "a": "1.1, ,--11",
+    "t": "advanced",
+    "year": "2021",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "11 11 11",
+    "_rawA": "1.1, , q q 11"
+  },
+  {
+    "num": 2,
+    "q": "= 2 5",
+    "a": "14",
+    "t": "basic",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 2 5",
+    "_rawA": "14"
+  },
+  {
+    "num": 4,
+    "q": "1 3 = 2 1",
+    "a": ", 5 35 5",
+    "t": "basic",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "1 3 = 2 1",
+    "_rawA": ", 5 35 5"
+  },
+  {
+    "num": 6,
+    "q": "15³ =",
+    "a": "3,375",
+    "t": "powers",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "15 = 3",
+    "_rawA": "3,375"
+  },
+  {
+    "num": 11,
+    "q": "58 62 × =",
+    "a": "3,596",
+    "t": "ops",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "58 62 ‚ =",
+    "_rawA": "3,596"
+  },
+  {
+    "num": 21,
+    "q": "If 5 2x = 7, then 5x 7 = -q",
+    "a": "12",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 5 2x = 7, then 5x 7 = q q",
+    "_rawA": "12 q"
+  },
+  {
+    "num": 25,
+    "q": "2 3 5 7 11 13 17 = ,, , , q - + -",
+    "a": "41",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2 3 5 7 11 13 17 = ¸¸ ¸ ¸ q q q",
+    "_rawA": "41"
+  },
+  {
+    "num": 27,
+    "q": "28 × 88 =",
+    "a": "2,464",
+    "t": "mult",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "28 88 = ‚",
+    "_rawA": "2,464"
+  },
+  {
+    "num": 34,
+    "q": "If 256 529 = k, then k = √ √q 2",
+    "a": "49",
+    "t": "roots",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 256 529 = k, then k = È Èq 2",
+    "_rawA": "49"
+  },
+  {
+    "num": 39,
+    "q": "The sum of the coefficients of (5x y) is q 3",
+    "a": "64",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the coefficients of (5x y) is q 3",
+    "_rawA": "64"
+  },
+  {
+    "num": 69,
+    "q": "Let (p, q) be the polar coordinate for the",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (p, q) be the polar coordinate for the",
+    "_rawA": "1"
+  },
+  {
+    "num": 71,
+    "q": "= lim",
+    "a": "1",
+    "t": "calculus",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 75,
+    "q": "(.444...) = (improper fraction) q 3",
+    "a": "729",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(.444...) = (improper fraction) q 3",
+    "_rawA": "729"
+  },
+  {
+    "num": 77,
+    "q": "(2x) = '0",
+    "a": "0",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(2x) = '0",
+    "_rawA": "0"
+  },
+  {
+    "num": 79,
+    "q": "= 2 5",
+    "a": "13",
+    "t": "advanced",
+    "year": "2022",
+    "test": "D",
+    "starred": false,
+    "source": "NS_D_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 2 5",
+    "_rawA": "13"
+  },
+  {
+    "num": 8,
+    "q": "47² =",
+    "a": "2,209",
+    "t": "powers",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "47 = 2",
+    "_rawA": "2,209"
+  },
+  {
+    "num": 11,
+    "q": "= 4 15",
+    "a": "64",
+    "t": "ops",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 4 15",
+    "_rawA": "64"
+  },
+  {
+    "num": 26,
+    "q": "The multiplicative inverse of 2 is q 5",
+    "a": "-6",
+    "t": "advanced",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The multiplicative inverse of 2 is q 5",
+    "_rawA": "q 6"
+  },
+  {
+    "num": 48,
+    "q": "204³ =",
+    "a": "8,489,664",
+    "t": "powers",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(204) = 3",
+    "_rawA": "8,489,664"
+  },
+  {
+    "num": 51,
+    "q": "A A A = A and A 1. Find k. q q k 2 34 ×÷ ≤",
+    "a": "-9",
+    "t": "multdiv",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "A A A = A and A 1. Find k. q q k 2 34 ‚ƒ ",
+    "_rawA": "q 9"
+  },
+  {
+    "num": 59,
+    "q": "888 × 2",
+    "a": "48",
+    "t": "mult",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "888 ‚ 2",
+    "_rawA": "48"
+  },
+  {
+    "num": 66,
+    "q": "= 4 23",
+    "a": "11",
+    "t": "advanced",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 4 23",
+    "_rawA": "11"
+  },
+  {
+    "num": 71,
+    "q": "f (x) = 2x 1, f(1) = 2, find f(2). w q",
+    "a": "0",
+    "t": "advanced",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "f (x) = 2x 1, f(1) = 2, find f(2). w q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 76,
+    "q": "x ) = ' 1",
+    "a": "3.75, , 3 15 3",
+    "t": "advanced",
+    "year": "2021",
+    "test": "R",
+    "starred": false,
+    "source": "NS_R_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "x ) = ' 1",
+    "_rawA": "3.75, , 3 15 3"
+  },
+  {
+    "num": 3,
+    "q": "= 9 8",
+    "a": ".3, 3",
+    "t": "basic",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 9 8",
+    "_rawA": ".3, 3"
+  },
+  {
+    "num": 12,
+    "q": "Which is smaller or ? q q 3 4",
+    "a": "-4",
+    "t": "compare",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Which is smaller or ? q q 3 4",
+    "_rawA": "q 4"
+  },
+  {
+    "num": 19,
+    "q": "15³ =",
+    "a": "3,375",
+    "t": "powers",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "15 = 3",
+    "_rawA": "3,375"
+  },
+  {
+    "num": 24,
+    "q": "42 × 47 =",
+    "a": "1,974",
+    "t": "mult",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "42 47 = ‚",
+    "_rawA": "1,974"
+  },
+  {
+    "num": 32,
+    "q": "321 = 6",
+    "a": "1253",
+    "t": "advanced",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "321 = 6",
+    "_rawA": "1253"
+  },
+  {
+    "num": 41,
+    "q": "202³ =",
+    "a": "8,242,408",
+    "t": "powers",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(202) = 3",
+    "_rawA": "8,242,408"
+  },
+  {
+    "num": 44,
+    "q": "1,1}. ( ) ( ) ( ) a b , where a,b { i i i = 18 17 20 × ÷ -q √",
+    "a": "0",
+    "t": "roots",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1,1}. ( ) ( ) ( ) a b , where a,b { i i i = 18 17 20 ‚ ƒ −q È",
+    "_rawA": "0"
+  },
+  {
+    "num": 59,
+    "q": "888 × 4 =",
+    "a": "96",
+    "t": "mult",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "888 = ‚ 4",
+    "_rawA": "96"
+  },
+  {
+    "num": 68,
+    "q": "If A A A = A and A 1, then k = 5k 1 2 ×÷ ≤ q",
+    "a": "0",
+    "t": "multdiv",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If A A A = A and A 1, then k = 5k 1 2 ‚ƒ  q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 79,
+    "q": "P = 10 3",
+    "a": "720",
+    "t": "advanced",
+    "year": "2021",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_21.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "P = 10 3",
+    "_rawA": "720"
+  },
+  {
+    "num": 9,
+    "q": "72 × 88 =",
+    "a": "6,336",
+    "t": "mult",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "72 88 = ‚",
+    "_rawA": "6,336"
+  },
+  {
+    "num": 21,
+    "q": "73 × 33 =",
+    "a": "2,409",
+    "t": "mult",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "73 33 = ‚",
+    "_rawA": "2,409"
+  },
+  {
+    "num": 26,
+    "q": "196 289 = d and d = √ √q 3",
+    "a": "27",
+    "t": "roots",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "196 289 = d and d = È Èq 3",
+    "_rawA": "27 q"
+  },
+  {
+    "num": 31,
+    "q": "The sum of the coefficients of (2x 3y) is q 5",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the coefficients of (2x 3y) is q 5",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 53,
+    "q": "³√85184 =",
+    "a": "44",
+    "t": "roots",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "85184 = È3",
+    "_rawA": "44"
+  },
+  {
+    "num": 54,
+    "q": "The focus of (y 2) = 12(x 5) is at ( , 2). q q 2",
+    "a": "8",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The focus of (y 2) = 12(x 5) is at ( , 2). q q 2",
+    "_rawA": "8"
+  },
+  {
+    "num": 57,
+    "q": "The roots of 6x 5x = 4 are P and . P = 2 1 q q 2",
+    "a": ", 1 4 1",
+    "t": "roots",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The roots of 6x 5x = 4 are P and . P = 2 1 q q 2",
+    "_rawA": ", 1 4 1"
+  },
+  {
+    "num": 62,
+    "q": "235 = 8 2",
+    "a": "10011101",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "235 = 8 2",
+    "_rawA": "10011101"
+  },
+  {
+    "num": 67,
+    "q": "(0.41666...) = (improper fraction) q 3",
+    "a": "1728",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(0.41666...) = (improper fraction) q 3",
+    "_rawA": "1728"
+  },
+  {
+    "num": 72,
+    "q": "Let f(x) = x x 5. Find f (3). 3 q q w",
+    "a": "26",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x x 5. Find f (3). 3 q q w",
+    "_rawA": "26"
+  },
+  {
+    "num": 73,
+    "q": "= lim",
+    "a": "1",
+    "t": "calculus",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": "1"
+  },
+  {
+    "num": 78,
+    "q": "= 55 5",
+    "a": "15",
+    "t": "advanced",
+    "year": "2022",
+    "test": "S",
+    "starred": false,
+    "source": "NS_S_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 55 5",
+    "_rawA": "15"
+  },
+  {
+    "num": 4,
+    "q": "29² =",
+    "a": "841",
+    "t": "powers",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "29 = 2",
+    "_rawA": "841"
+  },
+  {
+    "num": 9,
+    "q": "MMXIX =",
+    "a": "2,019",
+    "t": "roman",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "MMXIX =",
+    "_rawA": "2,019"
+  },
+  {
+    "num": 14,
+    "q": "³√2197 =",
+    "a": "13",
+    "t": "roots",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2197 = È3",
+    "_rawA": "13"
+  },
+  {
+    "num": 23,
+    "q": "The product of the roots of 2x 3x 4 = 0 is 2 q",
+    "a": "2",
+    "t": "roots",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The product of the roots of 2x 3x 4 = 0 is 2 q q",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 26,
+    "q": "15 × 52 =",
+    "a": "780",
+    "t": "mult",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "15 52 = ‚",
+    "_rawA": "780"
+  },
+  {
+    "num": 29,
+    "q": "56 = 8 7",
+    "a": "64",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "56 = 8 7",
+    "_rawA": "64"
+  },
+  {
+    "num": 30,
+    "q": "√111209 =",
+    "a": "317 350",
+    "t": "starred",
+    "year": "2019",
+    "test": "A",
+    "starred": true,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "È111209 =",
+    "_rawA": "317 350 q"
+  },
+  {
+    "num": 31,
+    "q": "If (3x 5)(3x 5) = ax bx c then b q bb 2",
+    "a": "16",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If (3x 5)(3x 5) = ax bx c then b q bb 2",
+    "_rawA": "16 q"
+  },
+  {
+    "num": 34,
+    "q": "52 × 58 =",
+    "a": "3,016",
+    "t": "mult",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "52 58 = ‚",
+    "_rawA": "3,016"
+  },
+  {
+    "num": 35,
+    "q": "The discriminant of x 4x 2 is 2 q b",
+    "a": "8",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The discriminant of x 4x 2 is 2 q b",
+    "_rawA": "8"
+  },
+  {
+    "num": 46,
+    "q": "Find x, x 0, if 3x 5 = 7.  q , ,",
+    "a": "-2",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "unusual_chars: ",
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, x 0, if 3x 5 = 7.  q ¸ ¸",
+    "_rawA": "q 2"
+  },
+  {
+    "num": 52,
+    "q": "The roots of 2 10x x 9x 3 = 0 are d, e, 3 2 q q b",
+    "a": "21",
+    "t": "roots",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The roots of 2 10x x 9x 3 = 0 are d, e, 3 2 q q b",
+    "_rawA": "21"
+  },
+  {
+    "num": 54,
+    "q": "235 = 8 2",
+    "a": "10011101",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "235 = 8 2",
+    "_rawA": "10011101"
+  },
+  {
+    "num": 59,
+    "q": "555 × 6 =",
+    "a": "90",
+    "t": "mult",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "555 = ‚ 6",
+    "_rawA": "90"
+  },
+  {
+    "num": 70,
+    "q": "(24) = 4",
+    "a": "315,188",
+    "t": "starred",
+    "year": "2019",
+    "test": "A",
+    "starred": true,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(24) = 4",
+    "_rawA": "315,188 q"
+  },
+  {
+    "num": 71,
+    "q": "Find x, 0 x 4, if 2x 4 6(mod 8). ≤≤ q≡",
+    "a": "1",
+    "t": "mod",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, 0 x 4, if 2x 4 6(mod 8). ŸŸ q´",
+    "_rawA": "1"
+  },
+  {
+    "num": 74,
+    "q": "Let f(x) = x 2x 3x 4. Find f (5). 3 2 q qb ww",
+    "a": "26",
+    "t": "advanced",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x 2x 3x 4. Find f (5). 3 2 q qb ww",
+    "_rawA": "26"
+  },
+  {
+    "num": 75,
+    "q": "= lim x",
+    "a": "7",
+    "t": "calculus",
+    "year": "2019",
+    "test": "A",
+    "starred": false,
+    "source": "NS_StudyPacket_A_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x",
+    "_rawA": "7"
+  },
+  {
+    "num": 2,
+    "q": "2019 1516 3 = -q",
+    "a": "500",
+    "t": "basic",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2019 1516 3 = q q",
+    "_rawA": "500"
+  },
+  {
+    "num": 6,
+    "q": "1 = 5 3",
+    "a": "-3",
+    "t": "fracdec",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "1 = 5 3",
+    "_rawA": "q 3"
+  },
+  {
+    "num": 14,
+    "q": "53 × 47 =",
+    "a": "2,491",
+    "t": "mult",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "53 47 = ‚",
+    "_rawA": "2,491"
+  },
+  {
+    "num": 27,
+    "q": "12 13",
+    "a": "-25",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "12 13",
+    "_rawA": "q 25"
+  },
+  {
+    "num": 31,
+    "q": "Let (2x 3)(4x 1) = ax bx c. b q bb 2",
+    "a": "15",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (2x 3)(4x 1) = ax bx c. b q bb 2",
+    "_rawA": "15"
+  },
+  {
+    "num": 32,
+    "q": "4 4 = -q 2 3 b",
+    "a": ".078125, 5",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "4 4 = q q 2 3 b",
+    "_rawA": ".078125, 5"
+  },
+  {
+    "num": 35,
+    "q": "Find k, if kx x 12 = 0 and the product of the 2 q",
+    "a": "6",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find k, if kx x 12 = 0 and the product of the 2 q q",
+    "_rawA": "6"
+  },
+  {
+    "num": 40,
+    "q": "16 = 3",
+    "a": "3,892 4,300",
+    "t": "starred",
+    "year": "2019",
+    "test": "B",
+    "starred": true,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "16 = 3",
+    "_rawA": "3,892 4,300 q"
+  },
+  {
+    "num": 54,
+    "q": "The vertex of the parabola 6x 12 is (h, k) x2 q",
+    "a": "21",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of the parabola 6x 12 is (h, k) x2 q q",
+    "_rawA": "21 q"
+  },
+  {
+    "num": 59,
+    "q": "Let (a 5 ) Find a. q qq i 2 = 9 40 .i",
+    "a": "4",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (a 5 ) Find a. q qq i 2 = 9 40 .i",
+    "_rawA": "4"
+  },
+  {
+    "num": 71,
+    "q": "Let g(x) = x 9. Find g(g( 3)). 2 q",
+    "a": "-9",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let g(x) = x 9. Find g(g( 3)). 2 q q",
+    "_rawA": "q 9"
+  },
+  {
+    "num": 76,
+    "q": "= 1 6",
+    "a": "8",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 6",
+    "_rawA": "8 q"
+  },
+  {
+    "num": 78,
+    "q": "6 5 5 4",
+    "a": "100",
+    "t": "advanced",
+    "year": "2019",
+    "test": "B",
+    "starred": false,
+    "source": "NS_StudyPacket_B_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "6 5 5 4",
+    "_rawA": "100"
+  },
+  {
+    "num": 2,
+    "q": "16 × 75 =",
+    "a": "1,200",
+    "t": "mult",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "16 75 = ‚",
+    "_rawA": "1,200"
+  },
+  {
+    "num": 14,
+    "q": "62 × 58 =",
+    "a": "3,596",
+    "t": "mult",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "62 58 = ‚",
+    "_rawA": "3,596"
+  },
+  {
+    "num": 18,
+    "q": "3 6 = 1 2",
+    "a": ", 10 61 1",
+    "t": "basic",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "3 6 = 1 2",
+    "_rawA": ", 10 61 1"
+  },
+  {
+    "num": 25,
+    "q": "If f(x) = x 16x 64 then f(25) = 2 q b",
+    "a": "289",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If f(x) = x 16x 64 then f(25) = 2 q b",
+    "_rawA": "289"
+  },
+  {
+    "num": 30,
+    "q": "√329330 =",
+    "a": "546 602",
+    "t": "starred",
+    "year": "2019",
+    "test": "D",
+    "starred": true,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "È329330 =",
+    "_rawA": "546 602 q"
+  },
+  {
+    "num": 39,
+    "q": "The smallest root of (3x 1) = is q 2 1",
+    "a": "2",
+    "t": "roots",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of (3x 1) = is q 2 1",
+    "_rawA": "2"
+  },
+  {
+    "num": 41,
+    "q": "If 2.5 = 360, then 2.5 = x x ( q 1)",
+    "a": "144",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 2.5 = 360, then 2.5 = x x ( q 1)",
+    "_rawA": "144"
+  },
+  {
+    "num": 44,
+    "q": "34 × 43 =",
+    "a": "1,462",
+    "t": "mult",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "34 43 = ‚",
+    "_rawA": "1,462"
+  },
+  {
+    "num": 52,
+    "q": "The roots of x x 6x 1 = 0 are d, e, 3 2 q qb",
+    "a": "5",
+    "t": "roots",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The roots of x x 6x 1 = 0 are d, e, 3 2 q qb",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 59,
+    "q": "222 × 5 =",
+    "a": "30",
+    "t": "mult",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "222 = ‚ 5",
+    "_rawA": "30"
+  },
+  {
+    "num": 74,
+    "q": "Let f(x) = (5x 7) . Find f ( 3). q q 2 w",
+    "a": "220",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = (5x 7) . Find f ( 3). q q 2 w",
+    "_rawA": "220 q"
+  },
+  {
+    "num": 76,
+    "q": "= 1 5",
+    "a": "82",
+    "t": "advanced",
+    "year": "2019",
+    "test": "D",
+    "starred": false,
+    "source": "NS_StudyPacket_D_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 5",
+    "_rawA": "82"
+  },
+  {
+    "num": 4,
+    "q": "2019 301 413 = -q",
+    "a": "1,305",
+    "t": "basic",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2019 301 413 = q q",
+    "_rawA": "1,305"
+  },
+  {
+    "num": 16,
+    "q": "³√2197 =",
+    "a": "13",
+    "t": "roots",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2197 = È3",
+    "_rawA": "13"
+  },
+  {
+    "num": 26,
+    "q": "(64) =",
+    "a": "16",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(64) =",
+    "_rawA": "16"
+  },
+  {
+    "num": 29,
+    "q": "35 = 7 9",
+    "a": "28",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "35 = 7 9",
+    "_rawA": "28"
+  },
+  {
+    "num": 31,
+    "q": "Let (18x 13)(18x 13) = ax bx c. q q bb 2",
+    "a": "25",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (18x 13)(18x 13) = ax bx c. q q bb 2",
+    "_rawA": "25"
+  },
+  {
+    "num": 34,
+    "q": "If 4x 13 = 2x and 0 x 6, then x = , , q ",
+    "a": ", 2 13 1",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "unusual_chars: ",
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 4x 13 = 2x and 0 x 6, then x = ¸ ¸ q ",
+    "_rawA": ", 2 13 1"
+  },
+  {
+    "num": 42,
+    "q": "If 7 = 70, then 7 = (x 1) (x 1) q b",
+    "a": "3,430",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 7 = 70, then 7 = (x 1) (x 1) q b",
+    "_rawA": "3,430"
+  },
+  {
+    "num": 45,
+    "q": "41 24 13 = 555 5 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "41 24 13 = 555 5 q q",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 47,
+    "q": "1, 1}. ( ) a b , where a,b { a b = i 19 = √ -q",
+    "a": "0",
+    "t": "roots",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1, 1}. ( ) a b , where a,b { a b = i 19 = È −q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 50,
+    "q": "√31214 =",
+    "a": "168 185",
+    "t": "starred",
+    "year": "2019",
+    "test": "R",
+    "starred": true,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "31214 = È",
+    "_rawA": "168 185 q"
+  },
+  {
+    "num": 59,
+    "q": "Let (a 7 ) 24 70 . Find a. q i i 2 = -q",
+    "a": "5",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (a 7 ) 24 70 . Find a. q i i 2 = q q",
+    "_rawA": "5"
+  },
+  {
+    "num": 66,
+    "q": "cos(112 ) = sin A, 180 A 270 . A = ° ° ° °  ",
+    "a": "202",
+    "t": "geometry",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "unusual_chars: "
+    ],
+    "_rawQ": "cos(112 ) = sin A, 180 A 270 . A = ° ° ° °  ",
+    "_rawA": "202"
+  },
+  {
+    "num": 74,
+    "q": "Let f(x) = 5x 4x 3x 2. Find f ( 1). 3 2 q qb qww",
+    "a": "38",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 5x 4x 3x 2. Find f ( 1). 3 2 q qb qww",
+    "_rawA": "38 q"
+  },
+  {
+    "num": 75,
+    "q": "= lim x →",
+    "a": "1",
+    "t": "calculus",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x Ä",
+    "_rawA": "1"
+  },
+  {
+    "num": 76,
+    "q": "= 4 13",
+    "a": "184",
+    "t": "advanced",
+    "year": "2019",
+    "test": "R",
+    "starred": false,
+    "source": "NS_StudyPacket_R_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 4 13",
+    "_rawA": "184 q"
+  },
+  {
+    "num": 13,
+    "q": "29² =",
+    "a": "841",
+    "t": "powers",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "29 = 2",
+    "_rawA": "841"
+  },
+  {
+    "num": 14,
+    "q": "53 × 47 =",
+    "a": "2,491",
+    "t": "mult",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "53 47 = ‚",
+    "_rawA": "2,491"
+  },
+  {
+    "num": 17,
+    "q": "³√2744 =",
+    "a": "14",
+    "t": "roots",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2744 = È3",
+    "_rawA": "14"
+  },
+  {
+    "num": 25,
+    "q": "If A = 4, B = 3, and C = 2, then AB = -q C",
+    "a": "36",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If A = 4, B = 3, and C = 2, then AB = q q C",
+    "_rawA": "36 q"
+  },
+  {
+    "num": 31,
+    "q": "Let (27x 23) = ax bx c. q bb 2 2",
+    "a": "16",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (27x 23) = ax bx c. q bb 2 2",
+    "_rawA": "16"
+  },
+  {
+    "num": 32,
+    "q": "Let (17x 15)(17x 15) = ax bx c. q b bb 2",
+    "a": "64",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (17x 15)(17x 15) = ax bx c. q b bb 2",
+    "_rawA": "64"
+  },
+  {
+    "num": 41,
+    "q": "If 7 = 50, then 7 = ( ( x x q 1) 1) b",
+    "a": "2,450",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 7 = 50, then 7 = ( ( x x q 1) 1) b",
+    "_rawA": "2,450"
+  },
+  {
+    "num": 47,
+    "q": "1,1}. ( ) a b , where a,b { Find b. i = 53 √ -q ba",
+    "a": "0",
+    "t": "roots",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1,1}. ( ) a b , where a,b { Find b. i = 53 È −q ba",
+    "_rawA": "0"
+  },
+  {
+    "num": 54,
+    "q": "The vertex of the parabola 8x 15 is (h, k) x2 q b",
+    "a": "3",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of the parabola 8x 15 is (h, k) x2 q b",
+    "_rawA": "3"
+  },
+  {
+    "num": 71,
+    "q": "Let f(x) = 3x 5x 2. Find f f( 1) . 2 qq q( )",
+    "a": "26",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 3x 5x 2. Find f f( 1) . 2 qq q( )",
+    "_rawA": "26"
+  },
+  {
+    "num": 74,
+    "q": "The remainder of (3x 5x 2) (x 4) is 2 q - ÷ -",
+    "a": "26",
+    "t": "mod",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The remainder of (3x 5x 2) (x 4) is 2 q qƒq",
+    "_rawA": "26"
+  },
+  {
+    "num": 77,
+    "q": "= 5 0 4 1",
+    "a": "8",
+    "t": "advanced",
+    "year": "2019",
+    "test": "S",
+    "starred": false,
+    "source": "NS_StudyPacket_S_19.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 5 0 4 1",
+    "_rawA": "8"
+  },
+  {
+    "num": 2,
+    "q": "= 468",
+    "a": "27",
+    "t": "basic",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 468",
+    "_rawA": "27"
+  },
+  {
+    "num": 4,
+    "q": "37 × 15 =",
+    "a": "555",
+    "t": "mult",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "37 15 = ‚",
+    "_rawA": "555"
+  },
+  {
+    "num": 6,
+    "q": "28² =",
+    "a": "784",
+    "t": "powers",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "28 = 2",
+    "_rawA": "784"
+  },
+  {
+    "num": 13,
+    "q": "73 87 × =",
+    "a": "6,351",
+    "t": "ops",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "73 87 ‚ =",
+    "_rawA": "6,351"
+  },
+  {
+    "num": 21,
+    "q": "64 × 44 =",
+    "a": "2,816",
+    "t": "mult",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "64 44 = ‚",
+    "_rawA": "2,816"
+  },
+  {
+    "num": 34,
+    "q": "The sum of the coefficients of (4x 2y) is q 3",
+    "a": "8",
+    "t": "advanced",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the coefficients of (4x 2y) is q 3",
+    "_rawA": "8"
+  },
+  {
+    "num": 40,
+    "q": "√535825 =",
+    "a": "696 768",
+    "t": "starred",
+    "year": "2022",
+    "test": "R",
+    "starred": true,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "535825 = È",
+    "_rawA": "696 768 q"
+  },
+  {
+    "num": 59,
+    "q": "The vertex of y = 3x 2x 1 is at x = 2 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 3x 2x 1 is at x = 2 q q",
+    "_rawA": "1"
+  },
+  {
+    "num": 73,
+    "q": "( x) = '0",
+    "a": "1",
+    "t": "advanced",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "( x) = '0",
+    "_rawA": "1"
+  },
+  {
+    "num": 75,
+    "q": "(0.1875) = (improper fraction) q 3",
+    "a": "4096",
+    "t": "fracdec",
+    "year": "2022",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_R_22.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(0.1875) = (improper fraction) q 3",
+    "_rawA": "4096"
+  },
+  {
+    "num": 2,
+    "q": "= 5 3",
+    "a": "1.225, , 1 49 9",
+    "t": "basic",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 5 3",
+    "_rawA": "1.225, , 1 49 9"
+  },
+  {
+    "num": 6,
+    "q": "24² =",
+    "a": "576",
+    "t": "powers",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "24 = 2",
+    "_rawA": "576"
+  },
+  {
+    "num": 7,
+    "q": "75 × 56 =",
+    "a": "4,200",
+    "t": "mult",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "75 56 = ‚",
+    "_rawA": "4,200"
+  },
+  {
+    "num": 21,
+    "q": "52 × 58 =",
+    "a": "3,016",
+    "t": "mult",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "52 58 = ‚",
+    "_rawA": "3,016"
+  },
+  {
+    "num": 30,
+    "q": "√162324 =",
+    "a": "383 423",
+    "t": "starred",
+    "year": "2024",
+    "test": "A",
+    "starred": true,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "162324 = È",
+    "_rawA": "383 423 q"
+  },
+  {
+    "num": 42,
+    "q": "(502) = 2",
+    "a": "252,004",
+    "t": "advanced",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(502) = 2",
+    "_rawA": "252,004"
+  },
+  {
+    "num": 56,
+    "q": "2024 106 203 = 888 8 q",
+    "a": "1513",
+    "t": "advanced",
+    "year": "2024",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_A_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2024 106 203 = 888 8 q q",
+    "_rawA": "1513"
+  },
+  {
+    "num": 5,
+    "q": "32 × 35 =",
+    "a": "1,120",
+    "t": "mult",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "32 35 = ‚",
+    "_rawA": "1,120"
+  },
+  {
+    "num": 6,
+    "q": "13³ =",
+    "a": "2,197",
+    "t": "powers",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "13 = 3",
+    "_rawA": "2,197"
+  },
+  {
+    "num": 15,
+    "q": "53 × 53 =",
+    "a": "2,809",
+    "t": "mult",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "53 53 = ‚",
+    "_rawA": "2,809"
+  },
+  {
+    "num": 16,
+    "q": "52 × 52 =",
+    "a": "2,704",
+    "t": "mult",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "52 52 = ‚",
+    "_rawA": "2,704"
+  },
+  {
+    "num": 30,
+    "q": "√309210 =",
+    "a": "529 583",
+    "t": "starred",
+    "year": "2024",
+    "test": "B",
+    "starred": true,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "309210 = È",
+    "_rawA": "529 583 q"
+  },
+  {
+    "num": 32,
+    "q": "5B6 = 3 15 B) . Find B, B 0. ∪( ∪ q ≤",
+    "a": "7",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "5B6 = 3 15 B) . Find B, B 0. ˆ ‘ q ",
+    "_rawA": "7"
+  },
+  {
+    "num": 41,
+    "q": "(405) = 2",
+    "a": "164,025",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(405) = 2",
+    "_rawA": "164,025"
+  },
+  {
+    "num": 50,
+    "q": "17 = 3",
+    "a": "4,668 5,158",
+    "t": "starred",
+    "year": "2024",
+    "test": "B",
+    "starred": true,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "17 = 3",
+    "_rawA": "4,668 5,158 q"
+  },
+  {
+    "num": 69,
+    "q": "Find g(f( )) when f(x) = 2x 3 and q q 1",
+    "a": "13",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find g(f( )) when f(x) = 2x 3 and q q 1",
+    "_rawA": "13 q"
+  },
+  {
+    "num": 72,
+    "q": "Let g(x) = 2x 2. Find g ( 2). 2 x qq q 2",
+    "a": "8.5, ,--17",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let g(x) = 2x 2. Find g ( 2). 2 x qq q 2",
+    "_rawA": "8.5, , q q 17"
+  },
+  {
+    "num": 74,
+    "q": "h(x) = x 3x 2 has a local minimum q- + 3 2",
+    "a": "4",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "h(x) = x 3x 2 has a local minimum qq  3 2",
+    "_rawA": "4 q"
+  },
+  {
+    "num": 75,
+    "q": "Let (x, y) be the focus of y 2 = 3(x 5) . y = -q 2",
+    "a": ", 2 25 1",
+    "t": "advanced",
+    "year": "2024",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (x, y) be the focus of y 2 = 3(x 5) . y = q q 2",
+    "_rawA": ", 2 25 1"
+  },
+  {
+    "num": 3,
+    "q": "= 232",
+    "a": "3",
+    "t": "basic",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 232",
+    "_rawA": "3"
+  },
+  {
+    "num": 5,
+    "q": "= % 27",
+    "a": "108",
+    "t": "pct",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= % 27",
+    "_rawA": "108"
+  },
+  {
+    "num": 9,
+    "q": "23² =",
+    "a": "529",
+    "t": "powers",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "23 = 2",
+    "_rawA": "529"
+  },
+  {
+    "num": 21,
+    "q": "The additive inverse of (6) is q 1",
+    "a": "-1",
+    "t": "advanced",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The additive inverse of (6) is q 1",
+    "_rawA": "q 1"
+  },
+  {
+    "num": 24,
+    "q": "√5041 =",
+    "a": "71",
+    "t": "roots",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "5041 = È",
+    "_rawA": "71"
+  },
+  {
+    "num": 61,
+    "q": "Arccos = k rads, 0 k 1, and k = ( ) q ≥≥ 1",
+    "a": "2",
+    "t": "trig",
+    "year": "2025",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_B_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Arccos = k rads, 0 k 1, and k = ˆ ‰ q  1",
+    "_rawA": "2"
+  },
+  {
+    "num": 2,
+    "q": "3 2 = 2 2",
+    "a": "13",
+    "t": "basic",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "3 2 = 2 2",
+    "_rawA": "13"
+  },
+  {
+    "num": 4,
+    "q": "= 5 4",
+    "a": ".78125, 25",
+    "t": "basic",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 5 4",
+    "_rawA": ".78125, 25"
+  },
+  {
+    "num": 5,
+    "q": "31² =",
+    "a": "961",
+    "t": "powers",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "31 = 2",
+    "_rawA": "961"
+  },
+  {
+    "num": 8,
+    "q": "= % 4",
+    "a": "80",
+    "t": "pct",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= % 4",
+    "_rawA": "80"
+  },
+  {
+    "num": 12,
+    "q": "³√2744 =",
+    "a": "14",
+    "t": "roots",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2744 = È3",
+    "_rawA": "14"
+  },
+  {
+    "num": 26,
+    "q": "{t,r,i} {q,u,a,d} {b,i} {p,e,n,t} contains ∪ ∪∪ ∪ ∪ ∩∪",
+    "a": "2",
+    "t": "advanced",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "{t,r,i} {q,u,a,d} {b,i} {p,e,n,t} contains  ‘ ‘  ",
+    "_rawA": "2"
+  },
+  {
+    "num": 41,
+    "q": "(309) = 2",
+    "a": "95,481",
+    "t": "advanced",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(309) = 2",
+    "_rawA": "95,481"
+  },
+  {
+    "num": 53,
+    "q": "= 11 1",
+    "a": "3",
+    "t": "advanced",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 11 1",
+    "_rawA": "3"
+  },
+  {
+    "num": 67,
+    "q": "If h(x) = x 3 and g(x) = x 1, 2 q",
+    "a": "2",
+    "t": "advanced",
+    "year": "2024",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If h(x) = x 3 and g(x) = x 1, 2 q q",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 2,
+    "q": "24 × 25 =",
+    "a": "600",
+    "t": "mult",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "24 25 = ‚",
+    "_rawA": "600"
+  },
+  {
+    "num": 38,
+    "q": "³√6859 =",
+    "a": "19",
+    "t": "roots",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "6859 = È3",
+    "_rawA": "19"
+  },
+  {
+    "num": 56,
+    "q": "The point ( , ) is reflected across the line q q 2 9",
+    "a": "7",
+    "t": "advanced",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The point ( , ) is reflected across the line q q 2 9",
+    "_rawA": "7 q"
+  },
+  {
+    "num": 62,
+    "q": "Arccsc 2 = ( ) q k rads and k = 1",
+    "a": "-1",
+    "t": "advanced",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Arccsc 2 = ˆ ‰ q k rads and k = 1",
+    "_rawA": "q 1"
+  },
+  {
+    "num": 68,
+    "q": "If 16 18 20 22x = 2, then x = √ q q ³√ √",
+    "a": "2",
+    "t": "roots",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 16 18 20 22x = 2, then x = Ê q q É È",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 76,
+    "q": "' ' 0 1",
+    "a": ".75, 3",
+    "t": "advanced",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "' ' 0 1",
+    "_rawA": ".75, 3"
+  },
+  {
+    "num": 79,
+    "q": "= lim x",
+    "a": "0",
+    "t": "calculus",
+    "year": "2025",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_D_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x",
+    "_rawA": "0"
+  },
+  {
+    "num": 4,
+    "q": "27² =",
+    "a": "729",
+    "t": "powers",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "27 = 2",
+    "_rawA": "729"
+  },
+  {
+    "num": 6,
+    "q": "333 × 1",
+    "a": "9",
+    "t": "mult",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "333 ‚ 1",
+    "_rawA": "9"
+  },
+  {
+    "num": 7,
+    "q": "33 × 24 =",
+    "a": "792",
+    "t": "mult",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "33 24 = ‚",
+    "_rawA": "792"
+  },
+  {
+    "num": 13,
+    "q": "33 × 31",
+    "a": "30 3",
+    "t": "mult",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "33 ‚ 31",
+    "_rawA": "30 3"
+  },
+  {
+    "num": 15,
+    "q": "30 ÷ 2",
+    "a": "75",
+    "t": "div",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "30 ƒ 2",
+    "_rawA": "75"
+  },
+  {
+    "num": 19,
+    "q": "= 1 11",
+    "a": "-19",
+    "t": "basic",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 11",
+    "_rawA": "q 19"
+  },
+  {
+    "num": 28,
+    "q": "2 3 = 4 7",
+    "a": "28",
+    "t": "advanced",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2 3 = 4 7",
+    "_rawA": "28"
+  },
+  {
+    "num": 38,
+    "q": "The smaller root of (4x 1) = 9 is q 2",
+    "a": ".5,--1",
+    "t": "roots",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smaller root of (4x 1) = 9 is q 2",
+    "_rawA": ".5, q q 1"
+  },
+  {
+    "num": 44,
+    "q": "Which is larger, or ? q q 11 10",
+    "a": "-10",
+    "t": "compare",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Which is larger, or ? q q 11 10",
+    "_rawA": "q 10"
+  },
+  {
+    "num": 50,
+    "q": "33 = 3",
+    "a": "34,141 37,733",
+    "t": "starred",
+    "year": "2024",
+    "test": "R",
+    "starred": true,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "33 = 3",
+    "_rawA": "34,141 37,733 q"
+  },
+  {
+    "num": 52,
+    "q": "(708) = 2",
+    "a": "501,264",
+    "t": "advanced",
+    "year": "2024",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(708) = 2",
+    "_rawA": "501,264"
+  },
+  {
+    "num": 3,
+    "q": "= 425",
+    "a": "4",
+    "t": "basic",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 425",
+    "_rawA": "4"
+  },
+  {
+    "num": 9,
+    "q": "26² =",
+    "a": "676",
+    "t": "powers",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "26 = 2",
+    "_rawA": "676"
+  },
+  {
+    "num": 38,
+    "q": "³√29791 =",
+    "a": "31",
+    "t": "roots",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "29791 = È3",
+    "_rawA": "31"
+  },
+  {
+    "num": 45,
+    "q": "The point ( 6) is reflected across the line q q 2,",
+    "a": "12",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The point ( 6) is reflected across the line q q 2,",
+    "_rawA": "12 q"
+  },
+  {
+    "num": 46,
+    "q": "2 6 8 14 22 36 p q r +++ + + ++++ 246 =",
+    "a": "638",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2 6 8 14 22 36 p q r     246 =",
+    "_rawA": "638"
+  },
+  {
+    "num": 61,
+    "q": "= 4 5",
+    "a": "4",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 4 5",
+    "_rawA": "4"
+  },
+  {
+    "num": 71,
+    "q": "(x 12x 42) (x 3) has remainder 3 2 q - ÷ -",
+    "a": "123",
+    "t": "mod",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(x 12x 42) (x 3) has remainder 3 2 q q ƒq",
+    "_rawA": "123 q"
+  },
+  {
+    "num": 72,
+    "q": "= lim",
+    "a": "9",
+    "t": "calculus",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": "9"
+  },
+  {
+    "num": 6,
+    "q": "= 1",
+    "a": ", 708 2126 2",
+    "t": "fracdec",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 q",
+    "_rawA": ", 708 2126 2"
+  },
+  {
+    "num": 78,
+    "q": "Let 42B 2B6 = 13 . Find digit B. q 2",
+    "a": "5",
+    "t": "advanced",
+    "year": "2025",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_R_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let 42B 2B6 = 13 . Find digit B. q 2",
+    "_rawA": "5"
+  },
+  {
+    "num": 3,
+    "q": "= 7 2",
+    "a": ", 1 7 1",
+    "t": "basic",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 7 2",
+    "_rawA": ", 1 7 1"
+  },
+  {
+    "num": 7,
+    "q": "666 × 2 =",
+    "a": "36",
+    "t": "mult",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "666 = ‚ 2",
+    "_rawA": "36"
+  },
+  {
+    "num": 14,
+    "q": "54 × 54 =",
+    "a": "2,916",
+    "t": "mult",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "54 54 = ‚",
+    "_rawA": "2,916"
+  },
+  {
+    "num": 15,
+    "q": "= 1 11",
+    "a": "-11",
+    "t": "ops",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 11",
+    "_rawA": "q 11"
+  },
+  {
+    "num": 17,
+    "q": "25 × 64 =",
+    "a": "1,600",
+    "t": "mult",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "25 64 = ‚",
+    "_rawA": "1,600"
+  },
+  {
+    "num": 21,
+    "q": "39 × 31 =",
+    "a": "1,209",
+    "t": "mult",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "39 31 = ‚",
+    "_rawA": "1,209"
+  },
+  {
+    "num": 22,
+    "q": "4 2 = 2 4",
+    "a": ", 1 21 10",
+    "t": "advanced",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "4 2 = 2 4",
+    "_rawA": ", 1 21 10"
+  },
+  {
+    "num": 26,
+    "q": "63 × 24 =",
+    "a": "1,512",
+    "t": "mult",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "63 24 = ‚",
+    "_rawA": "1,512"
+  },
+  {
+    "num": 33,
+    "q": "The reciprocal of 6 is (decimal) q 2",
+    "a": ".15",
+    "t": "fracdec",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The reciprocal of 6 is (decimal) q 2",
+    "_rawA": ".15 q"
+  },
+  {
+    "num": 35,
+    "q": "³√13824 =",
+    "a": "24",
+    "t": "roots",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "13824 = È3",
+    "_rawA": "24"
+  },
+  {
+    "num": 77,
+    "q": "Given: 5, 1, 4, 3, 7, 10, 17, k, 44, ... . k = -q",
+    "a": "27",
+    "t": "advanced",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Given: 5, 1, 4, 3, 7, 10, 17, k, 44, ... . k = q q",
+    "_rawA": "27 q"
+  },
+  {
+    "num": 78,
+    "q": "402³ =",
+    "a": "64,964,808",
+    "t": "powers",
+    "year": "2024",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_24.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(402) = 3",
+    "_rawA": "64,964,808"
+  },
+  {
+    "num": 11,
+    "q": "89 × 98 =",
+    "a": "8,722",
+    "t": "mult",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "89 98 = ‚",
+    "_rawA": "8,722"
+  },
+  {
+    "num": 17,
+    "q": "47 × 52 =",
+    "a": "2,444",
+    "t": "mult",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "47 52 = ‚",
+    "_rawA": "2,444"
+  },
+  {
+    "num": 38,
+    "q": "22 × 22 =",
+    "a": "484",
+    "t": "mult",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "22 22 = ‚",
+    "_rawA": "484"
+  },
+  {
+    "num": 73,
+    "q": "The directrix of x 2x 4y = 7 is y = 2 q",
+    "a": "3",
+    "t": "advanced",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The directrix of x 2x 4y = 7 is y = 2 q q",
+    "_rawA": "3 q"
+  },
+  {
+    "num": 78,
+    "q": "Given: 1, 2, 3, 4, 6, 5, k, 2, 9... . Find k. q",
+    "a": "4",
+    "t": "advanced",
+    "year": "2025",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_StudyPacket_S_25.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Given: 1, 2, 3, 4, 6, 5, k, 2, 9... . Find k. q q",
+    "_rawA": "4"
+  },
+  {
+    "num": 5,
+    "q": "17² =",
+    "a": "289",
+    "t": "powers",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "17 = 2",
+    "_rawA": "289"
+  },
+  {
+    "num": 25,
+    "q": "The sum of the roots 2x 4x 3 is 2 q",
+    "a": "2",
+    "t": "roots",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The sum of the roots 2x 4x 3 is 2 q q",
+    "_rawA": "2"
+  },
+  {
+    "num": 27,
+    "q": "64 × 66 =",
+    "a": "4,224",
+    "t": "mult",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "64 66 = ‚",
+    "_rawA": "4,224"
+  },
+  {
+    "num": 29,
+    "q": "Given the set {1,3 p = ,6,10,15,p,28,36,q...}. q",
+    "a": "24",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Given the set {1,3 p = ,6,10,15,p,28,36,q...}. q q",
+    "_rawA": "24"
+  },
+  {
+    "num": 35,
+    "q": "7 5 = 3 3",
+    "a": "218",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "7 5 = 3 3 q",
+    "_rawA": "218"
+  },
+  {
+    "num": 50,
+    "q": "√12018 =",
+    "a": "105 115",
+    "t": "starred",
+    "year": "2020",
+    "test": "A",
+    "starred": true,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "12018 = È",
+    "_rawA": "105 115 q"
+  },
+  {
+    "num": 51,
+    "q": "The vertex of the parabola, y = 2x 4x 5 is at 2 q",
+    "a": "6",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of the parabola, y = 2x 4x 5 is at 2 q q",
+    "_rawA": "6 q"
+  },
+  {
+    "num": 69,
+    "q": "Let f(x) = 4x 1. Find f(f( 1)). 2 q",
+    "a": "35",
+    "t": "advanced",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 4x 1. Find f(f( 1)). 2 q q",
+    "_rawA": "35"
+  },
+  {
+    "num": 75,
+    "q": "= lim",
+    "a": ".8, 4",
+    "t": "calculus",
+    "year": "2020",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Material_A_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": ".8, 4"
+  },
+  {
+    "num": 1,
+    "q": "2018 201 20 = -q",
+    "a": "1,797",
+    "t": "basic",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "2018 201 20 = q q",
+    "_rawA": "1,797"
+  },
+  {
+    "num": 3,
+    "q": "37 × 25 =",
+    "a": "925",
+    "t": "mult",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "37 25 = ‚",
+    "_rawA": "925"
+  },
+  {
+    "num": 8,
+    "q": "27² =",
+    "a": "729",
+    "t": "powers",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "27 = 2",
+    "_rawA": "729"
+  },
+  {
+    "num": 18,
+    "q": "5 2 = 1 2",
+    "a": ", 2 31 7",
+    "t": "basic",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "5 2 = 1 2",
+    "_rawA": ", 2 31 7"
+  },
+  {
+    "num": 23,
+    "q": "72 × 78 =",
+    "a": "5,616",
+    "t": "mult",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "72 78 = ‚",
+    "_rawA": "5,616"
+  },
+  {
+    "num": 25,
+    "q": "6 9 = 1 1",
+    "a": ", 59 532 1",
+    "t": "advanced",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "6 9 = 1 1",
+    "_rawA": ", 59 532 1"
+  },
+  {
+    "num": 35,
+    "q": "The smallest root of (x 1) = is q 2 1",
+    "a": ".5, 1",
+    "t": "roots",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of (x 1) = is q 2 1",
+    "_rawA": ".5, 1"
+  },
+  {
+    "num": 39,
+    "q": "( 256 484 ) = √ √q 3",
+    "a": "216",
+    "t": "roots",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "( 256 484 ) = È Èq 3",
+    "_rawA": "216 q"
+  },
+  {
+    "num": 57,
+    "q": "ln = e 10",
+    "a": "10",
+    "t": "log",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "ln = e 10",
+    "_rawA": "10"
+  },
+  {
+    "num": 71,
+    "q": "Find x, 4 x 8, if 3x 4 5(mod 9). x = ≤≤ q≡",
+    "a": "6",
+    "t": "mod",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, 4 x 8, if 3x 4 5(mod 9). x = ŸŸ q´",
+    "_rawA": "6"
+  },
+  {
+    "num": 75,
+    "q": "= lim",
+    "a": "8",
+    "t": "calculus",
+    "year": "2020",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Material_B_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": "8"
+  },
+  {
+    "num": 3,
+    "q": "24 × 25 =",
+    "a": "600",
+    "t": "mult",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "24 25 = ‚",
+    "_rawA": "600"
+  },
+  {
+    "num": 4,
+    "q": "= 1 1",
+    "a": "8",
+    "t": "basic",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 1 1",
+    "_rawA": "8"
+  },
+  {
+    "num": 7,
+    "q": "15² =",
+    "a": "225",
+    "t": "powers",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "15 = 2",
+    "_rawA": "225"
+  },
+  {
+    "num": 25,
+    "q": "4 4 = -q 1 2",
+    "a": ".1875, 3",
+    "t": "advanced",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "4 4 = q q 1 2 q",
+    "_rawA": ".1875, 3"
+  },
+  {
+    "num": 26,
+    "q": "15³ =",
+    "a": "3,375",
+    "t": "powers",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "15 = 3",
+    "_rawA": "3,375"
+  },
+  {
+    "num": 34,
+    "q": "If x 3y = 5 and x 2y = 4 then y = -q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If x 3y = 5 and x 2y = 4 then y = q q",
+    "_rawA": "1 q"
+  },
+  {
+    "num": 43,
+    "q": "C = 8 3",
+    "a": "56",
+    "t": "advanced",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "C = 8 3",
+    "_rawA": "56"
+  },
+  {
+    "num": 45,
+    "q": "Let (ab) (a b ) (a b ) = a b . mn = ÷ × - q 22 3 3 mn",
+    "a": "24",
+    "t": "multdiv",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let (ab) (a b ) (a b ) = a b . mn = ƒ ‚ q q 22 3 3 mn",
+    "_rawA": "24 q"
+  },
+  {
+    "num": 49,
+    "q": "The largest root of (x 2) = is q 2 1",
+    "a": "2.25, 2 9 1",
+    "t": "roots",
+    "year": "2020",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Material_D_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The largest root of (x 2) = is q 2 1",
+    "_rawA": "2.25, 2 9 1"
+  },
+  {
+    "num": 2,
+    "q": "504 × 8 =",
+    "a": "4,032",
+    "t": "mult",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "504 8 = ‚",
+    "_rawA": "4,032"
+  },
+  {
+    "num": 5,
+    "q": "29² =",
+    "a": "841",
+    "t": "powers",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "29 = 2",
+    "_rawA": "841"
+  },
+  {
+    "num": 23,
+    "q": "83 × 87 =",
+    "a": "7,221",
+    "t": "mult",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "83 87 = ‚",
+    "_rawA": "7,221"
+  },
+  {
+    "num": 26,
+    "q": "8836 √ =",
+    "a": "94",
+    "t": "roots",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "8836 È =",
+    "_rawA": "94"
+  },
+  {
+    "num": 44,
+    "q": "5 = (decimal) ( q 3)",
+    "a": ".008",
+    "t": "fracdec",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "5 = (decimal) ( q 3)",
+    "_rawA": ".008"
+  },
+  {
+    "num": 45,
+    "q": "The vertex of y = 4x 5x 3 is (h, k). h = 2 q",
+    "a": ".625, 5",
+    "t": "advanced",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 4x 5x 3 is (h, k). h = 2 q q",
+    "_rawA": ".625, 5"
+  },
+  {
+    "num": 49,
+    "q": "991² =",
+    "a": "982,081",
+    "t": "powers",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "991 = 2",
+    "_rawA": "982,081"
+  },
+  {
+    "num": 72,
+    "q": "= lim x",
+    "a": "0",
+    "t": "calculus",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x",
+    "_rawA": "0"
+  },
+  {
+    "num": 73,
+    "q": "Let f(x) = x 3x 2x 1. Find f (1). 3 2 q - + w",
+    "a": "5",
+    "t": "advanced",
+    "year": "2020",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Material_S_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = x 3x 2x 1. Find f (1). 3 2 q q w",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 5,
+    "q": "31² =",
+    "a": "961",
+    "t": "powers",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "31 = 2",
+    "_rawA": "961"
+  },
+  {
+    "num": 7,
+    "q": "25 × 16 =",
+    "a": "400",
+    "t": "mult",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "25 16 = ‚",
+    "_rawA": "400"
+  },
+  {
+    "num": 11,
+    "q": "75 × 75 =",
+    "a": "5,625",
+    "t": "mult",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "75 75 = ‚",
+    "_rawA": "5,625"
+  },
+  {
+    "num": 22,
+    "q": "72 × 15 =",
+    "a": "1,080",
+    "t": "mult",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "72 15 = ‚",
+    "_rawA": "1,080"
+  },
+  {
+    "num": 27,
+    "q": "57 x 57 =",
+    "a": "3,249",
+    "t": "advanced",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "57 x 57 =",
+    "_rawA": "3,249"
+  },
+  {
+    "num": 47,
+    "q": "If x 0 and 2x 1 = 15, then x = ≥ q | |",
+    "a": "7",
+    "t": "advanced",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If x 0 and 2x 1 = 15, then x =  q ¹ ¹",
+    "_rawA": "7 q"
+  },
+  {
+    "num": 52,
+    "q": "34 × 74 =",
+    "a": "2,516",
+    "t": "mult",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "34 74 = ‚",
+    "_rawA": "2,516"
+  },
+  {
+    "num": 61,
+    "q": "= 4 5 5 4",
+    "a": "25",
+    "t": "advanced",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 4 5 5 4",
+    "_rawA": "25"
+  },
+  {
+    "num": 68,
+    "q": "The middle term in the expansion of (2x 1) is q 4",
+    "a": "28",
+    "t": "advanced",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The middle term in the expansion of (2x 1) is q 4",
+    "_rawA": "28"
+  },
+  {
+    "num": 73,
+    "q": "= lim",
+    "a": "48",
+    "t": "calculus",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim",
+    "_rawA": "48"
+  },
+  {
+    "num": 78,
+    "q": "301³ =",
+    "a": "27,270,901",
+    "t": "powers",
+    "year": "2023",
+    "test": "A",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_A_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(301) = 3",
+    "_rawA": "27,270,901"
+  },
+  {
+    "num": 1,
+    "q": "315 ÷ 9 =",
+    "a": "35",
+    "t": "div",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "315 9 = ƒ",
+    "_rawA": "35"
+  },
+  {
+    "num": 5,
+    "q": "23² =",
+    "a": "529",
+    "t": "powers",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "23 = 2",
+    "_rawA": "529"
+  },
+  {
+    "num": 6,
+    "q": "= % 13",
+    "a": "65",
+    "t": "pct",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= % 13",
+    "_rawA": "65"
+  },
+  {
+    "num": 27,
+    "q": "54 x 54 =",
+    "a": "2,916",
+    "t": "advanced",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "54 x 54 =",
+    "_rawA": "2,916"
+  },
+  {
+    "num": 32,
+    "q": "41 x 49 =",
+    "a": "2,009",
+    "t": "advanced",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "41 x 49 =",
+    "_rawA": "2,009"
+  },
+  {
+    "num": 41,
+    "q": "23 × 83 =",
+    "a": "1,909",
+    "t": "mult",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "23 83 = ‚",
+    "_rawA": "1,909"
+  },
+  {
+    "num": 61,
+    "q": "= 6 7 7 6",
+    "a": "35",
+    "t": "advanced",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 6 7 7 6",
+    "_rawA": "35"
+  },
+  {
+    "num": 76,
+    "q": "401³ =",
+    "a": "64,481,201",
+    "t": "powers",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(401) = 3",
+    "_rawA": "64,481,201"
+  },
+  {
+    "num": 77,
+    "q": "Let f(x) = 1 x . Find f[f( 2) f(2)]. q qq 2",
+    "a": "1",
+    "t": "advanced",
+    "year": "2023",
+    "test": "B",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_B_23_.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f(x) = 1 x . Find f[f( 2) f(2)]. q qq 2",
+    "_rawA": "1"
+  },
+  {
+    "num": 5,
+    "q": "16² =",
+    "a": "256",
+    "t": "powers",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "16 = 2",
+    "_rawA": "256"
+  },
+  {
+    "num": 6,
+    "q": "= % 17",
+    "a": "68",
+    "t": "pct",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= % 17",
+    "_rawA": "68"
+  },
+  {
+    "num": 11,
+    "q": "2 5 = 1 1",
+    "a": "7.5, , 7 15 1",
+    "t": "ops",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2 5 = 1 1",
+    "_rawA": "7.5, , 7 15 1"
+  },
+  {
+    "num": 12,
+    "q": "MCXI DL q V = (Arabic Numeral)",
+    "a": "556",
+    "t": "roman",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "MCXI DL q V = (Arabic Numeral)",
+    "_rawA": "556"
+  },
+  {
+    "num": 14,
+    "q": "42 × 15 =",
+    "a": "630",
+    "t": "mult",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "42 15 = ‚",
+    "_rawA": "630"
+  },
+  {
+    "num": 24,
+    "q": "The discriminant of x 4x 12 = 0 is 2 q",
+    "a": "64",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The discriminant of x 4x 12 = 0 is 2 q q",
+    "_rawA": "64"
+  },
+  {
+    "num": 25,
+    "q": "8 8 = 1 2",
+    "a": ", 72 650 2",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "8 8 = 1 2",
+    "_rawA": ", 72 650 2"
+  },
+  {
+    "num": 26,
+    "q": "The smallest root of x 4x 12 = 0 is 2 q",
+    "a": "2",
+    "t": "roots",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of x 4x 12 = 0 is 2 q q",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 27,
+    "q": "59 x 59 =",
+    "a": "3,481",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "59 x 59 =",
+    "_rawA": "3,481"
+  },
+  {
+    "num": 30,
+    "q": "√32025 =",
+    "a": "171 187",
+    "t": "starred",
+    "year": "2023",
+    "test": "D",
+    "starred": true,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "32025 = È",
+    "_rawA": "171 187 q"
+  },
+  {
+    "num": 38,
+    "q": "44 = 8 4",
+    "a": "210",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "44 = 8 4",
+    "_rawA": "210"
+  },
+  {
+    "num": 41,
+    "q": "325 = 9 3",
+    "a": "100212",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "325 = 9 3",
+    "_rawA": "100212"
+  },
+  {
+    "num": 76,
+    "q": "= lim x →",
+    "a": "0",
+    "t": "calculus",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x Ä",
+    "_rawA": "0"
+  },
+  {
+    "num": 78,
+    "q": "( x) = !",
+    "a": "24",
+    "t": "advanced",
+    "year": "2023",
+    "test": "D",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_D_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "( x) = !",
+    "_rawA": "24 q"
+  },
+  {
+    "num": 6,
+    "q": "22² =",
+    "a": "484",
+    "t": "powers",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "22 = 2",
+    "_rawA": "484"
+  },
+  {
+    "num": 19,
+    "q": "23 × 32 =",
+    "a": "736",
+    "t": "mult",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "23 32 = ‚",
+    "_rawA": "736"
+  },
+  {
+    "num": 31,
+    "q": "43 x 47 =",
+    "a": "2,021",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "43 x 47 =",
+    "_rawA": "2,021"
+  },
+  {
+    "num": 37,
+    "q": "8 5 = 3 3",
+    "a": "46 9",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "8 5 = 3 3",
+    "_rawA": "46 9"
+  },
+  {
+    "num": 43,
+    "q": "422 = 9 3",
+    "a": "110202",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "422 = 9 3",
+    "_rawA": "110202"
+  },
+  {
+    "num": 44,
+    "q": "Let y = 3 x and x = y 3. Find x. q",
+    "a": "0",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let y = 3 x and x = y 3. Find x. q q",
+    "_rawA": "0"
+  },
+  {
+    "num": 65,
+    "q": "sec(cos ( )) = 1 q q 1",
+    "a": "2",
+    "t": "trig",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "sec(cos ( )) = 1 q q 1",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 67,
+    "q": "= 5 7 7 5",
+    "a": "203",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 5 7 7 5",
+    "_rawA": "203"
+  },
+  {
+    "num": 68,
+    "q": "(6 b ) = 11 60 and b = -q i i 2",
+    "a": "5",
+    "t": "advanced",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "(6 b ) = 11 60 and b = q q i i 2",
+    "_rawA": "5"
+  },
+  {
+    "num": 73,
+    "q": "The smallest value in the domain of y = 4 x , √ q 2",
+    "a": "2",
+    "t": "roots",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest value in the domain of y = 4 x , È q 2",
+    "_rawA": "2 q"
+  },
+  {
+    "num": 77,
+    "q": "501³ =",
+    "a": "125,751,501",
+    "t": "powers",
+    "year": "2023",
+    "test": "R",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_R_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(501) = 3",
+    "_rawA": "125,751,501"
+  },
+  {
+    "num": 2,
+    "q": "= 7 2 12",
+    "a": "7",
+    "t": "basic",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 7 2 12",
+    "_rawA": "7"
+  },
+  {
+    "num": 5,
+    "q": "18² =",
+    "a": "324",
+    "t": "powers",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "18 = 2",
+    "_rawA": "324"
+  },
+  {
+    "num": 21,
+    "q": "59² =",
+    "a": "3,481",
+    "t": "powers",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "59 = 2",
+    "_rawA": "3,481"
+  },
+  {
+    "num": 27,
+    "q": "8 8 = 5 2",
+    "a": ", 72 3538 10",
+    "t": "advanced",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "8 8 = 5 2",
+    "_rawA": ", 72 3538 10"
+  },
+  {
+    "num": 37,
+    "q": "222 = 8 4",
+    "a": "2102",
+    "t": "advanced",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "222 = 8 4",
+    "_rawA": "2102"
+  },
+  {
+    "num": 43,
+    "q": "T x 3x 3x 2 = 0 are R and he roots of 2 3 2 q - + 1",
+    "a": "2.5, , 2 5 1",
+    "t": "roots",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "T x 3x 3x 2 = 0 are R and he roots of 2 3 2 q q 1",
+    "_rawA": "2.5, , 2 5 1"
+  },
+  {
+    "num": 64,
+    "q": "If 3 p's = 4 q's and 2 q's = 5 r's, then 1 p = r's",
+    "a": ", 3 10 1",
+    "t": "advanced",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If 3 p's = 4 q's and 2 q's = 5 r's, then 1 p = r's",
+    "_rawA": ", 3 10 1"
+  },
+  {
+    "num": 79,
+    "q": "202³ =",
+    "a": "8,242,408",
+    "t": "powers",
+    "year": "2023",
+    "test": "S",
+    "starred": false,
+    "source": "NumberSense_Study_Packet_S_23.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(202) = 3",
+    "_rawA": "8,242,408"
+  },
+  {
+    "num": 5,
+    "q": "34² =",
+    "a": "1,156",
+    "t": "powers",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "34 = 2",
+    "_rawA": "1,156"
+  },
+  {
+    "num": 8,
+    "q": "Which is larger, or .59 = -q 3",
+    "a": ".59,--59",
+    "t": "compare",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Which is larger, or .59 = q q 3",
+    "_rawA": ".59, q q 59"
+  },
+  {
+    "num": 18,
+    "q": "63 × 36 =",
+    "a": "2,268",
+    "t": "mult",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "63 36 = ‚",
+    "_rawA": "2,268"
+  },
+  {
+    "num": 25,
+    "q": "8 4 = 3 1",
+    "a": "39.375, , 39 315 3",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "8 4 = 3 1",
+    "_rawA": "39.375, , 39 315 3"
+  },
+  {
+    "num": 28,
+    "q": "2197 √3=",
+    "a": "13",
+    "t": "roots",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2197 È3=",
+    "_rawA": "13"
+  },
+  {
+    "num": 34,
+    "q": "The larger root of (x 1) = is q 2 4",
+    "a": ", 1 5 2",
+    "t": "roots",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The larger root of (x 1) = is q 2 4",
+    "_rawA": ", 1 5 2"
+  },
+  {
+    "num": 41,
+    "q": "991² =",
+    "a": "982,081",
+    "t": "powers",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "991 = 2",
+    "_rawA": "982,081"
+  },
+  {
+    "num": 45,
+    "q": "P = 7 3",
+    "a": "210",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "P = 7 3",
+    "_rawA": "210"
+  },
+  {
+    "num": 46,
+    "q": "5 = (decimal) ( q 2)",
+    "a": ".04",
+    "t": "fracdec",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "5 = (decimal) ( q 2)",
+    "_rawA": ".04"
+  },
+  {
+    "num": 51,
+    "q": "The vertex of y = 3x 2x 5 is (h, k). h = 2 q",
+    "a": "1",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The vertex of y = 3x 2x 5 is (h, k). h = 2 q q",
+    "_rawA": "1"
+  },
+  {
+    "num": 54,
+    "q": "Let 5x 7 12. The largest integer x is q ≥",
+    "a": "3",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let 5x 7 12. The largest integer x is q ",
+    "_rawA": "3"
+  },
+  {
+    "num": 59,
+    "q": "321 = 4 2",
+    "a": "111001",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "321 = 4 2",
+    "_rawA": "111001"
+  },
+  {
+    "num": 64,
+    "q": "Let = a b a b 2 3 q i",
+    "a": "5",
+    "t": "advanced",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let = a b a b 2 3 q i",
+    "_rawA": "5 q"
+  },
+  {
+    "num": 75,
+    "q": "= lim x 2",
+    "a": ".25,--1",
+    "t": "calculus",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x 2",
+    "_rawA": ".25, q q 1"
+  },
+  {
+    "num": 77,
+    "q": "Find x, 1 x 6, if 2x 1 4(mod 7). ≤≤ q≡",
+    "a": "6",
+    "t": "mod",
+    "year": "2020",
+    "test": "R",
+    "starred": false,
+    "source": "Number_Sense_Study_Material_R_2018.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Find x, 1 x 6, if 2x 1 4(mod 7). ŸŸ q´",
+    "_rawA": "6"
+  },
+  {
+    "num": 4,
+    "q": "16 = 2",
+    "a": "10.75, , 10 43 3",
+    "t": "basic",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "16 = 2",
+    "_rawA": "10.75, , 10 43 3"
+  },
+  {
+    "num": 5,
+    "q": "1 = % 4",
+    "a": "21",
+    "t": "pct",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "1 = % 4",
+    "_rawA": "21"
+  },
+  {
+    "num": 9,
+    "q": "3 3 = 1 3",
+    "a": ".38, 19",
+    "t": "fracdec",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "3 3 = 1 3",
+    "_rawA": ".38, 19"
+  },
+  {
+    "num": 11,
+    "q": "18 × 81 =",
+    "a": "729",
+    "t": "mult",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "18 81 = ‚",
+    "_rawA": "729"
+  },
+  {
+    "num": 18,
+    "q": "48 = 2",
+    "a": "9",
+    "t": "basic",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "48 = 2",
+    "_rawA": "9"
+  },
+  {
+    "num": 23,
+    "q": "3 = 5",
+    "a": "154",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "3 = 5",
+    "_rawA": "154"
+  },
+  {
+    "num": 37,
+    "q": "If a = 3, 9a 6ab b = 36, and b 6, then 2 2 + + ≤q",
+    "a": ", 118 1064 2",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If a = 3, 9a 6ab b = 36, and b 6, then 2 2   q",
+    "_rawA": ", 118 1064 2"
+  },
+  {
+    "num": 38,
+    "q": "The largest root of (x 2) = is q 2 4",
+    "a": ".375, 3",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The largest root of (x 2) = is q 2 4",
+    "_rawA": ".375, 3"
+  },
+  {
+    "num": 49,
+    "q": "(107) = 3",
+    "a": "7,957",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(107) = 3",
+    "_rawA": "7,957 q"
+  },
+  {
+    "num": 50,
+    "q": "√110220 =",
+    "a": "433 478",
+    "t": "starred",
+    "year": "2020",
+    "test": "unknown",
+    "starred": true,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "110220 = È",
+    "_rawA": "433 478 q"
+  },
+  {
+    "num": 71,
+    "q": "= lim x",
+    "a": "1555",
+    "t": "calculus",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= lim x",
+    "_rawA": "1555"
+  },
+  {
+    "num": 78,
+    "q": "If f(x) = 2x 3x 2x 3, then f ( 1) = 3 2 + -q qww",
+    "a": "145",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "If f(x) = 2x 3x 2x 3, then f ( 1) = 3 2  qq qww",
+    "_rawA": "145"
+  },
+  {
+    "num": 3,
+    "q": "= 3 3",
+    "a": "4",
+    "t": "basic",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 3 3",
+    "_rawA": "4"
+  },
+  {
+    "num": 7,
+    "q": "31² =",
+    "a": "961",
+    "t": "powers",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "31 = 2",
+    "_rawA": "961"
+  },
+  {
+    "num": 13,
+    "q": "49² =",
+    "a": "2,401",
+    "t": "powers",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "49 = 2",
+    "_rawA": "2,401"
+  },
+  {
+    "num": 38,
+    "q": "The smallest root of (2x 1) = is q 2 1",
+    "a": ".375, 3",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The smallest root of (2x 1) = is q 2 1",
+    "_rawA": ".375, 3"
+  },
+  {
+    "num": 45,
+    "q": "201³ =",
+    "a": "8,120,601",
+    "t": "powers",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(201) = 3",
+    "_rawA": "8,120,601"
+  },
+  {
+    "num": 50,
+    "q": "√207314 =",
+    "a": "433 478",
+    "t": "starred",
+    "year": "2020",
+    "test": "unknown",
+    "starred": true,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "207314 = È",
+    "_rawA": "433 478 q"
+  },
+  {
+    "num": 58,
+    "q": "888 × 4",
+    "a": "96",
+    "t": "mult",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "888 ‚ 4",
+    "_rawA": "96"
+  },
+  {
+    "num": 72,
+    "q": "f (x) = 4, f(1) = 5, find f( 3). w q",
+    "a": "21",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "f (x) = 4, f(1) = 5, find f( 3). w q q",
+    "_rawA": "21"
+  },
+  {
+    "num": 3,
+    "q": "= 5 5",
+    "a": "4",
+    "t": "basic",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "= 5 5",
+    "_rawA": "4"
+  },
+  {
+    "num": 14,
+    "q": "28 = 2",
+    "a": "11 4",
+    "t": "ops",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "28 = 2",
+    "_rawA": "11 4"
+  },
+  {
+    "num": 16,
+    "q": "54 = 2",
+    "a": "15,200",
+    "t": "basic",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "54 = 2",
+    "_rawA": "15,200"
+  },
+  {
+    "num": 21,
+    "q": "³√2744 =",
+    "a": "10",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "2744 = È3",
+    "_rawA": "10 q"
+  },
+  {
+    "num": 23,
+    "q": "4 = 4",
+    "a": "154",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "4 = 4",
+    "_rawA": "154"
+  },
+  {
+    "num": 36,
+    "q": "232 = 8",
+    "a": "225",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "232 = 8",
+    "_rawA": "225"
+  },
+  {
+    "num": 49,
+    "q": "1, 1}. ( ) a b , where a,b { Find . i = 17 √ - q a",
+    "a": "7,957",
+    "t": "roots",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "1, 1}. ( ) a b , where a,b { Find . i = 17 È − q a",
+    "_rawA": "7,957 q"
+  },
+  {
+    "num": 52,
+    "q": "(101) = 3",
+    "a": "625",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "(101) = 3",
+    "_rawA": "625"
+  },
+  {
+    "num": 59,
+    "q": "555 × 5",
+    "a": "6",
+    "t": "mult",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "555 ‚ 5",
+    "_rawA": "6"
+  },
+  {
+    "num": 63,
+    "q": "cos( ) =",
+    "a": ".5, 1",
+    "t": "trig",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "too_short"
+    ],
+    "_rawQ": "cos( ) =",
+    "_rawA": ".5, 1"
+  },
+  {
+    "num": 65,
+    "q": "The shortest distance between ( 2, 2) and q",
+    "a": "2.5, , 2 5 1",
+    "t": "trig",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "The shortest distance between ( 2, 2) and q q",
+    "_rawA": "2.5, , 2 5 1"
+  },
+  {
+    "num": 73,
+    "q": "Let f (x) = 14x 5 and f( 1) = 9. Find f(0). w q",
+    "a": "2,025",
+    "t": "advanced",
+    "year": "2020",
+    "test": "unknown",
+    "starred": false,
+    "source": "Number_Sense_Study_Packet_2020.pdf",
+    "_issues": [
+      "possible_garbled_q"
+    ],
+    "_rawQ": "Let f (x) = 14x 5 and f( 1) = 9. Find f(0). w q q",
+    "_rawA": "2,025"
+  }
+]
