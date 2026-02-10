@@ -1804,7 +1804,7 @@ function normAns(s){
   s = s.replace(/[−–]/g,'-'); // unify minus signs
   return s;
 }
-function answerMatches(userRaw, expected, starred){
+function answerMatchesSingle(userRaw, expected, starred){
   let u = normAns(userRaw);
   let e = normAns(expected);
 
@@ -1834,6 +1834,14 @@ function answerMatches(userRaw, expected, starred){
   return false;
 }
 
+function answerMatches(userRaw, expected, starred){
+  // Support multiple accepted answers separated by |
+  if(typeof expected === 'string' && expected.includes('|')){
+    return expected.split('|').some(alt => answerMatchesSingle(userRaw, alt.trim(), starred));
+  }
+  return answerMatchesSingle(userRaw, expected, starred);
+}
+
 function submitAnswer(){
   let val=state.answer.trim();
   if(val==='') return;
@@ -1856,10 +1864,10 @@ function submitAnswer(){
       let key=state.mode==='topic'?state.topicKey:null;
       newProbs.push(...buildBasicPool(30,key).map((p,i)=>({...p,num:newProbs.length+i+1})));
     }
-    let fbText=correct?'✓ Correct!':'✗ Wrong — answer: '+cur.a;
+    let fbText=correct?'✓ Correct!':'✗ Wrong — answer: '+displayAnswer(cur.a);
     if(!correct && cur.hint) fbText+=' | 💡 '+cur.hint;
     // Generate solution walkthrough
-    let solHTML = renderSolution(cur.q, cur.a, cur.t || null);
+    let solHTML = renderSolution(cur.q, displayAnswer(cur.a), cur.t || null);
     let showSol = !correct; // Auto-show on wrong, hidden on correct
     setState({
       problems:newProbs, idx:newIdx, answer:'', answered:newAnswered,
@@ -1902,11 +1910,11 @@ function skipProblem(){
       let key=state.mode==='topic'?state.topicKey:null;
       newProbs.push(...buildBasicPool(30,key).map((p,i)=>({...p,num:newProbs.length+i+1})));
     }
-    let skipSolHTML = renderSolution(cur.q, cur.a, cur.t || null);
+    let skipSolHTML = renderSolution(cur.q, displayAnswer(cur.a), cur.t || null);
     setState({
       problems:newProbs, idx:newIdx, answer:'', answered:newAnswered,
       streak:0, drillCount:newDrill,
-      feedback:'wrong', feedbackText:'⏭ Skipped — answer: '+cur.a,
+      feedback:'wrong', feedbackText:'⏭ Skipped — answer: '+displayAnswer(cur.a),
       solutionHTML:skipSolHTML,
       solutionVisible:true,
       nextDelayed:true
@@ -2739,9 +2747,9 @@ function renderTest(){
       <div class="problem-text">${cur.q}</div>
     ${cur.starred?'<div class="problem-tag" style="color:#f6ad55;">★ Approximation (±5% accepted)</div>':''}
     ${sourceTag}
-    ${typeof cur.a==='string'&&cur.a.includes('/')?'<div class="problem-tag" style="color:#667eea;">Type as a fraction, e.g. 3/4</div>':''}</div>
-    <input type="text" class="ans-box" id="ans-input" inputmode="${typeof cur.a==='string'&&cur.a.includes('/')?'text':'decimal'}" value="${state.answer}" placeholder="${typeof cur.a==='string'&&cur.a.includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
-    ${typeof cur.a==='string'&&cur.a.includes('/')?`<div class="frac-helper"><button class="frac-btn" id="btn-slash">⁄ slash</button></div>`:''}
+    ${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'<div class="problem-tag" style="color:#667eea;">Type as a fraction, e.g. 3/4</div>':''}</div>
+    <input type="text" class="ans-box" id="ans-input" inputmode="${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'text':'decimal'}" value="${state.answer}" placeholder="${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
+    ${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?`<div class="frac-helper"><button class="frac-btn" id="btn-slash">⁄ slash</button></div>`:''}
     <div class="btn-row${state.nextDelayed?' next-delay-overlay':''}">
       <button class="btn btn-green" id="btn-submit">Submit</button>
       ${skipHTML}
@@ -2761,14 +2769,14 @@ function renderResults(){
   let reviewItems=state.answered.slice(-40).map((item,i)=>{
     let cls=item.correct?'correct':'wrong';
     let ans=item.userAns!==null?item.userAns:'Skipped';
-    let extra=!item.correct?` (Ans: ${item.a})`:'';
+    let extra=!item.correct?` (Ans: ${displayAnswer(item.a)})`:'';
     let hintHTML=(!item.correct && item.hint)?`<div style="font-size:0.72rem;color:#f6ad55;margin-top:2px;width:100%;">💡 ${item.hint}</div>`:'';
     
     // Add "Show Solution" button for wrong answers using structured walkthrough
     let solBtn='';
     if(!item.correct){
       let solId='sol-'+i;
-      let solContent = renderSolution(item.q, item.a, item.t);
+      let solContent = renderSolution(item.q, displayAnswer(item.a), item.t);
       solBtn='<button class="sol-toggle" data-target="'+solId+'" style="font-size:0.7rem;padding:4px 8px;background:#2d3748;border:1px solid #4a5568;border-radius:6px;color:#667eea;cursor:pointer;margin-top:4px;">How?</button>' +
         '<div id="'+solId+'" style="display:none;margin-top:6px;">'+solContent+'</div>';
     }
@@ -3178,6 +3186,12 @@ function escapeHTML(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+
+function displayAnswer(a){
+  if(typeof a !== 'string') return String(a);
+  return a.includes('|') ? a.split('|')[0].trim() : a;
+}
+
 function getProblemEdits(){
   try { return JSON.parse(localStorage.getItem('uilProblemEdits')||'{}'); }
   catch(e){ return {}; }
@@ -3434,8 +3448,10 @@ function showProblemEditor(){
 
   overlay.innerHTML = '<div class="pe-header">'
     + '<h2>\u270F\uFE0F Problem Editor</h2>'
+    + '<button id="pe-import">Import Edits</button>'
     + '<button id="pe-export">Export Edits</button>'
     + '<button id="pe-close">\u2715 Close</button>'
+    + '<input type="file" id="pe-import-file" accept=".json" style="display:none" />'
     + '</div>'
     + '<div class="pe-search"><input id="pe-search-input" type="text" placeholder="Search problems (e.g. fraction, 2026, #15)..." /></div>'
     + '<div class="pe-body">'
@@ -3448,6 +3464,8 @@ function showProblemEditor(){
   // Wire events
   document.getElementById('pe-close').onclick = function(){ overlay.remove(); };
   document.getElementById('pe-export').onclick = exportProblemEdits;
+  document.getElementById('pe-import').onclick = function(){ document.getElementById('pe-import-file').click(); };
+  document.getElementById('pe-import-file').onchange = importProblemEdits;
   document.getElementById('pe-search-input').oninput = function(e){
     _peSearch = e.target.value.trim().toLowerCase();
     renderEditorProblems();
@@ -3519,7 +3537,7 @@ function renderEditorProblems(){
       + '<span class="pe-card-badges">' + badges + '</span>'
       + '</div>'
       + '<div class="pe-card-q">' + escapeHTML(p.q) + '</div>'
-      + '<div class="pe-card-a">Answer: ' + escapeHTML(p.a) + '</div>'
+      + '<div class="pe-card-a">Answer: ' + escapeHTML(p.a).replace(/\|/g, ' <span style="color:#718096;">or</span> ') + '</div>'
       + '<div class="pe-card-actions">'
       + '<button data-key="'+escapeHTML(key)+'" data-action="edit">Edit</button>'
       + resetBtn
@@ -3554,7 +3572,7 @@ function editProblem(key){
     + '<div class="pe-edit-form">'
     + '<label>Question</label>'
     + '<textarea id="pe-edit-q-'+key+'">' + escapeHTML(p.q) + '</textarea>'
-    + '<label style="margin-top:8px;">Answer</label>'
+    + '<label style="margin-top:8px;">Answer <span style="font-weight:400;color:#718096;font-size:0.75rem;">(use | for multiple accepted formats, e.g. 3/2|1.5|1 1/2)</span></label>'
     + '<input type="text" id="pe-edit-a-'+key+'" value="' + escapeHTML(p.a) + '" />'
     + '<div class="pe-edit-btns">'
     + '<button class="pe-save" data-key="'+escapeHTML(key)+'" data-action="save">Save</button>'
@@ -3644,6 +3662,43 @@ function exportProblemEdits(){
   a.download = 'problem-edits-' + new Date().toISOString().slice(0,10) + '.json';
   a.click();
   URL.revokeObjectURL(url);
+}
+
+
+function importProblemEdits(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    try {
+      const data = JSON.parse(ev.target.result);
+      if(typeof data !== 'object' || Array.isArray(data)){
+        alert('Invalid format. Expected a Problem Editor edits JSON file.');
+        return;
+      }
+      // Merge into existing edits
+      const existing = getProblemEdits();
+      let count = 0;
+      for(const key in data){
+        if(data[key] && data[key].q && data[key].a){
+          existing[key] = {q: data[key].q, a: data[key].a};
+          // Update runtime state
+          const p = state.importedProblems.find(p => p.num+'-'+p.year+'-'+p.test === key);
+          if(p){ p.q = data[key].q; p.a = data[key].a; }
+          count++;
+        }
+      }
+      localStorage.setItem('uilProblemEdits', JSON.stringify(existing));
+      alert('Imported ' + count + ' edit(s) successfully!');
+      renderEditorProblems();
+      refreshEditorSidebar();
+    } catch(err){
+      alert('Error reading file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  // Reset so same file can be re-imported
+  e.target.value = '';
 }
 
 // View/browse imported problems
