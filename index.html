@@ -251,6 +251,50 @@ input.ans-box:focus { border-color: #667eea; }
 .feedback-area.no-solution .feedback-bar { border-radius: 6px; }
 .next-delay-overlay { pointer-events: none; opacity: 0.5; }
 .next-delay-active { pointer-events: auto; opacity: 1; transition: opacity .3s; }
+
+/* Problem Editor */
+.pe-overlay { display:flex; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.92); z-index:1000; flex-direction:column; }
+.pe-header { display:flex; align-items:center; gap:12px; padding:12px 20px; background:#1a1f2e; border-bottom:2px solid #667eea; flex-shrink:0; }
+.pe-header h2 { color:#667eea; margin:0; font-size:1.3rem; flex:1; }
+.pe-header button { padding:6px 14px; border-radius:6px; border:1px solid #4a5568; background:#2d3748; color:#cbd5e0; cursor:pointer; font-size:0.85rem; font-weight:600; transition:all .15s; }
+.pe-header button:hover { border-color:#667eea; color:#fff; }
+.pe-search { padding:8px 20px; background:#1a1f2e; border-bottom:1px solid #2d3748; flex-shrink:0; }
+.pe-search input { width:100%; padding:8px 12px; border-radius:6px; border:1px solid #4a5568; background:#2d3748; color:#e2e8f0; font-size:0.9rem; outline:none; }
+.pe-search input:focus { border-color:#667eea; }
+.pe-body { display:flex; flex:1; overflow:hidden; }
+.pe-sidebar { width:180px; overflow-y:auto; background:#1e2433; border-right:1px solid #2d3748; flex-shrink:0; }
+.pe-sidebar-item { padding:10px 14px; cursor:pointer; color:#a0aec0; font-size:0.85rem; border-bottom:1px solid #2d3748; transition:background .15s; }
+.pe-sidebar-item:hover { background:#2d3748; color:#e2e8f0; }
+.pe-sidebar-item.active { background:#2d3748; color:#667eea; font-weight:700; border-left:3px solid #667eea; }
+.pe-sidebar-item .pe-edit-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#f6ad55; margin-left:6px; }
+.pe-content { flex:1; overflow-y:auto; padding:16px 20px; }
+.pe-card { background:#2d3748; border-radius:8px; padding:14px 16px; margin-bottom:10px; border:1px solid #4a5568; }
+.pe-card.edited { border-color:#f6ad55; }
+.pe-card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.pe-card-num { color:#667eea; font-weight:700; font-size:0.95rem; }
+.pe-card-badges span { display:inline-block; font-size:0.7rem; padding:2px 7px; border-radius:4px; margin-left:4px; }
+.pe-badge-edited { background:#f6ad55; color:#1a1f2e; font-weight:700; }
+.pe-badge-topic { background:#4a5568; color:#a0aec0; }
+.pe-card-q { color:#e2e8f0; font-size:0.95rem; margin-bottom:4px; font-family:'Courier New',monospace; white-space:pre-wrap; word-break:break-word; }
+.pe-card-a { color:#48bb78; font-weight:700; font-size:0.9rem; }
+.pe-card-actions { margin-top:8px; display:flex; gap:6px; }
+.pe-card-actions button { padding:4px 10px; border-radius:5px; border:1px solid #4a5568; background:#1a1f2e; color:#a0aec0; cursor:pointer; font-size:0.8rem; transition:all .15s; }
+.pe-card-actions button:hover { border-color:#667eea; color:#fff; }
+.pe-card-actions button.pe-reset { border-color:#e53e3e; color:#fc8181; }
+.pe-card-actions button.pe-reset:hover { background:#e53e3e; color:#fff; }
+.pe-edit-form { margin-top:10px; }
+.pe-edit-form label { display:block; color:#a0aec0; font-size:0.8rem; margin-bottom:3px; font-weight:600; }
+.pe-edit-form textarea, .pe-edit-form input[type=text] { width:100%; padding:8px; border-radius:6px; border:1px solid #4a5568; background:#1a1f2e; color:#e2e8f0; font-size:0.9rem; font-family:'Courier New',monospace; outline:none; box-sizing:border-box; }
+.pe-edit-form textarea:focus, .pe-edit-form input[type=text]:focus { border-color:#667eea; }
+.pe-edit-form textarea { min-height:60px; resize:vertical; }
+.pe-edit-btns { display:flex; gap:6px; margin-top:8px; }
+.pe-edit-btns button { padding:6px 14px; border-radius:6px; border:none; cursor:pointer; font-size:0.85rem; font-weight:600; }
+.pe-edit-btns .pe-save { background:#48bb78; color:#1a1f2e; }
+.pe-edit-btns .pe-save:hover { background:#38a169; }
+.pe-edit-btns .pe-cancel { background:#4a5568; color:#e2e8f0; }
+.pe-edit-btns .pe-cancel:hover { background:#718096; }
+.pe-empty { color:#718096; text-align:center; padding:40px 20px; font-size:1rem; }
+@media(max-width:600px){ .pe-sidebar{width:120px;} .pe-sidebar-item{padding:8px 10px;font-size:0.78rem;} .pe-content{padding:10px;} }
 </style>
 </head>
 <body>
@@ -2519,6 +2563,10 @@ function renderMenu(){
         <div class="sb-desc">Browse and practice your imported real problems</div>
       </button>
       ` : ''}
+      <button class="sec-btn" id="btn-problem-editor">
+        <div class="sb-title">✏️ Problem Editor (${Object.keys(getProblemEdits()).length} edits)</div>
+        <div class="sb-desc">Browse all problems by test — fix garbled OCR text</div>
+      </button>
     </div>
   </div>
 
@@ -3092,6 +3140,7 @@ function attachListeners(){
   // Import buttons
   if(el=document.getElementById('btn-import-json')) el.onclick=showImportModal;
   if(el=document.getElementById('btn-view-imported')) el.onclick=showImportedProblemsViewer;
+  if(el=document.getElementById('btn-problem-editor')) el.onclick=showProblemEditor;
   
   // Show solution toggle in drill mode
   if(el=document.getElementById('btn-show-sol')) el.onclick=function(){
@@ -3120,6 +3169,35 @@ function attachListeners(){
 // IMPORT REAL UIL PROBLEMS
 // ═══════════════════════════════════════════════════════════════════════════
 
+
+// ═══════════════════════════════════════════════════════════════════
+// PROBLEM EDITOR HELPERS
+// ═══════════════════════════════════════════════════════════════════
+
+function escapeHTML(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getProblemEdits(){
+  try { return JSON.parse(localStorage.getItem('uilProblemEdits')||'{}'); }
+  catch(e){ return {}; }
+}
+
+function saveProblemEdit(key, q, a){
+  const edits = getProblemEdits();
+  edits[key] = {q:q, a:a};
+  localStorage.setItem('uilProblemEdits', JSON.stringify(edits));
+  // Update runtime state
+  const p = state.importedProblems.find(p => p.num+'-'+p.year+'-'+p.test === key);
+  if(p){ p.q = q; p.a = a; }
+}
+
+function removeProblemEdit(key){
+  const edits = getProblemEdits();
+  delete edits[key];
+  localStorage.setItem('uilProblemEdits', JSON.stringify(edits));
+}
+
 // Load built-in + user-imported problems on startup
 function loadImportedProblems(){
   try {
@@ -3135,6 +3213,19 @@ function loadImportedProblems(){
     const extras = userImported.filter(p => !seen.has(`${p.num}-${p.year}-${p.test}`));
 
     state.importedProblems = [...builtin, ...extras];
+    // Apply any user edits from Problem Editor
+    const edits = getProblemEdits();
+    const editKeys = Object.keys(edits);
+    if(editKeys.length > 0){
+      state.importedProblems.forEach(p => {
+        const k = p.num+'-'+p.year+'-'+p.test;
+        if(edits[k]){
+          p.q = edits[k].q;
+          p.a = edits[k].a;
+        }
+      });
+      console.log(`  ↳ Applied ${editKeys.length} user edit(s) from Problem Editor`);
+    }
     console.log(`✓ Loaded ${builtin.length} built-in + ${extras.length} user-imported = ${state.importedProblems.length} total problems`);
   } catch(e){
     console.error('Error loading imported problems:', e);
@@ -3298,6 +3389,302 @@ function showImportModal(){
   // Close
   modal.querySelector('#btn-close-import').onclick = () => modal.remove();
   modal.onclick = e => { if(e.target === modal) modal.remove(); };
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+// PROBLEM EDITOR
+// ═══════════════════════════════════════════════════════════════════
+
+// State for editor
+let _peGroup = null; // currently selected group key
+let _peSearch = '';
+
+function showProblemEditor(){
+  const problems = state.importedProblems;
+  if(problems.length === 0){
+    alert('No problems loaded.');
+    return;
+  }
+
+  // Group by year+test
+  const groups = {};
+  problems.forEach(p => {
+    const k = p.year + ' ' + p.test;
+    if(!groups[k]) groups[k] = [];
+    groups[k].push(p);
+  });
+  const sortedKeys = Object.keys(groups).sort().reverse();
+  _peGroup = _peGroup && groups[_peGroup] ? _peGroup : sortedKeys[0];
+  _peSearch = '';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'pe-overlay';
+  overlay.id = 'pe-overlay';
+
+  // Build sidebar
+  const edits = getProblemEdits();
+  let sidebarHTML = '';
+  sortedKeys.forEach(k => {
+    const active = k === _peGroup ? ' active' : '';
+    const editCount = groups[k].filter(p => edits[p.num+'-'+p.year+'-'+p.test]).length;
+    const dot = editCount > 0 ? '<span class="pe-edit-dot" title="'+editCount+' edited"></span>' : '';
+    sidebarHTML += '<div class="pe-sidebar-item'+active+'" data-group="'+escapeHTML(k)+'">'+escapeHTML(k)+dot+'</div>';
+  });
+
+  overlay.innerHTML = '<div class="pe-header">'
+    + '<h2>\u270F\uFE0F Problem Editor</h2>'
+    + '<button id="pe-import">Import Edits</button>'
+    + '<button id="pe-export">Export Edits</button>'
+    + '<button id="pe-close">\u2715 Close</button>'
+    + '<input type="file" id="pe-import-file" accept=".json" style="display:none" />'
+    + '</div>'
+    + '<div class="pe-search"><input id="pe-search-input" type="text" placeholder="Search problems (e.g. fraction, 2026, #15)..." /></div>'
+    + '<div class="pe-body">'
+    + '<div class="pe-sidebar" id="pe-sidebar">' + sidebarHTML + '</div>'
+    + '<div class="pe-content" id="pe-content"></div>'
+    + '</div>';
+
+  document.body.appendChild(overlay);
+
+  // Wire events
+  document.getElementById('pe-close').onclick = function(){ overlay.remove(); };
+  document.getElementById('pe-export').onclick = exportProblemEdits;
+  document.getElementById('pe-import').onclick = function(){ document.getElementById('pe-import-file').click(); };
+  document.getElementById('pe-import-file').onchange = importProblemEdits;
+  document.getElementById('pe-search-input').oninput = function(e){
+    _peSearch = e.target.value.trim().toLowerCase();
+    renderEditorProblems();
+  };
+
+  // Sidebar clicks
+  document.getElementById('pe-sidebar').onclick = function(e){
+    const item = e.target.closest('.pe-sidebar-item');
+    if(!item) return;
+    selectEditorGroup(item.dataset.group);
+  };
+
+  renderEditorProblems();
+}
+
+function selectEditorGroup(groupKey){
+  _peGroup = groupKey;
+  // Update sidebar active state
+  document.querySelectorAll('.pe-sidebar-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.group === groupKey);
+  });
+  renderEditorProblems();
+}
+
+function renderEditorProblems(){
+  const container = document.getElementById('pe-content');
+  if(!container) return;
+
+  const edits = getProblemEdits();
+  let problems = state.importedProblems;
+
+  // Filter by search or by group
+  if(_peSearch){
+    const q = _peSearch;
+    problems = problems.filter(p => {
+      const key = p.num+'-'+p.year+'-'+p.test;
+      return p.q.toLowerCase().includes(q)
+        || p.a.toLowerCase().includes(q)
+        || ('#'+p.num).includes(q)
+        || (p.year+' '+p.test).toLowerCase().includes(q)
+        || p.t.toLowerCase().includes(q);
+    });
+  } else {
+    problems = problems.filter(p => (p.year + ' ' + p.test) === _peGroup);
+  }
+
+  // Sort by problem number
+  problems = [...problems].sort((a,b) => a.num - b.num);
+
+  if(problems.length === 0){
+    container.innerHTML = '<div class="pe-empty">No problems match your search.</div>';
+    return;
+  }
+
+  let html = '';
+  problems.forEach(p => {
+    const key = p.num+'-'+p.year+'-'+p.test;
+    const isEdited = !!edits[key];
+    const editedClass = isEdited ? ' edited' : '';
+    const badges = (isEdited ? '<span class="pe-badge-edited">EDITED</span>' : '')
+      + '<span class="pe-badge-topic">' + escapeHTML(p.t) + '</span>';
+    const resetBtn = isEdited
+      ? '<button class="pe-reset" data-key="'+escapeHTML(key)+'" data-action="reset">Reset</button>'
+      : '';
+
+    html += '<div class="pe-card'+editedClass+'" id="pe-card-'+escapeHTML(key)+'">'
+      + '<div class="pe-card-head">'
+      + '<span class="pe-card-num">#' + p.num + ' &mdash; ' + escapeHTML(p.year) + ' ' + escapeHTML(p.test) + '</span>'
+      + '<span class="pe-card-badges">' + badges + '</span>'
+      + '</div>'
+      + '<div class="pe-card-q">' + escapeHTML(p.q) + '</div>'
+      + '<div class="pe-card-a">Answer: ' + escapeHTML(p.a) + '</div>'
+      + '<div class="pe-card-actions">'
+      + '<button data-key="'+escapeHTML(key)+'" data-action="edit">Edit</button>'
+      + resetBtn
+      + '</div>'
+      + '</div>';
+  });
+
+  container.innerHTML = html;
+
+  // Delegate action clicks
+  container.onclick = function(e){
+    const btn = e.target.closest('button[data-action]');
+    if(!btn) return;
+    const key = btn.dataset.key;
+    const action = btn.dataset.action;
+    if(action === 'edit') editProblem(key);
+    else if(action === 'reset') resetProblemEdit(key);
+  };
+}
+
+function editProblem(key){
+  const p = state.importedProblems.find(p => p.num+'-'+p.year+'-'+p.test === key);
+  if(!p) return;
+
+  const card = document.getElementById('pe-card-'+key);
+  if(!card) return;
+
+  // Replace card content with edit form
+  card.innerHTML = '<div class="pe-card-head">'
+    + '<span class="pe-card-num">#' + p.num + ' \u2014 ' + escapeHTML(p.year) + ' ' + escapeHTML(p.test) + '</span>'
+    + '</div>'
+    + '<div class="pe-edit-form">'
+    + '<label>Question</label>'
+    + '<textarea id="pe-edit-q-'+key+'">' + escapeHTML(p.q) + '</textarea>'
+    + '<label style="margin-top:8px;">Answer</label>'
+    + '<input type="text" id="pe-edit-a-'+key+'" value="' + escapeHTML(p.a) + '" />'
+    + '<div class="pe-edit-btns">'
+    + '<button class="pe-save" data-key="'+escapeHTML(key)+'" data-action="save">Save</button>'
+    + '<button class="pe-cancel" data-key="'+escapeHTML(key)+'" data-action="cancel">Cancel</button>'
+    + '</div>'
+    + '</div>';
+
+  // Wire save/cancel on this card
+  card.onclick = function(e){
+    const btn = e.target.closest('button[data-action]');
+    if(!btn) return;
+    e.stopPropagation();
+    if(btn.dataset.action === 'save'){
+      const qVal = document.getElementById('pe-edit-q-'+key).value.trim();
+      const aVal = document.getElementById('pe-edit-a-'+key).value.trim();
+      if(!qVal || !aVal){ alert('Question and answer cannot be empty.'); return; }
+      saveProblemEdit(key, qVal, aVal);
+      renderEditorProblems();
+      refreshEditorSidebar();
+    } else if(btn.dataset.action === 'cancel'){
+      renderEditorProblems();
+    }
+  };
+
+  // Focus textarea
+  const ta = document.getElementById('pe-edit-q-'+key);
+  if(ta) ta.focus();
+}
+
+function resetProblemEdit(key){
+  if(!confirm('Reset this problem to original text?')) return;
+  // Find the original from BUILTIN_PROBLEMS
+  const parts = key.split('-');
+  const num = parseInt(parts[0]);
+  const year = parts[1];
+  const test = parts[2];
+  const orig = (typeof BUILTIN_PROBLEMS !== 'undefined')
+    ? BUILTIN_PROBLEMS.find(p => p.num === num && p.year === year && p.test === test)
+    : null;
+  if(orig){
+    // Restore in runtime state
+    const p = state.importedProblems.find(p => p.num+'-'+p.year+'-'+p.test === key);
+    if(p){ p.q = orig.q; p.a = orig.a; }
+  }
+  removeProblemEdit(key);
+  renderEditorProblems();
+  refreshEditorSidebar();
+}
+
+function refreshEditorSidebar(){
+  const sidebar = document.getElementById('pe-sidebar');
+  if(!sidebar) return;
+  const edits = getProblemEdits();
+  sidebar.querySelectorAll('.pe-sidebar-item').forEach(el => {
+    const gk = el.dataset.group;
+    const groupProbs = state.importedProblems.filter(p => (p.year+' '+p.test) === gk);
+    const editCount = groupProbs.filter(p => edits[p.num+'-'+p.year+'-'+p.test]).length;
+    // Remove old dot
+    const oldDot = el.querySelector('.pe-edit-dot');
+    if(oldDot) oldDot.remove();
+    if(editCount > 0){
+      const dot = document.createElement('span');
+      dot.className = 'pe-edit-dot';
+      dot.title = editCount + ' edited';
+      el.appendChild(dot);
+    }
+  });
+  // Also update the menu button count if visible
+  const menuBtn = document.getElementById('btn-problem-editor');
+  if(menuBtn){
+    const total = Object.keys(edits).length;
+    menuBtn.querySelector('.sb-title').textContent = '\u270F\uFE0F Problem Editor (' + total + ' edits)';
+  }
+}
+
+function exportProblemEdits(){
+  const edits = getProblemEdits();
+  const keys = Object.keys(edits);
+  if(keys.length === 0){
+    alert('No edits to export.');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(edits, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'problem-edits-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+
+function importProblemEdits(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    try {
+      const data = JSON.parse(ev.target.result);
+      if(typeof data !== 'object' || Array.isArray(data)){
+        alert('Invalid format. Expected a Problem Editor edits JSON file.');
+        return;
+      }
+      // Merge into existing edits
+      const existing = getProblemEdits();
+      let count = 0;
+      for(const key in data){
+        if(data[key] && data[key].q && data[key].a){
+          existing[key] = {q: data[key].q, a: data[key].a};
+          // Update runtime state
+          const p = state.importedProblems.find(p => p.num+'-'+p.year+'-'+p.test === key);
+          if(p){ p.q = data[key].q; p.a = data[key].a; }
+          count++;
+        }
+      }
+      localStorage.setItem('uilProblemEdits', JSON.stringify(existing));
+      alert('Imported ' + count + ' edit(s) successfully!');
+      renderEditorProblems();
+      refreshEditorSidebar();
+    } catch(err){
+      alert('Error reading file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  // Reset so same file can be re-imported
+  e.target.value = '';
 }
 
 // View/browse imported problems
