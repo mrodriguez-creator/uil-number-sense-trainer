@@ -501,21 +501,131 @@ const GEN = {
     return {q:`${a} × 10101 =`,a:a*10101,t:"special",hint:`10101 trick: 10101 = 3×7×13×37. Repeats n in 2-digit groups. ${a} × 10101 = ${a*10101}.`};
   },
   series: ()=>{
-    let type=ri(0,3);
+    let type=ri(0,9);
+
+    // Type 0: Classic 1+2+3+…+n
     if(type===0){
       let n=ri(5,50);
-      return {q:`1 + 2 + 3 + … + ${n} =`,a:n*(n+1)/2,t:"series",hint:"Sum 1→n = n(n+1)/2."};
+      return {q:`1 + 2 + 3 + … + ${n} =`,a:n*(n+1)/2,t:"series",hint:`Sum 1→n = n(n+1)/2 = ${n}×${n+1}/2 = ${n*(n+1)/2}.`};
     }
+
+    // Type 1: Arithmetic series with non-1 start and common difference
     if(type===1){
-      let n=ri(3,30);
-      return {q:`Sum of first ${n} odd numbers =`,a:n*n,t:"series",hint:"Sum of first n odd numbers = n²."};
+      let d=pick([2,3,4,5,6,7,8,10]);
+      let a=ri(1,20);
+      let count=ri(5,12);
+      let last=a+d*(count-1);
+      let sum=count*(a+last)/2;
+      let t2=a+d, t3=a+2*d;
+      return {q:`${a} + ${t2} + ${t3} + … + ${last} =`,a:sum,t:"series",hint:`Arithmetic series: ${count} terms, d=${d}. Sum = count×(first+last)/2 = ${count}×${a+last}/2 = ${sum}.`};
     }
+
+    // Type 2: Consecutive odd numbers in series notation
     if(type===2){
-      let n=ri(3,25);
-      return {q:`Sum of first ${n} even numbers =`,a:n*(n+1),t:"series",hint:"Sum of first n even numbers = n(n+1)."};
+      if(ri(0,1)===0){
+        // Starting from 1
+        let n=ri(4,15);
+        let last=2*n-1;
+        return {q:`1 + 3 + 5 + … + ${last} =`,a:n*n,t:"series",hint:`Sum of first ${n} odd numbers = n² = ${n}² = ${n*n}.`};
+      }
+      // Starting from a higher odd
+      let startIdx=ri(2,6); // skip first few
+      let endIdx=ri(startIdx+4,startIdx+10);
+      let first=2*startIdx-1, last=2*endIdx-1;
+      let count=endIdx-startIdx+1;
+      let sum=count*(first+last)/2;
+      return {q:`${first} + ${first+2} + ${first+4} + … + ${last} =`,a:sum,t:"series",hint:`Arithmetic series of odds: ${count} terms. Sum = ${count}×(${first}+${last})/2 = ${sum}.`};
     }
-    let n=ri(5,40);
-    return {q:`The ${n}th triangular number =`,a:n*(n+1)/2,t:"series",hint:"T(n) = n(n+1)/2."};
+
+    // Type 3: Consecutive even numbers in series notation
+    if(type===3){
+      if(ri(0,1)===0){
+        // Starting from 2
+        let n=ri(4,15);
+        let last=2*n;
+        let sum=n*(n+1);
+        return {q:`2 + 4 + 6 + … + ${last} =`,a:sum,t:"series",hint:`Sum of first ${n} even numbers = n(n+1) = ${n}×${n+1} = ${sum}.`};
+      }
+      // Starting from a higher even
+      let startVal=pick([4,6,8,10,12]);
+      let count=ri(5,10);
+      let last=startVal+2*(count-1);
+      let sum=count*(startVal+last)/2;
+      return {q:`${startVal} + ${startVal+2} + ${startVal+4} + … + ${last} =`,a:sum,t:"series",hint:`Arithmetic series of evens: ${count} terms. Sum = ${count}×(${startVal}+${last})/2 = ${sum}.`};
+    }
+
+    // Type 4: Infinite geometric series (convergent)
+    if(type===4){
+      // Use pre-built combos that give clean answers
+      let geoProblems=[
+        {a:8,  r:'1/2', terms:[8,4,2,1],         ans:16},
+        {a:12, r:'1/2', terms:[12,6,3,1.5],      ans:24},
+        {a:16, r:'1/2', terms:[16,8,4,2],        ans:32},
+        {a:24, r:'1/2', terms:[24,12,6,3],       ans:48},
+        {a:36, r:'1/2', terms:[36,18,9,4.5],     ans:72},
+        {a:18, r:'1/3', terms:[18,6,2],          ans:27},
+        {a:12, r:'1/4', terms:[12,3,0.75],       ans:16},
+        {a:9,  r:'3/4', terms:[9,6.75,5.0625],   ans:36},
+        {a:8,  r:'3/4', terms:[8,6,4.5,3.375],   ans:32},
+        {a:18, r:'2/3', terms:[18,12,8],          ans:54},
+        {a:48, r:'1/2', terms:[48,24,12,6],      ans:96},
+        {a:3,  r:'1/2', terms:[3,1.5,0.75,0.375],ans:6},
+        {a:4,  r:'1/2', terms:[4,2,1,0.5],       ans:8},
+        {a:20, r:'1/2', terms:[20,10,5,2.5],     ans:40},
+        {a:32, r:'1/2', terms:[32,16,8,4],       ans:64},
+        {a:6,  r:'1/2', terms:[6,3,1.5,0.75],    ans:12},
+        {a:10, r:'1/2', terms:[10,5,2.5,1.25],   ans:20},
+        {a:40, r:'1/2', terms:[40,20,10,5],      ans:80},
+        {a:15, r:'2/3', terms:[15,10],            ans:45},
+        {a:45, r:'1/3', terms:[45,15,5],          ans:67.5},
+      ];
+      let gp=pick(geoProblems);
+      let termsStr=gp.terms.map(t=>Number.isInteger(t)?String(t):t.toFixed?t.toString():String(t)).join(' + ');
+      // Clean answer display
+      let ans=gp.ans;
+      if(Number.isInteger(ans)) ans=ans;
+      return {q:`${termsStr} + … =`,a:ans,t:"series",hint:`Infinite geometric series: a=${gp.a}, r=${gp.r}. Sum = a/(1−r) = ${ans}.`};
+    }
+
+    // Type 5: Sum of positive divisors
+    if(type===5){
+      let divisorSums=[
+        [10,18],[12,28],[14,24],[15,24],[16,31],[18,39],[20,42],[24,60],
+        [28,56],[30,72],[32,63],[36,91],[40,90],[42,96],[48,124],[50,93],
+        [56,120],[60,168],[64,127],[72,195],[80,186],[84,224],[90,234],[96,252],[100,217]
+      ];
+      let[n,s]=pick(divisorSums);
+      return {q:`The sum of the positive divisors of ${n} =`,a:s,t:"series",hint:`List all divisors of ${n} and add them up. Sum = ${s}.`};
+    }
+
+    // Type 6: Triangular number
+    if(type===6){
+      let n=ri(5,20);
+      let ordinal=n===11?'11th':n===12?'12th':n===13?'13th':n%10===1?n+'st':n%10===2?n+'nd':n%10===3?n+'rd':n+'th';
+      return {q:`The ${ordinal} triangular number =`,a:n*(n+1)/2,t:"series",hint:`T(n) = n(n+1)/2 = ${n}×${n+1}/2 = ${n*(n+1)/2}.`};
+    }
+
+    // Type 7: Sum of squares 1² + 2² + … + n²
+    if(type===7){
+      let n=ri(3,10);
+      let sum=n*(n+1)*(2*n+1)/6;
+      return {q:`1² + 2² + 3² + … + ${n}² =`,a:sum,t:"series",hint:`Sum of squares: n(n+1)(2n+1)/6 = ${n}×${n+1}×${2*n+1}/6 = ${sum}.`};
+    }
+
+    // Type 8: Sum of cubes 1³ + 2³ + … + n³
+    if(type===8){
+      let n=ri(3,8);
+      let tri=n*(n+1)/2;
+      let sum=tri*tri;
+      return {q:`1³ + 2³ + 3³ + … + ${n}³ =`,a:sum,t:"series",hint:`Sum of cubes = [n(n+1)/2]² = ${tri}² = ${sum}.`};
+    }
+
+    // Type 9: Arithmetic series squared
+    let a0=ri(1,6), d0=1, count0=ri(4,8);
+    let last0=a0+d0*(count0-1);
+    let innerSum=count0*(a0+last0)/2;
+    let ans=innerSum*innerSum;
+    return {q:`(${a0} + ${a0+1} + ${a0+2} + … + ${last0})² =`,a:ans,t:"series",hint:`First find sum: ${count0}×(${a0}+${last0})/2 = ${innerSum}. Then square: ${innerSum}² = ${ans}.`};
   },
   fracdec: ()=>{
     let type=ri(0,2);
@@ -1880,9 +1990,15 @@ function getSolutionHint(q,ans,topic){
   
   // Series and sequences
   if(topic==='series'){
-    if(q.includes('1 + 2')) return "Triangular numbers: sum = n(n+1)/2. Example: 1+2+...+10 = 10×11/2 = 55.";
-    if(q.includes('consecutive')) return "Sum of consecutive integers = (first+last)×count/2.";
-    return "Look for patterns: arithmetic (constant difference) or geometric (constant ratio).";
+    if(q.includes('1 + 2 + 3')) return "Triangular numbers: sum 1→n = n(n+1)/2. Example: 1+2+...+10 = 10×11/2 = 55.";
+    if(q.includes('… =') && q.includes('+') && !q.includes('²') && !q.includes('³')) return "Arithmetic series: Sum = count × (first + last) / 2. First find number of terms: count = (last−first)/d + 1.";
+    if(q.includes('+ … =') && !q.includes('(')) return "Infinite geometric series: Sum = a/(1−r). Find the ratio r by dividing consecutive terms.";
+    if(q.includes('divisor')) return "List all positive divisors of n and add them. For prime powers: σ(p^k) = (p^(k+1)−1)/(p−1).";
+    if(q.includes('triangular')) return "T(n) = n(n+1)/2. Triangular numbers: 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...";
+    if(q.includes('1²') || q.includes('² +')) return "Sum of squares: 1²+2²+...+n² = n(n+1)(2n+1)/6.";
+    if(q.includes('1³') || q.includes('³ +')) return "Sum of cubes: 1³+2³+...+n³ = [n(n+1)/2]² = (triangular number)².";
+    if(q.startsWith('(') && q.includes(')²')) return "Arithmetic series squared: first find the sum inside, then square the result.";
+    return "Look for patterns: arithmetic (constant difference) or geometric (constant ratio). Sum = count×(first+last)/2 for arithmetic.";
   }
   
   // Fractions and decimals
@@ -2268,11 +2384,35 @@ function getStructuredSolution(q, ans, topic){
   // SERIES
   else if(topic==='series'){
     trickName = 'Series Sum';
-    steps.push({label:'Identify', text:'Sum of a sequence'});
-    if(q.includes('1 + 2') || q.toLowerCase().includes('consecutive')){
-      steps.push({label:'Formula', text:'Sum = n(n+1)/2 for 1+2+...+n, or (first+last)\u00d7count/2'});
+    if(q.includes('1 + 2 + 3')){
+      steps.push({label:'Identify', text:'Sum of 1+2+3+…+n (triangular number)'});
+      steps.push({label:'Formula', text:'Sum = n(n+1)/2'});
+    } else if(q.includes('1²') || q.includes('² +')){
+      steps.push({label:'Identify', text:'Sum of squares'});
+      steps.push({label:'Formula', text:'1²+2²+…+n² = n(n+1)(2n+1)/6'});
+    } else if(q.includes('1³') || q.includes('³ +')){
+      steps.push({label:'Identify', text:'Sum of cubes'});
+      steps.push({label:'Formula', text:'1³+2³+…+n³ = [n(n+1)/2]²'});
+    } else if(q.includes('divisor')){
+      steps.push({label:'Identify', text:'Sum of divisors'});
+      steps.push({label:'Method', text:'List all positive divisors of n and add them'});
+    } else if(q.includes('triangular')){
+      steps.push({label:'Identify', text:'Triangular number T(n)'});
+      steps.push({label:'Formula', text:'T(n) = n(n+1)/2'});
+    } else if(q.includes('+ …') && !q.includes('(')){
+      if(q.includes('…') && !q.includes('+ … +')){
+        steps.push({label:'Identify', text:'Infinite geometric series'});
+        steps.push({label:'Formula', text:'Sum = a/(1−r), where r = second term ÷ first term'});
+      } else {
+        steps.push({label:'Identify', text:'Arithmetic series'});
+        steps.push({label:'Formula', text:'Sum = count × (first + last) / 2. Count = (last−first)/d + 1'});
+      }
+    } else if(q.startsWith('(') && q.includes(')²')){
+      steps.push({label:'Identify', text:'Arithmetic series squared'});
+      steps.push({label:'Method', text:'1) Find the sum of the series inside. 2) Square the result.'});
     } else {
-      steps.push({label:'Method', text:'Find the pattern and apply the appropriate formula'});
+      steps.push({label:'Identify', text:'Series/sum problem'});
+      steps.push({label:'Method', text:'Arithmetic: Sum = count×(first+last)/2. Geometric: Sum = a/(1−r)'});
     }
     steps.push({label:'Answer', text:'<span class="solution-highlight">'+ansStr+'</span>'});
   }
