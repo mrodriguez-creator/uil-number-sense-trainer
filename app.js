@@ -2582,11 +2582,11 @@ function renderTest(){
     ? `<span class="t-timer ok">⏱ ${fmtT(state.timeLeft)}</span>`
     : `<span class="t-timer none">No timer</span>`;
 
-  // Score / streak
+  // Score / streak — hide score during timed UIL tests (only scored from last answer)
   let isUIL = (state.mode==='timed20'||state.mode==='full');
   let scoreHTML=isDrill
     ? `<span class="t-score">✓ ${state.score}/${state.drillCount}${state.streak>=3?' <span class="streak">🔥 '+state.streak+'</span>':''}</span>`
-    : `<span class="t-score">Score: ${state.score}</span>`;
+    : '';
 
   // Progress bar
   let prog=isDrill ? 50 : (state.idx/state.problems.length*100);
