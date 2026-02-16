@@ -195,9 +195,9 @@ function getProgressInsights(){
     let thisAvg = Math.round(thisWeekT20.reduce((s,x) => s + x.score, 0) / thisWeekT20.length);
     let lastAvg = Math.round(lastWeekT20.reduce((s,x) => s + x.score, 0) / lastWeekT20.length);
     if(thisAvg > lastAvg){
-      insights.push({type:'improvement', icon:'📈', message:`Timed Round: ${lastAvg}/20 → ${thisAvg}/20 this week!`, detail:`+${thisAvg - lastAvg} improvement over last week.`});
+      insights.push({type:'improvement', icon:'📈', message:`Timed Round: ${lastAvg} → ${thisAvg} pts this week!`, detail:`+${thisAvg - lastAvg} improvement over last week.`});
     } else if(thisAvg < lastAvg){
-      insights.push({type:'tip', icon:'💪', message:`Timed Round dipped from ${lastAvg}/20 to ${thisAvg}/20.`, detail:'That\'s normal — focus on accuracy over speed.'});
+      insights.push({type:'tip', icon:'💪', message:`Timed Round dipped from ${lastAvg} to ${thisAvg} pts.`, detail:'That\'s normal — focus on accuracy over speed.'});
     }
   }
 
@@ -232,7 +232,7 @@ function getProgressInsights(){
     let latest = timed20[timed20.length - 1];
     let prevBest = Math.max(...timed20.slice(0, -1).map(s => s.score));
     if(latest.score > prevBest){
-      insights.push({type:'improvement', icon:'🏆', message:`New personal best: ${latest.score}/20!`, detail:`Previous best was ${prevBest}/20 — you crushed it!`});
+      insights.push({type:'improvement', icon:'🏆', message:`New personal best: ${latest.score} pts!`, detail:`Previous best was ${prevBest} pts — you crushed it!`});
     }
   }
 
@@ -1325,25 +1325,92 @@ const SEQ_71_80 = [
 
 // ─── Sequenced test builder ────────────────────────────────────────────────
 function buildSequencedTest(){
-  let probs=[];
+  // Try to use real UIL problems from BUILTIN_PROBLEMS first
+  const builtin = (typeof BUILTIN_PROBLEMS !== 'undefined') ? BUILTIN_PROBLEMS : [];
+  const edits = getProblemEdits();
 
-  // 1-20: tier 1 — prefer real problems of matching type, fall back to generator
+  if(builtin.length > 0){
+    // Group problems by year+test combo
+    const combos = {};
+    builtin.forEach(p => {
+      if(p.num >= 1 && p.num <= 80){
+        const key = p.year + '-' + p.test;
+        if(!combos[key]) combos[key] = {};
+        combos[key][p.num] = p;
+      }
+    });
+
+    const comboKeys = Object.keys(combos);
+    const shuffled = shuffle([...comboKeys]);
+
+    // Pick the combo with the most problems
+    let bestKey = shuffled[0];
+    let bestCount = Object.keys(combos[bestKey]||{}).length;
+    for(const k of shuffled){
+      const c = Object.keys(combos[k]).length;
+      if(c > bestCount){ bestKey = k; bestCount = c; }
+      if(c >= 80) break;
+    }
+
+    const chosenCombo = combos[bestKey] || {};
+    const [year, test] = bestKey.split('-');
+    const source = year + ' Test ' + test;
+    const problems = [];
+
+    // Generators for fallback by tier
+    const seqs = [
+      {seq:SEQ_1_20, gen:GEN, start:1},
+      {seq:SEQ_21_40, gen:GEN2, start:21},
+      {seq:SEQ_41_60, gen:GEN3, start:41},
+      {seq:SEQ_61_70, gen:GEN4, start:61},
+      {seq:SEQ_71_80, gen:GEN5, start:71}
+    ];
+
+    for(let num = 1; num <= 80; num++){
+      let prob = chosenCombo[num];
+      // Fill gap from another random combo
+      if(!prob){
+        for(const k of shuffled){
+          if(k !== bestKey && combos[k][num]){
+            prob = combos[k][num];
+            break;
+          }
+        }
+      }
+
+      if(prob){
+        let p = {...prob, num: num};
+        const editKey = p.num+'-'+p.year+'-'+p.test;
+        if(edits[editKey]){ p.q = edits[editKey].q; p.a = edits[editKey].a; }
+        problems.push(p);
+      } else {
+        // Fallback to generator for this position
+        let generated = null;
+        for(const tier of seqs){
+          const idx = num - tier.start;
+          if(idx >= 0 && idx < tier.seq.length){
+            const slot = tier.seq[idx];
+            generated = {...tier.gen[pick(slot)](), num: num};
+            break;
+          }
+        }
+        problems.push(generated || {q: num + ' = ?', a: '0', t: 'add', num: num});
+      }
+    }
+
+    return {problems: problems, source: source};
+  }
+
+  // Fallback: use REAL_BASIC + generators (original behavior)
+  let probs=[];
   let realByType={};
   REAL_BASIC.forEach(p=>{ if(!realByType[p.t]) realByType[p.t]=[]; realByType[p.t].push(p); });
   Object.keys(realByType).forEach(t=>{ realByType[t]=shuffle(realByType[t]); });
   let usedReal={};
 
   SEQ_1_20.forEach((slot,i)=>{
-    // Problem 10 and 20: use approximation generators
-    if(i===9){
-      probs.push({...APPROX.tier1(),num:10});
-      return;
-    }
-    if(i===19){
-      probs.push({...APPROX.tier1hard(),num:20});
-      return;
-    }
-    
+    if(i===9){ probs.push({...APPROX.tier1(),num:10}); return; }
+    if(i===19){ probs.push({...APPROX.tier1hard(),num:20}); return; }
     let realP=null;
     for(let key of shuffle([...slot])){
       let pool=realByType[key]||[], idx=usedReal[key]||0;
@@ -1351,64 +1418,103 @@ function buildSequencedTest(){
     }
     probs.push(realP ? {...realP,num:i+1} : {...GEN[pick(slot)](),num:i+1});
   });
-
-  // 21-40: tier 2 — problem 30 and 40 are approximations
-  SEQ_21_40.forEach((slot,i)=>{ 
-    if(i===9){
-      probs.push({...APPROX.tier2(),num:30});
-    } else if(i===19){
-      probs.push({...APPROX.advanced(),num:40});
-    } else {
-      probs.push({...GEN2[pick(slot)](),num:i+21}); 
-    }
+  SEQ_21_40.forEach((slot,i)=>{
+    if(i===9) probs.push({...APPROX.tier2(),num:30});
+    else if(i===19) probs.push({...APPROX.advanced(),num:40});
+    else probs.push({...GEN2[pick(slot)](),num:i+21});
   });
-  
-  // 41-60: tier 3 — problem 50 and 60 are approximations
-  SEQ_41_60.forEach((slot,i)=>{ 
-    if(i===9 || i===19){
-      probs.push({...APPROX.advanced(),num:i+41});
-    } else {
-      probs.push({...GEN3[pick(slot)](),num:i+41}); 
-    }
+  SEQ_41_60.forEach((slot,i)=>{
+    if(i===9||i===19) probs.push({...APPROX.advanced(),num:i+41});
+    else probs.push({...GEN3[pick(slot)](),num:i+41});
   });
-  
-  // 61-70: tier 4 — problem 70 is approximation
-  SEQ_61_70.forEach((slot,i)=>{ 
-    if(i===9){
-      probs.push({...APPROX.advanced(),num:70});
-    } else {
-      probs.push({...GEN4[pick(slot)](),num:i+61}); 
-    }
+  SEQ_61_70.forEach((slot,i)=>{
+    if(i===9) probs.push({...APPROX.advanced(),num:70});
+    else probs.push({...GEN4[pick(slot)](),num:i+61});
   });
-  
-  // 71-80: tier 5 — problem 80 is approximation
-  SEQ_71_80.forEach((slot,i)=>{ 
-    if(i===9){
-      probs.push({...APPROX.advanced(),num:80});
-    } else {
-      probs.push({...GEN5[pick(slot)](),num:i+71}); 
-    }
+  SEQ_71_80.forEach((slot,i)=>{
+    if(i===9) probs.push({...APPROX.advanced(),num:80});
+    else probs.push({...GEN5[pick(slot)](),num:i+71});
   });
 
-  return probs;
+  return {problems: probs, source: ''};
 }
 
 // ─── Timed round builder (20 problems, sequenced like the real 1-20) ───────
 function buildTimedRound(count){
+  // Try to use real UIL problems from BUILTIN_PROBLEMS first
+  const builtin = (typeof BUILTIN_PROBLEMS !== 'undefined') ? BUILTIN_PROBLEMS : [];
+
+  // Apply user edits if any
+  const edits = getProblemEdits();
+
+  if(builtin.length > 0){
+    // Group problems by year+test combo
+    const combos = {};
+    builtin.forEach(p => {
+      if(p.num >= 1 && p.num <= count){
+        const key = p.year + '-' + p.test;
+        if(!combos[key]) combos[key] = {};
+        combos[key][p.num] = p;
+      }
+    });
+
+    // Find combos that have all (or most) problems 1-count
+    const comboKeys = Object.keys(combos);
+    const shuffled = shuffle([...comboKeys]);
+
+    // Pick the best combo (most complete)
+    let bestKey = shuffled[0];
+    let bestCount = Object.keys(combos[bestKey]||{}).length;
+    for(const k of shuffled){
+      const c = Object.keys(combos[k]).length;
+      if(c > bestCount){ bestKey = k; bestCount = c; }
+      if(c >= count) break; // Found a complete test
+    }
+
+    // Build problems from the chosen combo, fill gaps from other combos
+    const problems = [];
+    const chosenCombo = combos[bestKey] || {};
+    const [year, test] = bestKey.split('-');
+    const source = year + ' Test ' + test;
+
+    for(let i = 1; i <= count; i++){
+      let prob = chosenCombo[i];
+
+      // Fill gap from another random combo
+      if(!prob){
+        for(const k of shuffled){
+          if(k !== bestKey && combos[k][i]){
+            prob = combos[k][i];
+            break;
+          }
+        }
+      }
+
+      if(prob){
+        let p = {...prob, num: i};
+        // Apply user edits
+        const editKey = p.num+'-'+p.year+'-'+p.test;
+        if(edits[editKey]){ p.q = edits[editKey].q; p.a = edits[editKey].a; }
+        problems.push(p);
+      } else {
+        // Fallback to generator for this position
+        const slot = SEQ_1_20[i-1] || ['add'];
+        problems.push({...GEN[pick(slot)](), num: i});
+      }
+    }
+
+    return {problems: problems, source: source};
+  }
+
+  // Fallback: use REAL_BASIC + generators (original behavior)
   let realByType={};
   REAL_BASIC.forEach(p=>{ if(!realByType[p.t]) realByType[p.t]=[]; realByType[p.t].push(p); });
   Object.keys(realByType).forEach(t=>{ realByType[t]=shuffle(realByType[t]); });
   let usedReal={};
 
-  return SEQ_1_20.slice(0,count).map((slot,i)=>{
-    // Insert starred problems at positions 10 and 20
-    if(i===9 && count>=10){
-      return {...APPROX.tier1(),num:10};
-    }
-    if(i===19 && count>=20){
-      return {...APPROX.tier1hard(),num:20};
-    }
-    
+  const fallbackProbs = SEQ_1_20.slice(0,count).map((slot,i)=>{
+    if(i===9 && count>=10) return {...APPROX.tier1(),num:10};
+    if(i===19 && count>=20) return {...APPROX.tier1hard(),num:20};
     let realP=null;
     for(let key of shuffle([...slot])){
       let pool=realByType[key]||[], idx=usedReal[key]||0;
@@ -1416,6 +1522,7 @@ function buildTimedRound(count){
     }
     return realP ? {...realP,num:i+1} : {...GEN[pick(slot)](),num:i+1};
   });
+  return {problems: fallbackProbs, source: ''};
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1441,7 +1548,12 @@ let state = {
   importedProblems:[],  // Real UIL problems imported from JSON
   solutionHTML:'',      // Current solution walkthrough HTML
   solutionVisible:false,// Whether solution is auto-expanded
-  nextDelayed:false     // Delay before next problem (so student reads solution)
+  nextDelayed:false,    // Delay before next problem (so student reads solution)
+  skippedPositions:[],  // Indices of skipped problems (for go-back feature)
+  uilScore:0,           // UIL-style score (+5/-4/-4) for timed/full modes
+  correctCount:0,       // Number of correct answers (for UIL score breakdown)
+  wrongCount:0,         // Number of wrong answers (for UIL score breakdown)
+  testSource:''         // Which test the problems came from (e.g., "2024 Test A")
 };
 function setState(p){Object.assign(state,p);render();}
 
@@ -1468,8 +1580,10 @@ function fmtT(s){return Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0');}
 // ═══════════════════════════════════════════════════════════════════════════
 function startTimed(secs){
   stopTimer();
-  let probs=buildTimedRound(20);
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:secs,timed:true,answered:[],mode:'timed20',timedSecs:secs,feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
+  let result=buildTimedRound(20);
+  let probs=result.problems||result;
+  let src=result.source||'';
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:secs,timed:true,answered:[],mode:'timed20',timedSecs:secs,feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now(),skippedPositions:[],uilScore:0,correctCount:0,wrongCount:0,testSource:src});
   setTimeout(()=>{startTimer();focusInput();},50);
 }
 function startDrill(){
@@ -1486,8 +1600,10 @@ function startTopicDrill(key){
 }
 function startFullTest(){
   stopTimer();
-  let probs=buildSequencedTest();
-  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:600,timed:true,answered:[],mode:'full',feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now()});
+  let result=buildSequencedTest();
+  let probs=result.problems||result;
+  let src=result.source||'';
+  setState({screen:'test',problems:probs,idx:0,answer:'',score:0,timeLeft:600,timed:true,answered:[],mode:'full',feedback:'',feedbackText:'',streak:0,drillCount:0,startTime:Date.now(),skippedPositions:[],uilScore:0,correctCount:0,wrongCount:0,testSource:src});
   setTimeout(()=>{startTimer();focusInput();},50);
 }
 function focusInput(){let e=document.getElementById('ans-input');if(e)e.focus();}
@@ -1547,11 +1663,16 @@ function submitAnswer(){
   let correct = answerMatches(val, cur.a, cur.starred);
   let userAns = val;
 
+  let isUIL = (state.mode==='timed20'||state.mode==='full');
   let rec={q:cur.q,a:cur.a,userAns,correct,num:cur.num,hint:cur.hint||null,t:cur.t||null};
   let newAnswered=[...state.answered,rec];
-  let newScore=state.score+(correct?1:0);
+  let newScore=state.score+(isUIL ? (correct?5:-4) : (correct?1:0));
+  let newCorrectCount=state.correctCount+(correct?1:0);
+  let newWrongCount=state.wrongCount+(correct?0:1);
   let newStreak=correct?(state.streak+1):0;
   let newDrill=state.drillCount+1;
+  // For timed/full: remove from skippedPositions if answering a previously skipped problem
+  let newSkipped=[...state.skippedPositions].filter(si=>si!==state.idx);
   let newIdx=state.idx+1;
 
   // DRILL / TOPIC: instant feedback, refill if running low
@@ -1586,22 +1707,42 @@ function submitAnswer(){
   }
 
   // TIMED / FULL: advance or end
-  if(newIdx>=state.problems.length){
-    state.answered=newAnswered; state.score=newScore; endTest();
+  // Find next unanswered problem (skip over already-answered positions when going back)
+  let nextIdx = newIdx;
+  if(nextIdx < state.problems.length){
+    // If we answered a skipped problem (not at the end), jump to next skipped or end
+    if(state.idx < state.problems.length - 1 && newSkipped.length > 0 && nextIdx >= state.problems.length){
+      nextIdx = newSkipped[0]; // Go to first remaining skip
+    }
+  }
+
+  if(nextIdx>=state.problems.length && newSkipped.length===0){
+    state.answered=newAnswered; state.score=newScore;
+    state.correctCount=newCorrectCount; state.wrongCount=newWrongCount;
+    state.skippedPositions=newSkipped;
+    endTest();
   } else {
-    setState({idx:newIdx,answer:'',answered:newAnswered,score:newScore,streak:newStreak,feedback:'',feedbackText:''});
+    // If past end but skips remain, go to first skip
+    if(nextIdx>=state.problems.length && newSkipped.length>0){
+      nextIdx=newSkipped[0];
+      newSkipped=newSkipped.filter(si=>si!==nextIdx);
+    }
+    setState({idx:nextIdx,answer:'',answered:newAnswered,score:newScore,
+      correctCount:newCorrectCount,wrongCount:newWrongCount,
+      skippedPositions:newSkipped,streak:newStreak,feedback:'',feedbackText:''});
     setTimeout(focusInput,30);
   }
 }
 
 function skipProblem(){
   let cur=state.problems[state.idx];
-  let rec={q:cur.q,a:cur.a,userAns:null,correct:false,num:cur.num,hint:cur.hint||null,t:cur.t||null};
-  let newAnswered=[...state.answered,rec];
   let newIdx=state.idx+1;
   let newDrill=state.drillCount+1;
 
+  // DRILL / TOPIC: record skip immediately with feedback
   if(state.mode==='drill'||state.mode==='topic'){
+    let rec={q:cur.q,a:cur.a,userAns:null,correct:false,num:cur.num,hint:cur.hint||null,t:cur.t||null};
+    let newAnswered=[...state.answered,rec];
     let newProbs=[...state.problems];
     if(newIdx>newProbs.length-8){
       let key=state.mode==='topic'?state.topicKey:null;
@@ -1621,32 +1762,82 @@ function skipProblem(){
     return;
   }
 
-  if(newIdx>=state.problems.length){
-    state.answered=newAnswered; endTest();
+  // TIMED / FULL: don't record answer yet — add to skippedPositions for go-back
+  let newSkipped=[...state.skippedPositions];
+  if(!newSkipped.includes(state.idx)) newSkipped.push(state.idx);
+
+  if(newIdx>=state.problems.length && newSkipped.length > 0){
+    // Past last problem but have skips — go to first skipped
+    let backIdx = newSkipped[0];
+    setState({idx:backIdx,answer:'',skippedPositions:newSkipped,streak:0,feedback:'',feedbackText:''});
+    setTimeout(focusInput,30);
+  } else if(newIdx>=state.problems.length){
+    // Past last problem, no skips — end test
+    endTest();
   } else {
-    setState({idx:newIdx,answer:'',answered:newAnswered,streak:0,feedback:'',feedbackText:''});
+    setState({idx:newIdx,answer:'',skippedPositions:newSkipped,streak:0,feedback:'',feedbackText:''});
     setTimeout(focusInput,30);
   }
 }
 
+function goBackToSkipped(){
+  if(state.skippedPositions.length === 0) return;
+  let backIdx = state.skippedPositions[0];
+  // Remove from skipped list (will re-add if they skip again)
+  let newSkipped = state.skippedPositions.filter(si=>si!==backIdx);
+  setState({idx:backIdx,answer:'',skippedPositions:newSkipped,feedback:'',feedbackText:''});
+  setTimeout(focusInput,30);
+}
+
 function endTest(){
   stopTimer();
-  
+  let isUIL = (state.mode==='timed20'||state.mode==='full');
+
+  // For UIL modes: record remaining skipped problems as -4 each
+  if(isUIL && state.skippedPositions.length > 0){
+    let newAnswered = [...state.answered];
+    let skipCount = 0;
+    state.skippedPositions.forEach(si => {
+      let cur = state.problems[si];
+      // Only add if not already in answered
+      let already = newAnswered.some(a => a.num === cur.num);
+      if(!already){
+        newAnswered.push({q:cur.q,a:cur.a,userAns:null,correct:false,num:cur.num,hint:cur.hint||null,t:cur.t||null,skipped:true});
+        skipCount++;
+      }
+    });
+    state.answered = newAnswered;
+    state.score = state.score - (skipCount * 4);
+    state.wrongCount = state.wrongCount; // wrong stays same
+    state.skippedPositions = [];
+  }
+
+  // Calculate UIL score breakdown
+  if(isUIL){
+    let correct = state.answered.filter(a=>a.correct).length;
+    let wrong = state.answered.filter(a=>!a.correct && a.userAns!==null && !a.skipped).length;
+    let skipped = state.answered.filter(a=>a.userAns===null || a.skipped).length;
+    let unanswered = state.problems.length - state.answered.length;
+    state.uilScore = (correct * 5) - (wrong * 4) - (skipped * 4) - (unanswered * 4);
+    state.correctCount = correct;
+    state.wrongCount = wrong;
+  }
+
   // Record session stats
   let timeUsed = state.startTime ? Math.round((Date.now() - state.startTime) / 1000) : 0;
   let topicBreakdown = getTopicBreakdown(state.answered);
-  
+
   recordSession({
     mode: state.mode,
-    score: state.score,
+    score: isUIL ? state.uilScore : state.score,
     total: state.answered.length,
     timeUsed: timeUsed,
     topicBreakdown: topicBreakdown
   });
-  
+
   setState({screen:'results'});
 }
-function goMenu(){stopTimer();setState({screen:'menu',problems:[],idx:0,answer:'',score:0,timeLeft:0,answered:[],feedback:'',feedbackText:'',streak:0,drillCount:0,solutionHTML:'',solutionVisible:false,nextDelayed:false});}
+function goMenu(){stopTimer();setState({screen:'menu',problems:[],idx:0,answer:'',score:0,timeLeft:0,answered:[],feedback:'',feedbackText:'',streak:0,drillCount:0,solutionHTML:'',solutionVisible:false,nextDelayed:false,skippedPositions:[],uilScore:0,correctCount:0,wrongCount:0,testSource:''});}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // SOLUTION HINTS (detailed walkthroughs for learning)
@@ -2170,7 +2361,7 @@ function renderMenu(){
       <div class="sp-item">📊 ${stats.totalSessions} session${stats.totalSessions>1?'s':''}</div>
       <div class="sp-item">🎯 ${stats.overallAccuracy}% accuracy</div>
       ${stats.streak > 0 ? `<div class="sp-item">🔥 ${stats.streak} day streak!</div>` : ''}
-      ${stats.bestScore.score > 0 ? `<div class="sp-item">🏆 Best: ${stats.bestScore.score}/20</div>` : ''}
+      ${stats.bestScore.score > 0 ? `<div class="sp-item">🏆 Best: ${stats.bestScore.score} pts</div>` : ''}
     </div>` : '';
   
   // Build insight banner (top 2)
@@ -2392,9 +2583,10 @@ function renderTest(){
     : `<span class="t-timer none">No timer</span>`;
 
   // Score / streak
+  let isUIL = (state.mode==='timed20'||state.mode==='full');
   let scoreHTML=isDrill
     ? `<span class="t-score">✓ ${state.score}/${state.drillCount}${state.streak>=3?' <span class="streak">🔥 '+state.streak+'</span>':''}</span>`
-    : `<span class="t-score">Score: ${state.score} / ${state.idx}</span>`;
+    : `<span class="t-score">Score: ${state.score}</span>`;
 
   // Progress bar
   let prog=isDrill ? 50 : (state.idx/state.problems.length*100);
@@ -2420,13 +2612,24 @@ function renderTest(){
     fbHTML=`<div class="feedback-area ${hasSol}"><div class="feedback-bar ${state.feedback||'empty'}">${fbTxt}</div>${solSection}</div>`;
   }
 
-  // Skip button (timed & full only)
-  let skipHTML=!isDrill ? `<button class="btn btn-orange" id="btn-skip">Skip</button>` : '';
-  
-  // Show source info for imported problems
+  // Skip button (timed & full only) — shows penalty reminder
+  let skipHTML='';
+  if(!isDrill){
+    skipHTML = `<button class="btn btn-orange" id="btn-skip">Skip (-4)</button>`;
+    // Add "Back to skipped" button if there are skipped problems
+    if(state.skippedPositions.length > 0){
+      let firstSkipNum = state.problems[state.skippedPositions[0]].num;
+      let skipCount = state.skippedPositions.length;
+      skipHTML += ` <button class="btn btn-subtle" id="btn-back-skip" style="font-size:0.8rem;padding:8px 12px;">← #${firstSkipNum} (${skipCount} skipped)</button>`;
+    }
+  }
+
+  // Show source info for imported problems or UIL test source
   let sourceTag = '';
   if(state.mode === 'imported' && cur.year && cur.test){
     sourceTag = `<div class="problem-tag" style="color:#667eea;">📋 ${cur.year} Test ${cur.test} · Problem #${cur.num}</div>`;
+  } else if(isUIL && state.testSource){
+    sourceTag = `<div class="problem-tag" style="color:#667eea;">📋 ${state.testSource}</div>`;
   }
 
   return `
@@ -2457,18 +2660,43 @@ function renderTest(){
 
 function renderResults(){
   let total=state.answered.length;
-  let skipped=state.answered.filter(a=>a.userAns===null).length;
-  let wrong=total-state.score-skipped;
-  let pct=total>0?(state.score/total*100).toFixed(1):0;
   let isDrill=(state.mode==='drill'||state.mode==='topic');
+  let isUIL=(state.mode==='timed20'||state.mode==='full');
 
-  // Show last 40 in review
-  let reviewItems=state.answered.slice(-40).map((item,i)=>{
+  // UIL scoring breakdown
+  let correctCount = state.answered.filter(a=>a.correct).length;
+  let wrongCount = state.answered.filter(a=>!a.correct && a.userAns!==null && !a.skipped).length;
+  let skippedCount = state.answered.filter(a=>a.userAns===null || a.skipped).length;
+  let unanswered = state.problems.length - total;
+  let uilScore = isUIL ? ((correctCount * 5) - (wrongCount * 4) - (skippedCount * 4) - (unanswered * 4)) : 0;
+  let maxScore = isUIL ? state.problems.length * 5 : 0;
+
+  // Simple scoring for drill modes
+  let drillCorrect = state.answered.filter(a=>a.correct).length;
+  let drillWrong = total - drillCorrect - state.answered.filter(a=>a.userAns===null).length;
+  let drillSkipped = state.answered.filter(a=>a.userAns===null).length;
+  let pct=total>0?(drillCorrect/total*100).toFixed(1):0;
+
+  // Sort review by problem number for UIL modes
+  let reviewList = isUIL
+    ? [...state.answered].sort((a,b)=>a.num-b.num)
+    : state.answered.slice(-40);
+
+  // Show review items
+  let reviewItems=reviewList.map((item,i)=>{
     let cls=item.correct?'correct':'wrong';
-    let ans=item.userAns!==null?item.userAns:'Skipped';
+    let isSkip = (item.userAns===null || item.skipped);
+    let ans=isSkip ? 'Skipped' : item.userAns;
     let extra=!item.correct?` (Ans: ${displayAnswer(item.a)})`:'';
+    // UIL point annotation
+    let pointTag = '';
+    if(isUIL){
+      if(item.correct) pointTag = '<span style="color:#48bb78;font-weight:600;"> (+5)</span>';
+      else if(isSkip) pointTag = '<span style="color:#ed8936;font-weight:600;"> (-4)</span>';
+      else pointTag = '<span style="color:#fc8181;font-weight:600;"> (-4)</span>';
+    }
     let hintHTML=(!item.correct && item.hint)?`<div style="font-size:0.72rem;color:#f6ad55;margin-top:2px;width:100%;">💡 ${item.hint}</div>`:'';
-    
+
     // Add "Show Solution" button for wrong answers using structured walkthrough
     let solBtn='';
     if(!item.correct){
@@ -2477,11 +2705,11 @@ function renderResults(){
       solBtn='<button class="sol-toggle" data-target="'+solId+'" style="font-size:0.7rem;padding:4px 8px;background:#2d3748;border:1px solid #4a5568;border-radius:6px;color:#667eea;cursor:pointer;margin-top:4px;">How?</button>' +
         '<div id="'+solId+'" style="display:none;margin-top:6px;">'+solContent+'</div>';
     }
-    
+
     return `<div class="rev-item ${cls}">
       <span class="ri-num">#${item.num}</span>
       <span class="ri-q">${item.q}</span>
-      <span class="ri-a">${item.correct?'✓':'✗'} ${ans}${extra}</span>
+      <span class="ri-a">${item.correct?'✓':'✗'} ${ans}${pointTag}${extra}</span>
       ${hintHTML}
       ${solBtn}
     </div>`;
@@ -2518,17 +2746,40 @@ function renderResults(){
     state.mode==='topic'   ? `📊 ${TOPICS[state.topicKey].name} Again` :
     '🔁 Full Test Again';
 
+  // Build stats grid — different for UIL vs drill modes
+  let statsHTML='';
+  if(isUIL){
+    let scoreColor = uilScore >= 0 ? '#48bb78' : '#fc8181';
+    let sourceNote = state.testSource ? `<div style="text-align:center;color:#a0aec0;font-size:0.85rem;margin-bottom:12px;">Source: ${state.testSource}</div>` : '';
+    statsHTML = `
+    ${sourceNote}
+    <div class="stats-grid">
+      <div class="stat-card" style="border-color:${scoreColor};grid-column:span 2;">
+        <div class="stat-val" style="font-size:2.2rem;color:${scoreColor};">${uilScore}</div>
+        <div class="stat-label">UIL Score (of ${maxScore})</div>
+      </div>
+      <div class="stat-card"><div class="stat-val" style="color:#48bb78;">${correctCount}</div><div class="stat-label">Correct (+${correctCount*5})</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#fc8181;">${wrongCount}</div><div class="stat-label">Wrong (-${wrongCount*4})</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#ed8936;">${skippedCount + unanswered}</div><div class="stat-label">Skipped (-${(skippedCount+unanswered)*4})</div></div>
+      <div class="stat-card"><div class="stat-val">${correctCount + wrongCount}</div><div class="stat-label">Attempted of ${state.problems.length}</div></div>
+      ${extraStats}
+    </div>`;
+  } else {
+    statsHTML = `
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-val">${drillCorrect}</div><div class="stat-label">Correct</div></div>
+      <div class="stat-card"><div class="stat-val">${drillWrong}</div><div class="stat-label">Wrong</div></div>
+      <div class="stat-card"><div class="stat-val">${drillSkipped}</div><div class="stat-label">Skipped</div></div>
+      <div class="stat-card"><div class="stat-val">${pct}%</div><div class="stat-label">Accuracy</div></div>
+      ${extraStats}
+    </div>`;
+  }
+
   return `
   <div class="header"><h1 style="font-size:1.9rem;">${title}</h1></div>
   <div class="results-wrap">
-    <div class="stats-grid">
-      <div class="stat-card"><div class="stat-val">${state.score}</div><div class="stat-label">Correct</div></div>
-      <div class="stat-card"><div class="stat-val">${wrong}</div><div class="stat-label">Wrong</div></div>
-      <div class="stat-card"><div class="stat-val">${skipped}</div><div class="stat-label">Skipped</div></div>
-      <div class="stat-card"><div class="stat-val">${pct}%</div><div class="stat-label">Accuracy</div></div>
-      ${extraStats}
-    </div>
-    <div class="review-title">📋 Answer Review${total>40?' (last 40)':''}</div>
+    ${statsHTML}
+    <div class="review-title">📋 Answer Review${reviewList.length>40?' (last 40)':''}</div>
     <div class="review-box">${reviewItems}</div>
     <div class="res-btns">
       <button class="btn btn-primary" id="btn-menu">← Menu</button>
@@ -2727,7 +2978,7 @@ function renderStats(){
       <div class="stats-grid">
         ${stats.bestScore.score > 0 ? `
         <div class="stat-card">
-          <div class="stat-val">${stats.bestScore.score}/20</div>
+          <div class="stat-val">${stats.bestScore.score} pts</div>
           <div class="stat-label">Best Timed Round</div>
           <div class="stat-sub">${new Date(stats.bestScore.date).toLocaleDateString()}</div>
         </div>` : ''}
@@ -2822,6 +3073,7 @@ function attachListeners(){
   }
   if(el=document.getElementById('btn-submit')) el.onclick=submitAnswer;
   if(el=document.getElementById('btn-skip'))   el.onclick=skipProblem;
+  if(el=document.getElementById('btn-back-skip')) el.onclick=goBackToSkipped;
   if(el=document.getElementById('btn-end'))    el.onclick=endTest;
   if(el=document.getElementById('btn-menu'))   el.onclick=goMenu;
   if(el=document.getElementById('btn-retry'))  el.onclick=()=>{
