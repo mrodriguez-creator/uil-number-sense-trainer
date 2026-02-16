@@ -1,5 +1,7 @@
 const fs = require('fs');
-const content = fs.readFileSync('C:/uil-number-sense-trainer/uil-cleanup-tool.html', 'utf-8');
+const path = require('path');
+const root = path.resolve(__dirname, '..');
+const content = fs.readFileSync(path.join(root, 'tools', 'uil-cleanup-tool.html'), 'utf-8');
 const lines = content.split('\n');
 const line128 = lines[127];
 
@@ -47,7 +49,7 @@ Object.values(charMap).sort((a, b) => b.count - a.count).forEach(c => {
 });
 
 // Count already cleaned (from corrected JSON)
-const cleanedJson = JSON.parse(fs.readFileSync('C:/uil-number-sense-trainer/uil-cleaned-problems-2026-02-08-CORRECTED.json', 'utf-8'));
+const cleanedJson = JSON.parse(fs.readFileSync(path.join(root, 'data', 'uil-cleaned-problems-2026-02-08-CORRECTED.json'), 'utf-8'));
 console.log(`\nAlready cleaned: ${cleanedJson.cleaned} problems`);
 console.log(`Remaining: ${problems.length - cleanedJson.cleaned} problems`);
 
@@ -60,5 +62,5 @@ console.log('  \\u00c8 (È) -> √ (square root)');
 console.log('  \\uf020 -> (space/operator)');
 
 // Write all problems to a JSON for processing
-fs.writeFileSync('C:/uil-number-sense-trainer/all-raw-problems.json', JSON.stringify(problems, null, 2));
+fs.writeFileSync(path.join(root, 'data', 'all-raw-problems.json'), JSON.stringify(problems, null, 2));
 console.log('\nWrote all problems to all-raw-problems.json');

@@ -1,7 +1,9 @@
 const fs = require('fs');
+const path = require('path');
+const root = path.resolve(__dirname, '..');
 
-const raw = JSON.parse(fs.readFileSync('C:/uil-number-sense-trainer/all-raw-problems.json', 'utf-8'));
-const cleanedFile = JSON.parse(fs.readFileSync('C:/uil-number-sense-trainer/uil-cleaned-problems-2026-02-08-CORRECTED.json', 'utf-8'));
+const raw = JSON.parse(fs.readFileSync(path.join(root, 'data', 'all-raw-problems.json'), 'utf-8'));
+const cleanedFile = JSON.parse(fs.readFileSync(path.join(root, 'data', 'uil-cleaned-problems-2026-02-08-CORRECTED.json'), 'utf-8'));
 
 const alreadyCleaned = new Map();
 cleanedFile.problems.forEach(p => {
@@ -246,10 +248,10 @@ const exportData = {
     preservedCount: results.stats.preserved,
     problems: [...results.alreadyClean, ...results.autoCleaned]
 };
-fs.writeFileSync('C:/uil-number-sense-trainer/auto-cleaned-v2.json', JSON.stringify(exportData, null, 2));
+fs.writeFileSync(path.join(root, 'data', 'auto-cleaned-v2.json'), JSON.stringify(exportData, null, 2));
 console.log(`\nExported ${exportData.cleaned} problems to auto-cleaned-v2.json`);
 
-fs.writeFileSync('C:/uil-number-sense-trainer/needs-review-v2.json', JSON.stringify(results.needsReview, null, 2));
+fs.writeFileSync(path.join(root, 'data', 'needs-review-v2.json'), JSON.stringify(results.needsReview, null, 2));
 console.log(`Exported ${results.needsReview.length} for review to needs-review-v2.json`);
 
 // Samples of newly fixed problems
