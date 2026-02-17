@@ -501,7 +501,7 @@ const GEN = {
     return {q:`${a} × 10101 =`,a:a*10101,t:"special",hint:`10101 trick: 10101 = 3×7×13×37. Repeats n in 2-digit groups. ${a} × 10101 = ${a*10101}.`};
   },
   series: ()=>{
-    let type=ri(0,9);
+    let type=ri(0,3);
 
     // Type 0: Classic 1+2+3+…+n
     if(type===0){
