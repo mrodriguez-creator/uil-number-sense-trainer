@@ -2544,6 +2544,7 @@ function renderMenu(){
 
   return `
   <div class="header">
+    <a href="https://mrodriguez-creator.github.io/uil-STEM/" class="back-home">&larr; STEM Home</a>
     <h1>UIL Number Sense Trainer</h1>
     <p>Master mental math for UIL competition</p>
     ${statsPreview}
