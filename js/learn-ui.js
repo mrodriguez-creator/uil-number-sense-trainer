@@ -105,11 +105,30 @@ function renderSkillMap() {
         </div>
       ` : ''}
 
-      <div class="section-tag">Quick Actions</div>
+      <div class="section-tag">Test Yourself</div>
+      <div class="test-actions-grid">
+        <div class="test-action-card">
+          <div class="ta-title">Timed Round</div>
+          <div class="ta-desc">20 problems in UIL order, scored +5/−4</div>
+          <div class="time-picker">
+            <button class="time-btn" onclick="startTimed(150)">2:30</button>
+            <button class="time-btn" onclick="startTimed(300)">5:00</button>
+            <button class="time-btn" onclick="startTimed(450)">7:30</button>
+            <button class="time-btn" onclick="startTimed(600)">10:00</button>
+          </div>
+        </div>
+        <div class="test-action-card">
+          <div class="ta-title">Position Practice</div>
+          <div class="ta-desc">Practice all 20 positions in order with hints</div>
+          <button class="ta-start-btn" onclick="startPositionPractice()">Start &rarr;</button>
+        </div>
+      </div>
+
+      <div class="section-tag">More</div>
       <div class="quick-actions">
+        <button class="qa-btn" onclick="startDrill()">Drill Mode</button>
+        <button class="qa-btn" onclick="setState({screen:'dashboard'})">Progress & Stats</button>
         <button class="qa-btn" onclick="setState({screen:'menu'})">Classic Menu</button>
-        <button class="qa-btn" id="qa-timed">Timed Round</button>
-        <button class="qa-btn" onclick="setState({screen:'stats'})">View Stats</button>
       </div>
     </div>`;
 }
@@ -836,6 +855,353 @@ function showPracticeTrick() {
 
 function exitPractice() {
   setState({ screen: 'skillmap' });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// POSITION PRACTICE MODE — Practice all 20 positions in UIL order
+// ═══════════════════════════════════════════════════════════════════════════
+
+const POSITION_LABELS = [
+  'Add', 'Sub', 'Add/Sub', 'Mul', 'Mul/Ops', 'PEMDAS',
+  'Shortcut', 'Shortcut', 'Squares', '4-Term*',
+  'Division', 'Frac/Dec', 'Conv/Roman', 'Conv/Roman', 'LCM/GCD',
+  'Percent', 'Mean', 'Series', 'Remainder', 'Large Ops*'
+];
+
+let posState = {
+  active: false,
+  problems: [],     // 20 generated problems
+  idx: 0,           // current position (0-19)
+  answer: '',
+  feedback: '',     // '' | 'correct' | 'wrong'
+  solution: '',
+  results: [],      // per-position: null (not attempted), true, false
+  showSolution: false,
+};
+
+function startPositionPractice() {
+  // Generate one problem per position using the SEQ_1_20 chart
+  let problems = [];
+  let seq = typeof SEQ_1_20 !== 'undefined' ? SEQ_1_20 : [];
+  for (let i = 0; i < 20; i++) {
+    let genKeys = seq[i] || ['add'];
+    let prob = null;
+
+    // Position 10 (idx 9): starred tier1
+    if (i === 9 && typeof APPROX !== 'undefined') {
+      prob = APPROX.tier1();
+    }
+    // Position 20 (idx 19): starred tier1hard
+    else if (i === 19 && typeof APPROX !== 'undefined') {
+      prob = APPROX.tier1hard();
+    }
+    else {
+      let genKey = genKeys[Math.floor(Math.random() * genKeys.length)];
+      if (typeof GEN !== 'undefined' && GEN[genKey]) {
+        prob = GEN[genKey]();
+      }
+    }
+
+    if (prob) {
+      prob.num = i + 1;
+      prob.starred = (i === 9 || i === 19);
+      problems.push(prob);
+    } else {
+      problems.push({ q: 'Problem unavailable', a: 0, t: 'unknown', num: i+1 });
+    }
+  }
+
+  posState = {
+    active: true,
+    problems: problems,
+    idx: 0,
+    answer: '',
+    feedback: '',
+    solution: '',
+    results: new Array(20).fill(null),
+    showSolution: false
+  };
+  setState({ screen: 'position' });
+}
+
+function renderPositionPractice() {
+  if (!posState.active) return renderSkillMap();
+
+  let prob = posState.problems[posState.idx];
+  let pos = posState.idx + 1;
+  let label = POSITION_LABELS[posState.idx] || '?';
+  let done = posState.results.filter(r => r !== null).length;
+  let correct = posState.results.filter(r => r === true).length;
+
+  // Get solution for current problem
+  let solutionHTML = '';
+  if (posState.showSolution || posState.feedback === 'wrong') {
+    try {
+      let sol = getStructuredSolution(prob.q, prob.a, prob.t);
+      if (sol && sol.steps) {
+        solutionHTML = '<strong>' + sol.trickName + '</strong><br>' +
+          sol.steps.map(s => '<em>' + s.label + ':</em> ' + s.text).join('<br>');
+      }
+    } catch(e) {}
+  }
+
+  return `
+    <div class="header">
+      <h1>Position Practice</h1>
+      <p>Problems 1-20 in UIL order</p>
+    </div>
+    <div class="practice-body">
+      <div class="practice-header">
+        <button class="learn-back" onclick="exitPositionPractice()">&larr; Back</button>
+        <span class="practice-title">Position ${pos}: ${label}</span>
+        <span style="font-size:0.85rem;color:#a0aec0;">${correct}/${done} correct</span>
+      </div>
+
+      <div class="pos-map">
+        ${posState.problems.map((p, i) => {
+          let cls = i === posState.idx ? 'current' :
+                    posState.results[i] === true ? 'correct' :
+                    posState.results[i] === false ? 'wrong' :
+                    '';
+          return `<div class="pos-pip ${cls}" onclick="jumpToPosition(${i})">
+            <div class="pos-num">${i+1}${(i===9||i===19)?'*':''}</div>
+            <div class="pos-topic">${POSITION_LABELS[i]}</div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="practice-problem">
+        <div class="practice-q">${prob.q}</div>
+        ${posState.feedback === '' ? `
+          <div class="practice-input-row">
+            <input type="text" class="practice-input" id="pos-ans" placeholder="Answer"
+              value="${posState.answer}"
+              onkeydown="if(event.key==='Enter')submitPosition()"
+              autocomplete="off" inputmode="text">
+          </div>
+          <div class="practice-actions">
+            <button class="btn-show-trick" onclick="showPositionSolution()">Show Trick</button>
+            <button class="btn-submit-practice" onclick="submitPosition()">Submit</button>
+            <button class="btn-skip-practice" onclick="skipPosition()">Skip</button>
+          </div>
+          ${posState.showSolution && solutionHTML ? `
+            <div class="tryit-hint" style="margin-top:16px;text-align:left;">${solutionHTML}</div>
+          ` : ''}
+        ` : `
+          <div class="practice-feedback ${posState.feedback}">
+            <h4>${posState.feedback === 'correct' ? 'Correct!' : 'Not quite'}</h4>
+            ${posState.feedback === 'wrong' ? `
+              <p>The answer is <strong>${displayAnswer(prob.a)}</strong></p>
+              ${solutionHTML ? `<div style="margin-top:10px;text-align:left;">${solutionHTML}</div>` : ''}
+            ` : ''}
+          </div>
+          <div class="practice-actions" style="margin-top:16px;">
+            ${posState.idx < 19 ? `
+              <button class="btn-next" onclick="nextPosition()">Position ${pos+1} &rarr;</button>
+            ` : `
+              <button class="btn-next" onclick="finishPositionPractice()">See Results &rarr;</button>
+            `}
+          </div>
+        `}
+      </div>
+    </div>`;
+}
+
+function submitPosition() {
+  let input = document.getElementById('pos-ans');
+  if (!input) return;
+  let userAns = input.value.trim();
+  if (!userAns) return;
+
+  let prob = posState.problems[posState.idx];
+  let correct = answerMatches(userAns, prob.a, prob.starred || false);
+
+  posState.answer = userAns;
+  posState.feedback = correct ? 'correct' : 'wrong';
+  posState.results[posState.idx] = correct;
+  render();
+}
+
+function skipPosition() {
+  posState.results[posState.idx] = false;
+  if (posState.idx < 19) {
+    posState.idx++;
+    posState.answer = '';
+    posState.feedback = '';
+    posState.showSolution = false;
+  }
+  render();
+}
+
+function nextPosition() {
+  if (posState.idx < 19) {
+    posState.idx++;
+    posState.answer = '';
+    posState.feedback = '';
+    posState.showSolution = false;
+  }
+  render();
+  // Focus input after render
+  setTimeout(() => { let el = document.getElementById('pos-ans'); if(el) el.focus(); }, 50);
+}
+
+function jumpToPosition(idx) {
+  posState.idx = idx;
+  posState.answer = '';
+  posState.feedback = '';
+  posState.showSolution = false;
+  render();
+}
+
+function showPositionSolution() {
+  posState.showSolution = true;
+  render();
+}
+
+function exitPositionPractice() {
+  posState.active = false;
+  setState({ screen: 'skillmap' });
+}
+
+function finishPositionPractice() {
+  let correct = posState.results.filter(r => r === true).length;
+  let total = posState.results.filter(r => r !== null).length;
+  posState.active = false;
+
+  // Record as a session
+  if (typeof recordSession !== 'undefined') {
+    let topicBreakdown = {};
+    posState.problems.forEach((p, i) => {
+      let t = p.t || 'unknown';
+      if (!topicBreakdown[t]) topicBreakdown[t] = { correct: 0, total: 0 };
+      topicBreakdown[t].total++;
+      if (posState.results[i]) topicBreakdown[t].correct++;
+    });
+    recordSession({ mode: 'position', score: correct, total: total, topicBreakdown: topicBreakdown });
+  }
+
+  setState({ screen: 'skillmap' });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// PROGRESS DASHBOARD
+// ═══════════════════════════════════════════════════════════════════════════
+
+function renderDashboard() {
+  let mastery = loadMastery();
+  let stats = typeof getStats !== 'undefined' ? getStats() : {};
+  let readiness = getReadinessPercent();
+
+  // Skill breakdown
+  let skillRows = SKILL_DEFS.map(s => {
+    let ms = mastery[s.id] || {};
+    let status = ms.status || 'not_started';
+    let total = ms.totalProblems || 0;
+    let correct = ms.totalCorrect || 0;
+    let accuracy = total > 0 ? Math.round(correct / total * 100) : 0;
+    let lastPracticed = ms.lastPracticed ? timeSince(new Date(ms.lastPracticed)) : 'Never';
+
+    let statusLabel = status === 'mastered' ? 'Mastered' :
+                      status === 'not_started' ? 'Not Started' :
+                      status.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
+    let statusClass = status === 'mastered' ? 'st-mastered' :
+                      status === 'not_started' ? 'st-new' : 'st-learning';
+
+    return `<tr>
+      <td>${s.icon} ${s.name}</td>
+      <td><span class="skill-status ${statusClass}" style="font-size:0.65rem;">${statusLabel}</span></td>
+      <td>${total > 0 ? accuracy + '%' : '—'}</td>
+      <td>${total}</td>
+      <td>${lastPracticed}</td>
+    </tr>`;
+  }).join('');
+
+  // Weekly activity (last 7 days)
+  let weekDays = [];
+  let now = new Date();
+  for (let i = 6; i >= 0; i--) {
+    let d = new Date(now);
+    d.setDate(d.getDate() - i);
+    let dayStr = d.toISOString().slice(0, 10);
+    let sessions = stats.sessions ? stats.sessions.filter(s => s.date && s.date.slice(0, 10) === dayStr) : [];
+    let problems = sessions.reduce((sum, s) => sum + (s.total || 0), 0);
+    weekDays.push({ label: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()], problems: problems });
+  }
+  let maxProblems = Math.max(...weekDays.map(d => d.problems), 1);
+
+  return `
+    <div class="header">
+      <h1>Progress Dashboard</h1>
+      <p>Your learning journey</p>
+    </div>
+    <div class="practice-body" style="max-width:800px;">
+      <div class="learn-header">
+        <button class="learn-back" onclick="setState({screen:'skillmap'})">&larr; Back</button>
+      </div>
+
+      <div class="readiness-bar" style="margin-bottom:20px;">
+        <div class="readiness-label">
+          <span>Problems 1-20 Readiness</span>
+          <span>${readiness}%</span>
+        </div>
+        <div class="readiness-track">
+          <div class="readiness-fill" style="width:${readiness}%"></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px;">
+        <div class="dash-stat-card">
+          <div class="dash-stat-val">${SKILL_DEFS.filter(s => mastery[s.id] && mastery[s.id].status === 'mastered').length}</div>
+          <div class="dash-stat-label">Skills Mastered</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-val">${SKILL_DEFS.filter(s => mastery[s.id] && ['learning','level_1','level_2','level_3'].includes(mastery[s.id].status)).length}</div>
+          <div class="dash-stat-label">In Progress</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-val">${stats.totalSessions || 0}</div>
+          <div class="dash-stat-label">Total Sessions</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-val">${stats.overallAccuracy || 0}%</div>
+          <div class="dash-stat-label">Overall Accuracy</div>
+        </div>
+      </div>
+
+      <div class="section-tag">This Week</div>
+      <div class="week-chart">
+        ${weekDays.map(d => `
+          <div class="week-day">
+            <div class="week-bar-wrap">
+              <div class="week-bar" style="height:${Math.max(d.problems / maxProblems * 100, d.problems > 0 ? 8 : 0)}%"></div>
+            </div>
+            <div class="week-label">${d.label}</div>
+            <div class="week-count">${d.problems || ''}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="section-tag">Skill Breakdown</div>
+      <div style="overflow-x:auto;">
+        <table class="skill-table">
+          <thead><tr><th>Skill</th><th>Status</th><th>Accuracy</th><th>Problems</th><th>Last Practiced</th></tr></thead>
+          <tbody>${skillRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+function timeSince(date) {
+  let seconds = Math.floor((new Date() - date) / 1000);
+  if (seconds < 60) return 'Just now';
+  let minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return minutes + 'm ago';
+  let hours = Math.floor(minutes / 60);
+  if (hours < 24) return hours + 'h ago';
+  let days = Math.floor(hours / 24);
+  if (days === 1) return 'Yesterday';
+  if (days < 7) return days + 'd ago';
+  return Math.floor(days / 7) + 'w ago';
 }
 
 // ── Attach listeners for learning screens ──

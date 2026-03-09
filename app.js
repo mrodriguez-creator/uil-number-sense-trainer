@@ -2486,6 +2486,8 @@ function render(){
     state.screen==='skillmap'  ? (typeof renderSkillMap !== 'undefined' ? renderSkillMap() : renderMenu()) :
     state.screen==='learn'     ? (typeof renderLesson !== 'undefined' ? renderLesson() : renderMenu()) :
     state.screen==='practice'  ? (typeof renderPractice !== 'undefined' ? renderPractice() : renderMenu()) :
+    state.screen==='position'  ? (typeof renderPositionPractice !== 'undefined' ? renderPositionPractice() : renderMenu()) :
+    state.screen==='dashboard' ? (typeof renderDashboard !== 'undefined' ? renderDashboard() : renderMenu()) :
     state.screen==='menu'      ? renderMenu() :
     state.screen==='test'      ? renderTest() :
     state.screen==='stats'     ? renderStats() :

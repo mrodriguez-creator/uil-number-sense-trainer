@@ -726,4 +726,158 @@ const TUTORIALS = {
       { q: 'The arithmetic mean of 8, 12, 16, 4 =', a: 10, walkthrough: '(8+12+16+4)/4 = 40/4 = 10' }
     ]
   },
+
+  // ── CONVERSIONS ──
+  conv: {
+    title: 'Unit Conversions',
+    intro: 'UIL tests include unit conversion problems at positions 13-14. You need to memorize key conversion factors and apply them quickly. Most conversions involve volume, length, or weight.',
+    position: '13-14',
+    keyPatterns: [
+      'Gallons, quarts, pints, cups conversions',
+      'Yards, feet, inches conversions',
+      'Metric prefixes (kilo, deka, centi, milli)'
+    ],
+    steps: [
+      {
+        title: 'Volume Conversions',
+        text: 'Memorize this chain: <span class="highlight">1 gallon = 4 quarts = 8 pints = 16 cups</span>. Also: 1 quart = 2 pints, 1 pint = 2 cups. Work step by step through the chain.',
+        example: {
+          problem: '3 gallons = ? pints',
+          steps: [
+            { text: '1 gallon = 8 pints', result: '×8' },
+            { text: '3 × 8', result: '24 pints' }
+          ]
+        }
+      },
+      {
+        title: 'Length Conversions',
+        text: 'Key facts: <span class="highlight">1 yard = 3 feet = 36 inches</span>. 1 foot = 12 inches. 1 mile = 5,280 feet = 1,760 yards.',
+        example: {
+          problem: '7 yards = ? inches',
+          steps: [
+            { text: '1 yard = 36 inches', result: '×36' },
+            { text: '7 × 36 = 7 × 30 + 7 × 6', result: '210 + 42' },
+            { text: 'Total', result: '252 inches' }
+          ]
+        }
+      },
+      {
+        title: 'Metric Conversions',
+        text: 'Metric prefixes: kilo (×1000), hecto (×100), deka (×10), base, deci (÷10), centi (÷100), milli (÷1000). Just count how many places to move the decimal.',
+        example: {
+          problem: '3.5 kilometers = ? meters',
+          steps: [
+            { text: 'Kilo means ×1000', result: '×1000' },
+            { text: '3.5 × 1000', result: '3500 meters' }
+          ]
+        }
+      }
+    ],
+    tryIt: [
+      { q: '5 gallons = ? quarts', a: 20, walkthrough: '1 gal = 4 qt, so 5 × 4 = 20' },
+      { q: '2 yards = ? inches', a: 72, walkthrough: '1 yd = 36 in, so 2 × 36 = 72' },
+      { q: '4 pints = ? cups', a: 8, walkthrough: '1 pint = 2 cups, so 4 × 2 = 8' }
+    ]
+  },
+
+  // ── ROMAN NUMERALS ──
+  roman: {
+    title: 'Roman Numerals',
+    intro: 'Roman numeral problems at positions 13-14 ask you to convert between Roman and Arabic numbers, or do arithmetic with Roman numerals. Master the 7 symbols and the subtraction rule.',
+    position: '13-14',
+    keyPatterns: [
+      'Roman numeral symbols: I, V, X, L, C, D, M',
+      'Converting Roman to Arabic or Arabic to Roman',
+      'Sometimes arithmetic with Roman numerals'
+    ],
+    steps: [
+      {
+        title: 'The 7 Symbols',
+        text: 'Memorize: <span class="highlight">I=1, V=5, X=10, L=50, C=100, D=500, M=1000</span>. When a smaller value comes before a larger one, subtract it. Otherwise, add.',
+        example: {
+          problem: 'XIV = ?',
+          steps: [
+            { text: 'X=10, I=1 (before V, so subtract), V=5', result: '' },
+            { text: '10 + (5 − 1)', result: '10 + 4' },
+            { text: 'Total', result: '14' }
+          ]
+        }
+      },
+      {
+        title: 'Subtraction Rules',
+        text: 'Only I, X, C can be subtracted. <span class="highlight">IV=4, IX=9, XL=40, XC=90, CD=400, CM=900</span>. These are the only valid subtraction pairs.',
+        example: {
+          problem: 'MCMXCIV = ?',
+          steps: [
+            { text: 'M=1000', result: '1000' },
+            { text: 'CM=900', result: '+900' },
+            { text: 'XC=90', result: '+90' },
+            { text: 'IV=4', result: '+4' },
+            { text: 'Total', result: '1994' }
+          ]
+        }
+      },
+      {
+        title: 'Arabic to Roman',
+        text: 'Break the number into place values and convert each. 2024 = 2000 + 20 + 4 = MM + XX + IV = MMXXIV.',
+        example: {
+          problem: '47 in Roman numerals = ?',
+          steps: [
+            { text: '40 = XL', result: 'XL' },
+            { text: '7 = VII', result: 'VII' },
+            { text: 'Combine', result: 'XLVII' }
+          ]
+        }
+      }
+    ],
+    tryIt: [
+      { q: 'XLII =', a: 42, walkthrough: 'XL=40, II=2, total = 42' },
+      { q: 'LXXIX =', a: 79, walkthrough: 'L=50, XX=20, IX=9, total = 79' },
+      { q: 'CXIV =', a: 114, walkthrough: 'C=100, X=10, IV=4, total = 114' }
+    ]
+  },
+
+  // ── STARRED: 4-TERM ARITHMETIC ──
+  starred1: {
+    title: 'Starred Problem: 4-Term Arithmetic',
+    intro: 'Problem 10 is always a starred (*) problem with a 4-term arithmetic chain of large numbers. The answer allows ±5% tolerance, but with practice you can get it exact. The key is grouping positive and negative terms.',
+    position: '10*',
+    keyPatterns: [
+      'Four large numbers with + and − signs',
+      'Starred (*) means ±5% tolerance on the answer',
+      'Look for numbers that partially cancel each other'
+    ],
+    steps: [
+      {
+        title: 'Group and Cancel',
+        text: 'Look for pairs of numbers that nearly cancel. In 520 − 2011 + 1302 − 25, group positives (520 + 1302 = 1822) and negatives (2011 + 25 = 2036), then subtract: 1822 − 2036 = −214.',
+        example: {
+          problem: '425 − 2025 + 5202 − 624 = ?',
+          steps: [
+            { text: 'Positives: 425 + 5202 = 5627', result: '5627' },
+            { text: 'Negatives: 2025 + 624 = 2649', result: '2649' },
+            { text: 'Subtract: 5627 − 2649', result: '2978' }
+          ]
+        }
+      },
+      {
+        title: 'Left-to-Right Method',
+        text: 'Alternatively, work left to right keeping a running total. This avoids adding large numbers but requires careful tracking of sign changes.',
+        example: {
+          problem: '1967 + 7196 − 6719 − 9671 = ?',
+          steps: [
+            { text: 'Start: 1967', result: '1967' },
+            { text: '+ 7196 = 9163', result: '9163' },
+            { text: '− 6719 = 2444', result: '2444' },
+            { text: '− 9671 = −7227', result: '−7227' }
+          ]
+        }
+      }
+    ],
+    tryIt: [
+      { q: '500 − 1200 + 800 − 300 =', a: -200, walkthrough: 'Pos: 500+800=1300, Neg: 1200+300=1500, 1300−1500=−200' },
+      { q: '1500 + 2500 − 3000 − 500 =', a: 500, walkthrough: 'Pos: 1500+2500=4000, Neg: 3000+500=3500, 4000−3500=500' },
+      { q: '2000 − 1500 + 3000 − 4000 =', a: -500, walkthrough: 'Pos: 2000+3000=5000, Neg: 1500+4000=5500, 5000−5500=−500' }
+    ]
+  },
 };
