@@ -1639,7 +1639,7 @@ function buildTimedRound(count){
 // APP STATE
 // ═══════════════════════════════════════════════════════════════════════════
 let state = {
-  screen:'menu',        // menu | test | results | stats
+  screen:'skillmap',    // skillmap | learn | practice | menu | test | results | stats
   problems:[],
   idx:0,
   answer:'',
@@ -2483,11 +2483,15 @@ function renderSolution(q, ans, topic){
 // ═══════════════════════════════════════════════════════════════════════════
 function render(){
   document.getElementById('app').innerHTML =
-    state.screen==='menu'  ? renderMenu() :
-    state.screen==='test'  ? renderTest() :
-    state.screen==='stats' ? renderStats() :
+    state.screen==='skillmap'  ? (typeof renderSkillMap !== 'undefined' ? renderSkillMap() : renderMenu()) :
+    state.screen==='learn'     ? (typeof renderLesson !== 'undefined' ? renderLesson() : renderMenu()) :
+    state.screen==='practice'  ? (typeof renderPractice !== 'undefined' ? renderPractice() : renderMenu()) :
+    state.screen==='menu'      ? renderMenu() :
+    state.screen==='test'      ? renderTest() :
+    state.screen==='stats'     ? renderStats() :
     renderResults();
   attachListeners();
+  if(typeof attachLearnListeners !== 'undefined') attachLearnListeners();
 }
 function renderMenu(){
   const CORE_KEYS=['add','sub','mul','div','sq','cube','rem','lcm','pct','conv','roman','mean'];
@@ -2552,6 +2556,9 @@ function renderMenu(){
   </div>
   ${insightBanner}
   <div class="menu-body">
+    <div style="margin-bottom:20px;">
+      <button class="qa-btn" style="width:100%;background:linear-gradient(140deg,#1c2640,#1a1f2e);border:2px solid #667eea;font-size:1rem;padding:16px;" onclick="setState({screen:'skillmap'})">&larr; Back to Skill Map (Learning Mode)</button>
+    </div>
 
     <div class="section-tag">⭐ Problems 1–20 Focus</div>
     <div class="focus-card">
