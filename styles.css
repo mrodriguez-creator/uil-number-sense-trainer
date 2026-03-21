@@ -83,10 +83,44 @@ input.ans-box:focus { border-color: #667eea; }
 .btn-orange { background: #ed8936; }
 .btn-subtle { background: #2d3748; color: #718096; border: 1px solid #4a5568; font-size: 0.82rem; padding: 10px; }
 
-/* Fraction slash helper */
-.frac-helper { margin-bottom: 10px; }
-.frac-btn { display: block; width: 100%; padding: 10px; background: #2d3748; border: 1px solid #4a5568; border-radius: 8px; color: #667eea; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s; }
-.frac-btn:hover, .frac-btn:active { background: #363e52; border-color: #667eea; }
+/* ── 10-KEY PAD ── */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 340px;
+  margin: 0 auto 16px;
+}
+.key {
+  background: #1e2536;
+  border: 2px solid #3a4560;
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 14px 0;
+  cursor: pointer;
+  transition: background .1s, border-color .1s, transform .08s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+}
+.key:active { transform: scale(0.95); background: #2a3450; }
+.key:hover { border-color: #667eea; }
+.key-op { background: #2a2030; border-color: #6b4e7e; color: #d6bcfa; }
+.key-op:active { background: #3a2840; }
+.key-neg { background: #2a2030; border-color: #6b4e7e; color: #d6bcfa; }
+.key-neg:active { background: #3a2840; }
+.key-frac { background: #1e2a3a; border-color: #4a7eaa; color: #90cdf4; font-size: 1.1rem; }
+.key-frac:active { background: #2a3a4a; }
+.key-enter {
+  background: #2b4c3f;
+  border-color: #48bb78;
+  color: #68d391;
+  font-size: 1.5rem;
+}
+.key-enter:active { background: #1a3a2e; }
+.key-enter:hover { border-color: #68d391; }
 
 /* Streak badge */
 .streak { display: inline-block; background: #ed8936; color: #fff; border-radius: 12px; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; margin-left: 6px; }

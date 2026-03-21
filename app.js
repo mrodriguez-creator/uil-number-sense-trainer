@@ -1718,6 +1718,26 @@ function startFullTest(){
 }
 function focusInput(){let e=document.getElementById('ans-input');if(e)e.focus();}
 
+// ── 10-KEY PAD ──
+function nsKeypad(val){
+  state.answer+=val;
+  let inp=document.getElementById('ans-input');
+  if(inp) inp.value=state.answer;
+}
+function nsBackspace(){
+  state.answer=state.answer.slice(0,-1);
+  let inp=document.getElementById('ans-input');
+  if(inp) inp.value=state.answer;
+}
+function nsClear(){
+  state.answer='';
+  let inp=document.getElementById('ans-input');
+  if(inp) inp.value='';
+}
+function nsEnter(){
+  submitAnswer();
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // SUBMIT / SKIP
 // ═══════════════════════════════════════════════════════════════════════════
@@ -2798,10 +2818,26 @@ function renderTest(){
     ${cur.starred?'<div class="problem-tag" style="color:#f6ad55;">★ Approximation (±5% accepted)</div>':''}
     ${sourceTag}
     ${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'<div class="problem-tag" style="color:#667eea;">Type as a fraction, e.g. 3/4</div>':''}</div>
-    <input type="text" class="ans-box" id="ans-input" inputmode="${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'text':'decimal'}" value="${state.answer}" placeholder="${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
-    ${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?`<div class="frac-helper"><button class="frac-btn" id="btn-slash">⁄ slash</button></div>`:''}
+    <input type="text" class="ans-box" id="ans-input" inputmode="none" value="${state.answer}" placeholder="${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
+    <div class="keypad">
+      <button class="key" onclick="nsKeypad('7')">7</button>
+      <button class="key" onclick="nsKeypad('8')">8</button>
+      <button class="key" onclick="nsKeypad('9')">9</button>
+      <button class="key key-op" onclick="nsBackspace()">⌫</button>
+      <button class="key" onclick="nsKeypad('4')">4</button>
+      <button class="key" onclick="nsKeypad('5')">5</button>
+      <button class="key" onclick="nsKeypad('6')">6</button>
+      <button class="key key-op" onclick="nsClear()">C</button>
+      <button class="key" onclick="nsKeypad('1')">1</button>
+      <button class="key" onclick="nsKeypad('2')">2</button>
+      <button class="key" onclick="nsKeypad('3')">3</button>
+      <button class="key key-neg" onclick="nsKeypad('-')">−</button>
+      <button class="key" onclick="nsKeypad('0')">0</button>
+      <button class="key" onclick="nsKeypad('.')">.</button>
+      <button class="key key-frac" onclick="nsKeypad('/')">/</button>
+      <button class="key key-enter" onclick="nsEnter()">⏎</button>
+    </div>
     <div class="btn-row${state.nextDelayed?' next-delay-overlay':''}">
-      <button class="btn btn-green" id="btn-submit">Submit</button>
       ${skipHTML}
     </div>
     <button class="btn btn-subtle" id="btn-end">${isDrill?'End Session':'End Test Early'}</button>
