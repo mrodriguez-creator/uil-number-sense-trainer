@@ -37,6 +37,53 @@ function setLearnState(patch) {
   Object.assign(learnState, patch);
 }
 
+// ── 10-KEY PAD HELPERS ──
+function learnKeypad(inputId, stateKey, val) {
+  let inp = document.getElementById(inputId);
+  if (!inp) return;
+  if (stateKey === 'tryItAnswer') learnState.tryItAnswer += val;
+  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer += val;
+  else if (stateKey === 'posAnswer') posState.answer += val;
+  inp.value = inp.value + val;
+}
+function learnBackspace(inputId, stateKey) {
+  let inp = document.getElementById(inputId);
+  if (!inp) return;
+  let v = inp.value.slice(0, -1);
+  inp.value = v;
+  if (stateKey === 'tryItAnswer') learnState.tryItAnswer = v;
+  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer = v;
+  else if (stateKey === 'posAnswer') posState.answer = v;
+}
+function learnClearInput(inputId, stateKey) {
+  let inp = document.getElementById(inputId);
+  if (!inp) return;
+  inp.value = '';
+  if (stateKey === 'tryItAnswer') learnState.tryItAnswer = '';
+  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer = '';
+  else if (stateKey === 'posAnswer') posState.answer = '';
+}
+function buildKeypadHTML(inputId, stateKey, submitFn) {
+  return `<div class="keypad">
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','7')">7</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','8')">8</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','9')">9</button>
+    <button class="key key-op" onclick="learnBackspace('${inputId}','${stateKey}')">⌫</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','4')">4</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','5')">5</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','6')">6</button>
+    <button class="key key-op" onclick="learnClearInput('${inputId}','${stateKey}')">C</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','1')">1</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','2')">2</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','3')">3</button>
+    <button class="key key-neg" onclick="learnKeypad('${inputId}','${stateKey}','-')">−</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','0')">0</button>
+    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','.')">.</button>
+    <button class="key key-frac" onclick="learnKeypad('${inputId}','${stateKey}','/')">/</button>
+    <button class="key key-enter" onclick="${submitFn}()">⏎</button>
+  </div>`;
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // SKILL MAP SCREEN
 // ═══════════════════════════════════════════════════════════════════════════
@@ -330,9 +377,9 @@ function renderTutorialTryIt(skill, tutorial) {
           <div class="tryit-q">${problem.q}</div>
           <div class="tryit-input-row">
             <input type="text" class="tryit-input" id="tryit-ans" placeholder="Your answer" value="${learnState.tryItAnswer}"
-              onkeydown="if(event.key==='Enter')checkTryIt()" autocomplete="off" inputmode="text">
-            <button class="tryit-submit" onclick="checkTryIt()">Check</button>
+              onkeydown="if(event.key==='Enter')checkTryIt()" autocomplete="off" inputmode="none">
           </div>
+          ${buildKeypadHTML('tryit-ans', 'tryItAnswer', 'checkTryIt')}
           ${!learnState.tryItHintShown ? `
             <button class="tryit-hint-btn" onclick="showTryItHint()">Show Hint</button>
           ` : `
@@ -440,13 +487,13 @@ function renderPractice() {
             <input type="text" class="practice-input" id="practice-ans" placeholder="Answer"
               value="${learnState.practiceAnswer}"
               onkeydown="if(event.key==='Enter')submitPractice()"
-              autocomplete="off" inputmode="text">
+              autocomplete="off" inputmode="none">
           </div>
+          ${buildKeypadHTML('practice-ans', 'practiceAnswer', 'submitPractice')}
           <div class="practice-actions">
             ${level === 1 || learnState.practiceTrickShown ? '' : `
               <button class="btn-show-trick" onclick="showPracticeTrick()">Show Trick</button>
             `}
-            <button class="btn-submit-practice" onclick="submitPractice()">Submit</button>
             <button class="btn-skip-practice" onclick="skipPractice()">Skip</button>
           </div>
           ${learnState.practiceTrickShown && learnState.practiceSolution ? `
@@ -977,11 +1024,11 @@ function renderPositionPractice() {
             <input type="text" class="practice-input" id="pos-ans" placeholder="Answer"
               value="${posState.answer}"
               onkeydown="if(event.key==='Enter')submitPosition()"
-              autocomplete="off" inputmode="text">
+              autocomplete="off" inputmode="none">
           </div>
+          ${buildKeypadHTML('pos-ans', 'posAnswer', 'submitPosition')}
           <div class="practice-actions">
             <button class="btn-show-trick" onclick="showPositionSolution()">Show Trick</button>
-            <button class="btn-submit-practice" onclick="submitPosition()">Submit</button>
             <button class="btn-skip-practice" onclick="skipPosition()">Skip</button>
           </div>
           ${posState.showSolution && solutionHTML ? `
