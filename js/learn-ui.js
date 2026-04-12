@@ -656,6 +656,9 @@ function openSkill(skillId) {
   } else if (ms.status === 'mastered') {
     // Review - go to level 3 practice
     startGuidedPractice(skillId, 3);
+  } else if (ms.status === 'level_3') {
+    // All levels passed - go straight to mastery check
+    startMasteryCheck(skillId);
   } else {
     // In progress - figure out current level
     let level = ms.status === 'level_1' ? 2 : ms.status === 'level_2' ? 3 : 3;
