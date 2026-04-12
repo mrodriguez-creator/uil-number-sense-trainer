@@ -1719,20 +1719,48 @@ function startFullTest(){
 function focusInput(){let e=document.getElementById('ans-input');if(e)e.focus();}
 
 // ── 10-KEY PAD ──
-function nsKeypad(val){
-  state.answer+=val;
+// Track cursor position so touch-device keypad works (input loses focus on tap)
+let _nsCursor={s:null,e:null};
+function _nsTrackCursor(){
   let inp=document.getElementById('ans-input');
-  if(inp) inp.value=state.answer;
+  if(inp){_nsCursor.s=inp.selectionStart;_nsCursor.e=inp.selectionEnd;}
+}
+function _nsGetCursor(inp){
+  // If input has focus, use live selection; otherwise use saved position
+  let s=inp.selectionStart, e=inp.selectionEnd;
+  if(document.activeElement!==inp && _nsCursor.s!==null){s=_nsCursor.s;e=_nsCursor.e;}
+  if(s===null||s===undefined) s=inp.value.length;
+  if(e===null||e===undefined) e=s;
+  return {s,e};
+}
+function nsKeypad(val){
+  let inp=document.getElementById('ans-input');
+  if(!inp){ state.answer+=val; return; }
+  let {s,e}=_nsGetCursor(inp);
+  let v=inp.value;
+  inp.value=v.slice(0,s)+val+v.slice(e);
+  state.answer=inp.value;
+  let pos=s+val.length;
+  inp.focus();
+  inp.setSelectionRange(pos,pos);
+  _nsCursor.s=pos;_nsCursor.e=pos;
 }
 function nsBackspace(){
-  state.answer=state.answer.slice(0,-1);
   let inp=document.getElementById('ans-input');
-  if(inp) inp.value=state.answer;
+  if(!inp){ state.answer=state.answer.slice(0,-1); return; }
+  let {s,e}=_nsGetCursor(inp);
+  let v=inp.value;
+  if(s!==e){ inp.value=v.slice(0,s)+v.slice(e); }
+  else if(s>0){ inp.value=v.slice(0,s-1)+v.slice(s); s--; }
+  state.answer=inp.value;
+  inp.focus();
+  inp.setSelectionRange(s,s);
+  _nsCursor.s=s;_nsCursor.e=s;
 }
 function nsClear(){
   state.answer='';
   let inp=document.getElementById('ans-input');
-  if(inp) inp.value='';
+  if(inp){ inp.value=''; inp.focus(); _nsCursor.s=0;_nsCursor.e=0; }
 }
 function nsEnter(){
   submitAnswer();
@@ -2820,22 +2848,22 @@ function renderTest(){
     ${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'<div class="problem-tag" style="color:#667eea;">Type as a fraction, e.g. 3/4</div>':''}</div>
     <input type="text" class="ans-box" id="ans-input" inputmode="none" value="${state.answer}" placeholder="${typeof cur.a==='string'&&displayAnswer(cur.a).includes('/')?'e.g. 3/4':'Your answer'}" autocomplete="off">
     <div class="keypad">
-      <button class="key" onclick="nsKeypad('7')">7</button>
-      <button class="key" onclick="nsKeypad('8')">8</button>
-      <button class="key" onclick="nsKeypad('9')">9</button>
-      <button class="key key-op" onclick="nsBackspace()">⌫</button>
-      <button class="key" onclick="nsKeypad('4')">4</button>
-      <button class="key" onclick="nsKeypad('5')">5</button>
-      <button class="key" onclick="nsKeypad('6')">6</button>
-      <button class="key key-op" onclick="nsClear()">C</button>
-      <button class="key" onclick="nsKeypad('1')">1</button>
-      <button class="key" onclick="nsKeypad('2')">2</button>
-      <button class="key" onclick="nsKeypad('3')">3</button>
-      <button class="key key-neg" onclick="nsKeypad('-')">−</button>
-      <button class="key" onclick="nsKeypad('0')">0</button>
-      <button class="key" onclick="nsKeypad('.')">.</button>
-      <button class="key key-frac" onclick="nsKeypad('/')">/</button>
-      <button class="key key-enter" onclick="nsEnter()">⏎</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('7')">7</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('8')">8</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('9')">9</button>
+      <button class="key key-op" onpointerdown="event.preventDefault()" onclick="nsBackspace()">⌫</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('4')">4</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('5')">5</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('6')">6</button>
+      <button class="key key-op" onpointerdown="event.preventDefault()" onclick="nsClear()">C</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('1')">1</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('2')">2</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('3')">3</button>
+      <button class="key key-neg" onpointerdown="event.preventDefault()" onclick="nsKeypad('-')">−</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('0')">0</button>
+      <button class="key" onpointerdown="event.preventDefault()" onclick="nsKeypad('.')">.</button>
+      <button class="key key-frac" onpointerdown="event.preventDefault()" onclick="nsKeypad('/')">/</button>
+      <button class="key key-enter" onpointerdown="event.preventDefault()" onclick="nsEnter()">⏎</button>
     </div>
     <div class="btn-row${state.nextDelayed?' next-delay-overlay':''}">
       ${skipHTML}
@@ -3243,7 +3271,15 @@ function attachListeners(){
   if(el=document.getElementById('ans-input')){
     el.oninput=(e)=>{state.answer=e.target.value;};
     el.onkeydown=(e)=>{if(e.key==='Enter') submitAnswer();};
+    el.onblur=_nsTrackCursor;
+    el.addEventListener('keyup',_nsTrackCursor);
+    el.addEventListener('mouseup',_nsTrackCursor);
+    el.addEventListener('touchend',_nsTrackCursor);
   }
+  // Prevent keypad buttons from stealing focus on touch devices
+  document.querySelectorAll('.keypad .key').forEach(b=>{
+    b.addEventListener('pointerdown',(e)=>e.preventDefault());
+  });
   if(el=document.getElementById('btn-slash')){
     el.onclick=()=>{
       let inp=document.getElementById('ans-input');

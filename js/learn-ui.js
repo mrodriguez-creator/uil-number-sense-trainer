@@ -38,49 +38,75 @@ function setLearnState(patch) {
 }
 
 // ── 10-KEY PAD HELPERS ──
+function _setLearnKey(stateKey, v) {
+  if (stateKey === 'tryItAnswer') learnState.tryItAnswer = v;
+  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer = v;
+  else if (stateKey === 'posAnswer') posState.answer = v;
+}
+// Track cursor position so touch-device keypad works (input loses focus on tap)
+let _learnCursor = { s: null, e: null };
+function _learnTrackCursor(inputId) {
+  let inp = document.getElementById(inputId);
+  if (inp) { _learnCursor.s = inp.selectionStart; _learnCursor.e = inp.selectionEnd; }
+}
+function _learnGetCursor(inp) {
+  let s = inp.selectionStart, e = inp.selectionEnd;
+  if (document.activeElement !== inp && _learnCursor.s !== null) { s = _learnCursor.s; e = _learnCursor.e; }
+  if (s === null || s === undefined) s = inp.value.length;
+  if (e === null || e === undefined) e = s;
+  return { s, e };
+}
 function learnKeypad(inputId, stateKey, val) {
   let inp = document.getElementById(inputId);
   if (!inp) return;
-  if (stateKey === 'tryItAnswer') learnState.tryItAnswer += val;
-  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer += val;
-  else if (stateKey === 'posAnswer') posState.answer += val;
-  inp.value = inp.value + val;
+  let { s, e } = _learnGetCursor(inp);
+  let v = inp.value;
+  inp.value = v.slice(0, s) + val + v.slice(e);
+  _setLearnKey(stateKey, inp.value);
+  let pos = s + val.length;
+  inp.focus();
+  inp.setSelectionRange(pos, pos);
+  _learnCursor.s = pos; _learnCursor.e = pos;
 }
 function learnBackspace(inputId, stateKey) {
   let inp = document.getElementById(inputId);
   if (!inp) return;
-  let v = inp.value.slice(0, -1);
-  inp.value = v;
-  if (stateKey === 'tryItAnswer') learnState.tryItAnswer = v;
-  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer = v;
-  else if (stateKey === 'posAnswer') posState.answer = v;
+  let { s, e } = _learnGetCursor(inp);
+  let v = inp.value;
+  if (s !== e) { inp.value = v.slice(0, s) + v.slice(e); }
+  else if (s > 0) { inp.value = v.slice(0, s - 1) + v.slice(s); s--; }
+  _setLearnKey(stateKey, inp.value);
+  inp.focus();
+  inp.setSelectionRange(s, s);
+  _learnCursor.s = s; _learnCursor.e = s;
 }
 function learnClearInput(inputId, stateKey) {
   let inp = document.getElementById(inputId);
   if (!inp) return;
   inp.value = '';
-  if (stateKey === 'tryItAnswer') learnState.tryItAnswer = '';
-  else if (stateKey === 'practiceAnswer') learnState.practiceAnswer = '';
-  else if (stateKey === 'posAnswer') posState.answer = '';
+  _setLearnKey(stateKey, '');
+  inp.focus();
+  _learnCursor.s = 0; _learnCursor.e = 0;
 }
 function buildKeypadHTML(inputId, stateKey, submitFn) {
+  let pd = 'onpointerdown="event.preventDefault()"';
   return `<div class="keypad">
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','7')">7</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','8')">8</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','9')">9</button>
-    <button class="key key-op" onclick="learnBackspace('${inputId}','${stateKey}')">⌫</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','4')">4</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','5')">5</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','6')">6</button>
-    <button class="key key-op" onclick="learnClearInput('${inputId}','${stateKey}')">C</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','1')">1</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','2')">2</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','3')">3</button>
-    <button class="key key-neg" onclick="learnKeypad('${inputId}','${stateKey}','-')">−</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','0')">0</button>
-    <button class="key" onclick="learnKeypad('${inputId}','${stateKey}','.')">.</button>
-    <button class="key key-frac" onclick="learnKeypad('${inputId}','${stateKey}','/')">/</button>
-    <button class="key key-enter" onclick="${submitFn}()">⏎</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','7')">7</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','8')">8</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','9')">9</button>
+    <button class="key key-op" ${pd} onclick="learnBackspace('${inputId}','${stateKey}')">⌫</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','4')">4</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','5')">5</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','6')">6</button>
+    <button class="key key-op" ${pd} onclick="learnClearInput('${inputId}','${stateKey}')">C</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','1')">1</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','2')">2</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','3')">3</button>
+    <button class="key key-neg" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','-')">−</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','0')">0</button>
+    <button class="key" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','.')">.</button>
+    <button class="key key-frac" ${pd} onclick="learnKeypad('${inputId}','${stateKey}','/')">/</button>
+    <button class="key key-enter" ${pd} onclick="${submitFn}()">⏎</button>
   </div>`;
 }
 
@@ -377,7 +403,7 @@ function renderTutorialTryIt(skill, tutorial) {
           <div class="tryit-q">${problem.q}</div>
           <div class="tryit-input-row">
             <input type="text" class="tryit-input" id="tryit-ans" placeholder="Your answer" value="${learnState.tryItAnswer}"
-              onkeydown="if(event.key==='Enter')checkTryIt()" autocomplete="off" inputmode="none">
+              onkeydown="if(event.key==='Enter')checkTryIt()" onblur="_learnTrackCursor('tryit-ans')" onkeyup="_learnTrackCursor('tryit-ans')" ontouchend="_learnTrackCursor('tryit-ans')" onmouseup="_learnTrackCursor('tryit-ans')" autocomplete="off" inputmode="none">
           </div>
           ${buildKeypadHTML('tryit-ans', 'tryItAnswer', 'checkTryIt')}
           ${!learnState.tryItHintShown ? `
@@ -487,6 +513,7 @@ function renderPractice() {
             <input type="text" class="practice-input" id="practice-ans" placeholder="Answer"
               value="${learnState.practiceAnswer}"
               onkeydown="if(event.key==='Enter')submitPractice()"
+              onblur="_learnTrackCursor('practice-ans')" onkeyup="_learnTrackCursor('practice-ans')" ontouchend="_learnTrackCursor('practice-ans')" onmouseup="_learnTrackCursor('practice-ans')"
               autocomplete="off" inputmode="none">
           </div>
           ${buildKeypadHTML('practice-ans', 'practiceAnswer', 'submitPractice')}
@@ -1024,6 +1051,7 @@ function renderPositionPractice() {
             <input type="text" class="practice-input" id="pos-ans" placeholder="Answer"
               value="${posState.answer}"
               onkeydown="if(event.key==='Enter')submitPosition()"
+              onblur="_learnTrackCursor('pos-ans')" onkeyup="_learnTrackCursor('pos-ans')" ontouchend="_learnTrackCursor('pos-ans')" onmouseup="_learnTrackCursor('pos-ans')"
               autocomplete="off" inputmode="none">
           </div>
           ${buildKeypadHTML('pos-ans', 'posAnswer', 'submitPosition')}
